@@ -4,34 +4,30 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="NARA — ruang untuk kopi, makanan, percakapan, dan waktu yang lebih pelan.">
+<title>ARUNA — Ruang Hidup yang Dirancang untukmu</title>
 
-<title>NARA — Coffee & Kitchen</title>
+<meta name="description" content="Contoh landing page premium untuk bisnis, produk, jasa, dan personal brand. Dibuat sebagai demo oleh XYNY Studio.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#f5f1e9">
 
 <style>
-
 /* =========================================================
-   NARA
-   PREMIUM LANDING PAGE DEMO
-   XYNY STUDIO
-========================================================= */
+   ARUNA — DEMO LANDING PAGE
+   Dibuat sebagai contoh nyata Landing Page oleh XYNY Studio
+   ========================================================= */
 
 :root{
-    --cream:#f3eee5;
-    --cream-2:#e8dfd1;
-    --ink:#171613;
-    --ink-2:#211f1a;
-    --brown:#6a4b35;
-    --gold:#c19a61;
-    --muted:#81786d;
-    --white:#fffdf8;
-    --line:rgba(23,22,19,.12);
-    --ease:cubic-bezier(.22,1,.36,1);
+    --cream:#f5f1e9;
+    --paper:#fbf9f5;
+    --ink:#191815;
+    --muted:#77736b;
+    --line:rgba(25,24,21,.13);
+    --accent:#b66b45;
+    --accent-dark:#8f4d30;
+    --green:#536653;
+    --white:#fffdf9;
+    --shadow:0 25px 80px rgba(32,27,20,.10);
+    --radius:28px;
 }
 
 *{
@@ -47,12 +43,13 @@ html{
 body{
     background:var(--cream);
     color:var(--ink);
-    font-family:"DM Sans",sans-serif;
+    font-family:Arial, Helvetica, sans-serif;
     overflow-x:hidden;
 }
 
-body.loading{
-    overflow:hidden;
+img{
+    max-width:100%;
+    display:block;
 }
 
 a{
@@ -64,30 +61,25 @@ button{
     font:inherit;
 }
 
-img{
-    width:100%;
-    display:block;
+.container{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
 }
 
-/* =========================================================
-   LOADER
-========================================================= */
+/* =========================
+   PRELOADER
+========================= */
 
 .loader{
     position:fixed;
     inset:0;
-    z-index:99999;
-
-    background:#12110f;
+    z-index:9999;
+    background:var(--ink);
     color:white;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    transition:
-        opacity 1s var(--ease),
-        visibility 1s;
+    transition:.8s ease;
 }
 
 .loader.hide{
@@ -99,1479 +91,696 @@ img{
     text-align:center;
 }
 
-.loader-logo{
-    font-family:"Playfair Display",serif;
-    font-size:70px;
-    letter-spacing:-.05em;
+.loader-name{
+    font-size:clamp(34px,7vw,80px);
+    letter-spacing:-4px;
+    font-weight:700;
 }
 
 .loader-line{
-    width:0;
+    width:180px;
     height:1px;
-    margin:18px auto 0;
-    background:var(--gold);
-
-    animation:loaderLine 1.4s var(--ease) forwards;
+    background:rgba(255,255,255,.25);
+    margin:22px auto;
+    overflow:hidden;
 }
 
-.loader-small{
-    margin-top:16px;
-
-    font-size:9px;
-    letter-spacing:.3em;
-    text-transform:uppercase;
-
-    color:#77736d;
-}
-
-@keyframes loaderLine{
-    to{
-        width:140px;
-    }
-}
-
-/* =========================================================
-   CURSOR
-========================================================= */
-
-.cursor{
-    position:fixed;
-
-    width:14px;
-    height:14px;
-
-    border:1px solid rgba(255,255,255,.7);
-    border-radius:50%;
-
-    pointer-events:none;
-
-    z-index:100000;
-
-    transform:translate(-50%,-50%);
-
-    transition:
-        width .3s,
-        height .3s,
-        background .3s,
-        border-color .3s;
-
-    mix-blend-mode:difference;
-}
-
-.cursor.big{
-    width:52px;
-    height:52px;
+.loader-line span{
+    display:block;
+    height:100%;
+    width:0;
     background:white;
-    border-color:white;
+    animation:load 1.5s ease forwards;
 }
 
-@media(max-width:900px){
-    .cursor{
-        display:none;
-    }
+@keyframes load{
+    to{width:100%}
 }
 
-/* =========================================================
-   DEMO BADGE
-========================================================= */
-
-.demo-badge{
-    position:fixed;
-    z-index:500;
-
-    left:18px;
-    bottom:18px;
-
-    padding:10px 14px;
-
-    border-radius:100px;
-
-    color:white;
-
-    background:rgba(17,16,14,.8);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,.1);
-
-    font-size:9px;
-    letter-spacing:.17em;
-    text-transform:uppercase;
-}
-
-.demo-badge b{
-    color:#d4ae70;
-    font-weight:500;
-}
-
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* =========================
+   NAVIGATION
+========================= */
 
 .nav{
-    position:absolute;
-
+    position:fixed;
     top:0;
     left:0;
     width:100%;
-
-    z-index:100;
-
-    padding:28px 5vw;
-
-    color:white;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    transition:
-        background .4s,
-        padding .4s;
+    z-index:1000;
+    padding:22px 0;
+    transition:.35s ease;
 }
 
 .nav.scrolled{
-    position:fixed;
-
-    padding:16px 5vw;
-
-    background:rgba(17,16,14,.84);
-
+    padding:13px 0;
+    background:rgba(245,241,233,.88);
     backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid var(--line);
 }
 
-.brand{
+.nav-inner{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
     display:flex;
     align-items:center;
-    gap:12px;
+    justify-content:space-between;
 }
 
-.brand-mark{
-    width:34px;
-    height:34px;
-
-    border:1px solid rgba(255,255,255,.7);
-
-    display:grid;
-    place-items:center;
-
-    font-family:"Playfair Display",serif;
-
-    border-radius:50%;
+.logo{
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-.7px;
 }
 
-.brand-text{
-    font-family:"Playfair Display",serif;
-    font-size:25px;
-}
-
-.brand-sub{
-    display:block;
-
-    font-family:"DM Sans",sans-serif;
-
-    font-size:7px;
-
-    letter-spacing:.3em;
-
-    opacity:.55;
-
-    margin-top:-2px;
+.logo small{
+    color:var(--accent);
+    font-size:9px;
+    letter-spacing:2px;
+    margin-left:6px;
 }
 
 .nav-links{
     display:flex;
+    gap:30px;
     align-items:center;
-    gap:34px;
 }
 
 .nav-links a{
-    position:relative;
-
-    font-size:11px;
-
-    color:rgba(255,255,255,.72);
-
-    transition:.3s;
-}
-
-.nav-links a::after{
-    content:"";
-
-    position:absolute;
-
-    left:0;
-    bottom:-7px;
-
-    width:0;
-    height:1px;
-
-    background:var(--gold);
-
-    transition:.4s var(--ease);
+    font-size:13px;
+    color:#555149;
+    transition:.25s;
 }
 
 .nav-links a:hover{
-    color:white;
-}
-
-.nav-links a:hover::after{
-    width:100%;
+    color:var(--accent-dark);
 }
 
 .nav-cta{
-    padding:12px 20px;
-
-    border:1px solid rgba(255,255,255,.35);
-
+    border:1px solid var(--ink);
     border-radius:100px;
-
-    font-size:10px;
-
-    transition:.4s var(--ease);
+    padding:11px 18px;
+    font-size:12px;
+    transition:.3s;
 }
 
 .nav-cta:hover{
-    background:white;
-    color:var(--ink);
-
-    transform:translateY(-2px);
+    background:var(--ink);
+    color:white;
 }
 
-.menu-button{
+.menu{
     display:none;
-
-    border:0;
-    background:none;
-
-    color:white;
-
-    font-size:24px;
-
+    width:44px;
+    height:44px;
+    border:1px solid var(--line);
+    background:transparent;
+    border-radius:50%;
     cursor:pointer;
 }
 
-/* =========================================================
+/* =========================
    HERO
-========================================================= */
+========================= */
 
 .hero{
-    position:relative;
-
     min-height:100svh;
-
-    display:flex;
-    align-items:flex-end;
-
-    padding:
-        150px
-        7vw
-        85px;
-
-    color:white;
-
-    overflow:hidden;
-
-    background:#151411;
-}
-
-.hero-bg{
-    position:absolute;
-    inset:-8%;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(0,0,0,.76),
-            rgba(0,0,0,.35),
-            rgba(0,0,0,.25)
-        ),
-        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=90")
-        center/cover;
-
-    transform:scale(1.05);
-
-    animation:heroZoom 12s var(--ease) forwards;
-}
-
-@keyframes heroZoom{
-    from{
-        transform:scale(1.12);
-    }
-
-    to{
-        transform:scale(1.05);
-    }
-}
-
-.hero-grain{
-    position:absolute;
-    inset:0;
-
-    opacity:.08;
-
-    pointer-events:none;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-}
-
-.hero-content{
+    padding:150px 0 80px;
     position:relative;
-    z-index:3;
-
-    max-width:900px;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
 }
 
-.hero-kicker{
+.hero::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    border-radius:50%;
+    background:rgba(182,107,69,.12);
+    filter:blur(80px);
+    top:-200px;
+    right:-180px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr .85fr;
+    gap:70px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.eyebrow{
     display:flex;
     align-items:center;
     gap:10px;
-
-    margin-bottom:25px;
-
-    font-size:9px;
-    letter-spacing:.28em;
+    font-size:10px;
+    letter-spacing:2.5px;
     text-transform:uppercase;
-
-    color:rgba(255,255,255,.7);
+    color:var(--accent-dark);
+    font-weight:700;
+    margin-bottom:25px;
 }
 
-.hero-kicker i{
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--gold);
-
-    box-shadow:
-        0 0 0 5px rgba(193,154,97,.12),
-        0 0 25px rgba(193,154,97,.7);
+.eyebrow::before{
+    content:"";
+    width:27px;
+    height:1px;
+    background:var(--accent);
 }
 
 .hero h1{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(62px,9.7vw,145px);
-
-    line-height:.82;
-
-    letter-spacing:-.065em;
-
+    font-family:Georgia, "Times New Roman", serif;
     font-weight:400;
+    font-size:clamp(55px,7.5vw,104px);
+    line-height:.91;
+    letter-spacing:-6px;
+    max-width:850px;
 }
 
 .hero h1 em{
-    color:#d8b273;
+    color:var(--accent);
     font-style:italic;
 }
 
-.hero-description{
-    max-width:520px;
-
-    margin-top:34px;
-
-    font-size:14px;
-
-    line-height:1.9;
-
-    color:rgba(255,255,255,.7);
+.hero-copy{
+    max-width:510px;
+    margin-top:32px;
+    font-size:17px;
+    line-height:1.75;
+    color:var(--muted);
 }
 
-.hero-buttons{
+.hero-actions{
     display:flex;
     gap:12px;
+    margin-top:36px;
     flex-wrap:wrap;
-
-    margin-top:35px;
 }
 
-.button{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-    gap:12px;
-
-    padding:16px 24px;
-
+.btn{
+    padding:15px 23px;
     border-radius:100px;
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+    font-size:12px;
+    font-weight:700;
+    transition:.3s;
+}
 
+.btn-dark{
+    background:var(--ink);
+    color:white;
+}
+
+.btn-dark:hover{
+    transform:translateY(-3px);
+    background:var(--accent-dark);
+}
+
+.btn-light{
+    border:1px solid var(--line);
+}
+
+.btn-light:hover{
+    border-color:var(--ink);
+    transform:translateY(-3px);
+}
+
+.hero-note{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    margin-top:32px;
+    font-size:11px;
+    color:var(--muted);
+}
+
+.status{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#6e9b68;
+    box-shadow:0 0 0 5px rgba(110,155,104,.12);
+}
+
+/* =========================
+   HERO IMAGE
+========================= */
+
+.visual{
+    position:relative;
+}
+
+.photo{
+    height:610px;
+    border-radius:160px 160px 25px 25px;
+    overflow:hidden;
+    position:relative;
+    background:
+        linear-gradient(145deg,rgba(25,24,21,.05),rgba(182,107,69,.2)),
+        url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+    box-shadow:var(--shadow);
+}
+
+.photo::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(20,18,14,.48),transparent 55%);
+}
+
+.visual-label{
+    position:absolute;
+    bottom:30px;
+    left:30px;
+    right:30px;
+    z-index:2;
+    color:white;
+}
+
+.visual-label span{
     font-size:10px;
-    font-weight:600;
-
-    transition:
-        transform .4s var(--ease),
-        background .4s,
-        color .4s;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.75;
 }
 
-.button:hover{
-    transform:translateY(-4px);
+.visual-label strong{
+    display:block;
+    font-family:Georgia,serif;
+    font-size:32px;
+    font-weight:400;
+    margin-top:7px;
 }
 
-.button-light{
-    background:var(--white);
+.floating{
+    position:absolute;
+    background:rgba(255,253,249,.94);
+    backdrop-filter:blur(15px);
+    padding:17px 20px;
+    border-radius:17px;
+    box-shadow:0 20px 50px rgba(0,0,0,.12);
+    z-index:4;
+}
+
+.float-one{
+    left:-35px;
+    top:80px;
+}
+
+.float-two{
+    right:-35px;
+    bottom:75px;
+}
+
+.floating small{
+    display:block;
+    font-size:9px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.floating strong{
+    font-family:Georgia,serif;
+    font-size:19px;
+}
+
+/* =========================
+   MARQUEE
+========================= */
+
+.marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:18px 0;
+}
+
+.marquee-track{
+    display:inline-flex;
+    align-items:center;
+    gap:35px;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee span{
+    font-size:10px;
+    letter-spacing:3px;
+    color:#777168;
+}
+
+.marquee b{
+    color:var(--accent);
+    font-size:15px;
+}
+
+@keyframes marquee{
+    to{transform:translateX(-50%)}
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    padding:150px 0;
+}
+
+.intro-grid{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+    gap:70px;
+}
+
+.section-label{
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--accent-dark);
+    text-transform:uppercase;
+    font-weight:700;
+}
+
+.intro h2{
+    font-family:Georgia,serif;
+    font-weight:400;
+    font-size:clamp(42px,5vw,72px);
+    line-height:1;
+    letter-spacing:-3px;
+}
+
+.intro h2 em{
+    color:var(--accent);
+}
+
+.intro-text{
+    font-size:18px;
+    line-height:1.85;
+    color:var(--muted);
+    max-width:620px;
+}
+
+.intro-text strong{
     color:var(--ink);
 }
 
-.button-light:hover{
-    background:#e2c18b;
+/* =========================
+   FEATURES
+========================= */
+
+.features{
+    padding-bottom:150px;
 }
 
-.button-outline{
+.feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:55px;
+}
+
+.feature{
+    min-height:320px;
+    padding:35px;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:rgba(255,253,249,.45);
+    position:relative;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.feature:hover{
+    transform:translateY(-8px);
+    background:var(--paper);
+    box-shadow:var(--shadow);
+}
+
+.feature-number{
+    font-size:10px;
+    color:var(--accent);
+}
+
+.feature h3{
+    position:absolute;
+    left:35px;
+    bottom:75px;
+    font-family:Georgia,serif;
+    font-size:29px;
+    font-weight:400;
+}
+
+.feature p{
+    position:absolute;
+    left:35px;
+    right:35px;
+    bottom:30px;
+    color:var(--muted);
+    font-size:12px;
+    line-height:1.6;
+}
+
+.feature-icon{
+    position:absolute;
+    right:30px;
+    top:30px;
+    font-size:35px;
+    color:rgba(182,107,69,.35);
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story{
+    background:var(--ink);
     color:white;
-
-    border:1px solid rgba(255,255,255,.38);
+    padding:150px 0;
+    position:relative;
+    overflow:hidden;
 }
 
-.button-outline:hover{
+.story::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    background:rgba(182,107,69,.16);
+    filter:blur(100px);
+    right:-200px;
+    top:50%;
+}
+
+.story-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    position:relative;
+    z-index:2;
+}
+
+.story .section-label{
+    color:#d28b66;
+}
+
+.story h2{
+    font-family:Georgia,serif;
+    font-weight:400;
+    font-size:clamp(45px,6vw,82px);
+    line-height:.95;
+    letter-spacing:-4px;
+}
+
+.story h2 em{
+    color:#d28b66;
+}
+
+.story-copy{
+    align-self:end;
+    color:#aaa69e;
+    line-height:1.9;
+    font-size:16px;
+}
+
+.story-copy strong{
+    color:white;
+}
+
+/* =========================
+   TESTIMONIAL
+========================= */
+
+.testimonial{
+    padding:150px 0;
+    text-align:center;
+}
+
+.quote{
+    max-width:900px;
+    margin:40px auto 0;
+    font-family:Georgia,serif;
+    font-size:clamp(32px,4.5vw,58px);
+    line-height:1.15;
+    letter-spacing:-2px;
+}
+
+.quote em{
+    color:var(--accent);
+}
+
+.client{
+    margin-top:30px;
+    color:var(--muted);
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+/* =========================
+   FINAL CTA
+========================= */
+
+.final{
+    padding:30px 0 100px;
+}
+
+.final-box{
+    min-height:520px;
+    border-radius:40px;
+    background:
+        linear-gradient(rgba(20,18,14,.5),rgba(20,18,14,.65)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:50px;
+    color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.final-box::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:30px;
+}
+
+.final-content{
+    position:relative;
+    z-index:2;
+}
+
+.final .eyebrow{
+    justify-content:center;
+    color:#e3aa8d;
+}
+
+.final .eyebrow::before{
+    background:#e3aa8d;
+}
+
+.final h2{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,6vw,82px);
+    font-weight:400;
+    line-height:.98;
+    letter-spacing:-4px;
+}
+
+.final h2 em{
+    color:#e3aa8d;
+}
+
+.final p{
+    max-width:600px;
+    margin:25px auto 30px;
+    color:rgba(255,255,255,.75);
+    line-height:1.7;
+    font-size:15px;
+}
+
+.final-buttons{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.btn-white{
     background:white;
     color:var(--ink);
 }
 
-.hero-meta{
-    position:absolute;
-
-    right:7vw;
-    bottom:75px;
-
-    z-index:3;
-
-    display:flex;
-    align-items:center;
-    gap:14px;
-
-    font-size:9px;
-
-    letter-spacing:.16em;
-
-    text-transform:uppercase;
-
-    color:rgba(255,255,255,.62);
-}
-
-.hero-meta-line{
-    width:55px;
-    height:1px;
-
-    background:rgba(255,255,255,.4);
-}
-
-.scroll-indicator{
-    position:absolute;
-
-    left:7vw;
-    bottom:30px;
-
-    z-index:4;
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    color:rgba(255,255,255,.45);
-
-    font-size:8px;
-
-    letter-spacing:.25em;
-    text-transform:uppercase;
-}
-
-.scroll-indicator::after{
-    content:"";
-
-    width:45px;
-    height:1px;
-
-    background:rgba(255,255,255,.35);
-}
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-.intro{
-    padding:150px 7vw;
-
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1fr;
-
-    gap:100px;
-
-    position:relative;
-}
-
-.intro::before{
-    content:"01";
-
-    position:absolute;
-
-    right:7vw;
-    top:60px;
-
-    font-size:10px;
-
-    letter-spacing:.2em;
-
-    color:#aaa095;
-}
-
-.eyebrow{
-    color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:.25em;
-
-    text-transform:uppercase;
-}
-
-.intro h2{
-    margin-top:22px;
-
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:clamp(45px,5.5vw,78px);
-
-    line-height:.92;
-
-    letter-spacing:-.05em;
-}
-
-.intro h2 em{
-    color:var(--brown);
-}
-
-.intro-right{
-    align-self:end;
-
-    max-width:520px;
-}
-
-.intro-lead{
-    font-family:"Playfair Display",serif;
-
-    font-size:24px;
-
-    line-height:1.25;
-
-    margin-bottom:25px;
-}
-
-.intro-right p{
-    color:var(--muted);
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-/* =========================================================
-   STATEMENT STRIP
-========================================================= */
-
-.statement{
-    padding:35px 7vw;
-
-    background:var(--ink);
-
+.btn-outline{
+    border:1px solid rgba(255,255,255,.4);
     color:white;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:35px;
-
-    overflow:hidden;
-}
-
-.statement span{
-    font-size:10px;
-
-    letter-spacing:.2em;
-
-    text-transform:uppercase;
-
-    color:#a8a096;
-
-    white-space:nowrap;
-}
-
-.statement b{
-    color:#c9a269;
-}
-
-/* =========================================================
-   FEATURE
-========================================================= */
-
-.feature{
-    display:grid;
-
-    grid-template-columns:
-        1.08fr
-        .92fr;
-
-    min-height:720px;
-}
-
-.feature-photo{
-    min-height:650px;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=90")
-        center/cover;
-}
-
-.feature-photo::after{
-    content:"";
-
-    position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            135deg,
-            transparent,
-            rgba(0,0,0,.18)
-        );
-}
-
-.feature-photo-label{
-    position:absolute;
-
-    left:35px;
-    bottom:35px;
-
-    z-index:2;
-
-    color:white;
-
-    font-size:9px;
-
-    letter-spacing:.22em;
-
-    text-transform:uppercase;
-
-    writing-mode:vertical-rl;
-
-    transform:rotate(180deg);
-}
-
-.feature-content{
-    background:#1a1916;
-
-    color:white;
-
-    padding:
-        100px
-        8vw;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-}
-
-.feature-content h2{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(45px,5.5vw,78px);
-
-    line-height:.91;
-
-    font-weight:400;
-
-    letter-spacing:-.05em;
-
-    margin:22px 0 30px;
-}
-
-.feature-content h2 em{
-    color:#d4ae70;
-}
-
-.feature-content > p{
-    max-width:470px;
-
-    color:#99958d;
-
-    font-size:14px;
-
-    line-height:1.95;
-}
-
-.feature-facts{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    margin-top:50px;
-
-    max-width:470px;
-
-    border-top:1px solid rgba(255,255,255,.12);
-}
-
-.fact{
-    padding-top:22px;
-}
-
-.fact + .fact{
-    border-left:1px solid rgba(255,255,255,.12);
-
-    padding-left:30px;
-}
-
-.fact strong{
-    display:block;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:29px;
-
-    font-weight:400;
-}
-
-.fact span{
-    display:block;
-
-    margin-top:5px;
-
-    color:#77736c;
-
-    font-size:9px;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-}
-
-/* =========================================================
-   MENU
-========================================================= */
-
-.menu-section{
-    padding:150px 7vw;
-
-    background:var(--cream-2);
-}
-
-.menu-heading{
-    display:flex;
-
-    align-items:end;
-
-    justify-content:space-between;
-
-    gap:60px;
-
-    margin-bottom:65px;
-}
-
-.menu-heading h2{
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:clamp(50px,6vw,85px);
-
-    line-height:.87;
-
-    letter-spacing:-.055em;
-}
-
-.menu-heading h2 em{
-    color:var(--brown);
-}
-
-.menu-heading p{
-    max-width:350px;
-
-    color:#756d63;
-
-    font-size:13px;
-
-    line-height:1.8;
-}
-
-.menu-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:18px;
-}
-
-.menu-card{
-    background:#faf7f0;
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:
-        transform .6s var(--ease),
-        box-shadow .6s var(--ease);
-}
-
-.menu-card:hover{
-    transform:translateY(-12px);
-
-    box-shadow:
-        0 30px 70px rgba(48,35,23,.15);
-}
-
-.menu-image{
-    height:380px;
-
-    overflow:hidden;
-
-    position:relative;
-}
-
-.menu-image img{
-    height:100%;
-
-    object-fit:cover;
-
-    transition:
-        transform 1s var(--ease);
-}
-
-.menu-card:hover .menu-image img{
-    transform:scale(1.08);
-}
-
-.menu-number{
-    position:absolute;
-
-    top:20px;
-    left:20px;
-
-    z-index:2;
-
-    width:34px;
-    height:34px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:50%;
-
-    background:rgba(20,19,16,.78);
-
-    color:white;
-
-    font-size:9px;
-
-    backdrop-filter:blur(10px);
-}
-
-.menu-body{
-    padding:27px 25px 30px;
-}
-
-.menu-top{
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:20px;
-}
-
-.menu-body h3{
-    font-family:"Playfair Display",serif;
-
-    font-size:25px;
-
-    font-weight:400;
-}
-
-.menu-price{
-    color:var(--brown);
-
-    font-size:13px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-}
-
-.menu-body p{
-    color:#898076;
-
-    font-size:12px;
-
-    line-height:1.75;
-
-    margin-top:10px;
-}
-
-.menu-tag{
-    display:inline-block;
-
-    margin-top:17px;
-
-    padding:7px 10px;
-
-    border:1px solid var(--line);
-
-    border-radius:100px;
-
-    color:#81776b;
-
-    font-size:8px;
-
-    letter-spacing:.12em;
-
-    text-transform:uppercase;
-}
-
-/* =========================================================
-   STORY
-========================================================= */
-
-.story{
-    background:#171613;
-
-    color:white;
-
-    padding:160px 7vw;
-
-    position:relative;
-
-    overflow:hidden;
-}
-
-.story::before{
-    content:"N";
-
-    position:absolute;
-
-    right:-40px;
-    bottom:-130px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:520px;
-
-    line-height:1;
-
-    color:rgba(255,255,255,.025);
-
-    pointer-events:none;
-}
-
-.story-grid{
-    position:relative;
-
-    z-index:2;
-
-    display:grid;
-
-    grid-template-columns:.8fr 1.2fr;
-
-    gap:100px;
-}
-
-.story-title{
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(50px,6vw,90px);
-
-    font-weight:400;
-
-    line-height:.88;
-
-    letter-spacing:-.055em;
-}
-
-.story-title em{
-    color:#d6b276;
-}
-
-.story-copy{
-    max-width:620px;
-
-    color:#aaa69d;
-
-    font-size:15px;
-
-    line-height:2;
-}
-
-.story-copy p + p{
-    margin-top:25px;
-}
-
-.signature{
-    margin-top:50px;
-
-    color:#d5b77f;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:26px;
-
-    font-style:italic;
-}
-
-/* =========================================================
-   GALLERY
-========================================================= */
-
-.gallery{
-    display:grid;
-
-    grid-template-columns:
-        1fr
-        1.35fr
-        1fr;
-
-    height:680px;
-
-    overflow:hidden;
-}
-
-.gallery-item{
-    position:relative;
-
-    overflow:hidden;
-}
-
-.gallery-item img{
-    height:100%;
-
-    object-fit:cover;
-
-    transition:
-        transform 1.2s var(--ease);
-}
-
-.gallery-item:hover img{
-    transform:scale(1.07);
-}
-
-.gallery-overlay{
-    position:absolute;
-
-    inset:0;
-
-    display:flex;
-
-    align-items:flex-end;
-
-    padding:30px;
-
-    background:
-        linear-gradient(
-            transparent 50%,
-            rgba(0,0,0,.65)
-        );
-
-    color:white;
-
-    opacity:0;
-
-    transition:.5s;
-}
-
-.gallery-item:hover .gallery-overlay{
-    opacity:1;
-}
-
-.gallery-overlay span{
-    font-size:9px;
-
-    letter-spacing:.2em;
-
-    text-transform:uppercase;
-}
-
-/* =========================================================
-   QUOTE
-========================================================= */
-
-.quote{
-    padding:155px 7vw;
-
-    text-align:center;
-
-    background:var(--cream);
-}
-
-.quote-mark{
-    font-family:"Playfair Display",serif;
-
-    color:var(--gold);
-
-    font-size:70px;
-
-    line-height:.4;
-}
-
-.quote blockquote{
-    max-width:950px;
-
-    margin:35px auto 0;
-
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:clamp(34px,5.2vw,70px);
-
-    line-height:1.02;
-
-    letter-spacing:-.04em;
-}
-
-.quote blockquote em{
-    color:var(--brown);
-}
-
-.quote cite{
-    display:block;
-
-    margin-top:32px;
-
-    color:#8a8177;
-
-    font-size:9px;
-
-    letter-spacing:.2em;
-
-    text-transform:uppercase;
-
-    font-style:normal;
-}
-
-/* =========================================================
-   LOCATION
-========================================================= */
-
-.location{
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    background:#ded3c2;
-}
-
-.location-photo{
-    min-height:650px;
-
-    background:
-        url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=90")
-        center/cover;
-}
-
-.location-content{
-    padding:90px 8vw;
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-direction:column;
-}
-
-.location-content h2{
-    margin:20px 0;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:clamp(50px,5.5vw,80px);
-
-    line-height:.9;
-
-    font-weight:400;
-
-    letter-spacing:-.05em;
-}
-
-.location-content > p{
-    max-width:430px;
-
-    color:#6d655c;
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-.info-list{
-    margin-top:42px;
-
-    max-width:500px;
-
-    border-top:1px solid rgba(20,18,15,.14);
-}
-
-.info{
-    padding:17px 0;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    gap:25px;
-
-    border-bottom:1px solid rgba(20,18,15,.14);
-
-    font-size:11px;
-}
-
-.info span{
-    color:#81776d;
 }
-
-.info strong{
-    font-weight:600;
-
-    text-align:right;
-}
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.final-cta{
-    min-height:760px;
-
-    padding:150px 7vw;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
-
-    background:
-        linear-gradient(
-            rgba(16,15,13,.77),
-            rgba(16,15,13,.9)
-        ),
-        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=2400&q=90")
-        center/cover fixed;
-}
-
-.final-cta::before{
-    content:"";
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    background:rgba(193,154,97,.12);
-
-    filter:blur(100px);
-}
-
-.final-inner{
-    position:relative;
-
-    z-index:2;
-
-    max-width:1000px;
-}
-
-.final-cta h2{
-    margin-top:25px;
-
-    font-family:"Playfair Display",serif;
-
-    font-weight:400;
-
-    font-size:clamp(55px,8vw,115px);
-
-    line-height:.83;
-
-    letter-spacing:-.06em;
-}
-
-.final-cta h2 em{
-    color:#d9b579;
-}
-
-.final-cta p{
-    max-width:560px;
-
-    margin:35px auto;
-
-    color:#aaa69d;
-
-    font-size:14px;
-
-    line-height:1.9;
-}
-
-.final-actions{
-    display:flex;
-
-    justify-content:center;
-
-    gap:12px;
 
-    flex-wrap:wrap;
+.btn-outline:hover{
+    background:white;
+    color:var(--ink);
 }
 
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
-.footer{
-    padding:60px 7vw 30px;
-
-    background:#100f0d;
-
-    color:#88837b;
+footer{
+    padding:35px 0 30px;
 }
 
 .footer-top{
     display:flex;
-
     justify-content:space-between;
-
-    align-items:flex-start;
-
-    gap:50px;
+    align-items:center;
+    padding-bottom:25px;
+    border-bottom:1px solid var(--line);
 }
 
-.footer-logo{
-    color:white;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:34px;
-}
-
-.footer-tagline{
-    margin-top:8px;
-
+.footer-note{
+    color:var(--muted);
     font-size:11px;
-}
-
-.footer-columns{
-    display:flex;
-
-    gap:80px;
-}
-
-.footer-column h4{
-    color:white;
-
-    margin-bottom:17px;
-
-    font-size:9px;
-
-    letter-spacing:.2em;
-
-    text-transform:uppercase;
-}
-
-.footer-column a{
-    display:block;
-
-    margin:9px 0;
-
-    font-size:11px;
-
-    color:#77726b;
-
-    transition:.3s;
-}
-
-.footer-column a:hover{
-    color:white;
 }
 
 .footer-bottom{
-    margin-top:65px;
-
-    padding-top:20px;
-
-    border-top:1px solid rgba(255,255,255,.08);
-
     display:flex;
-
     justify-content:space-between;
-
-    gap:20px;
-
-    font-size:9px;
+    padding-top:18px;
+    color:#99948b;
+    font-size:10px;
 }
 
-/* =========================================================
+/* =========================
    REVEAL
-========================================================= */
+========================= */
 
 .reveal{
     opacity:0;
-
-    transform:translateY(45px);
-
-    transition:
-        opacity 1s var(--ease),
-        transform 1s var(--ease);
+    transform:translateY(35px);
+    transition:opacity .9s ease,transform .9s ease;
 }
 
 .reveal.visible{
     opacity:1;
-
     transform:translateY(0);
 }
 
-.reveal-left{
-    opacity:0;
-
-    transform:translateX(-50px);
-
-    transition:
-        opacity 1s var(--ease),
-        transform 1s var(--ease);
-}
-
-.reveal-left.visible{
-    opacity:1;
-
-    transform:none;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:900px){
 
@@ -1580,263 +789,133 @@ img{
         display:none;
     }
 
-    .menu-button{
-        display:block;
-    }
-
-    .nav.open{
-        background:rgba(17,16,14,.96);
-    }
-
-    .nav.open .nav-links{
+    .menu{
         display:flex;
-
-        position:absolute;
-
-        top:75px;
-
-        left:20px;
-        right:20px;
-
-        padding:25px;
-
-        flex-direction:column;
-
-        align-items:flex-start;
-
-        gap:20px;
-
-        background:rgba(18,17,15,.97);
-
-        border-radius:20px;
-
-        border:1px solid rgba(255,255,255,.08);
-
-        box-shadow:0 30px 80px rgba(0,0,0,.3);
-    }
-
-    .nav.open .nav-cta{
-        display:none;
+        align-items:center;
+        justify-content:center;
     }
 
     .hero{
-        padding:
-            145px
-            25px
-            80px;
+        padding-top:130px;
     }
 
-    .hero-meta{
-        display:none;
-    }
-
-    .scroll-indicator{
-        left:25px;
-    }
-
-    .intro{
+    .hero-grid{
         grid-template-columns:1fr;
-
-        padding:
-            100px
-            25px;
-
-        gap:50px;
-    }
-
-    .statement{
-        padding:
-            25px;
-
-        overflow:hidden;
-    }
-
-    .statement span:nth-child(even){
-        display:none;
-    }
-
-    .feature{
-        grid-template-columns:1fr;
-    }
-
-    .feature-photo{
-        min-height:550px;
-    }
-
-    .feature-content{
-        padding:
-            90px
-            25px;
-    }
-
-    .menu-section{
-        padding:
-            110px
-            25px;
-    }
-
-    .menu-heading{
-        display:block;
-    }
-
-    .menu-heading p{
-        margin-top:25px;
-    }
-
-    .menu-grid{
-        grid-template-columns:1fr;
-    }
-
-    .menu-image{
-        height:360px;
-    }
-
-    .story{
-        padding:
-            110px
-            25px;
-    }
-
-    .story-grid{
-        grid-template-columns:1fr;
-
-        gap:55px;
-    }
-
-    .gallery{
-        grid-template-columns:1fr 1fr;
-
-        height:480px;
-    }
-
-    .gallery-item:last-child{
-        display:none;
-    }
-
-    .quote{
-        padding:
-            110px
-            25px;
-    }
-
-    .location{
-        grid-template-columns:1fr;
-    }
-
-    .location-photo{
-        min-height:500px;
-    }
-
-    .location-content{
-        padding:
-            90px
-            25px;
-    }
-
-    .final-cta{
-        min-height:650px;
-
-        padding:
-            110px
-            25px;
-
-        background-attachment:scroll;
-    }
-
-    .footer{
-        padding:
-            50px
-            25px
-            25px;
-    }
-
-    .footer-top{
-        display:block;
-    }
-
-    .footer-columns{
-        margin-top:40px;
-
-        gap:50px;
-
-        flex-wrap:wrap;
-    }
-
-}
-
-@media(max-width:520px){
-
-    .brand-mark{
-        width:30px;
-        height:30px;
-    }
-
-    .brand-text{
-        font-size:22px;
+        gap:60px;
     }
 
     .hero h1{
-        font-size:59px;
+        letter-spacing:-4px;
     }
 
-    .hero-description{
-        font-size:13px;
+    .photo{
+        height:500px;
     }
 
-    .hero-buttons{
-        flex-direction:column;
-    }
-
-    .button{
-        width:100%;
-    }
-
-    .feature-photo{
-        min-height:420px;
-    }
-
-    .menu-image{
-        height:300px;
-    }
-
-    .gallery{
-        height:350px;
-    }
-
-    .location-photo{
-        min-height:380px;
-    }
-
-    .info{
-        flex-direction:column;
-
-        gap:7px;
-    }
-
-    .info strong{
-        text-align:left;
-    }
-
-    .footer-bottom{
-        display:block;
-    }
-
-    .footer-bottom div{
-        margin-top:8px;
-    }
-
-    .demo-badge{
+    .float-one{
         left:10px;
-        bottom:10px;
+    }
 
-        font-size:7px;
+    .float-two{
+        right:10px;
+    }
+
+    .intro-grid,
+    .story-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .feature-grid{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        min-height:280px;
     }
 }
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+@media(max-width:600px){
 
+    .container{
+        width:min(100% - 28px,1180px);
+    }
+
+    .nav-inner{
+        width:calc(100% - 28px);
+    }
+
+    .hero{
+        padding:120px 0 60px;
+    }
+
+    .hero h1{
+        font-size:clamp(48px,15vw,75px);
+        letter-spacing:-3px;
+    }
+
+    .hero-copy{
+        font-size:15px;
+    }
+
+    .photo{
+        height:430px;
+        border-radius:120px 120px 20px 20px;
+    }
+
+    .floating{
+        padding:13px 15px;
+    }
+
+    .floating strong{
+        font-size:15px;
+    }
+
+    .intro,
+    .features,
+    .story,
+    .testimonial{
+        padding-top:100px;
+        padding-bottom:100px;
+    }
+
+    .intro h2,
+    .story h2{
+        letter-spacing:-2.5px;
+    }
+
+    .feature{
+        min-height:260px;
+    }
+
+    .final{
+        padding-bottom:60px;
+    }
+
+    .final-box{
+        min-height:570px;
+        padding:30px 20px;
+        border-radius:25px;
+    }
+
+    .final-box::before{
+        inset:10px;
+        border-radius:18px;
+    }
+
+    .final h2{
+        letter-spacing:-2.5px;
+    }
+
+    .footer-top,
+    .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+}
+
+/* Reduced motion */
 @media(prefers-reduced-motion:reduce){
 
     html{
@@ -1846,1350 +925,555 @@ img{
     *,
     *::before,
     *::after{
-        animation:none!important;
-
-        transition:none!important;
+        animation-duration:.01ms!important;
+        animation-iteration-count:1!important;
+        transition-duration:.01ms!important;
     }
 
-    .reveal,
-    .reveal-left{
-        opacity:1!important;
-
-        transform:none!important;
+    .reveal{
+        opacity:1;
+        transform:none;
     }
 }
-
 </style>
 </head>
 
-<body class="loading">
+<body>
 
-<!-- ======================================================
-     LOADER
-====================================================== -->
-
+<!-- LOADER -->
 <div class="loader" id="loader">
-
     <div class="loader-inner">
+        <div class="loader-name">ARUNA</div>
+        <div class="loader-line"><span></span></div>
+        <small>RUANG HIDUP YANG DIRANCANG UNTUKMU</small>
+    </div>
+</div>
 
-        <div class="loader-logo">
-            NARA
-        </div>
 
-        <div class="loader-line"></div>
+<!-- NAVBAR -->
+<header class="nav" id="nav">
+    <div class="nav-inner">
 
-        <div class="loader-small">
-            Coffee · Kitchen · Slow Living
-        </div>
+        <a href="#beranda" class="logo">
+            ARUNA <small>INTERIOR</small>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#cerita">Cerita</a>
+            <a href="#keunggulan">Keunggulan</a>
+            <a href="#testimoni">Cerita Klien</a>
+        </nav>
+
+        <a href="#kontak" class="nav-cta">
+            Konsultasi
+        </a>
+
+        <button class="menu" aria-label="Menu">
+            ☰
+        </button>
 
     </div>
-
-</div>
-
-
-<!-- CUSTOM CURSOR -->
-
-<div class="cursor" id="cursor"></div>
-
-
-<!-- PORTFOLIO LABEL -->
-
-<div class="demo-badge">
-    <b>Contoh Website</b>
-    · XYNY Studio
-</div>
-
-
-<!-- ======================================================
-     NAVBAR
-====================================================== -->
-
-<header class="nav" id="nav">
-
-    <a href="#" class="brand">
-
-        <div class="brand-mark">
-            N
-        </div>
-
-        <div>
-
-            <div class="brand-text">
-                NARA
-            </div>
-
-            <span class="brand-sub">
-                COFFEE · KITCHEN
-            </span>
-
-        </div>
-
-    </a>
-
-
-    <nav class="nav-links">
-
-        <a href="#cerita">
-            Cerita
-        </a>
-
-        <a href="#menu">
-            Menu
-        </a>
-
-        <a href="#suasana">
-            Suasana
-        </a>
-
-        <a href="#lokasi">
-            Lokasi
-        </a>
-
-    </nav>
-
-
-    <a
-        href="#reservasi"
-        class="nav-cta"
-    >
-        Reservasi
-    </a>
-
-
-    <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Buka menu"
-    >
-        ☰
-    </button>
-
 </header>
 
 
-<!-- ======================================================
-     HERO
-====================================================== -->
+<main id="beranda">
 
+<!-- HERO -->
 <section class="hero">
+    <div class="container hero-grid">
 
-    <div class="hero-bg" id="heroBg"></div>
-
-    <div class="hero-grain"></div>
-
-
-    <div class="hero-content">
-
-        <div class="hero-kicker reveal">
-
-            <i></i>
-
-            Medan · Sumatera Utara
-
-        </div>
-
-
-        <h1 class="reveal">
-
-            Pelan-pelan.
-            <br>
-
-            Nikmati
-            <em>harimu.</em>
-
-        </h1>
-
-
-        <p class="hero-description reveal">
-
-            Kopi yang diracik dengan tenang,
-            makanan yang dibuat dari bahan pilihan,
-            dan ruang kecil untuk menikmati
-            percakapan yang berarti.
-
-        </p>
-
-
-        <div class="hero-buttons reveal">
-
-            <a
-                href="#menu"
-                class="button button-light"
-            >
-                Jelajahi Menu
-                <span>↓</span>
-            </a>
-
-
-            <a
-                href="#lokasi"
-                class="button button-outline"
-            >
-                Temukan Kami
-                <span>↗</span>
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <div class="hero-meta">
-
-        <span>
-            Setiap Hari
-        </span>
-
-        <div class="hero-meta-line"></div>
-
-        <span>
-            08.00 — 22.00
-        </span>
-
-    </div>
-
-
-    <div class="scroll-indicator">
-
-        Gulir untuk masuk
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     INTRO
-====================================================== -->
-
-<section
-    class="intro"
-    id="cerita"
->
-
-    <div class="reveal-left">
-
-        <div class="eyebrow">
-            Tentang NARA
-        </div>
-
-
-        <h2>
-
-            Bukan sekadar
-            <em>tempat minum kopi.</em>
-
-        </h2>
-
-    </div>
-
-
-    <div class="intro-right reveal">
-
-        <div class="intro-lead">
-
-            Ada tempat yang tidak meminta
-            Anda terburu-buru.
-
-        </div>
-
-
-        <p>
-
-            NARA lahir dari sebuah gagasan sederhana:
-            makanan yang baik dan kopi yang baik
-            terasa lebih nikmat ketika dinikmati
-            tanpa tergesa-gesa.
-
-        </p>
-
-        <br>
-
-        <p>
-
-            Datang untuk bekerja.
-            Bertemu seseorang.
-            Membaca buku.
-            Atau sekadar duduk sendirian.
-
-            Tidak ada aturan untuk menikmati waktu.
-
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     STATEMENT
-====================================================== -->
-
-<section class="statement">
-
-    <span>
-        Kopi pilihan
-    </span>
-
-    <b>✦</b>
-
-    <span>
-        Bahan segar
-    </span>
-
-    <b>✦</b>
-
-    <span>
-        Dibuat setiap hari
-    </span>
-
-    <b>✦</b>
-
-    <span>
-        Ruang yang tenang
-    </span>
-
-    <b>✦</b>
-
-    <span>
-        Kopi pilihan
-    </span>
-
-</section>
-
-
-<!-- ======================================================
-     FEATURE
-====================================================== -->
-
-<section class="feature">
-
-    <div class="feature-photo reveal-left">
-
-        <div class="feature-photo-label">
-            NARA / 001
-        </div>
-
-    </div>
-
-
-    <div class="feature-content">
-
-        <div class="eyebrow reveal">
-            Filosofi Kami
-        </div>
-
-
-        <h2 class="reveal">
-
-            Dibuat
-            <em>perlahan.</em>
-
-            <br>
-
-            Dinikmati
-            <em>sepenuhnya.</em>
-
-        </h2>
-
-
-        <p class="reveal">
-
-            Dari biji kopi yang dipilih dengan teliti
-            hingga makanan yang dibuat setiap pagi,
-            setiap detail kami perlakukan dengan
-            perhatian.
-
-        </p>
-
-
-        <div class="feature-facts reveal">
-
-            <div class="fact">
-
-                <strong>
-                    08.00
-                </strong>
-
-                <span>
-                    Mulai menyeduh
-                </span>
-
-            </div>
-
-
-            <div class="fact">
-
-                <strong>
-                    22.00
-                </strong>
-
-                <span>
-                    Sampai jumpa
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     MENU
-====================================================== -->
-
-<section
-    class="menu-section"
-    id="menu"
->
-
-    <div class="menu-heading reveal">
-
-        <div>
+        <div class="reveal">
 
             <div class="eyebrow">
-                Pilihan NARA
+                Interior yang terasa seperti rumah
             </div>
+
+            <h1>
+                Bukan sekadar
+                <em>ruang.</em>
+                <br>
+                Ini tempat
+                <em>pulang.</em>
+            </h1>
+
+            <p class="hero-copy">
+                Kami merancang interior yang tidak hanya indah ketika
+                dilihat, tetapi terasa nyaman ketika dijalani.
+                Setiap garis, warna, cahaya, dan ruang dibuat untuk
+                mengikuti kehidupan Anda.
+            </p>
+
+            <div class="hero-actions">
+
+                <a href="#kontak" class="btn btn-dark">
+                    Konsultasikan ruang Anda
+                    <span>↗</span>
+                </a>
+
+                <a href="#cerita" class="btn btn-light">
+                    Lihat bagaimana kami bekerja
+                </a>
+
+            </div>
+
+            <div class="hero-note">
+                <span class="status"></span>
+                Konsultasi awal tersedia minggu ini
+            </div>
+
+        </div>
+
+
+        <div class="visual reveal">
+
+            <div class="photo">
+
+                <div class="visual-label">
+                    <span>ARUNA RESIDENCE · JAKARTA</span>
+                    <strong>Warm Minimalism</strong>
+                </div>
+
+            </div>
+
+            <div class="floating float-one">
+                <small>Konsep</small>
+                <strong>Personal.</strong>
+            </div>
+
+            <div class="floating float-two">
+                <small>Pengalaman</small>
+                <strong>Tenang.</strong>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+
+<!-- MARQUEE -->
+<div class="marquee">
+    <div class="marquee-track">
+
+        <span>RESIDENTIAL</span>
+        <b>✦</b>
+
+        <span>APARTMENT</span>
+        <b>✦</b>
+
+        <span>COMMERCIAL</span>
+        <b>✦</b>
+
+        <span>INTERIOR DESIGN</span>
+        <b>✦</b>
+
+        <span>SPACE PLANNING</span>
+        <b>✦</b>
+
+        <span>RESIDENTIAL</span>
+        <b>✦</b>
+
+        <span>APARTMENT</span>
+        <b>✦</b>
+
+        <span>COMMERCIAL</span>
+        <b>✦</b>
+
+        <span>INTERIOR DESIGN</span>
+        <b>✦</b>
+
+    </div>
+</div>
+
+
+<!-- INTRO -->
+<section class="intro" id="cerita">
+    <div class="container intro-grid">
+
+        <div class="section-label reveal">
+            Mengapa Aruna
+        </div>
+
+        <div class="reveal">
 
             <h2>
-
-                Sedikit,
-                <br>
-
-                <em>tetapi berarti.</em>
-
+                Karena rumah yang baik
+                <em>tidak berteriak.</em>
             </h2>
+
+            <p class="intro-text" style="margin-top:35px;">
+                Ia membuat Anda merasa nyaman tanpa harus menjelaskan
+                alasannya.
+                <br><br>
+                Kami percaya desain yang baik bukan tentang memenuhi
+                ruangan dengan benda mahal. Ini tentang memahami
+                <strong>siapa yang tinggal di dalamnya.</strong>
+            </p>
 
         </div>
 
-
-        <p>
-
-            Kami tidak percaya bahwa menu yang panjang
-            selalu berarti lebih baik.
-
-            Kami memilih beberapa hal yang benar-benar
-            ingin kami sajikan.
-
-        </p>
-
     </div>
-
-
-    <div class="menu-grid">
-
-
-        <!-- CARD 01 -->
-
-        <article class="menu-card reveal">
-
-            <div class="menu-image">
-
-                <span class="menu-number">
-                    01
-                </span>
-
-                <img
-                    src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=90"
-                    alt="NARA Latte"
-                    loading="lazy"
-                >
-
-            </div>
-
-
-            <div class="menu-body">
-
-                <div class="menu-top">
-
-                    <h3>
-                        NARA Latte
-                    </h3>
-
-                    <span class="menu-price">
-                        Rp38K
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    Espresso, susu segar,
-                    dan sentuhan gula aren.
-
-                </p>
-
-
-                <span class="menu-tag">
-                    Signature
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- CARD 02 -->
-
-        <article class="menu-card reveal">
-
-            <div class="menu-image">
-
-                <span class="menu-number">
-                    02
-                </span>
-
-                <img
-                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=90"
-                    alt="Butter Croissant"
-                    loading="lazy"
-                >
-
-            </div>
-
-
-            <div class="menu-body">
-
-                <div class="menu-top">
-
-                    <h3>
-                        Butter Croissant
-                    </h3>
-
-                    <span class="menu-price">
-                        Rp28K
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    Renyah di luar,
-                    lembut dan hangat di dalam.
-
-                </p>
-
-
-                <span class="menu-tag">
-                    Fresh Today
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <!-- CARD 03 -->
-
-        <article class="menu-card reveal">
-
-            <div class="menu-image">
-
-                <span class="menu-number">
-                    03
-                </span>
-
-                <img
-                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90"
-                    alt="Garden Bowl"
-                    loading="lazy"
-                >
-
-            </div>
-
-
-            <div class="menu-body">
-
-                <div class="menu-top">
-
-                    <h3>
-                        Garden Bowl
-                    </h3>
-
-                    <span class="menu-price">
-                        Rp46K
-                    </span>
-
-                </div>
-
-
-                <p>
-
-                    Sayuran segar, telur,
-                    biji-bijian, dan saus rumah.
-
-                </p>
-
-
-                <span class="menu-tag">
-                    Favorite
-                </span>
-
-            </div>
-
-        </article>
-
-    </div>
-
 </section>
 
 
-<!-- ======================================================
-     STORY
-====================================================== -->
+<!-- FEATURES -->
+<section class="features" id="keunggulan">
+    <div class="container">
 
-<section class="story">
+        <div class="section-label reveal">
+            Pendekatan kami
+        </div>
 
-    <div class="story-grid">
+        <div class="feature-grid">
 
-        <div class="reveal-left">
+            <article class="feature reveal">
+                <span class="feature-number">01</span>
+                <span class="feature-icon">◌</span>
 
-            <div class="eyebrow">
-                Our Story
-            </div>
+                <h3>Dirancang untuk hidup.</h3>
+
+                <p>
+                    Bukan sekadar foto yang bagus.
+                    Kami memikirkan bagaimana ruang tersebut
+                    benar-benar digunakan setiap hari.
+                </p>
+            </article>
 
 
-            <h2 class="story-title">
+            <article class="feature reveal">
+                <span class="feature-number">02</span>
+                <span class="feature-icon">✦</span>
 
-                Kami percaya
-                <em>waktu</em>
-                juga punya rasa.
+                <h3>Karakter Anda.</h3>
 
-            </h2>
+                <p>
+                    Kami tidak memaksakan satu gaya kepada semua orang.
+                    Setiap proyek dimulai dari cerita dan kebutuhan Anda.
+                </p>
+            </article>
+
+
+            <article class="feature reveal">
+                <span class="feature-number">03</span>
+                <span class="feature-icon">○</span>
+
+                <h3>Indah tanpa berlebihan.</h3>
+
+                <p>
+                    Material, warna, cahaya, dan proporsi dipilih
+                    agar ruang tetap terasa relevan dalam waktu lama.
+                </p>
+            </article>
 
         </div>
 
+    </div>
+</section>
+
+
+<!-- STORY -->
+<section class="story">
+    <div class="container story-grid">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Filosofi
+            </div>
+
+            <h2 style="margin-top:28px;">
+                Ruang
+                <em>mempengaruhi</em>
+                cara kita hidup.
+            </h2>
+
+        </div>
 
         <div class="story-copy reveal">
 
             <p>
-
-                NARA dimulai dari sebuah pertanyaan sederhana:
-
-                bagaimana jika ada tempat yang tidak
-                memaksa siapa pun untuk terburu-buru?
-
+                Pernahkah Anda masuk ke sebuah ruangan lalu tiba-tiba
+                merasa lebih tenang?
+                <br><br>
+                Itulah yang ingin kami ciptakan.
+                Bukan kemewahan yang terasa jauh,
+                tetapi ruang yang membuat kehidupan sehari-hari
+                terasa sedikit lebih baik.
+                <br><br>
+                <strong>
+                    Karena desain terbaik bukan yang paling banyak
+                    dibicarakan. Melainkan yang paling lama dirasakan.
+                </strong>
             </p>
 
+        </div>
 
-            <p>
-
-                Kami ingin membuat ruang yang terasa
-                hangat sejak pertama kali seseorang
-                membuka pintunya.
-
-            </p>
+    </div>
+</section>
 
 
-            <p>
+<!-- TESTIMONIAL -->
+<section class="testimonial" id="testimoni">
+    <div class="container">
 
-                Anda boleh datang dengan laptop.
-                Dengan buku.
-                Dengan seseorang.
-                Atau tanpa membawa apa-apa.
+        <div class="section-label reveal" style="justify-content:center;">
+            Cerita klien
+        </div>
 
-            </p>
+        <div class="quote reveal">
+            “Kami awalnya hanya ingin rumah terlihat lebih bagus.
+            Ternyata yang berubah bukan hanya rumahnya,
+            tetapi <em>cara kami menikmatinya.</em>”
+        </div>
 
+        <div class="client reveal">
+            — Nadia & Reza · Aruna Residence
+        </div>
 
-            <p>
-
-                Duduklah.
-
-                Pesan sesuatu.
-
-                Tarik napas.
-
-                Biarkan hari berjalan sedikit lebih pelan.
-
-            </p>
+    </div>
+</section>
 
 
-            <div class="signature">
-                — NARA
+<!-- FINAL CTA -->
+<section class="final" id="kontak">
+    <div class="container">
+
+        <div class="final-box">
+
+            <div class="final-content reveal">
+
+                <div class="eyebrow">
+                    Sekarang giliran ruang Anda
+                </div>
+
+                <h2>
+                    Anda tertarik?
+                    <br>
+                    Atau punya
+                    <em>konsep lain?</em>
+                </h2>
+
+                <p>
+                    Ceritakan kepada kami apa yang Anda bayangkan.
+                    Tidak harus sudah sempurna. Bahkan jika Anda
+                    baru memiliki satu foto referensi atau satu
+                    kalimat sederhana, kita bisa mulai dari sana.
+                </p>
+
+                <div class="final-buttons">
+
+                    <a
+                        href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio,%20saya%20tertarik%20dengan%20Landing%20Page."
+                        target="_blank"
+                        rel="noopener"
+                        class="btn btn-white"
+                    >
+                        Hubungi XYNY Studio
+                        <span>↗</span>
+                    </a>
+
+                    <a href="#beranda" class="btn btn-outline">
+                        Kembali ke atas
+                    </a>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
-
 </section>
 
+</main>
 
-<!-- ======================================================
-     GALLERY
-====================================================== -->
 
-<section
-    class="gallery"
-    id="suasana"
->
+<!-- FOOTER -->
+<footer>
+    <div class="container">
 
-    <div class="gallery-item">
+        <div class="footer-top">
 
-        <img
-            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=90"
-            alt="Suasana NARA"
-            loading="lazy"
-        >
+            <div class="logo">
+                ARUNA <small>INTERIOR</small>
+            </div>
 
-        <div class="gallery-overlay">
+            <div class="footer-note">
+                Contoh proyek — dibuat oleh XYNY Studio
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
             <span>
-                A quiet corner
+                © 2026 Aruna Interior.
             </span>
-        </div>
 
-    </div>
-
-
-    <div class="gallery-item">
-
-        <img
-            src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1600&q=90"
-            alt="Kopi NARA"
-            loading="lazy"
-        >
-
-        <div class="gallery-overlay">
             <span>
-                Made with intention
+                Demo Landing Page · XYNY Studio
             </span>
-        </div>
-
-    </div>
-
-
-    <div class="gallery-item">
-
-        <img
-            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=90"
-            alt="Interior NARA"
-            loading="lazy"
-        >
-
-        <div class="gallery-overlay">
-            <span>
-                Stay a little longer
-            </span>
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     QUOTE
-====================================================== -->
-
-<section class="quote">
-
-    <div class="quote-mark reveal">
-        “
-    </div>
-
-
-    <blockquote class="reveal">
-
-        “Tempat yang membuat saya lupa
-        bahwa sebenarnya saya sedang
-        <em>terburu-buru.</em>”
-
-    </blockquote>
-
-
-    <cite class="reveal">
-
-        Contoh tampilan testimonial pelanggan
-
-    </cite>
-
-</section>
-
-
-<!-- ======================================================
-     LOCATION
-====================================================== -->
-
-<section
-    class="location"
-    id="lokasi"
->
-
-    <div class="location-photo reveal-left"></div>
-
-
-    <div class="location-content">
-
-        <div class="eyebrow reveal">
-            Datang Berkunjung
-        </div>
-
-
-        <h2 class="reveal">
-
-            Sampai
-            <br>
-            bertemu.
-
-        </h2>
-
-
-        <p class="reveal">
-
-            Kami berada di sudut kota yang tenang,
-            tidak jauh dari tempat-tempat yang Anda kenal.
-
-        </p>
-
-
-        <div class="info-list reveal">
-
-            <div class="info">
-
-                <span>
-                    Alamat
-                </span>
-
-                <strong>
-                    Jl. Contoh No. 18
-                </strong>
-
-            </div>
-
-
-            <div class="info">
-
-                <span>
-                    Kota
-                </span>
-
-                <strong>
-                    Medan, Sumatera Utara
-                </strong>
-
-            </div>
-
-
-            <div class="info">
-
-                <span>
-                    Jam
-                </span>
-
-                <strong>
-                    08.00 — 22.00
-                </strong>
-
-            </div>
-
-
-            <div class="info">
-
-                <span>
-                    Telepon
-                </span>
-
-                <strong>
-                    0812 3456 7890
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <div class="hero-buttons reveal">
-
-            <a
-                href="https://maps.google.com/?q=Medan,Sumatera+Utara"
-                target="_blank"
-                rel="noopener"
-                class="button button-light"
-            >
-                Buka Peta ↗
-            </a>
 
         </div>
 
     </div>
-
-</section>
-
-
-<!-- ======================================================
-     FINAL CTA
-====================================================== -->
-
-<section
-    class="final-cta"
-    id="reservasi"
->
-
-    <div class="final-inner">
-
-        <div class="eyebrow reveal">
-            NARA · COFFEE · KITCHEN
-        </div>
-
-
-        <h2 class="reveal">
-
-            Ada meja.
-            <br>
-
-            Ada kopi.
-            <br>
-
-            <em>Ada waktu.</em>
-
-        </h2>
-
-
-        <p class="reveal">
-
-            Datang sendiri atau bersama orang yang Anda
-            sayangi. Kami akan menyiapkan tempatnya.
-
-        </p>
-
-
-        <div class="final-actions reveal">
-
-            <a
-                href="https://wa.me/6280000000000?text=Halo%20NARA%2C%20saya%20ingin%20reservasi."
-                target="_blank"
-                rel="noopener"
-                class="button button-light"
-            >
-                Reservasi Meja ↗
-            </a>
-
-
-            <a
-                href="#menu"
-                class="button button-outline"
-            >
-                Lihat Menu
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ======================================================
-     FOOTER
-====================================================== -->
-
-<footer class="footer">
-
-    <div class="footer-top">
-
-        <div>
-
-            <div class="footer-logo">
-                NARA
-            </div>
-
-            <div class="footer-tagline">
-                Coffee · Kitchen · Slow Living
-            </div>
-
-        </div>
-
-
-        <div class="footer-columns">
-
-            <div class="footer-column">
-
-                <h4>
-                    Jelajahi
-                </h4>
-
-                <a href="#cerita">
-                    Cerita
-                </a>
-
-                <a href="#menu">
-                    Menu
-                </a>
-
-                <a href="#suasana">
-                    Suasana
-                </a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h4>
-                    Hubungi
-                </h4>
-
-                <a href="#lokasi">
-                    Lokasi
-                </a>
-
-                <a href="tel:+6281234567890">
-                    Telepon
-                </a>
-
-                <a href="#reservasi">
-                    Reservasi
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 NARA Coffee & Kitchen
-        </span>
-
-        <span>
-            Contoh desain · XYNY Studio
-        </span>
-
-    </div>
-
 </footer>
 
 
 <script>
 
-/* =========================================================
-   PAGE LOADER
-========================================================= */
+/* =========================
+   LOADER
+========================= */
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", function(){
 
-    setTimeout(()=>{
+    setTimeout(function(){
 
         document
             .getElementById("loader")
             .classList.add("hide");
 
-        document.body.classList.remove("loading");
-
-    },900);
+    }, 900);
 
 });
 
 
-/* =========================================================
-   CUSTOM CURSOR
-========================================================= */
-
-const cursor =
-    document.getElementById("cursor");
-
-let mouseX = 0;
-let mouseY = 0;
-
-let cursorX = 0;
-let cursorY = 0;
-
-window.addEventListener(
-    "mousemove",
-    e => {
-
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
-    }
-);
-
-function animateCursor(){
-
-    cursorX +=
-        (mouseX - cursorX) * .18;
-
-    cursorY +=
-        (mouseY - cursorY) * .18;
-
-    cursor.style.left =
-        cursorX + "px";
-
-    cursor.style.top =
-        cursorY + "px";
-
-    requestAnimationFrame(
-        animateCursor
-    );
-}
-
-animateCursor();
-
-
-document
-.querySelectorAll("a,button,.menu-card,.gallery-item")
-.forEach(el=>{
-
-    el.addEventListener(
-        "mouseenter",
-        ()=>{
-            cursor.classList.add("big");
-        }
-    );
-
-    el.addEventListener(
-        "mouseleave",
-        ()=>{
-            cursor.classList.remove("big");
-        }
-    );
-
-});
-
-
-/* =========================================================
+/* =========================
    NAVBAR
-========================================================= */
+========================= */
 
-const nav =
-    document.getElementById("nav");
+const nav = document.getElementById("nav");
 
-window.addEventListener(
-    "scroll",
-    ()=>{
+window.addEventListener("scroll", function(){
 
-        if(window.scrollY > 80){
-
-            nav.classList.add("scrolled");
-
-        }else{
-
-            nav.classList.remove("scrolled");
-
-        }
-
-    },
-    {passive:true}
-);
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-menuButton.addEventListener(
-    "click",
-    ()=>{
-
-        nav.classList.toggle("open");
-
-        menuButton.textContent =
-            nav.classList.contains("open")
-            ? "×"
-            : "☰";
-
+    if(window.scrollY > 50){
+        nav.classList.add("scrolled");
+    }else{
+        nav.classList.remove("scrolled");
     }
-);
-
-
-document
-.querySelectorAll(".nav-links a")
-.forEach(link=>{
-
-    link.addEventListener(
-        "click",
-        ()=>{
-            nav.classList.remove("open");
-            menuButton.textContent="☰";
-        }
-    );
 
 });
 
 
-/* =========================================================
+/* =========================
    SCROLL REVEAL
-========================================================= */
+========================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".reveal,.reveal-left"
-    );
+const observer = new IntersectionObserver(
+    function(entries){
 
-const revealObserver =
-    new IntersectionObserver(
-        entries=>{
+        entries.forEach(function(entry){
 
-            entries.forEach(entry=>{
+            if(entry.isIntersecting){
 
-                if(entry.isIntersecting){
+                entry.target.classList.add("visible");
 
-                    entry.target
-                        .classList
-                        .add("visible");
+                observer.unobserve(entry.target);
 
-                    revealObserver
-                        .unobserve(
-                            entry.target
-                        );
+            }
 
-                }
-
-            });
-
-        },
-        {
-            threshold:.12,
-            rootMargin:"0px 0px -40px"
-        }
-    );
-
-
-revealElements.forEach(
-    el => revealObserver.observe(el)
-);
-
-
-/* =========================================================
-   HERO PARALLAX
-========================================================= */
-
-const heroBg =
-    document.getElementById("heroBg");
-
-window.addEventListener(
-    "scroll",
-    ()=>{
-
-        if(window.innerWidth <= 900)
-            return;
-
-        const y =
-            window.scrollY;
-
-        if(y < window.innerHeight){
-
-            heroBg.style.transform =
-                `scale(1.05) translateY(${y * .08}px)`;
-
-        }
+        });
 
     },
-    {passive:true}
+    {
+        threshold:.12
+    }
 );
 
+document
+    .querySelectorAll(".reveal")
+    .forEach(function(element){
 
-/* =========================================================
-   MAGNETIC BUTTON
-========================================================= */
-
-if(window.matchMedia("(pointer:fine)").matches){
-
-    document
-    .querySelectorAll(".button,.nav-cta")
-    .forEach(button=>{
-
-        button.addEventListener(
-            "mousemove",
-            e=>{
-
-                const rect =
-                    button.getBoundingClientRect();
-
-                const x =
-                    e.clientX -
-                    rect.left -
-                    rect.width/2;
-
-                const y =
-                    e.clientY -
-                    rect.top -
-                    rect.height/2;
-
-                button.style.transform =
-                    `translate(${x*.12}px,${y*.12}px)`;
-
-            }
-        );
-
-        button.addEventListener(
-            "mouseleave",
-            ()=>{
-
-                button.style.transform="";
-
-            }
-        );
+        observer.observe(element);
 
     });
 
-}
 
+/* =========================
+   MOBILE MENU
+========================= */
 
-/* =========================================================
-   SMOOTH ANCHOR
-========================================================= */
+const menu = document.querySelector(".menu");
 
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(link=>{
+menu.addEventListener("click", function(){
 
-    link.addEventListener(
-        "click",
-        e=>{
+    const links = document.querySelector(".nav-links");
 
-            const target =
-                document.querySelector(
-                    link.getAttribute("href")
-                );
+    if(links.style.display === "flex"){
 
-            if(!target)
-                return;
+        links.style.display = "";
 
-            e.preventDefault();
+    }else{
 
-            target.scrollIntoView({
-                behavior:"smooth",
-                block:"start"
-            });
+        links.style.display = "flex";
 
-        }
-    );
+        links.style.position = "absolute";
+        links.style.top = "70px";
+        links.style.left = "14px";
+        links.style.right = "14px";
+        links.style.padding = "22px";
+        links.style.borderRadius = "20px";
+        links.style.background = "rgba(251,249,245,.97)";
+        links.style.flexDirection = "column";
+        links.style.alignItems = "flex-start";
+        links.style.boxShadow = "0 20px 60px rgba(0,0,0,.12)";
+
+    }
 
 });
 
 
-/* =========================================================
-   IMAGE FALLBACK
-========================================================= */
+/* =========================
+   CLOSE MOBILE MENU
+========================= */
 
 document
-.querySelectorAll("img")
-.forEach(img=>{
+    .querySelectorAll(".nav-links a")
+    .forEach(function(link){
 
-    img.addEventListener(
-        "error",
-        ()=>{
+        link.addEventListener("click",function(){
 
-            img.style.background =
-                "#d8d0c3";
+            if(window.innerWidth <= 900){
 
-            img.style.minHeight =
-                "200px";
+                document.querySelector(".nav-links").style.display = "";
+
+            }
+
+        });
+
+    });
+
+
+/* =========================
+   IMAGE FALLBACK
+========================= */
+
+document.querySelectorAll(".photo, .final-box")
+.forEach(function(element){
+
+    const bg = getComputedStyle(element).backgroundImage;
+
+    if(bg && bg !== "none"){
+
+        const match = bg.match(/url\(["']?(.*?)["']?\)/);
+
+        if(match){
+
+            const image = new Image();
+
+            image.onerror = function(){
+
+                element.style.backgroundImage =
+                    "linear-gradient(135deg,#34312b,#8f725f)";
+
+            };
+
+            image.src = match[1];
 
         }
-    );
+
+    }
 
 });
 
