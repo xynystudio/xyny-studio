@@ -2,54 +2,2643 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-        content="XYNY Studio — Website, undangan digital, gereja, akademik, desain, media, dan kebutuhan digital profesional.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
 
-    <meta name="theme-color" content="#090a0a">
+    <meta
+        name="description"
+        content="XYNY Studio — membantu mengubah ide, kebutuhan, dan cerita menjadi karya digital yang profesional, menarik, dan siap digunakan."
+    >
+
+    <meta name="theme-color" content="#090909">
 
     <title>XYNY Studio — Ide yang baik pantas terlihat luar biasa.</title>
+
+    <!-- =====================================================
+         FONT
+    ====================================================== -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet" href="tampilan.css">
+
+    <!-- =====================================================
+         SEMUA CSS ADA DI SINI
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           VARIABEL
+        ================================================= */
+
+        :root {
+            --bg: #080909;
+            --bg-soft: #0e1010;
+            --card: #111313;
+            --card-hover: #171918;
+
+            --white: #f4f2ed;
+            --text: #e7e5df;
+            --muted: #929490;
+            --muted-dark: #666965;
+
+            --gold: #e7c36d;
+            --gold-light: #f2d58b;
+
+            --green: #b5d974;
+
+            --line: rgba(255,255,255,.09);
+            --line-strong: rgba(255,255,255,.16);
+
+            --max: 1320px;
+
+            --sans: "DM Sans", sans-serif;
+            --serif: "Playfair Display", Georgia, serif;
+
+            --ease: cubic-bezier(.2,.8,.2,1);
+        }
+
+
+        /* =================================================
+           RESET
+        ================================================= */
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(231,195,109,.07),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 0% 60%,
+                    rgba(80,100,80,.05),
+                    transparent 25%
+                ),
+                var(--bg);
+
+            color: var(--text);
+
+            font-family: var(--sans);
+
+            overflow-x: hidden;
+
+            line-height: 1.6;
+
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button {
+            font: inherit;
+        }
+
+
+        ::selection {
+            color: #111;
+            background: var(--gold);
+        }
+
+
+        /* =================================================
+           LATAR
+        ================================================= */
+
+        .noise {
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 100;
+
+            opacity: .035;
+
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.65'/%3E%3C/svg%3E");
+        }
+
+
+        .cursor-glow {
+            position: fixed;
+
+            width: 280px;
+            height: 280px;
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(231,195,109,.07),
+                    transparent 68%
+                );
+
+            transform:
+                translate(-50%, -50%);
+
+            z-index: -1;
+
+            opacity: 0;
+
+            transition: opacity .3s ease;
+        }
+
+
+        .progress {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 0;
+            height: 2px;
+
+            z-index: 1000;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    var(--gold-light)
+                );
+        }
+
+
+        /* =================================================
+           NAVIGASI
+        ================================================= */
+
+        .navbar {
+            position: fixed;
+
+            top: 16px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(
+                    calc(100% - 28px),
+                    1380px
+                );
+
+            height: 72px;
+
+            padding:
+                0 12px
+                0 17px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            z-index: 900;
+
+            background:
+                rgba(8,9,9,.76);
+
+            border:
+                1px solid var(--line);
+
+            border-radius: 999px;
+
+            backdrop-filter:
+                blur(22px);
+
+            -webkit-backdrop-filter:
+                blur(22px);
+
+            box-shadow:
+                0 18px 60px rgba(0,0,0,.28);
+        }
+
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            flex-shrink: 0;
+        }
+
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            overflow: hidden;
+
+            border-radius: 7px;
+
+            background: #f4f3ef;
+        }
+
+
+        /*
+           Logo aman baik bila kamu punya logo
+           berwarna gelap/transparan maupun logo terang.
+        */
+
+        .brand-mark img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+
+            display: block;
+        }
+
+
+        .brand-text {
+            display: flex;
+
+            flex-direction: column;
+
+            line-height: 1;
+        }
+
+
+        .brand-text strong {
+            font-size: 15px;
+
+            letter-spacing: .15em;
+        }
+
+
+        .brand-text small {
+            margin-top: 6px;
+
+            color: var(--gold);
+
+            font-size: 7px;
+
+            letter-spacing: .34em;
+        }
+
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 26px;
+
+            margin: auto;
+        }
+
+
+        .nav-links a {
+            position: relative;
+
+            padding: 25px 0;
+
+            color: #929491;
+
+            font-size: 13px;
+
+            transition:
+                color .3s ease;
+        }
+
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white);
+        }
+
+
+        .nav-links a.active::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 15px;
+
+            height: 1px;
+
+            background:
+                var(--gold);
+        }
+
+
+        .nav-cta {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 12px 16px;
+
+            border:
+                1px solid
+                rgba(231,195,109,.4);
+
+            border-radius: 999px;
+
+            color: var(--gold-light);
+
+            font-size: 12px;
+
+            white-space: nowrap;
+
+            transition:
+                background .35s ease,
+                color .35s ease,
+                transform .35s var(--ease);
+        }
+
+
+        .nav-cta:hover {
+            background: var(--gold);
+
+            color: #111;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .menu-toggle {
+            display: none;
+
+            width: 42px;
+            height: 42px;
+
+            border: 0;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .menu-toggle i {
+            display: block;
+
+            width: 20px;
+            height: 1px;
+
+            margin: 5px auto;
+
+            background: white;
+        }
+
+
+        /* =================================================
+           HERO
+        ================================================= */
+
+        .hero {
+            position: relative;
+
+            min-height: 100svh;
+
+            width:
+                min(
+                    var(--max),
+                    calc(100% - 48px)
+                );
+
+            margin: auto;
+
+            padding:
+                150px 0
+                90px;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0,1.04fr)
+                minmax(360px,.96fr);
+
+            align-items: center;
+
+            gap: 40px;
+        }
+
+
+        .hero-grid {
+            position: absolute;
+
+            inset:
+                0 -30vw;
+
+            pointer-events: none;
+
+            z-index: -3;
+
+            opacity: .28;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.035) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                78px 78px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    black 20%,
+                    black 70%,
+                    transparent
+                );
+        }
+
+
+        .hero-grid::before {
+            content: "";
+
+            position: absolute;
+
+            width: 650px;
+            height: 650px;
+
+            top: 10%;
+            left: -10%;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(231,195,109,.08),
+                    transparent 65%
+                );
+
+            filter:
+                blur(30px);
+        }
+
+
+        .hero-copy {
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        .availability {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                9px 14px;
+
+            border:
+                1px solid
+                rgba(231,195,109,.28);
+
+            border-radius: 999px;
+
+            color:
+                #c8ae72;
+
+            font-size: 10px;
+
+            letter-spacing: .18em;
+
+            background:
+                rgba(231,195,109,.025);
+        }
+
+
+        .availability > span {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background:
+                var(--green);
+
+            box-shadow:
+                0 0 15px
+                rgba(181,217,116,.7);
+        }
+
+
+        .hero-kicker {
+            margin-top: 25px;
+
+            color: #686a68;
+
+            font-size: 10px;
+
+            letter-spacing: .27em;
+        }
+
+
+        .hero h1 {
+            max-width: 850px;
+
+            margin-top: 14px;
+
+            font-size:
+                clamp(
+                    52px,
+                    6.2vw,
+                    94px
+                );
+
+            font-weight: 500;
+
+            line-height: .96;
+
+            letter-spacing: -.058em;
+        }
+
+
+        .hero h1 em {
+            display: block;
+
+            margin-top: 3px;
+
+            font-family:
+                var(--serif);
+
+            color:
+                var(--gold-light);
+
+            font-weight: 600;
+
+            letter-spacing: -.055em;
+        }
+
+
+        .hero-description {
+            max-width: 670px;
+
+            margin-top: 30px;
+
+            color: #999b98;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        .hero-description strong {
+            color: #e7e4de;
+
+            font-weight: 600;
+        }
+
+
+        .hero-actions {
+            display: flex;
+
+            gap: 12px;
+
+            margin-top: 35px;
+        }
+
+
+        .btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            min-height: 55px;
+
+            padding:
+                0 22px;
+
+            border-radius: 999px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            transition:
+                transform .35s var(--ease),
+                box-shadow .35s ease,
+                background .35s ease,
+                border-color .35s ease;
+        }
+
+
+        .btn:hover {
+            transform:
+                translateY(-3px);
+        }
+
+
+        .btn-primary {
+            background:
+                var(--gold);
+
+            color: #111;
+
+            box-shadow:
+                0 15px 45px
+                rgba(231,195,109,.13);
+        }
+
+
+        .btn-primary:hover {
+            box-shadow:
+                0 20px 65px
+                rgba(231,195,109,.22);
+        }
+
+
+        .btn-primary span {
+            font-size: 18px;
+        }
+
+
+        .btn-secondary {
+            border:
+                1px solid
+                var(--line-strong);
+
+            color: #b7b8b5;
+        }
+
+
+        .btn-secondary:hover {
+            border-color:
+                rgba(231,195,109,.4);
+
+            color: white;
+        }
+
+
+        .hero-steps {
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            margin-top: 55px;
+        }
+
+
+        .hero-steps div {
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 4px;
+        }
+
+
+        .hero-steps b {
+            font-size: 16px;
+
+            font-weight: 500;
+        }
+
+
+        .hero-steps span {
+            color: #696b68;
+
+            font-size: 8px;
+
+            letter-spacing: .15em;
+        }
+
+
+        .hero-steps i {
+            width: 1px;
+            height: 29px;
+
+            background:
+                var(--line-strong);
+        }
+
+
+        /* =================================================
+           VISUAL HERO
+        ================================================= */
+
+        .hero-visual {
+            position: relative;
+
+            height: 620px;
+
+            display: grid;
+
+            place-items: center;
+        }
+
+
+        .showcase-card {
+            position: relative;
+
+            width:
+                min(
+                    410px,
+                    72%
+                );
+
+            height: 520px;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            border-radius: 31px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(231,195,109,.07),
+                    transparent 36%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.08),
+                    rgba(255,255,255,.025)
+                );
+
+            box-shadow:
+                0 45px 110px
+                rgba(0,0,0,.5);
+
+            backdrop-filter:
+                blur(15px);
+
+            z-index: 2;
+
+            transition:
+                transform .7s var(--ease);
+        }
+
+
+        .showcase-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 270px;
+            height: 270px;
+
+            left: 50%;
+            top: 45%;
+
+            transform:
+                translate(-50%,-50%);
+
+            border-radius: 50%;
+
+            background:
+                rgba(231,195,109,.07);
+
+            filter:
+                blur(48px);
+        }
+
+
+        .showcase-top,
+        .showcase-bottom {
+            position: absolute;
+
+            left: 27px;
+            right: 27px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            color: #686a68;
+
+            font-size: 9px;
+
+            letter-spacing: .17em;
+
+            z-index: 3;
+        }
+
+
+        .showcase-top {
+            top: 27px;
+        }
+
+
+        .showcase-bottom {
+            bottom: 27px;
+        }
+
+
+        .live {
+            color: #9bb870;
+        }
+
+
+        .live i {
+            display: inline-block;
+
+            width: 6px;
+            height: 6px;
+
+            margin-right: 7px;
+
+            border-radius: 50%;
+
+            background:
+                var(--green);
+        }
+
+
+        .logo-stage {
+            position: absolute;
+
+            inset:
+                80px
+                25px;
+
+            display: grid;
+
+            place-items: center;
+
+            z-index: 2;
+        }
+
+
+        .logo-halo {
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(231,195,109,.12);
+
+            box-shadow:
+                0 0 100px
+                rgba(231,195,109,.06);
+
+            animation:
+                halo 5s ease-in-out infinite;
+        }
+
+
+        .logo-stage img {
+            position: relative;
+
+            width: 62%;
+
+            max-width: 230px;
+            max-height: 260px;
+
+            object-fit: contain;
+
+            z-index: 2;
+        }
+
+
+        .orbit {
+            position: absolute;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(231,195,109,.11);
+        }
+
+
+        .orbit-1 {
+            width: 510px;
+            height: 510px;
+
+            animation:
+                spin 24s linear infinite;
+        }
+
+
+        .orbit-2 {
+            width: 650px;
+            height: 650px;
+
+            border-color:
+                rgba(255,255,255,.045);
+
+            animation:
+                reverse-spin
+                32s linear infinite;
+        }
+
+
+        .orbit-3 {
+            width: 390px;
+            height: 390px;
+
+            border-color:
+                rgba(231,195,109,.07);
+
+            animation:
+                spin
+                18s linear infinite;
+        }
+
+
+        .floating-note {
+            position: absolute;
+
+            z-index: 4;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            padding:
+                13px
+                15px;
+
+            border:
+                1px solid
+                var(--line-strong);
+
+            border-radius: 15px;
+
+            background:
+                rgba(17,18,18,.88);
+
+            backdrop-filter:
+                blur(18px);
+
+            box-shadow:
+                0 22px 60px
+                rgba(0,0,0,.35);
+
+            animation:
+                float 5s ease-in-out infinite;
+        }
+
+
+        .floating-note > div {
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .floating-note b {
+            font-size: 11px;
+        }
+
+
+        .floating-note small {
+            margin-top: 2px;
+
+            color: #757874;
+
+            font-size: 8px;
+        }
+
+
+        .note-icon {
+            width: 38px;
+            height: 38px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 11px;
+
+            background:
+                rgba(231,195,109,.12);
+
+            color: var(--gold);
+        }
+
+
+        .note-left {
+            top: 28%;
+            left: -3%;
+        }
+
+
+        .note-right {
+            bottom: 21%;
+            right: -2%;
+
+            animation-delay:
+                -2s;
+        }
+
+
+        .number {
+            font-family:
+                var(--serif);
+
+            font-size: 27px;
+
+            color:
+                var(--gold);
+        }
+
+
+        .scroll-cue {
+            position: absolute;
+
+            bottom: 26px;
+
+            left: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #5f615e;
+
+            font-size: 8px;
+
+            letter-spacing: .18em;
+        }
+
+
+        .scroll-cue span {
+            width: 25px;
+
+            height: 1px;
+
+            background: #636663;
+        }
+
+
+        /* =================================================
+           TICKER
+        ================================================= */
+
+        .ticker {
+            width: 100%;
+
+            overflow: hidden;
+
+            border-top:
+                1px solid var(--line);
+
+            border-bottom:
+                1px solid var(--line);
+
+            background:
+                rgba(255,255,255,.012);
+        }
+
+
+        .ticker-track {
+            width: max-content;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+
+            padding:
+                17px 0;
+
+            animation:
+                ticker 30s
+                linear infinite;
+        }
+
+
+        .ticker-track span {
+            color: #7d7f7c;
+
+            font-size: 9px;
+
+            letter-spacing: .22em;
+        }
+
+
+        .ticker-track b {
+            color:
+                var(--gold);
+
+            font-weight: 400;
+        }
+
+
+        /* =================================================
+           SECTION
+        ================================================= */
+
+        .section {
+            width:
+                min(
+                    var(--max),
+                    calc(100% - 48px)
+                );
+
+            margin: auto;
+
+            padding:
+                145px 0;
+        }
+
+
+        .section-head {
+            display: grid;
+
+            grid-template-columns:
+                1fr
+                .64fr;
+
+            align-items: end;
+
+            gap: 60px;
+
+            margin-bottom: 65px;
+        }
+
+
+        .eyebrow {
+            font-size: 10px;
+
+            color: #858782;
+
+            letter-spacing: .22em;
+        }
+
+
+        .section-head h2 {
+            margin-top: 18px;
+
+            font-size:
+                clamp(
+                    43px,
+                    5.2vw,
+                    72px
+                );
+
+            font-weight: 500;
+
+            line-height: .98;
+
+            letter-spacing: -.05em;
+        }
+
+
+        .section-head h2 em {
+            display: block;
+
+            color:
+                var(--gold);
+
+            font-family:
+                var(--serif);
+
+            font-weight: 600;
+        }
+
+
+        .section-head > p {
+            max-width: 490px;
+
+            color: #828580;
+
+            font-size: 14px;
+
+            line-height: 1.85;
+        }
+
+
+        /* =================================================
+           SERVICE
+        ================================================= */
+
+        .service-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+            gap: 1px;
+
+            border:
+                1px solid
+                var(--line);
+
+            background:
+                var(--line);
+        }
+
+
+        .service-card {
+            position: relative;
+
+            min-height: 300px;
+
+            padding:
+                35px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            overflow: hidden;
+
+            background:
+                var(--bg);
+
+            transition:
+                background .4s ease,
+                transform .4s var(--ease),
+                border-color .4s;
+        }
+
+
+        .service-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+            height: 260px;
+
+            right: -130px;
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(231,195,109,.12),
+                    transparent 70%
+                );
+
+            transition:
+                transform .6s var(--ease);
+        }
+
+
+        .service-card:hover {
+            background:
+                var(--card);
+
+            transform:
+                translateY(-6px);
+
+            z-index: 2;
+        }
+
+
+        .service-card:hover::before {
+            transform:
+                scale(1.6);
+        }
+
+
+        .service-featured {
+            grid-column:
+                span 2;
+
+            min-height: 335px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(231,195,109,.08),
+                    rgba(255,255,255,.015)
+                );
+        }
+
+
+        .service-no {
+            position: absolute;
+
+            top: 25px;
+            right: 27px;
+
+            color: #555754;
+
+            font-size: 10px;
+
+            letter-spacing: .15em;
+        }
+
+
+        .service-symbol {
+            position: relative;
+
+            margin-top: 45px;
+            margin-bottom: auto;
+
+            color:
+                var(--gold);
+
+            font-size: 31px;
+
+            z-index: 2;
+        }
+
+
+        .service-content {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 570px;
+        }
+
+
+        .service-content h3 {
+            font-size: 23px;
+
+            font-weight: 500;
+
+            letter-spacing: -.025em;
+        }
+
+
+        .service-content p {
+            max-width: 600px;
+
+            margin-top: 10px;
+
+            color: #797b78;
+
+            font-size: 13px;
+
+            line-height: 1.75;
+        }
+
+
+        .service-arrow {
+            position: absolute;
+
+            top: 25px;
+            left: 30px;
+
+            color: #555;
+
+            font-size: 19px;
+
+            transition: .35s;
+
+            display: none;
+        }
+
+
+        .service-card:hover .service-arrow {
+            transform:
+                translate(4px,-4px);
+
+            color:
+                var(--gold);
+        }
+
+
+
+        /* =================================================
+           STATEMENT
+        ================================================= */
+
+        .statement {
+            text-align: center;
+        }
+
+
+        .statement-line {
+            width: 100%;
+
+            height: 1px;
+
+            margin-bottom: 40px;
+
+            background:
+                var(--line);
+        }
+
+
+        .statement h2 {
+            max-width: 1000px;
+
+            margin:
+                25px auto 0;
+
+            font-size:
+                clamp(
+                    43px,
+                    5.8vw,
+                    80px
+                );
+
+            font-weight: 500;
+
+            line-height: 1;
+
+            letter-spacing: -.055em;
+        }
+
+
+        .statement h2 em {
+            display: block;
+
+            color:
+                var(--gold);
+
+            font-family:
+                var(--serif);
+        }
+
+
+        .statement-text {
+            max-width: 690px;
+
+            margin:
+                30px auto 0;
+
+            color: #838681;
+
+            font-size: 16px;
+
+            line-height: 1.85;
+        }
+
+
+        .principles {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 40px;
+
+            margin-top: 75px;
+        }
+
+
+        .principle {
+            text-align: left;
+
+            border-top:
+                1px solid
+                var(--line);
+
+            padding-top:
+                20px;
+        }
+
+
+        .principle > span {
+            color:
+                var(--gold);
+
+            font-size: 10px;
+        }
+
+
+        .principle h3 {
+            margin:
+                30px 0 9px;
+
+            font-size: 18px;
+
+            font-weight: 500;
+        }
+
+
+        .principle p {
+            color:
+                #737673;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+
+        /* =================================================
+           PROSES
+        ================================================= */
+
+        .process-list {
+            border-top:
+                1px solid
+                var(--line);
+        }
+
+
+        .process-item {
+            display: grid;
+
+            grid-template-columns:
+                70px
+                1fr
+                30px;
+
+            align-items: center;
+
+            gap: 25px;
+
+            padding:
+                32px
+                0;
+
+            border-bottom:
+                1px solid
+                var(--line);
+
+            transition:
+                background .35s ease,
+                padding .4s var(--ease);
+        }
+
+
+        .process-item:hover {
+            padding-left: 16px;
+            padding-right: 16px;
+
+            background:
+                rgba(255,255,255,.018);
+        }
+
+
+        .process-item > span {
+            color:
+                var(--gold);
+
+            font-size: 11px;
+        }
+
+
+        .process-item h3 {
+            font-size: 21px;
+
+            font-weight: 500;
+        }
+
+
+        .process-item p {
+            margin-top: 5px;
+
+            color:
+                #777a76;
+
+            font-size: 13px;
+        }
+
+
+        .process-item > b {
+            color:
+                #575956;
+
+            font-size: 18px;
+
+            font-weight: 400;
+        }
+
+
+
+        /* =================================================
+           CTA
+        ================================================= */
+
+        .cta {
+            min-height: 650px;
+
+            display: grid;
+
+            place-items: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            isolation: isolate;
+        }
+
+
+        .cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(231,195,109,.08);
+
+            box-shadow:
+                0 0 150px
+                rgba(231,195,109,.04);
+
+            z-index: -1;
+        }
+
+
+        .cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(231,195,109,.08),
+                    transparent 68%
+                );
+
+            z-index: -2;
+        }
+
+
+        .cta-inner {
+            position: relative;
+
+            z-index: 3;
+
+            max-width: 900px;
+        }
+
+
+        .cta h2 {
+            margin-top: 20px;
+
+            font-size:
+                clamp(
+                    52px,
+                    7vw,
+                    92px
+                );
+
+            font-weight: 500;
+
+            line-height: .96;
+
+            letter-spacing: -.055em;
+        }
+
+
+        .cta h2 em {
+            display: block;
+
+            color:
+                var(--gold);
+
+            font-family:
+                var(--serif);
+        }
+
+
+        .cta-inner > p {
+            max-width: 550px;
+
+            margin:
+                28px auto 35px;
+
+            color:
+                #81847f;
+
+            font-size: 15px;
+        }
+
+
+        .cta-mark {
+            position: absolute;
+
+            bottom: -50px;
+
+            color:
+                rgba(255,255,255,.017);
+
+            font-size:
+                clamp(
+                    150px,
+                    25vw,
+                    360px
+                );
+
+            font-weight: 700;
+
+            letter-spacing: -.1em;
+
+            line-height: .7;
+        }
+
+
+
+        /* =================================================
+           FOOTER
+        ================================================= */
+
+        .footer {
+            width:
+                min(
+                    var(--max),
+                    calc(100% - 48px)
+                );
+
+            margin: auto;
+
+            border-top:
+                1px solid
+                var(--line);
+
+            padding:
+                38px
+                0
+                25px;
+        }
+
+
+        .footer-main {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 25px;
+        }
+
+
+        .footer-main > p {
+            color:
+                #676a67;
+
+            font-size: 12px;
+        }
+
+
+        .top-link {
+            color:
+                #858782;
+
+            font-size: 11px;
+        }
+
+
+        .footer-bottom {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            margin-top: 55px;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid
+                var(--line);
+
+            color:
+                #525551;
+
+            font-size: 9px;
+
+            letter-spacing: .08em;
+        }
+
+
+
+        /* =================================================
+           ANIMASI REVEAL
+        ================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(25px);
+
+            transition:
+                opacity .85s var(--ease),
+                transform .85s var(--ease);
+        }
+
+
+        .reveal-right {
+            transform:
+                translateX(35px);
+        }
+
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                none;
+        }
+
+
+        @keyframes float {
+
+            0%,100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-11px);
+            }
+
+        }
+
+
+        @keyframes halo {
+
+            0%,100% {
+                transform: scale(.95);
+                opacity: .55;
+            }
+
+            50% {
+                transform: scale(1.07);
+                opacity: 1;
+            }
+
+        }
+
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+
+        }
+
+
+        @keyframes reverse-spin {
+
+            to {
+                transform:
+                    rotate(-360deg);
+            }
+
+        }
+
+
+        @keyframes ticker {
+
+            to {
+                transform:
+                    translateX(-50%);
+            }
+
+        }
+
+
+
+        /* =================================================
+           TABLET
+        ================================================= */
+
+        @media (max-width: 1050px) {
+
+            .nav-links {
+                gap: 17px;
+            }
+
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                padding-top:
+                    145px;
+            }
+
+
+            .hero-copy {
+                max-width: 850px;
+            }
+
+
+            .hero-visual {
+                margin-top: -10px;
+
+                height: 620px;
+            }
+
+
+            .service-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .service-featured {
+                grid-column:
+                    span 2;
+            }
+
+        }
+
+
+
+        /* =================================================
+           PONSEL
+        ================================================= */
+
+        @media (max-width: 760px) {
+
+            .navbar {
+                top: 9px;
+
+                width:
+                    calc(100% - 20px);
+
+                height: 64px;
+
+                padding:
+                    0 9px
+                    0 11px;
+            }
+
+
+            .brand-mark {
+                width: 38px;
+                height: 38px;
+            }
+
+
+            .brand-text strong {
+                font-size: 13px;
+            }
+
+
+            .brand-text small {
+                font-size: 6px;
+            }
+
+
+            .nav-links {
+
+                position: absolute;
+
+                left: 0;
+                right: 0;
+
+                top: 72px;
+
+                padding: 18px;
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 0;
+
+                background:
+                    rgba(10,11,11,.97);
+
+                border:
+                    1px solid
+                    var(--line);
+
+                border-radius: 20px;
+
+                opacity: 0;
+
+                visibility: hidden;
+
+                transform:
+                    translateY(-8px);
+
+                transition:
+                    opacity .3s,
+                    visibility .3s,
+                    transform .3s;
+
+                backdrop-filter:
+                    blur(22px);
+            }
+
+
+            .nav-links.open {
+
+                opacity: 1;
+
+                visibility: visible;
+
+                transform:
+                    none;
+            }
+
+
+            .nav-links a {
+
+                padding:
+                    14px 8px;
+
+                border-bottom:
+                    1px solid
+                    var(--line);
+
+                font-size: 14px;
+            }
+
+
+            .nav-links a:last-child {
+                border-bottom: 0;
+            }
+
+
+            .nav-links a.active::after {
+                display: none;
+            }
+
+
+            .nav-cta {
+                display: none;
+            }
+
+
+            .menu-toggle {
+                display: block;
+            }
+
+
+            .hero {
+
+                min-height: auto;
+
+                width:
+                    calc(100% - 32px);
+
+                display: block;
+
+                padding:
+                    125px
+                    0
+                    75px;
+            }
+
+
+            .hero-kicker {
+                font-size: 9px;
+            }
+
+
+            .hero h1 {
+
+                font-size:
+                    clamp(
+                        48px,
+                        14vw,
+                        70px
+                    );
+            }
+
+
+            .hero-description {
+
+                font-size: 15px;
+
+                line-height: 1.75;
+            }
+
+
+            .hero-actions {
+
+                flex-direction: column;
+
+                max-width: 320px;
+            }
+
+
+            .btn {
+
+                width: 100%;
+            }
+
+
+            .hero-steps {
+
+                margin-top: 45px;
+
+                gap: 14px;
+            }
+
+
+            .hero-visual {
+
+                height: 470px;
+
+                margin-top: 50px;
+            }
+
+
+            .showcase-card {
+
+                width: 275px;
+
+                height: 390px;
+
+                border-radius: 24px;
+            }
+
+
+            .showcase-top,
+            .showcase-bottom {
+
+                left: 20px;
+
+                right: 20px;
+
+                font-size: 7px;
+            }
+
+
+            .showcase-top {
+                top: 20px;
+            }
+
+
+            .showcase-bottom {
+                bottom: 20px;
+            }
+
+
+            .logo-stage {
+                inset: 70px 20px;
+            }
+
+
+            .logo-stage img {
+                max-width: 155px;
+                max-height: 190px;
+            }
+
+
+            .logo-halo {
+                width: 190px;
+                height: 190px;
+            }
+
+
+            .orbit-1 {
+                width: 350px;
+                height: 350px;
+            }
+
+
+            .orbit-2 {
+                width: 440px;
+                height: 440px;
+            }
+
+
+            .orbit-3 {
+                width: 275px;
+                height: 275px;
+            }
+
+
+            .floating-note {
+                padding:
+                    10px
+                    11px;
+            }
+
+
+            .floating-note small {
+                font-size: 7px;
+            }
+
+
+            .note-left {
+                left: -4%;
+                top: 24%;
+            }
+
+
+            .note-right {
+                right: -4%;
+                bottom: 13%;
+            }
+
+
+            .note-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+
+            .scroll-cue {
+                display: none;
+            }
+
+
+            .section {
+
+                width:
+                    calc(100% - 32px);
+
+                padding:
+                    92px
+                    0;
+            }
+
+
+            .section-head {
+
+                grid-template-columns: 1fr;
+
+                gap: 23px;
+
+                margin-bottom: 45px;
+            }
+
+
+            .section-head h2 {
+                font-size:
+                    46px;
+            }
+
+
+            .service-grid {
+                grid-template-columns: 1fr;
+
+                gap: 1px;
+            }
+
+
+            .service-featured {
+                grid-column: auto;
+            }
+
+
+            .service-card,
+            .service-featured {
+
+                min-height:
+                    270px;
+
+                padding:
+                    30px
+                    25px;
+            }
+
+
+            .service-symbol {
+
+                margin-top:
+                    20px;
+
+                margin-bottom:
+                    18px;
+            }
+
+
+            .statement {
+
+                padding:
+                    110px
+                    0;
+            }
+
+
+            .statement h2 {
+
+                font-size:
+                    47px;
+            }
+
+
+            .statement-text {
+
+                font-size:
+                    15px;
+            }
+
+
+            .principles {
+
+                grid-template-columns:
+                    1fr;
+
+                gap:
+                    28px;
+
+                margin-top:
+                    55px;
+            }
+
+
+            .process-item {
+
+                grid-template-columns:
+                    38px
+                    1fr
+                    20px;
+
+                gap:
+                    14px;
+
+                padding:
+                    25px
+                    0;
+            }
+
+
+            .process-item h3 {
+                font-size: 18px;
+            }
+
+
+            .process-item p {
+                font-size: 12px;
+            }
+
+
+            .cta {
+
+                min-height:
+                    550px;
+
+                width:
+                    calc(100% - 20px);
+            }
+
+
+            .cta h2 {
+
+                font-size:
+                    53px;
+            }
+
+
+            .footer {
+
+                width:
+                    calc(100% - 32px);
+
+                padding-top:
+                    30px;
+            }
+
+
+            .footer-main {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .footer-bottom {
+
+                flex-direction:
+                    column;
+
+                gap: 8px;
+
+                margin-top:
+                    40px;
+            }
+
+        }
+
+
+
+        /* =================================================
+           LAYAR SANGAT KECIL
+        ================================================= */
+
+        @media (max-width: 390px) {
+
+            .hero h1 {
+                font-size:
+                    45px;
+            }
+
+
+            .hero-proof {
+                gap: 10px;
+            }
+
+
+            .hero-steps {
+                transform:
+                    scale(.92);
+
+                transform-origin:
+                    left center;
+            }
+
+
+            .floating-note {
+                transform:
+                    scale(.82);
+            }
+
+
+            .note-left {
+                left: -9%;
+            }
+
+
+            .note-right {
+                right: -9%;
+            }
+
+        }
+
+
+
+        /* =================================================
+           KURANGI ANIMASI UNTUK PENGGUNA YANG MEMILIHNYA
+        ================================================= */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            html {
+                scroll-behavior: auto;
+            }
+
+
+            *,
+            *::before,
+            *::after {
+                animation:
+                    none !important;
+
+                transition:
+                    none !important;
+            }
+
+
+            .reveal {
+                opacity: 1;
+
+                transform: none;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <div class="cursor-glow"></div>
     <div class="noise"></div>
-    <div class="progress" id="progress"></div>
+
+    <div
+        class="cursor-glow"
+        id="cursorGlow">
+    </div>
 
 
-    <!-- ================= NAVBAR ================= -->
+    <div
+        class="progress"
+        id="progress">
+    </div>
 
-    <header class="navbar" id="navbar">
 
-        <a href="#beranda" class="brand">
+
+    <!-- =================================================
+         NAVIGASI
+    ================================================== -->
+
+    <header
+        class="navbar"
+        id="navbar">
+
+        <a
+            href="#beranda"
+            class="brand">
 
             <span class="brand-mark">
-                <img src="logo.png" alt="Logo XYNY Studio">
+
+                <img
+                    src="logo.png"
+                    alt="Logo XYNY Studio">
+
             </span>
 
             <span class="brand-text">
-                <strong>XYNY</strong>
-                <small>STUDIO</small>
+
+                <strong>
+                    XYNY
+                </strong>
+
+                <small>
+                    STUDIO
+                </small>
+
             </span>
 
         </a>
 
 
-        <nav class="nav-links" id="navLinks">
+        <nav
+            class="nav-links"
+            id="navLinks">
 
-            <a href="#beranda" class="active">
+            <a
+                href="#beranda"
+                class="active">
+
                 Beranda
+
             </a>
 
             <a href="#layanan">
@@ -71,9 +2660,16 @@
         </nav>
 
 
-        <a href="#kontak" class="nav-cta">
+        <a
+            href="#kontak"
+            class="nav-cta">
+
             Mulai Sekarang
-            <span>↗</span>
+
+            <span>
+                ↗
+            </span>
+
         </a>
 
 
@@ -93,12 +2689,20 @@
 
 
 
+    <!-- =================================================
+         KONTEN
+    ================================================== -->
+
     <main>
 
 
-        <!-- ================= HERO ================= -->
+        <!-- =================================================
+             HERO
+        ================================================== -->
 
-        <section class="hero" id="beranda">
+        <section
+            class="hero"
+            id="beranda">
 
             <div class="hero-grid"></div>
 
@@ -118,7 +2722,9 @@
 
 
                 <p class="hero-kicker">
+
                     XYNY / DIGITAL CREATIVE STUDIO
+
                 </p>
 
 
@@ -135,10 +2741,13 @@
 
                 <p class="hero-description">
 
-                    Kami membantu mengubah ide, kebutuhan, dan cerita
-                    Anda menjadi karya digital yang
+                    Kami membantu mengubah ide, kebutuhan,
+                    dan cerita Anda menjadi karya digital
+                    yang
+
                     <strong>
-                        profesional, menarik, dan siap digunakan.
+                        profesional, menarik,
+                        dan siap digunakan.
                     </strong>
 
                 </p>
@@ -146,16 +2755,22 @@
 
                 <div class="hero-actions">
 
-                    <a href="#layanan" class="btn btn-primary">
+                    <a
+                        href="#layanan"
+                        class="btn btn-primary">
 
                         Lihat Layanan
 
-                        <span>↗</span>
+                        <span>
+                            ↗
+                        </span>
 
                     </a>
 
 
-                    <a href="#kontak" class="btn btn-secondary">
+                    <a
+                        href="#kontak"
+                        class="btn btn-secondary">
 
                         Konsultasi Gratis
 
@@ -167,22 +2782,47 @@
                 <div class="hero-steps">
 
                     <div>
-                        <b>01</b>
-                        <span>IDE</span>
+
+                        <b>
+                            01
+                        </b>
+
+                        <span>
+                            IDE
+                        </span>
+
                     </div>
+
 
                     <i></i>
 
+
                     <div>
-                        <b>02</b>
-                        <span>RANCANG</span>
+
+                        <b>
+                            02
+                        </b>
+
+                        <span>
+                            RANCANG
+                        </span>
+
                     </div>
+
 
                     <i></i>
 
+
                     <div>
-                        <b>03</b>
-                        <span>WUJUDKAN</span>
+
+                        <b>
+                            03
+                        </b>
+
+                        <span>
+                            WUJUDKAN
+                        </span>
+
                     </div>
 
                 </div>
@@ -191,16 +2831,18 @@
 
 
 
-            <!-- ================= HERO VISUAL ================= -->
+            <!-- HERO VISUAL -->
 
-            <div class="hero-visual reveal reveal-right">
+            <div
+                class="hero-visual reveal reveal-right">
 
                 <div class="orbit orbit-1"></div>
                 <div class="orbit orbit-2"></div>
                 <div class="orbit orbit-3"></div>
 
 
-                <div class="floating-note note-left">
+                <div
+                    class="floating-note note-left">
 
                     <span class="note-icon">
                         ✦
@@ -230,8 +2872,11 @@
                         </span>
 
                         <span class="live">
+
                             <i></i>
+
                             AKTIF
+
                         </span>
 
                     </div>
@@ -239,7 +2884,10 @@
 
                     <div class="logo-stage">
 
-                        <div class="logo-halo"></div>
+                        <div
+                            class="logo-halo">
+                        </div>
+
 
                         <img
                             src="logo.png"
@@ -267,7 +2915,8 @@
                 </div>
 
 
-                <div class="floating-note note-right">
+                <div
+                    class="floating-note note-right">
 
                     <span class="number">
                         7+
@@ -302,9 +2951,11 @@
 
 
 
-        <!-- ================= TICKER ================= -->
+        <!-- =================================================
+             TICKER
+        ================================================== -->
 
-        <div class="ticker">
+        <section class="ticker">
 
             <div class="ticker-track">
 
@@ -326,7 +2977,7 @@
                 <span>MEDIA</span>
                 <b>✦</b>
 
-                <span>SOSIAL MEDIA</span>
+                <span>BRANDING</span>
                 <b>✦</b>
 
                 <span>WEBSITE</span>
@@ -337,13 +2988,17 @@
 
             </div>
 
-        </div>
+        </section>
 
 
 
-        <!-- ================= LAYANAN ================= -->
+        <!-- =================================================
+             LAYANAN
+        ================================================== -->
 
-        <section class="section services" id="layanan">
+        <section
+            class="section"
+            id="layanan">
 
             <div class="section-head reveal">
 
@@ -370,20 +3025,22 @@
 
                 <p>
 
-                    Kami tidak menjual sekadar "jasa".
-                    Kami membantu Anda menemukan bentuk terbaik
-                    dari sesuatu yang ingin Anda hadirkan.
+                    Anda tidak harus tahu istilah teknis.
+                    Ceritakan apa yang ingin diwujudkan,
+                    lalu kami membantu menemukan bentuk
+                    yang paling tepat.
 
                 </p>
 
             </div>
 
 
-
             <div class="service-grid">
 
 
-                <a class="service-card service-featured reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card service-featured reveal">
 
                     <span class="service-no">
                         01
@@ -400,25 +3057,20 @@
                         </h3>
 
                         <p>
-
                             Website bisnis, gereja, organisasi,
                             profesional, halaman promosi,
-                            hingga sistem digital yang disesuaikan
-                            dengan kebutuhan.
-
+                            dan berbagai kebutuhan digital.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         02
@@ -435,24 +3087,20 @@
                         </h3>
 
                         <p>
-
                             Undangan pernikahan, wisuda,
                             ulang tahun, acara keluarga,
-                            dan berbagai momen yang ingin dikenang.
-
+                            dan momen penting lainnya.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         03
@@ -465,28 +3113,24 @@
                     <div class="service-content">
 
                         <h3>
-                            Digital Gereja & Organisasi
+                            Gereja & Organisasi
                         </h3>
 
                         <p>
-
-                            Website, informasi pelayanan,
-                            materi visual, dan kebutuhan digital
-                            untuk gereja serta organisasi.
-
+                            Website, publikasi, informasi kegiatan,
+                            materi pelayanan, dan kebutuhan
+                            digital organisasi.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         04
@@ -499,28 +3143,24 @@
                     <div class="service-content">
 
                         <h3>
-                            Akademik
+                            Mahasiswa & Akademik
                         </h3>
 
                         <p>
-
-                            Penataan dokumen, presentasi,
-                            penyuntingan bahasa, visualisasi materi,
+                            Penyuntingan, penataan dokumen,
+                            presentasi, visualisasi materi,
                             dan kebutuhan pendukung akademik.
-
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         05
@@ -537,24 +3177,20 @@
                         </h3>
 
                         <p>
-
                             Logo, poster, presentasi,
                             materi promosi, identitas visual,
-                            dan kebutuhan desain yang konsisten.
-
+                            dan kebutuhan desain.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         06
@@ -571,24 +3207,20 @@
                         </h3>
 
                         <p>
-
-                            Video pendek, media sosial,
-                            penyuntingan, subtitle, materi acara,
-                            dan konten visual yang lebih menarik.
-
+                            Penyuntingan video, video pendek,
+                            subtitle, konten sosial media,
+                            dan kebutuhan visual.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
 
 
-                <a class="service-card reveal" href="#kontak">
+                <a
+                    href="#kontak"
+                    class="service-card reveal">
 
                     <span class="service-no">
                         07
@@ -605,18 +3237,12 @@
                         </h3>
 
                         <p>
-
-                            Konsep konten, kalender publikasi,
-                            materi visual, penulisan,
-                            dan tampilan akun yang lebih profesional.
-
+                            Konsep konten, materi publikasi,
+                            penulisan, dan tampilan akun
+                            yang lebih konsisten.
                         </p>
 
                     </div>
-
-                    <span class="service-arrow">
-                        ↗
-                    </span>
 
                 </a>
 
@@ -626,9 +3252,13 @@
 
 
 
-        <!-- ================= MENGAPA ================= -->
+        <!-- =================================================
+             MENGAPA
+        ================================================== -->
 
-        <section class="statement section" id="mengapa">
+        <section
+            class="statement section"
+            id="mengapa">
 
             <div class="statement-line reveal"></div>
 
@@ -653,27 +3283,28 @@
             <p class="statement-text reveal">
 
                 Karena sebuah karya bukan hanya soal bentuk.
-                Cara ia dilihat, dipahami, dan dirasakan menentukan
-                apakah orang akan berhenti sejenak —
+                Cara ia dilihat, dipahami, dan dirasakan
+                menentukan apakah orang akan berhenti sejenak
                 atau langsung pergi.
 
             </p>
-
 
 
             <div class="principles">
 
                 <article class="principle reveal">
 
-                    <span>01</span>
+                    <span>
+                        01
+                    </span>
 
                     <h3>
                         Terlihat meyakinkan
                     </h3>
 
                     <p>
-                        Setiap detail dirancang agar kesan pertama
-                        bekerja untuk Anda.
+                        Detail yang tepat membantu membangun
+                        kesan pertama dan kepercayaan.
                     </p>
 
                 </article>
@@ -681,15 +3312,17 @@
 
                 <article class="principle reveal">
 
-                    <span>02</span>
+                    <span>
+                        02
+                    </span>
 
                     <h3>
                         Mudah dipahami
                     </h3>
 
                     <p>
-                        Desain yang baik tidak membuat orang
-                        berpikir terlalu keras untuk mengerti.
+                        Orang tidak perlu berpikir terlalu keras
+                        untuk memahami pesan yang Anda sampaikan.
                     </p>
 
                 </article>
@@ -697,15 +3330,17 @@
 
                 <article class="principle reveal">
 
-                    <span>03</span>
+                    <span>
+                        03
+                    </span>
 
                     <h3>
                         Siap digunakan
                     </h3>
 
                     <p>
-                        Hasil akhir bukan sekadar bagus dilihat,
-                        tetapi benar-benar berguna.
+                        Hasil akhir bukan hanya bagus,
+                        tetapi memang berguna.
                     </p>
 
                 </article>
@@ -716,9 +3351,13 @@
 
 
 
-        <!-- ================= PROSES ================= -->
+        <!-- =================================================
+             PROSES
+        ================================================== -->
 
-        <section class="process section" id="proses">
+        <section
+            class="section"
+            id="proses">
 
             <div class="section-head reveal">
 
@@ -745,15 +3384,14 @@
 
                 <p>
 
-                    Anda tidak perlu memahami hal teknis.
-                    Ceritakan apa yang Anda butuhkan;
-                    kami membantu menerjemahkannya menjadi hasil
-                    yang jelas.
+                    Tidak perlu memahami hal teknis.
+                    Cukup ceritakan kebutuhan Anda.
+                    Kami membantu menerjemahkannya
+                    menjadi hasil yang jelas.
 
                 </p>
 
             </div>
-
 
 
             <div class="process-list">
@@ -771,9 +3409,8 @@
                         </h3>
 
                         <p>
-                            Kirim ide, contoh, bahan,
-                            atau sekadar gambaran yang ada
-                            di kepala Anda.
+                            Kirim ide, bahan, referensi,
+                            atau gambaran yang Anda miliki.
                         </p>
 
                     </div>
@@ -783,7 +3420,6 @@
                     </b>
 
                 </article>
-
 
 
                 <article class="process-item reveal">
@@ -800,8 +3436,7 @@
 
                         <p>
                             Kebutuhan diterjemahkan menjadi
-                            konsep, struktur, dan rancangan
-                            yang masuk akal.
+                            konsep, struktur, dan rancangan.
                         </p>
 
                     </div>
@@ -811,7 +3446,6 @@
                     </b>
 
                 </article>
-
 
 
                 <article class="process-item reveal">
@@ -827,8 +3461,8 @@
                         </h3>
 
                         <p>
-                            Proses produksi berjalan dengan
-                            komunikasi yang jelas dan terarah.
+                            Pengerjaan dilakukan secara terarah
+                            dengan komunikasi yang jelas.
                         </p>
 
                     </div>
@@ -838,7 +3472,6 @@
                     </b>
 
                 </article>
-
 
 
                 <article class="process-item reveal">
@@ -872,9 +3505,13 @@
 
 
 
-        <!-- ================= CTA ================= -->
+        <!-- =================================================
+             CTA
+        ================================================== -->
 
-        <section class="cta section" id="kontak">
+        <section
+            class="cta section"
+            id="kontak">
 
             <div class="cta-inner reveal">
 
@@ -897,15 +3534,17 @@
 
 
                 <p>
+
                     Tidak harus sudah tahu persis bentuknya.
                     Ceritakan saja dulu.
+
                 </p>
 
 
-                <!-- GANTI NOMOR INI -->
+                <!-- GANTI NOMOR WHATSAPP -->
 
                 <a
-                    class="btn btn-primary btn-large"
+                    class="btn btn-primary"
                     href="https://wa.me/6280000000000"
                     target="_blank"
                     rel="noopener">
@@ -931,13 +3570,17 @@
 
 
 
-    <!-- ================= FOOTER ================= -->
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
 
     <footer class="footer">
 
         <div class="footer-main">
 
-            <a class="brand" href="#beranda">
+            <a
+                class="brand"
+                href="#beranda">
 
                 <span class="brand-mark">
 
@@ -967,8 +3610,12 @@
             </p>
 
 
-            <a href="#beranda" class="top-link">
+            <a
+                href="#beranda"
+                class="top-link">
+
                 Kembali ke atas ↑
+
             </a>
 
         </div>
@@ -990,7 +3637,451 @@
 
 
 
-    <script src="tampilan.js"></script>
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                /* ===============================
+                   ELEMENT
+                =============================== */
+
+                const navbar =
+                    document.getElementById(
+                        "navbar"
+                    );
+
+                const menuToggle =
+                    document.getElementById(
+                        "menuToggle"
+                    );
+
+                const navLinks =
+                    document.getElementById(
+                        "navLinks"
+                    );
+
+                const progress =
+                    document.getElementById(
+                        "progress"
+                    );
+
+                const glow =
+                    document.getElementById(
+                        "cursorGlow"
+                    );
+
+
+                /* ===============================
+                   MENU MOBILE
+                =============================== */
+
+                if (
+                    menuToggle &&
+                    navLinks
+                ) {
+
+                    menuToggle.addEventListener(
+                        "click",
+                        () => {
+
+                            const open =
+                                navLinks.classList.toggle(
+                                    "open"
+                                );
+
+                            menuToggle.setAttribute(
+                                "aria-expanded",
+                                String(open)
+                            );
+
+                            document.body.classList.toggle(
+                                "menu-open",
+                                open
+                            );
+
+                        }
+                    );
+
+
+                    navLinks
+                        .querySelectorAll("a")
+                        .forEach(link => {
+
+                            link.addEventListener(
+                                "click",
+                                () => {
+
+                                    navLinks.classList.remove(
+                                        "open"
+                                    );
+
+                                    menuToggle.setAttribute(
+                                        "aria-expanded",
+                                        "false"
+                                    );
+
+                                    document.body.classList.remove(
+                                        "menu-open"
+                                    );
+
+                                }
+                            );
+
+                        });
+
+                }
+
+
+                /* ===============================
+                   PROGRESS BAR
+                =============================== */
+
+                function updateProgress() {
+
+                    const height =
+                        document.documentElement
+                            .scrollHeight -
+                        window.innerHeight;
+
+
+                    const percentage =
+                        height > 0
+                            ? (
+                                window.scrollY /
+                                height
+                            ) * 100
+                            : 0;
+
+
+                    progress.style.width =
+                        percentage + "%";
+
+
+                    if (
+                        window.scrollY > 30
+                    ) {
+
+                        navbar.style.boxShadow =
+                            "0 20px 70px rgba(0,0,0,.4)";
+
+                    } else {
+
+                        navbar.style.boxShadow =
+                            "0 18px 60px rgba(0,0,0,.28)";
+
+                    }
+
+                }
+
+
+                window.addEventListener(
+                    "scroll",
+                    updateProgress,
+                    {
+                        passive: true
+                    }
+                );
+
+
+                updateProgress();
+
+
+                /* ===============================
+                   REVEAL
+                =============================== */
+
+                const elements =
+                    document.querySelectorAll(
+                        ".reveal"
+                    );
+
+
+                const observer =
+                    new IntersectionObserver(
+
+                        entries => {
+
+                            entries.forEach(
+                                entry => {
+
+                                    if (
+                                        !entry.isIntersecting
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    entry.target.classList.add(
+                                        "visible"
+                                    );
+
+
+                                    observer.unobserve(
+                                        entry.target
+                                    );
+
+                                }
+                            );
+
+                        },
+
+                        {
+                            threshold: .12
+                        }
+
+                    );
+
+
+                elements.forEach(
+                    element => {
+
+                        observer.observe(
+                            element
+                        );
+
+                    }
+                );
+
+
+                /* ===============================
+                   NAVIGASI AKTIF
+                =============================== */
+
+                const sections =
+                    document.querySelectorAll(
+                        "main section[id]"
+                    );
+
+
+                const links =
+                    document.querySelectorAll(
+                        ".nav-links a"
+                    );
+
+
+                const sectionObserver =
+                    new IntersectionObserver(
+
+                        entries => {
+
+                            entries.forEach(
+                                entry => {
+
+                                    if (
+                                        !entry.isIntersecting
+                                    ) {
+
+                                        return;
+
+                                    }
+
+
+                                    links.forEach(
+                                        link => {
+
+                                            link.classList.remove(
+                                                "active"
+                                            );
+
+                                        }
+                                    );
+
+
+                                    const active =
+                                        document.querySelector(
+                                            `.nav-links a[href="#${entry.target.id}"]`
+                                        );
+
+
+                                    if (active) {
+
+                                        active.classList.add(
+                                            "active"
+                                        );
+
+                                    }
+
+                                }
+                            );
+
+                        },
+
+                        {
+                            rootMargin:
+                                "-40% 0px -50% 0px"
+                        }
+
+                    );
+
+
+                sections.forEach(
+                    section => {
+
+                        sectionObserver.observe(
+                            section
+                        );
+
+                    }
+                );
+
+
+                /* ===============================
+                   EFEK CAHAYA KURSOR
+                =============================== */
+
+                if (
+                    glow &&
+                    window.matchMedia(
+                        "(pointer: fine)"
+                    ).matches
+                ) {
+
+                    document.addEventListener(
+                        "mousemove",
+                        event => {
+
+                            glow.style.opacity =
+                                "1";
+
+                            glow.style.left =
+                                event.clientX + "px";
+
+                            glow.style.top =
+                                event.clientY + "px";
+
+                        }
+                    );
+
+                    document.addEventListener(
+                        "mouseleave",
+                        () => {
+
+                            glow.style.opacity =
+                                "0";
+
+                        }
+                    );
+
+                }
+
+
+                /* ===============================
+                   GERAKAN HERO
+                =============================== */
+
+                const visual =
+                    document.querySelector(
+                        ".hero-visual"
+                    );
+
+
+                const card =
+                    document.querySelector(
+                        ".showcase-card"
+                    );
+
+
+                if (
+                    visual &&
+                    card &&
+                    window.matchMedia(
+                        "(pointer: fine)"
+                    ).matches
+                ) {
+
+                    visual.addEventListener(
+                        "mousemove",
+                        event => {
+
+                            const rect =
+                                visual.getBoundingClientRect();
+
+
+                            const x =
+                                (
+                                    event.clientX -
+                                    rect.left
+                                ) /
+                                rect.width -
+                                .5;
+
+
+                            const y =
+                                (
+                                    event.clientY -
+                                    rect.top
+                                ) /
+                                rect.height -
+                                .5;
+
+
+                            card.style.transform =
+                                `
+                                perspective(1000px)
+                                rotateY(${x * 4}deg)
+                                rotateX(${y * -4}deg)
+                                rotateZ(1deg)
+                                `;
+
+                        }
+                    );
+
+
+                    visual.addEventListener(
+                        "mouseleave",
+                        () => {
+
+                            card.style.transform =
+                                "rotate(1deg)";
+
+                        }
+                    );
+
+                }
+
+
+                /* ===============================
+                   ESC
+                =============================== */
+
+                document.addEventListener(
+                    "keydown",
+                    event => {
+
+                        if (
+                            event.key === "Escape"
+                        ) {
+
+                            navLinks?.classList.remove(
+                                "open"
+                            );
+
+                            menuToggle?.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                            document.body.classList.remove(
+                                "menu-open"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
 
 </body>
 </html>
