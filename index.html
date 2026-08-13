@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 
 <meta
@@ -13,46 +14,55 @@
     content="XYNY Studio — Website, undangan digital, gereja, akademik, desain, video, dan media sosial."
 >
 
-<meta name="theme-color" content="#0a0a0a">
+<meta name="theme-color" content="#080808">
 
-<title>XYNY Studio — Ide yang Pantas Terlihat Luar Biasa</title>
+<title>XYNY Studio — Ide yang pantas terlihat luar biasa.</title>
+
+
+<!-- FONT -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
 
 <link
 href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap"
-rel="stylesheet">
+rel="stylesheet"
+>
 
 
 <style>
 
 /* =========================================================
    XYNY STUDIO
-   FINAL LANDING PAGE
+   SINGLE FILE WEBSITE
 ========================================================= */
 
 :root{
-    --bg:#090a0a;
-    --bg-soft:#101111;
+
+    --bg:#080909;
+    --bg-soft:#0d0e0e;
     --card:#111313;
 
-    --text:#f5f3ee;
-    --muted:#92938f;
-    --muted-2:#666864;
+    --gold:#e6c46b;
+    --gold-light:#f3d98a;
 
-    --gold:#dcb765;
-    --gold-light:#f0d48b;
+    --white:#f5f4ef;
+    --muted:#8d908d;
+    --muted-2:#626562;
 
     --line:rgba(255,255,255,.09);
-    --line-gold:rgba(220,183,101,.28);
+    --line-gold:rgba(230,196,107,.28);
 
-    --radius:26px;
+    --green:#a9d978;
 
-    --serif:"Playfair Display", Georgia, serif;
-    --sans:"DM Sans", Arial, sans-serif;
+    --radius:24px;
 
-    --max:1380px;
+    --shadow:
+        0 30px 100px rgba(0,0,0,.55);
+
 }
 
 
@@ -71,11 +81,26 @@ html{
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--sans);
+
+    background:
+        radial-gradient(
+            circle at 75% 15%,
+            rgba(230,196,107,.075),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 10% 65%,
+            rgba(255,255,255,.025),
+            transparent 25%
+        ),
+        var(--bg);
+
+    color:var(--white);
+
+    font-family:"DM Sans",sans-serif;
+
     overflow-x:hidden;
-    line-height:1.6;
+
 }
 
 a{
@@ -84,12 +109,7 @@ a{
 }
 
 button{
-    font:inherit;
-}
-
-img{
-    max-width:100%;
-    display:block;
+    font-family:inherit;
 }
 
 
@@ -97,66 +117,50 @@ img{
    BACKGROUND
 ========================================================= */
 
-body::before{
-    content:"";
+.background-grid{
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
-    z-index:999;
+
+    z-index:-3;
+
+    opacity:.18;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025) 1px,
+            transparent 1px
+        );
+
+    background-size:80px 80px;
+
+}
+
+
+.noise{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:100;
 
     opacity:.035;
 
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-}
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 
-body::after{
-    content:"";
-    position:fixed;
-    width:700px;
-    height:700px;
-    left:-300px;
-    top:-300px;
-    pointer-events:none;
-    background:rgba(220,183,101,.06);
-    filter:blur(130px);
-    border-radius:50%;
-    z-index:-1;
-}
-
-
-/* =========================================================
-   UTILITIES
-========================================================= */
-
-.container{
-    width:min(calc(100% - 48px), var(--max));
-    margin:auto;
-}
-
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    color:var(--gold);
-    font-size:11px;
-    font-weight:700;
-
-    letter-spacing:.2em;
-    text-transform:uppercase;
-}
-
-.eyebrow::before{
-    content:"";
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:var(--gold);
-
-    box-shadow:
-        0 0 0 5px rgba(220,183,101,.08),
-        0 0 20px rgba(220,183,101,.5);
 }
 
 
@@ -164,129 +168,210 @@ body::after{
    NAVIGATION
 ========================================================= */
 
-.nav-wrap{
+.nav{
+
     position:fixed;
-    z-index:1000;
 
     top:18px;
     left:50%;
+
     transform:translateX(-50%);
 
-    width:min(calc(100% - 32px), 1180px);
-}
+    width:min(1160px,calc(100% - 32px));
 
-.nav{
-    height:74px;
+    z-index:50;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
-    padding:10px 12px 10px 18px;
+    padding:12px 14px 12px 16px;
 
-    border:1px solid rgba(255,255,255,.10);
+    background:rgba(10,10,10,.76);
+
+    border:1px solid var(--line);
+
     border-radius:100px;
 
-    background:rgba(10,11,11,.78);
-
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
+    backdrop-filter:blur(24px);
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,.3),
-        inset 0 1px 0 rgba(255,255,255,.04);
+        0 20px 70px rgba(0,0,0,.35);
 
     transition:.35s ease;
+
 }
 
 .nav.scrolled{
-    background:rgba(8,9,9,.94);
-    border-color:rgba(220,183,101,.18);
+
+    background:rgba(10,10,10,.94);
+
+    border-color:var(--line-gold);
+
 }
+
 
 .brand{
+
     display:flex;
+
     align-items:center;
+
     gap:12px;
+
 }
 
-.brand img{
-    width:43px;
-    height:43px;
+.logo{
+
+    width:48px;
+    height:48px;
+
     object-fit:contain;
-    border-radius:9px;
+
     background:#fff;
-    padding:5px;
+
+    border-radius:12px;
+
+    padding:6px;
+
 }
 
 .brand-text{
+
     display:flex;
+
     flex-direction:column;
+
     line-height:1;
+
 }
 
-.brand-text strong{
+.brand-name{
+
     font-size:16px;
-    letter-spacing:.14em;
+
+    font-weight:700;
+
+    letter-spacing:.15em;
+
 }
 
-.brand-text small{
+.brand-sub{
+
     margin-top:5px;
+
     font-size:8px;
-    letter-spacing:.28em;
+
+    letter-spacing:.35em;
+
     color:var(--gold);
+
 }
+
 
 .nav-links{
+
     display:flex;
+
     align-items:center;
-    gap:34px;
+
+    gap:30px;
+
 }
 
 .nav-links a{
+
     position:relative;
 
-    color:#8d8f8b;
     font-size:14px;
 
-    transition:.3s ease;
+    color:#8e918f;
+
+    transition:.25s ease;
+
 }
 
-.nav-links a:hover,
-.nav-links a.active{
-    color:#fff;
+.nav-links a:hover{
+
+    color:white;
+
 }
 
-.nav-links a.active::after{
+.nav-links a::after{
+
     content:"";
 
     position:absolute;
-    left:0;
-    right:0;
-    bottom:-11px;
 
-    height:2px;
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:1px;
+
     background:var(--gold);
+
+    transition:.3s ease;
+
 }
 
-.nav-cta{
-    padding:14px 20px;
+.nav-links a:hover::after{
 
-    border:1px solid rgba(220,183,101,.45);
+    width:100%;
+
+}
+
+
+.nav-cta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:13px 18px;
+
+    border:1px solid var(--line-gold);
+
     border-radius:100px;
 
     color:var(--gold-light);
 
     font-size:13px;
-    font-weight:600;
 
     transition:.3s ease;
+
 }
 
 .nav-cta:hover{
+
     background:var(--gold);
-    color:#15120a;
+
+    color:#111;
+
     transform:translateY(-2px);
+
+}
+
+
+.menu{
+
+    display:none;
+
+    width:42px;
+    height:42px;
+
+    border:1px solid var(--line);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:white;
+
 }
 
 
@@ -295,511 +380,502 @@ body::after{
 ========================================================= */
 
 .hero{
-    position:relative;
-    min-height:100vh;
 
-    display:flex;
+    min-height:100svh;
+
+    width:min(1160px,calc(100% - 40px));
+
+    margin:auto;
+
+    padding-top:150px;
+
+    display:grid;
+
+    grid-template-columns:1.15fr .85fr;
+
+    gap:50px;
+
     align-items:center;
 
-    padding:
-        160px 0 110px;
-
-    overflow:hidden;
 }
 
-.hero-grid{
-    position:absolute;
-    inset:0;
 
-    opacity:.18;
+.eyebrow{
 
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    display:inline-flex;
 
-    background-size:90px 90px;
+    align-items:center;
 
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 85%
-    );
+    gap:10px;
+
+    padding:9px 14px;
+
+    border:1px solid var(--line-gold);
+
+    border-radius:100px;
+
+    color:#cbb67c;
+
+    font-size:10px;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
 }
 
-.hero-glow{
-    position:absolute;
+.eyebrow-dot{
 
-    width:700px;
-    height:700px;
-
-    right:-220px;
-    top:10%;
+    width:7px;
+    height:7px;
 
     border-radius:50%;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(220,183,101,.13),
-            transparent 65%
-        );
+    background:var(--green);
 
-    filter:blur(20px);
+    box-shadow:0 0 15px var(--green);
+
 }
 
-.hero-content{
-    position:relative;
-    z-index:2;
-
-    width:min(100%,900px);
-}
 
 .hero h1{
+
     margin-top:30px;
 
-    font-size:clamp(58px,8.5vw,128px);
+    font-size:clamp(
+        52px,
+        7vw,
+        92px
+    );
 
-    line-height:.92;
+    line-height:.93;
 
-    letter-spacing:-.065em;
+    letter-spacing:-.055em;
 
     font-weight:600;
+
 }
 
-.hero h1 .serif{
+.hero h1 span{
+
     display:block;
 
-    color:var(--gold-light);
+    font-family:"Playfair Display",serif;
 
-    font-family:var(--serif);
     font-style:italic;
+
     font-weight:600;
 
-    letter-spacing:-.065em;
+    color:var(--gold);
+
+    margin-top:8px;
+
 }
 
+
 .hero-description{
-    width:min(100%,680px);
 
-    margin-top:36px;
+    max-width:650px;
 
-    color:#9b9d99;
+    margin-top:32px;
 
-    font-size:clamp(17px,2vw,21px);
+    color:#929592;
+
+    font-size:18px;
 
     line-height:1.75;
+
 }
 
 .hero-description strong{
-    color:#e7e5df;
-    font-weight:600;
+
+    color:#eee;
+
 }
 
+
 .hero-actions{
+
     display:flex;
-    flex-wrap:wrap;
+
     gap:14px;
 
-    margin-top:40px;
+    margin-top:38px;
+
+    flex-wrap:wrap;
+
 }
 
 .button{
+
     display:inline-flex;
+
     align-items:center;
+
     justify-content:center;
-    gap:15px;
 
-    min-height:56px;
+    gap:12px;
 
-    padding:0 25px;
+    padding:16px 23px;
 
     border-radius:100px;
 
     font-size:14px;
-    font-weight:600;
 
-    transition:.35s cubic-bezier(.2,.8,.2,1);
+    border:1px solid var(--line);
+
+    transition:.3s ease;
+
 }
 
 .button-primary{
-    background:var(--gold);
-    color:#17130a;
 
-    box-shadow:
-        0 10px 40px rgba(220,183,101,.15);
+    background:var(--gold);
+
+    color:#111;
+
+    border-color:var(--gold);
+
 }
 
 .button-primary:hover{
+
     background:var(--gold-light);
-    transform:translateY(-4px);
+
+    transform:translateY(-3px);
+
     box-shadow:
-        0 18px 50px rgba(220,183,101,.22);
+        0 15px 40px rgba(230,196,107,.18);
+
 }
 
 .button-secondary{
-    border:1px solid var(--line);
-    color:#d4d3ce;
+
+    color:#ddd;
+
 }
 
 .button-secondary:hover{
-    border-color:var(--gold);
-    color:var(--gold-light);
-    transform:translateY(-4px);
+
+    border-color:var(--line-gold);
+
+    color:var(--gold);
+
 }
 
 
-/* =========================================================
-   HERO NUMBERS
-========================================================= */
-
 .hero-proof{
-    display:flex;
-    gap:0;
 
-    margin-top:75px;
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-top:55px;
+
 }
 
 .proof{
-    min-width:150px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:5px;
+
 }
 
 .proof strong{
-    display:block;
 
-    font-size:17px;
-    font-weight:600;
+    font-size:13px;
+
 }
 
 .proof span{
-    display:block;
 
-    margin-top:5px;
+    font-size:10px;
 
-    color:#676965;
-    font-size:11px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
+    color:#686b68;
+
 }
 
 .proof-line{
-    width:1px;
-    height:36px;
 
-    margin:0 26px;
+    height:30px;
+
+    width:1px;
 
     background:var(--line);
+
 }
 
 
 /* =========================================================
-   SERVICES
+   HERO VISUAL
 ========================================================= */
 
-.services{
+.hero-visual{
+
     position:relative;
 
-    padding:140px 0 170px;
-
-    border-top:1px solid var(--line);
-}
-
-.section-intro{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-
-    margin-bottom:70px;
-}
-
-.section-title{
-    margin-top:24px;
-
-    font-size:clamp(42px,6vw,76px);
-
-    line-height:1;
-
-    letter-spacing:-.055em;
-}
-
-.section-title em{
-    font-family:var(--serif);
-    color:var(--gold-light);
-    font-weight:500;
-}
-
-.section-copy{
-    align-self:end;
-
-    max-width:540px;
-
-    color:#777974;
-
-    font-size:17px;
-    line-height:1.8;
-}
-
-
-/* =========================================================
-   SERVICE GRID
-========================================================= */
-
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-
-    border-top:1px solid var(--line);
-    border-left:1px solid var(--line);
-}
-
-.service-card{
-    position:relative;
-
-    min-height:410px;
-
-    padding:38px;
+    min-height:560px;
 
     display:flex;
-    flex-direction:column;
-    justify-content:space-between;
 
-    border-right:1px solid var(--line);
-    border-bottom:1px solid var(--line);
+    justify-content:center;
 
-    background:
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(220,183,101,.045),
-            transparent 30%
-        );
+    align-items:center;
 
-    overflow:hidden;
-
-    transition:.45s cubic-bezier(.2,.8,.2,1);
 }
 
-.service-card::before{
+
+.orbit{
+
+    position:absolute;
+
+    width:480px;
+    height:480px;
+
+    border:1px solid rgba(230,196,107,.12);
+
+    border-radius:50%;
+
+    animation:spin 25s linear infinite;
+
+}
+
+.orbit::before,
+.orbit::after{
+
     content:"";
 
     position:absolute;
-    inset:0;
+
+    inset:50px;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:50%;
+
+}
+
+.orbit::after{
+
+    inset:110px;
+
+}
+
+
+@keyframes spin{
+
+    from{
+        transform:rotate(0);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+
+.hero-card{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(390px,90%);
+
+    min-height:480px;
+
+    border:1px solid rgba(255,255,255,.13);
+
+    border-radius:30px;
 
     background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(230,196,107,.12),
+            transparent 42%
+        ),
+
         linear-gradient(
-            120deg,
-            transparent 35%,
-            rgba(255,255,255,.035),
-            transparent 65%
+            145deg,
+            #191a19,
+            #0c0d0d
         );
 
-    transform:translateX(-120%);
-    transition:.8s ease;
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
 }
 
-.service-card:hover::before{
-    transform:translateX(120%);
+.card-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:24px;
+
+    font-size:10px;
+
+    letter-spacing:.18em;
+
+    color:#666;
+
 }
 
-.service-card:hover{
-    background-color:#111414;
+.active{
 
-    border-color:rgba(220,183,101,.25);
+    color:var(--green);
 
-    transform:translateY(-5px);
 }
 
-.service-number{
+
+.hero-logo{
+
     position:absolute;
 
-    top:32px;
-    right:35px;
+    left:50%;
 
-    color:#4f514d;
+    top:50%;
 
-    font-size:12px;
-    letter-spacing:.15em;
+    transform:translate(-50%,-50%);
+
+    width:180px;
+
+    height:180px;
+
+    object-fit:contain;
+
+    opacity:.98;
+
+    filter:
+        drop-shadow(
+            0 0 40px
+            rgba(230,196,107,.16)
+        );
+
 }
 
-.service-icon{
-    width:60px;
-    height:60px;
+
+.card-bottom{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+    right:0;
+
+    padding:25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    border-top:1px solid var(--line);
+
+    color:#626562;
+
+    font-size:9px;
+
+    letter-spacing:.2em;
+
+}
+
+
+/* floating */
+
+.float-card{
+
+    position:absolute;
+
+    z-index:4;
+
+    padding:16px;
+
+    border:1px solid var(--line);
+
+    border-radius:18px;
+
+    background:rgba(14,15,15,.85);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+    display:flex;
+
+    gap:12px;
+
+    align-items:center;
+
+    animation:float 5s ease-in-out infinite;
+
+}
+
+.float-card strong{
+
+    display:block;
+
+    font-size:12px;
+
+}
+
+.float-card small{
+
+    display:block;
+
+    color:#666;
+
+    margin-top:4px;
+
+    font-size:9px;
+
+}
+
+.float-one{
+
+    left:0;
+
+    bottom:85px;
+
+}
+
+.float-two{
+
+    right:0;
+
+    top:100px;
+
+    animation-delay:1.4s;
+
+}
+
+.float-icon{
+
+    width:35px;
+    height:35px;
 
     display:grid;
     place-items:center;
 
-    border:1px solid rgba(220,183,101,.25);
-    border-radius:18px;
+    border-radius:12px;
+
+    background:rgba(230,196,107,.1);
 
     color:var(--gold);
 
-    font-size:24px;
-
-    background:rgba(220,183,101,.035);
-
-    transition:.4s ease;
 }
 
-.service-card:hover .service-icon{
-    background:var(--gold);
-    color:#15120a;
+@keyframes float{
 
-    transform:rotate(-6deg) scale(1.08);
-}
-
-.service-card h3{
-    margin-top:30px;
-
-    font-size:29px;
-    line-height:1.1;
-
-    letter-spacing:-.035em;
-}
-
-.service-card p{
-    max-width:480px;
-
-    margin-top:16px;
-
-    color:#737570;
-
-    font-size:15px;
-    line-height:1.8;
-}
-
-.service-bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    margin-top:35px;
-}
-
-.service-link{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-
-    color:var(--gold-light);
-
-    font-size:13px;
-    font-weight:600;
-
-    transition:.3s ease;
-}
-
-.service-card:hover .service-link{
-    gap:17px;
-}
-
-.service-link span{
-    font-size:19px;
-}
-
-
-/* =========================================================
-   FEATURE CARD
-========================================================= */
-
-.service-card.featured{
-    grid-column:span 2;
-
-    min-height:360px;
-
-    background:
-        radial-gradient(
-            circle at 80% 50%,
-            rgba(220,183,101,.08),
-            transparent 35%
-        );
-}
-
-.service-card.featured h3{
-    font-size:42px;
-}
-
-
-/* =========================================================
-   CTA / CONFUSED
-========================================================= */
-
-.help{
-    position:relative;
-
-    padding:150px 0;
-
-    overflow:hidden;
-
-    border-top:1px solid var(--line);
-}
-
-.help-box{
-    position:relative;
-
-    display:grid;
-    grid-template-columns:1fr 420px;
-
-    align-items:center;
-
-    gap:70px;
-
-    padding:70px;
-
-    border:1px solid rgba(220,183,101,.18);
-    border-radius:35px;
-
-    background:
-        radial-gradient(
-            circle at 80% 40%,
-            rgba(220,183,101,.09),
-            transparent 35%
-        ),
-        #0e1010;
-}
-
-.help h2{
-    margin-top:25px;
-
-    max-width:760px;
-
-    font-size:clamp(40px,5.5vw,72px);
-
-    line-height:1;
-
-    letter-spacing:-.055em;
-}
-
-.help h2 em{
-    color:var(--gold-light);
-    font-family:var(--serif);
-}
-
-.help p{
-    max-width:600px;
-
-    margin-top:25px;
-
-    color:#7e807c;
-
-    font-size:16px;
-}
-
-.help-art{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.help-art img{
-    width:100%;
-    max-width:360px;
-
-    filter:
-        drop-shadow(0 25px 50px rgba(0,0,0,.5));
-
-    animation:
-        floating 5s ease-in-out infinite;
-}
-
-@keyframes floating{
     0%,100%{
         transform:translateY(0);
     }
@@ -807,6 +883,533 @@ body::after{
     50%{
         transform:translateY(-12px);
     }
+
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+
+    overflow:hidden;
+
+    border-top:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    margin-top:30px;
+
+}
+
+.marquee-track{
+
+    width:max-content;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    padding:19px 0;
+
+    animation:marquee 25s linear infinite;
+
+}
+
+.marquee span{
+
+    font-size:11px;
+
+    letter-spacing:.22em;
+
+    color:#676966;
+
+}
+
+.marquee b{
+
+    color:var(--gold);
+
+    font-size:10px;
+
+}
+
+@keyframes marquee{
+
+    to{
+        transform:translateX(-50%);
+    }
+
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+
+    width:min(1160px,calc(100% - 40px));
+
+    margin:0 auto;
+
+    padding:150px 0;
+
+}
+
+.section-label{
+
+    color:#8b8d89;
+
+    font-size:11px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+
+}
+
+.section-heading{
+
+    margin-top:20px;
+
+    display:grid;
+
+    grid-template-columns:1fr .7fr;
+
+    gap:70px;
+
+    align-items:end;
+
+}
+
+.section-heading h2{
+
+    font-size:clamp(40px,5vw,68px);
+
+    line-height:1;
+
+    letter-spacing:-.05em;
+
+}
+
+.section-heading h2 em{
+
+    color:var(--gold);
+
+    font-family:"Playfair Display",serif;
+
+}
+
+.section-heading p{
+
+    color:#737673;
+
+    line-height:1.8;
+
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.service-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    margin-top:65px;
+
+    border-top:1px solid var(--line);
+
+    border-left:1px solid var(--line);
+
+}
+
+
+.service-card{
+
+    min-height:310px;
+
+    padding:34px;
+
+    border-right:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    position:relative;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:.45s ease;
+
+}
+
+.service-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    right:-100px;
+    bottom:-100px;
+
+    border-radius:50%;
+
+    background:rgba(230,196,107,.08);
+
+    filter:blur(50px);
+
+    opacity:0;
+
+    transition:.5s ease;
+
+}
+
+.service-card:hover{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.025),
+            transparent
+        );
+
+}
+
+.service-card:hover::before{
+
+    opacity:1;
+
+}
+
+
+.service-number{
+
+    position:absolute;
+
+    top:30px;
+
+    right:30px;
+
+    color:#505350;
+
+    font-size:11px;
+
+}
+
+
+.service-icon{
+
+    width:55px;
+    height:55px;
+
+    display:grid;
+
+    place-items:center;
+
+    border:1px solid var(--line-gold);
+
+    border-radius:16px;
+
+    color:var(--gold);
+
+    font-size:21px;
+
+    margin-bottom:70px;
+
+    transition:.4s ease;
+
+}
+
+.service-card:hover .service-icon{
+
+    background:var(--gold);
+
+    color:#111;
+
+    transform:rotate(-5deg) scale(1.05);
+
+}
+
+
+.service-card h3{
+
+    font-size:25px;
+
+    font-weight:500;
+
+    letter-spacing:-.03em;
+
+}
+
+.service-card p{
+
+    margin-top:13px;
+
+    max-width:500px;
+
+    color:#707370;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+}
+
+.service-action{
+
+    display:inline-flex;
+
+    margin-top:22px;
+
+    color:var(--gold);
+
+    font-size:12px;
+
+    letter-spacing:.05em;
+
+}
+
+
+/* =========================================================
+   WHY
+========================================================= */
+
+.why{
+
+    border-top:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(230,196,107,.06),
+            transparent 35%
+        );
+
+}
+
+
+.why-content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:100px;
+
+    align-items:center;
+
+}
+
+.big-statement{
+
+    font-size:clamp(38px,5vw,65px);
+
+    line-height:1.05;
+
+    letter-spacing:-.05em;
+
+}
+
+.big-statement span{
+
+    color:var(--gold);
+
+    font-family:"Playfair Display",serif;
+
+    font-style:italic;
+
+}
+
+.why-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.why-item{
+
+    padding:25px 0;
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.why-item:first-child{
+
+    border-top:1px solid var(--line);
+
+}
+
+.why-item strong{
+
+    font-size:15px;
+
+}
+
+.why-item p{
+
+    margin-top:8px;
+
+    color:#6e716e;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-grid{
+
+    margin-top:60px;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    border-top:1px solid var(--line);
+
+    border-left:1px solid var(--line);
+
+}
+
+.process{
+
+    padding:30px;
+
+    min-height:220px;
+
+    border-right:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.process-number{
+
+    color:var(--gold);
+
+    font-size:12px;
+
+}
+
+.process h3{
+
+    margin-top:55px;
+
+    font-size:20px;
+
+}
+
+.process p{
+
+    margin-top:10px;
+
+    color:#6f726f;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
+   CONFUSED CTA
+========================================================= */
+
+.confused{
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:1px solid var(--line);
+
+    border-radius:32px;
+
+    background:
+
+        radial-gradient(
+            circle at 75% 40%,
+            rgba(230,196,107,.09),
+            transparent 35%
+        ),
+
+        #0d0f0f;
+
+    display:grid;
+
+    grid-template-columns:1fr 330px;
+
+    align-items:center;
+
+    padding:60px;
+
+}
+
+.confused h2{
+
+    margin-top:18px;
+
+    font-size:clamp(35px,5vw,58px);
+
+    line-height:1;
+
+    letter-spacing:-.05em;
+
+}
+
+.confused h2 em{
+
+    font-family:"Playfair Display",serif;
+
+    color:var(--gold);
+
+}
+
+.confused p{
+
+    margin-top:20px;
+
+    color:#777a77;
+
+    max-width:560px;
+
+    line-height:1.7;
+
+}
+
+.confused-illustration{
+
+    width:100%;
+
+    max-width:300px;
+
+    justify-self:end;
+
+    opacity:.95;
+
 }
 
 
@@ -814,282 +1417,643 @@ body::after{
    FOOTER
 ========================================================= */
 
-footer{
-    padding:50px 0 35px;
+.footer{
+
+    width:min(1160px,calc(100% - 40px));
+
+    margin:auto;
+
+    padding:60px 0 35px;
 
     border-top:1px solid var(--line);
+
 }
 
 .footer-top{
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
 }
 
-.footer-tagline{
-    color:#686a66;
-    font-size:13px;
+.footer p{
+
+    color:#5f625f;
+
+    font-size:12px;
+
 }
 
 .footer-bottom{
+
+    margin-top:60px;
+
     display:flex;
+
     justify-content:space-between;
 
-    margin-top:70px;
+    color:#4e514e;
 
-    color:#4e504d;
+    font-size:10px;
 
-    font-size:11px;
 }
 
 
 /* =========================================================
-   REVEAL
+   MODAL
 ========================================================= */
 
-.reveal{
-    opacity:0;
-    transform:translateY(35px);
+.modal{
 
-    transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.2,.8,.2,1);
+    position:fixed;
+
+    inset:0;
+
+    z-index:200;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.78);
+
+    backdrop-filter:blur(18px);
+
 }
 
-.reveal.visible{
-    opacity:1;
-    transform:none;
+.modal.active{
+
+    display:flex;
+
+}
+
+.modal-box{
+
+    width:min(1000px,100%);
+
+    max-height:90svh;
+
+    overflow:auto;
+
+    background:#0d0f0f;
+
+    border:1px solid var(--line-gold);
+
+    border-radius:28px;
+
+    box-shadow:0 40px 120px rgba(0,0,0,.7);
+
+    animation:modalIn .4s ease;
+
+}
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px) scale(.97);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+
+.modal-head{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:2;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+    padding:28px;
+
+    background:rgba(13,15,15,.95);
+
+    backdrop-filter:blur(20px);
+
+    border-bottom:1px solid var(--line);
+
+}
+
+.modal-head small{
+
+    color:var(--gold);
+
+    letter-spacing:.15em;
+
+    text-transform:uppercase;
+
+}
+
+.modal-head h2{
+
+    margin-top:8px;
+
+    font-size:30px;
+
+}
+
+.modal-close{
+
+    width:42px;
+    height:42px;
+
+    flex:none;
+
+    border:1px solid var(--line);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+.package-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+}
+
+.package{
+
+    padding:28px;
+
+    min-height:280px;
+
+    border-right:1px solid var(--line);
+
+    border-bottom:1px solid var(--line);
+
+    transition:.3s ease;
+
+}
+
+.package:hover{
+
+    background:rgba(255,255,255,.025);
+
+}
+
+.package.featured{
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(230,196,107,.08),
+            transparent
+        );
+
+}
+
+.package-label{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    color:#666;
+
+    font-size:10px;
+
+    letter-spacing:.15em;
+
+}
+
+.package h3{
+
+    margin-top:30px;
+
+    font-size:22px;
+
+}
+
+.package-description{
+
+    margin-top:10px;
+
+    color:#707370;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+.price{
+
+    margin-top:25px;
+
+    color:var(--gold);
+
+    font-size:26px;
+
+    font-weight:600;
+
+}
+
+.price small{
+
+    font-size:11px;
+
+    color:#656865;
+
+    font-weight:400;
+
+}
+
+.package-button{
+
+    margin-top:20px;
+
+    display:inline-flex;
+
+    padding:11px 15px;
+
+    border:1px solid var(--line-gold);
+
+    border-radius:100px;
+
+    color:var(--gold);
+
+    font-size:11px;
+
+    transition:.25s ease;
+
+}
+
+.package-button:hover{
+
+    background:var(--gold);
+
+    color:#111;
+
 }
 
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   MOBILE
 ========================================================= */
 
 @media(max-width:900px){
 
     .nav-links{
-        display:none;
-    }
 
-    .nav{
-        height:68px;
+        display:none;
+
     }
 
     .nav-cta{
-        padding:12px 16px;
+
+        display:none;
+
+    }
+
+    .menu{
+
+        display:grid;
+
+        place-items:center;
+
     }
 
     .hero{
-        padding-top:145px;
+
+        grid-template-columns:1fr;
+
+        padding-top:130px;
+
     }
 
-    .section-intro{
+    .hero-visual{
+
+        min-height:500px;
+
+    }
+
+    .section-heading{
+
         grid-template-columns:1fr;
+
         gap:25px;
+
     }
 
-    .service-card.featured{
-        grid-column:span 2;
-    }
+    .why-content{
 
-    .help-box{
         grid-template-columns:1fr;
-        padding:50px;
+
+        gap:55px;
+
     }
 
-    .help-art{
-        order:-1;
+    .process-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
     }
+
+    .confused{
+
+        grid-template-columns:1fr;
+
+        padding:40px;
+
+    }
+
+    .confused-illustration{
+
+        justify-self:center;
+
+        margin-top:30px;
+
+    }
+
 }
 
 
-/* =========================================================
-   RESPONSIVE — MOBILE
-========================================================= */
-
-@media(max-width:620px){
-
-    .container{
-        width:min(calc(100% - 32px), var(--max));
-    }
-
-    .nav-wrap{
-        top:10px;
-        width:calc(100% - 20px);
-    }
+@media(max-width:600px){
 
     .nav{
-        padding:8px 9px 8px 12px;
+
+        top:10px;
+
+        width:calc(100% - 20px);
+
     }
 
-    .brand img{
-        width:39px;
-        height:39px;
-    }
+    .logo{
 
-    .brand-text strong{
-        font-size:14px;
-    }
+        width:43px;
+        height:43px;
 
-    .nav-cta{
-        font-size:11px;
-        padding:11px 13px;
     }
 
     .hero{
-        min-height:auto;
-        padding:
-            145px 0
-            90px;
+
+        width:calc(100% - 30px);
+
+        padding-top:115px;
+
     }
 
     .hero h1{
-        font-size:
-            clamp(50px,15vw,76px);
+
+        font-size:clamp(48px,14vw,70px);
+
     }
 
     .hero-description{
-        font-size:16px;
-        line-height:1.7;
+
+        font-size:15px;
+
+        line-height:1.65;
+
     }
 
     .hero-proof{
-        margin-top:55px;
-    }
 
-    .proof{
-        min-width:0;
+        gap:13px;
+
     }
 
     .proof strong{
-        font-size:14px;
+
+        font-size:11px;
+
     }
 
     .proof span{
-        font-size:9px;
+
+        font-size:8px;
+
     }
 
-    .proof-line{
-        margin:0 14px;
+    .hero-visual{
+
+        min-height:430px;
+
     }
 
-    .services{
-        padding:
-            100px 0
-            110px;
+    .orbit{
+
+        width:330px;
+        height:330px;
+
     }
 
-    .section-title{
-        font-size:46px;
-    }
+    .hero-card{
 
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
-    .service-card,
-    .service-card.featured{
-        grid-column:auto;
+        width:280px;
 
         min-height:360px;
 
-        padding:28px;
     }
 
-    .service-card.featured h3{
-        font-size:34px;
+    .hero-logo{
+
+        width:135px;
+        height:135px;
+
     }
 
-    .service-card h3{
-        font-size:26px;
+    .float-one{
+
+        left:-5px;
+
+        bottom:45px;
+
     }
 
-    .help{
+    .float-two{
+
+        right:-5px;
+
+        top:55px;
+
+    }
+
+    .section{
+
+        width:calc(100% - 30px);
+
         padding:100px 0;
+
     }
 
-    .help-box{
-        padding:35px 25px;
-        border-radius:25px;
+    .service-grid{
+
+        grid-template-columns:1fr;
+
+        margin-top:45px;
+
     }
 
-    .help h2{
-        font-size:43px;
+    .service-card{
+
+        min-height:290px;
+
+    }
+
+    .service-icon{
+
+        margin-bottom:55px;
+
+    }
+
+    .process-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .confused{
+
+        padding:30px;
+
+        border-radius:24px;
+
+    }
+
+    .package-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .package{
+
+        border-right:0;
+
+    }
+
+    .modal-box{
+
+        border-radius:20px;
+
     }
 
     .footer-top{
+
         align-items:flex-start;
+
         flex-direction:column;
-        gap:25px;
+
+        gap:20px;
+
     }
 
     .footer-bottom{
+
         flex-direction:column;
-        gap:8px;
-        margin-top:50px;
+
+        gap:10px;
+
     }
+
 }
 
 
 /* =========================================================
-   ACCESSIBILITY
+   REDUCED MOTION
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
-    html{
-        scroll-behavior:auto;
-    }
-
     *,
     *::before,
     *::after{
+
         animation-duration:.01ms !important;
+
         animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
+
+        scroll-behavior:auto !important;
+
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
 
-<!-- =======================================================
+<div class="background-grid"></div>
+
+<div class="noise"></div>
+
+
+
+<!-- =====================================================
      NAVBAR
-======================================================= -->
+===================================================== -->
 
-<div class="nav-wrap">
-
-<nav class="nav" id="navbar">
+<header class="nav" id="navbar">
 
     <a href="#beranda" class="brand">
 
         <img
             src="logo.png"
+            class="logo"
             alt="Logo XYNY Studio"
         >
 
-        <span class="brand-text">
+        <div class="brand-text">
 
-            <strong>XYNY</strong>
+            <span class="brand-name">
+                XYNY
+            </span>
 
-            <small>STUDIO</small>
+            <span class="brand-sub">
+                STUDIO
+            </span>
 
-        </span>
+        </div>
 
     </a>
 
 
-    <div class="nav-links">
+    <nav class="nav-links">
 
-        <a
-            href="#beranda"
-            class="active"
-        >
+        <a href="#beranda">
             Beranda
         </a>
 
@@ -1109,130 +2073,217 @@ footer{
             Kontak
         </a>
 
-    </div>
+    </nav>
 
 
     <a
-        href="#kontak"
         class="nav-cta"
+        href="#layanan"
     >
-        Mulai Sekarang ↗
+
+        Mulai Sekarang
+
+        <span>↗</span>
+
     </a>
 
-</nav>
 
-</div>
+    <button
+        class="menu"
+        onclick="scrollToServices()"
+        aria-label="Menu"
+    >
+        ☰
+    </button>
+
+</header>
 
 
-
-<!-- =======================================================
-     HERO
-======================================================= -->
 
 <main>
 
-<section
-    class="hero"
-    id="beranda"
->
 
-    <div class="hero-grid"></div>
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-    <div class="hero-glow"></div>
+<section class="hero" id="beranda">
 
 
-    <div class="container">
+    <div>
 
-        <div class="hero-content reveal">
+        <div class="eyebrow">
 
-            <div class="eyebrow">
-                MENERIMA PROYEK BARU
+            <span class="eyebrow-dot"></span>
+
+            MENERIMA PROYEK BARU
+
+        </div>
+
+
+        <h1>
+
+            Ide yang baik
+
+            <span>
+                pantas terlihat luar biasa.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            XYNY Studio membantu mengubah
+            <strong>ide, kebutuhan, dan cerita</strong>
+            menjadi karya digital yang
+            <strong>profesional, menarik, dan siap digunakan.</strong>
+
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="#layanan"
+                class="button button-primary"
+            >
+                Lihat Layanan
+                <span>↗</span>
+            </a>
+
+
+            <a
+                href="#kontak"
+                class="button button-secondary"
+            >
+                Konsultasi Gratis
+            </a>
+
+        </div>
+
+
+        <div class="hero-proof">
+
+            <div class="proof">
+
+                <strong>01</strong>
+
+                <span>IDE</span>
+
             </div>
 
+            <div class="proof-line"></div>
 
-            <h1>
+            <div class="proof">
 
-                Ide yang baik
+                <strong>02</strong>
 
-                <span class="serif">
-                    pantas terlihat luar biasa.
+                <span>RANCANG</span>
+
+            </div>
+
+            <div class="proof-line"></div>
+
+            <div class="proof">
+
+                <strong>03</strong>
+
+                <span>WUJUDKAN</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- VISUAL -->
+
+    <div class="hero-visual">
+
+
+        <div class="orbit"></div>
+
+
+        <div class="hero-card">
+
+            <div class="card-top">
+
+                <span>
+                    XYNY / 2026
                 </span>
 
-            </h1>
-
-
-            <p class="hero-description">
-
-                XYNY Studio membantu mengubah ide,
-                kebutuhan, dan cerita Anda menjadi
-                karya digital yang
-                <strong>
-                    profesional, menarik, dan siap digunakan.
-                </strong>
-
-            </p>
-
-
-            <div class="hero-actions">
-
-                <a
-                    href="#layanan"
-                    class="button button-primary"
-                >
-                    Lihat Layanan
-                    <span>↗</span>
-                </a>
-
-
-                <a
-                    href="#kontak"
-                    class="button button-secondary"
-                >
-                    Konsultasi Gratis
-                </a>
+                <span class="active">
+                    ● AKTIF
+                </span>
 
             </div>
 
 
-            <div class="hero-proof">
-
-                <div class="proof">
-
-                    <strong>01</strong>
-
-                    <span>
-                        Pahami
-                    </span>
-
-                </div>
+            <img
+                src="logo.png"
+                alt="XYNY"
+                class="hero-logo"
+            >
 
 
-                <div class="proof-line"></div>
+            <div class="card-bottom">
+
+                <span>
+                    KREATIF
+                </span>
+
+                <span>
+                    DIGITAL
+                </span>
+
+                <span>
+                    STRATEGIS
+                </span>
+
+            </div>
+
+        </div>
 
 
-                <div class="proof">
+        <div class="float-card float-one">
 
-                    <strong>02</strong>
+            <span class="float-icon">
+                ✦
+            </span>
 
-                    <span>
-                        Rancang
-                    </span>
+            <div>
 
-                </div>
+                <strong>
+                    Profesional
+                </strong>
+
+                <small>
+                    Tampilan yang meyakinkan
+                </small>
+
+            </div>
+
+        </div>
 
 
-                <div class="proof-line"></div>
+        <div class="float-card float-two">
 
+            <span class="float-icon">
+                ↗
+            </span>
 
-                <div class="proof">
+            <div>
 
-                    <strong>03</strong>
+                <strong>
+                    Siap digunakan
+                </strong>
 
-                    <span>
-                        Wujudkan
-                    </span>
-
-                </div>
+                <small>
+                    Bukan sekadar konsep
+                </small>
 
             </div>
 
@@ -1244,50 +2295,81 @@ footer{
 
 
 
-<!-- =======================================================
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>WEBSITE</span>
+        <b>✦</b>
+
+        <span>UNDANGAN DIGITAL</span>
+        <b>✦</b>
+
+        <span>GEREJA</span>
+        <b>✦</b>
+
+        <span>AKADEMIK</span>
+        <b>✦</b>
+
+        <span>DESAIN</span>
+        <b>✦</b>
+
+        <span>VIDEO</span>
+        <b>✦</b>
+
+        <span>SOSIAL MEDIA</span>
+        <b>✦</b>
+
+        <span>WEBSITE</span>
+        <b>✦</b>
+
+        <span>UNDANGAN DIGITAL</span>
+        <b>✦</b>
+
+        <span>GEREJA</span>
+        <b>✦</b>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
      SERVICES
-======================================================= -->
+===================================================== -->
 
-<section
-    class="services"
-    id="layanan"
->
-
-<div class="container">
+<section class="section" id="layanan">
 
 
-    <div class="section-intro reveal">
-
-        <div>
-
-            <div class="eyebrow">
-                YANG BISA KAMI BANTU
-            </div>
+    <div class="section-label">
+        APA YANG BISA KAMI BANTU
+    </div>
 
 
-            <h2 class="section-title">
+    <div class="section-heading">
 
-                Tidak semua
-                <br>
+        <h2>
 
-                <em>harus dimulai dari nol.</em>
+            Pilih kebutuhanmu.
 
-            </h2>
+            <br>
 
-        </div>
+            <em>Kami siapkan sisanya.</em>
+
+        </h2>
 
 
-        <p class="section-copy">
+        <p>
 
-            Anda membawa kebutuhan.
-            Kami membantu mengubahnya menjadi
-            sesuatu yang lebih jelas, lebih rapi,
-            lebih menarik, dan lebih siap digunakan.
-
-            <br><br>
-
-            Pilih kebutuhan Anda untuk melihat
-            contoh karya dan layanan yang tersedia.
+            Tidak perlu tahu istilah teknis.
+            Pilih saja apa yang sedang kamu butuhkan.
+            Setelah itu kamu dapat melihat pilihan layanan,
+            harga, dan contoh hasilnya.
 
         </p>
 
@@ -1298,746 +2380,504 @@ footer{
     <div class="service-grid">
 
 
-        <!-- =================================================
-             01 WEBSITE
-        ================================================== -->
+        <!-- WEBSITE -->
 
-        <article class="service-card featured reveal">
+        <article
+            class="service-card"
+            onclick="openService('website')"
+        >
 
             <span class="service-number">
                 01
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    &lt;/&gt;
-                </div>
-
-
-                <h3>
-                    Website & Pemrograman
-                </h3>
-
-
-                <p>
-
-                    Website usaha, organisasi,
-                    profesional, halaman promosi,
-                    portofolio, sistem informasi,
-                    dan berbagai kebutuhan digital.
-
-                </p>
-
+            <div class="service-icon">
+                &lt;/&gt;
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Bangun kehadiran digital
-                </span>
+            <h3>
+                Website & Pemrograman
+            </h3>
 
 
-                <a
-                    href="website.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Website bisnis, gereja, organisasi,
+                profesional, halaman promosi,
+                toko daring, dan kebutuhan digital.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             02 UNDANGAN
-        ================================================== -->
+        <!-- UNDANGAN -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('undangan')"
+        >
 
             <span class="service-number">
                 02
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    ♡
-                </div>
-
-
-                <h3>
-                    Undangan Digital
-                </h3>
-
-
-                <p>
-
-                    Pernikahan, wisuda,
-                    ulang tahun, acara keluarga,
-                    dan berbagai momen penting
-                    yang ingin dibagikan dengan cara
-                    yang lebih berkesan.
-
-                </p>
-
+            <div class="service-icon">
+                ♡
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Momen yang layak dikenang
-                </span>
+            <h3>
+                Undangan Digital
+            </h3>
 
 
-                <a
-                    href="undangan.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Pernikahan, wisuda, ulang tahun,
+                acara keluarga, dan momen
+                penting lainnya.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             03 GEREJA
-        ================================================== -->
+        <!-- GEREJA -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('gereja')"
+        >
 
             <span class="service-number">
                 03
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    ⌂
-                </div>
-
-
-                <h3>
-                    Gereja & Organisasi
-                </h3>
-
-
-                <p>
-
-                    Website, publikasi kegiatan,
-                    informasi organisasi, materi pelayanan,
-                    dokumentasi, dan kebutuhan digital
-                    lainnya.
-
-                </p>
-
+            <div class="service-icon">
+                ⌂
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Lebih tertata. Lebih mudah dijangkau.
-                </span>
+            <h3>
+                Gereja & Organisasi
+            </h3>
 
 
-                <a
-                    href="gereja.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Website, publikasi, informasi kegiatan,
+                materi pelayanan, dan kebutuhan
+                digital organisasi.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             04 AKADEMIK
-        ================================================== -->
+        <!-- AKADEMIK -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('akademik')"
+        >
 
             <span class="service-number">
                 04
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    Aa
-                </div>
-
-
-                <h3>
-                    Mahasiswa & Akademik
-                </h3>
-
-
-                <p>
-
-                    Penataan dokumen, penyuntingan,
-                    presentasi, visualisasi materi,
-                    dan kebutuhan pendukung akademik.
-
-                </p>
-
+            <div class="service-icon">
+                Aa
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Ide lebih mudah dipahami
-                </span>
+            <h3>
+                Mahasiswa & Akademik
+            </h3>
 
 
-                <a
-                    href="akademik.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Penataan dokumen, presentasi,
+                visualisasi materi, penyuntingan,
+                dan kebutuhan pendukung akademik.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             05 DESIGN
-        ================================================== -->
+        <!-- DESIGN -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('desain')"
+        >
 
             <span class="service-number">
                 05
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    ✦
-                </div>
-
-
-                <h3>
-                    Desain & Identitas
-                </h3>
-
-
-                <p>
-
-                    Logo, poster, presentasi,
-                    materi promosi, identitas visual,
-                    dan kebutuhan desain lainnya.
-
-                </p>
-
+            <div class="service-icon">
+                ✳
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Membuat kesan pertama berarti
-                </span>
+            <h3>
+                Desain & Identitas
+            </h3>
 
 
-                <a
-                    href="desain.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Logo, poster, presentasi, materi promosi,
+                identitas visual, dan kebutuhan desain.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             06 VIDEO
-        ================================================== -->
+        <!-- VIDEO -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('video')"
+        >
 
             <span class="service-number">
                 06
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    ▶
-                </div>
-
-
-                <h3>
-                    Video & Media
-                </h3>
-
-
-                <p>
-
-                    Penyuntingan video,
-                    video pendek, subtitle,
-                    konten sosial media,
-                    dan kebutuhan visual.
-
-                </p>
-
+            <div class="service-icon">
+                ▶
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Cerita dalam setiap gambar
-                </span>
+            <h3>
+                Video & Media
+            </h3>
 
 
-                <a
-                    href="video.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Penyuntingan video, video pendek,
+                subtitle, konten sosial media,
+                dan kebutuhan visual.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
 
-        <!-- =================================================
-             07 SOCIAL
-        ================================================== -->
+        <!-- SOCIAL -->
 
-        <article class="service-card reveal">
+        <article
+            class="service-card"
+            onclick="openService('sosial')"
+        >
 
             <span class="service-number">
                 07
             </span>
 
 
-            <div>
-
-                <div class="service-icon">
-                    ◎
-                </div>
-
-
-                <h3>
-                    Sosial Media & Branding
-                </h3>
-
-
-                <p>
-
-                    Konsep konten, materi publikasi,
-                    penulisan, dan tampilan akun yang
-                    lebih konsisten dan profesional.
-
-                </p>
-
+            <div class="service-icon">
+                ◎
             </div>
 
 
-            <div class="service-bottom">
-
-                <span>
-                    Tampil konsisten. Terlihat serius.
-                </span>
+            <h3>
+                Sosial Media & Branding
+            </h3>
 
 
-                <a
-                    href="sosial-media.html"
-                    class="service-link"
-                >
-                    Lihat portofolio
-                    <span>↗</span>
-                </a>
+            <p>
+                Konsep konten, materi publikasi,
+                penulisan, dan tampilan akun
+                yang lebih konsisten.
+            </p>
 
-            </div>
+
+            <span class="service-action">
+                Lihat pilihan & harga →
+            </span>
 
         </article>
 
 
     </div>
 
-</div>
-
 </section>
 
 
 
-<!-- =======================================================
+<!-- =====================================================
      WHY
-======================================================= -->
+===================================================== -->
 
-<section
-    class="services"
-    id="mengapa"
->
+<section class="section why" id="mengapa">
 
-<div class="container">
+    <div class="why-content">
 
-    <div class="section-intro reveal">
 
         <div>
 
-            <div class="eyebrow">
+            <div class="section-label">
                 MENGAPA XYNY
             </div>
 
+            <div class="big-statement">
 
-            <h2 class="section-title">
+                Bukan hanya membuatnya
 
-                Bukan sekadar
-                <br>
+                <span>
+                    bagus.
+                </span>
 
-                <em>dibuat.</em>
+                <br><br>
 
-            </h2>
+                Kami membuatnya
+                <span>
+                    berguna.
+                </span>
+
+            </div>
 
         </div>
 
 
-        <p class="section-copy">
-
-            Kami tidak mengejar hasil yang hanya
-            terlihat bagus di layar.
-
-            <br><br>
-
-            Setiap karya harus memiliki tujuan:
-            membuat orang memahami, mempercayai,
-            mengingat, atau mengambil tindakan.
-
-        </p>
-
-    </div>
+        <div class="why-list">
 
 
-    <div class="service-grid">
+            <div class="why-item">
 
-
-        <article class="service-card reveal">
-
-            <span class="service-number">
-                01
-            </span>
-
-            <div>
-
-                <div class="service-icon">
-                    ◇
-                </div>
-
-                <h3>
+                <strong>
                     Terlihat profesional
-                </h3>
+                </strong>
 
                 <p>
-                    Tampilan yang rapi membangun
-                    kepercayaan sebelum satu kata pun
-                    dibaca.
+                    Tampilan pertama membentuk kepercayaan.
+                    Karena itu setiap karya dirancang
+                    agar terlihat rapi dan meyakinkan.
                 </p>
 
             </div>
 
-        </article>
 
+            <div class="why-item">
 
-        <article class="service-card reveal">
-
-            <span class="service-number">
-                02
-            </span>
-
-            <div>
-
-                <div class="service-icon">
-                    ↗
-                </div>
-
-                <h3>
-                    Dibuat untuk digunakan
-                </h3>
+                <strong>
+                    Mudah digunakan
+                </strong>
 
                 <p>
-                    Bukan hanya indah. Kami memikirkan
-                    bagaimana karya tersebut digunakan
-                    oleh orang nyata.
+                    Kami tidak ingin membuat sesuatu
+                    yang hanya bagus dilihat tetapi
+                    sulit digunakan.
                 </p>
 
             </div>
 
-        </article>
 
+            <div class="why-item">
 
-        <article class="service-card reveal">
-
-            <span class="service-number">
-                03
-            </span>
-
-            <div>
-
-                <div class="service-icon">
-                    ∞
-                </div>
-
-                <h3>
-                    Bisa berkembang
-                </h3>
+                <strong>
+                    Dibuat sesuai kebutuhan
+                </strong>
 
                 <p>
-                    Karya digital sebaiknya tidak berhenti
-                    pada satu hari. Struktur dibuat agar
-                    dapat dikembangkan.
+                    Tidak semua orang membutuhkan
+                    solusi yang sama. Karena itu pilihan
+                    dibuat berdasarkan kebutuhan nyata.
                 </p>
 
             </div>
 
-        </article>
 
+            <div class="why-item">
 
-        <article class="service-card reveal">
-
-            <span class="service-number">
-                04
-            </span>
-
-            <div>
-
-                <div class="service-icon">
-                    +
-                </div>
-
-                <h3>
-                    Tidak perlu mengerti teknis
-                </h3>
+                <strong>
+                    Bisa dikembangkan
+                </strong>
 
                 <p>
-                    Anda cukup menjelaskan kebutuhan.
-                    Bagian teknis kami yang membantu
-                    menerjemahkannya.
+                    Karya yang dibuat hari ini tetap
+                    dapat dikembangkan ketika kebutuhanmu
+                    bertambah.
                 </p>
 
             </div>
 
-        </article>
 
+        </div>
 
     </div>
-
-</div>
 
 </section>
 
 
 
-<!-- =======================================================
+<!-- =====================================================
      PROCESS
-======================================================= -->
+===================================================== -->
 
-<section
-    class="services"
-    id="proses"
->
-
-<div class="container">
-
-    <div class="section-intro reveal">
-
-        <div>
-
-            <div class="eyebrow">
-                CARA KERJA
-            </div>
+<section class="section" id="proses">
 
 
-            <h2 class="section-title">
-
-                Anda punya
-                <br>
-
-                <em>kebutuhan.</em>
-
-            </h2>
-
-        </div>
+    <div class="section-label">
+        CARA KERJA
+    </div>
 
 
-        <p class="section-copy">
+    <div class="section-heading">
 
-            Tidak perlu membuat brief rumit.
-            Ceritakan saja apa yang ingin dibuat,
-            untuk siapa, dan hasil seperti apa
-            yang Anda harapkan.
+        <h2>
 
+            Kamu ceritakan.
+
+            <br>
+
+            <em>Kami wujudkan.</em>
+
+        </h2>
+
+
+        <p>
+            Proses dibuat sederhana.
+            Kamu tidak perlu menjadi ahli desain,
+            pemrograman, atau pemasaran.
         </p>
 
     </div>
 
 
-    <div class="service-grid">
+
+    <div class="process-grid">
 
 
-        <article class="service-card reveal">
+        <div class="process">
 
-            <span class="service-number">
+            <span class="process-number">
                 01
             </span>
 
-            <div>
+            <h3>
+                Ceritakan
+            </h3>
 
-                <div class="service-icon">
-                    01
-                </div>
+            <p>
+                Jelaskan apa yang kamu perlukan
+                melalui WhatsApp.
+            </p>
 
-                <h3>
-                    Ceritakan
-                </h3>
-
-                <p>
-                    Sampaikan kebutuhan,
-                    ide, bahan, atau contoh yang Anda punya.
-                </p>
-
-            </div>
-
-        </article>
+        </div>
 
 
-        <article class="service-card reveal">
+        <div class="process">
 
-            <span class="service-number">
+            <span class="process-number">
                 02
             </span>
 
-            <div>
+            <h3>
+                Pilih
+            </h3>
 
-                <div class="service-icon">
-                    02
-                </div>
+            <p>
+                Kami bantu menentukan pilihan
+                yang paling sesuai.
+            </p>
 
-                <h3>
-                    Kami susun
-                </h3>
-
-                <p>
-                    Kebutuhan diterjemahkan menjadi
-                    konsep dan arah pengerjaan.
-                </p>
-
-            </div>
-
-        </article>
+        </div>
 
 
-        <article class="service-card reveal">
+        <div class="process">
 
-            <span class="service-number">
+            <span class="process-number">
                 03
             </span>
 
-            <div>
+            <h3>
+                Kerjakan
+            </h3>
 
-                <div class="service-icon">
-                    03
-                </div>
+            <p>
+                Konsep diterjemahkan menjadi
+                karya yang siap digunakan.
+            </p>
 
-                <h3>
-                    Kami kerjakan
-                </h3>
-
-                <p>
-                    Proyek dikembangkan dengan memperhatikan
-                    fungsi, tampilan, dan kebutuhan Anda.
-                </p>
-
-            </div>
-
-        </article>
+        </div>
 
 
-        <article class="service-card reveal">
+        <div class="process">
 
-            <span class="service-number">
+            <span class="process-number">
                 04
             </span>
 
-            <div>
+            <h3>
+                Selesai
+            </h3>
 
-                <div class="service-icon">
-                    ✓
-                </div>
+            <p>
+                Hasil akhir disiapkan sesuai
+                kebutuhan proyek.
+            </p>
 
-                <h3>
-                    Siap digunakan
-                </h3>
-
-                <p>
-                    Hasil akhir disiapkan sesuai
-                    kebutuhan penggunaan Anda.
-                </p>
-
-            </div>
-
-        </article>
+        </div>
 
 
     </div>
-
-</div>
 
 </section>
 
 
 
-<!-- =======================================================
-     HELP CTA
-======================================================= -->
+<!-- =====================================================
+     CONFUSED CTA
+===================================================== -->
 
-<section
-    class="help"
-    id="kontak"
->
+<section class="section" id="kontak">
 
-<div class="container">
 
-    <div class="help-box reveal">
+    <div class="confused">
 
 
         <div>
 
-            <div class="eyebrow">
+            <div class="section-label">
                 MASIH BINGUNG?
             </div>
 
@@ -2047,33 +2887,31 @@ footer{
                 Tidak tahu harus
                 <br>
 
-                mulai dari <em>mana?</em>
+                <em>memilih yang mana?</em>
 
             </h2>
 
 
             <p>
 
-                Tidak apa-apa.
-
-                Ceritakan saja kebutuhan Anda.
-                Kami bantu menentukan apa yang paling
-                masuk akal untuk dibuat.
+                Tidak masalah.
+                Ceritakan saja apa yang ingin kamu buat.
+                Kami bantu menerjemahkannya menjadi
+                pilihan yang jelas.
 
             </p>
 
 
-            <!-- GANTI NOMOR INI -->
+            <br>
+
 
             <a
-                href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20berkonsultasi%20tentang%20sebuah%20proyek."
-                target="_blank"
-                rel="noopener"
+                href="#"
+                onclick="openWhatsApp(); return false;"
                 class="button button-primary"
-                style="margin-top:30px;"
             >
 
-                Ceritakan Kebutuhan Saya
+                Ceritakan kebutuhanmu
 
                 <span>↗</span>
 
@@ -2082,91 +2920,161 @@ footer{
         </div>
 
 
-        <div class="help-art">
 
-            <!--
-                ILUSTRASI EKSTERNAL
-                Dapat diganti dengan gambar sendiri.
+        <!-- ilustrasi sederhana yang tidak bergantung
+             pada gambar eksternal -->
 
-                Pilihan konsep:
-                ilustrasi orang berpikir/bertanya.
-            -->
+        <svg
+            class="confused-illustration"
+            viewBox="0 0 400 400"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="Ilustrasi orang sedang berpikir"
+        >
 
-            <img
-                src="https://stories.freepiklabs.com/storage/85202/questions-rafiki-3217.png"
-                alt="Ilustrasi orang sedang mencari solusi"
-                loading="lazy"
-                onerror="this.style.display='none'; document.getElementById('fallbackArt').style.display='flex';"
-            >
+            <circle
+                cx="200"
+                cy="200"
+                r="155"
+                fill="rgba(230,196,107,.04)"
+                stroke="rgba(230,196,107,.15)"
+            />
 
+            <circle
+                cx="200"
+                cy="125"
+                r="48"
+                fill="#dedbd2"
+            />
 
-            <!-- FALLBACK JIKA GAMBAR EKSTERNAL TIDAK TERSEDIA -->
+            <path
+                d="M145 195
+                   Q200 165 255 195
+                   L280 310
+                   Q200 345 120 310
+                   Z"
+                fill="#dedbd2"
+            />
 
-            <div
-                id="fallbackArt"
-                style="
-                    display:none;
-                    width:260px;
-                    height:260px;
-                    align-items:center;
-                    justify-content:center;
-                    border:1px solid rgba(220,183,101,.25);
-                    border-radius:50%;
-                    color:#dcb765;
-                    font-size:90px;
-                "
+            <path
+                d="M145 200
+                   Q105 225 105 290"
+                fill="none"
+                stroke="#dedbd2"
+                stroke-width="24"
+                stroke-linecap="round"
+            />
+
+            <path
+                d="M255 200
+                   Q295 225 295 290"
+                fill="none"
+                stroke="#dedbd2"
+                stroke-width="24"
+                stroke-linecap="round"
+            />
+
+            <circle
+                cx="183"
+                cy="120"
+                r="5"
+                fill="#111"
+            />
+
+            <circle
+                cx="217"
+                cy="120"
+                r="5"
+                fill="#111"
+            />
+
+            <path
+                d="M185 145 Q200 155 215 145"
+                fill="none"
+                stroke="#111"
+                stroke-width="4"
+                stroke-linecap="round"
+            />
+
+            <text
+                x="315"
+                y="100"
+                fill="#e6c46b"
+                font-size="50"
+                font-family="Arial"
             >
                 ?
-            </div>
+            </text>
 
-        </div>
+            <text
+                x="70"
+                y="115"
+                fill="#e6c46b"
+                font-size="38"
+                font-family="Arial"
+            >
+                ?
+            </text>
+
+            <text
+                x="295"
+                y="175"
+                fill="#e6c46b"
+                font-size="28"
+                font-family="Arial"
+            >
+                ?
+            </text>
+
+        </svg>
 
 
     </div>
 
-</div>
-
 </section>
+
 
 
 </main>
 
 
 
-<!-- =======================================================
+<!-- =====================================================
      FOOTER
-======================================================= -->
+===================================================== -->
 
-<footer>
+<footer class="footer">
 
-<div class="container">
 
     <div class="footer-top">
 
-        <a
-            href="#beranda"
-            class="brand"
-        >
+
+        <a href="#beranda" class="brand">
 
             <img
                 src="logo.png"
-                alt="Logo XYNY Studio"
+                class="logo"
+                alt="XYNY Studio"
             >
 
-            <span class="brand-text">
+            <div class="brand-text">
 
-                <strong>XYNY</strong>
+                <span class="brand-name">
+                    XYNY
+                </span>
 
-                <small>STUDIO</small>
+                <span class="brand-sub">
+                    STUDIO
+                </span>
 
-            </span>
+            </div>
 
         </a>
 
 
-        <span class="footer-tagline">
+        <p>
             Ide yang pantas terlihat luar biasa.
-        </span>
+        </p>
+
 
     </div>
 
@@ -2183,206 +3091,576 @@ footer{
 
     </div>
 
-</div>
 
 </footer>
 
 
 
-<!-- =======================================================
-     JAVASCRIPT
-======================================================= -->
+<!-- =====================================================
+     MODAL PILIHAN JASA
+===================================================== -->
+
+<div
+    class="modal"
+    id="serviceModal"
+    onclick="closeOutside(event)"
+>
+
+
+    <div class="modal-box">
+
+
+        <div class="modal-head">
+
+
+            <div>
+
+                <small id="modalCategory">
+                    WEBSITE
+                </small>
+
+                <h2 id="modalTitle">
+                    Website & Pemrograman
+                </h2>
+
+            </div>
+
+
+            <button
+                class="modal-close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="package-grid"
+            id="packageGrid"
+        ></div>
+
+
+    </div>
+
+</div>
+
+
 
 <script>
 
+
 /* =========================================================
-   NAVBAR
+   DATA LAYANAN
 ========================================================= */
 
-const navbar = document.getElementById("navbar");
+const services = {
 
-window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 30){
+    website:{
 
-        navbar.classList.add("scrolled");
+        category:"WEBSITE & PEMROGRAMAN",
 
-    }else{
+        title:"Website & Pemrograman",
 
-        navbar.classList.remove("scrolled");
+        packages:[
+
+            {
+                no:"01",
+                name:"Landing Page",
+                desc:"Halaman profesional untuk promosi produk, jasa, acara, atau kampanye.",
+                price:"Mulai Rp750.000",
+                link:"website-landing-page.html"
+            },
+
+            {
+                no:"02",
+                name:"Website Bisnis",
+                desc:"Website untuk usaha, perusahaan, UMKM, toko, layanan profesional, dan personal brand.",
+                price:"Mulai Rp1.500.000",
+                link:"website-bisnis.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Website Gereja",
+                desc:"Website gereja dengan informasi pelayanan, berita, jadwal, kegiatan, dan profil.",
+                price:"Mulai Rp1.500.000",
+                link:"website-gereja.html"
+            },
+
+            {
+                no:"04",
+                name:"Website Profesional",
+                desc:"Portofolio digital untuk dokter, pendeta, dosen, freelancer, fotografer, dan profesional.",
+                price:"Mulai Rp1.250.000",
+                link:"website-profesional.html"
+            },
+
+            {
+                no:"05",
+                name:"Toko Daring",
+                desc:"Etalase produk digital dengan katalog dan alur pemesanan.",
+                price:"Mulai Rp2.000.000",
+                link:"website-toko-online.html"
+            },
+
+            {
+                no:"06",
+                name:"Sistem Informasi",
+                desc:"Sistem berbasis kebutuhan khusus seperti administrasi, data, atau dashboard.",
+                price:"Konsultasi",
+                link:"website.html"
+            }
+
+        ]
+
+    },
+
+
+    undangan:{
+
+        category:"UNDANGAN DIGITAL",
+
+        title:"Undangan Digital",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Undangan Sederhana",
+                desc:"Undangan digital elegan dengan informasi acara dan tombol konfirmasi.",
+                price:"Mulai Rp150.000",
+                link:"undangan.html"
+            },
+
+            {
+                no:"02",
+                name:"Undangan Premium",
+                desc:"Tampilan lebih lengkap dengan galeri, cerita, lokasi, dan animasi.",
+                price:"Mulai Rp300.000",
+                link:"undangan.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Undangan Eksklusif",
+                desc:"Konsep visual khusus dengan pengalaman digital yang lebih personal.",
+                price:"Mulai Rp500.000",
+                link:"undangan.html"
+            },
+
+            {
+                no:"04",
+                name:"Undangan Acara",
+                desc:"Untuk wisuda, ulang tahun, keluarga, organisasi, dan acara khusus.",
+                price:"Mulai Rp150.000",
+                link:"undangan.html"
+            }
+
+        ]
+
+    },
+
+
+    gereja:{
+
+        category:"GEREJA & ORGANISASI",
+
+        title:"Gereja & Organisasi",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Website Informasi",
+                desc:"Profil, jadwal ibadah, berita, kontak, dan informasi organisasi.",
+                price:"Mulai Rp1.500.000",
+                link:"gereja-organisasi.html"
+            },
+
+            {
+                no:"02",
+                name:"Website Pelayanan",
+                desc:"Website dengan struktur pelayanan, kegiatan, dokumentasi, dan publikasi.",
+                price:"Mulai Rp2.500.000",
+                link:"gereja-organisasi.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Paket Digital Organisasi",
+                desc:"Website, materi visual, publikasi, dan kebutuhan digital organisasi.",
+                price:"Konsultasi",
+                link:"gereja-organisasi.html"
+            }
+
+        ]
+
+    },
+
+
+    akademik:{
+
+        category:"MAHASISWA & AKADEMIK",
+
+        title:"Mahasiswa & Akademik",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Presentasi",
+                desc:"Presentasi akademik yang rapi, terstruktur, dan enak dilihat.",
+                price:"Mulai Rp75.000",
+                link:"mahasiswa-akademik.html"
+            },
+
+            {
+                no:"02",
+                name:"Penataan Dokumen",
+                desc:"Penataan format, struktur, tabel, daftar isi, dan tampilan dokumen.",
+                price:"Mulai Rp100.000",
+                link:"mahasiswa-akademik.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Visualisasi Materi",
+                desc:"Mengubah materi yang rumit menjadi visual yang lebih mudah dipahami.",
+                price:"Mulai Rp150.000",
+                link:"mahasiswa-akademik.html"
+            },
+
+            {
+                no:"04",
+                name:"Paket Akademik",
+                desc:"Gabungan beberapa kebutuhan akademik sesuai proyek.",
+                price:"Konsultasi",
+                link:"mahasiswa-akademik.html"
+            }
+
+        ]
+
+    },
+
+
+    desain:{
+
+        category:"DESAIN & IDENTITAS",
+
+        title:"Desain & Identitas",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Poster & Publikasi",
+                desc:"Poster acara, promosi, pengumuman, dan kebutuhan publikasi.",
+                price:"Mulai Rp50.000",
+                link:"desain.html"
+            },
+
+            {
+                no:"02",
+                name:"Identitas Visual",
+                desc:"Logo, warna, tipografi, dan arah visual untuk membangun identitas.",
+                price:"Mulai Rp350.000",
+                link:"desain.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Presentasi Profesional",
+                desc:"Presentasi yang lebih terstruktur dan memiliki karakter visual.",
+                price:"Mulai Rp100.000",
+                link:"desain.html"
+            }
+
+        ]
+
+    },
+
+
+    video:{
+
+        category:"VIDEO & MEDIA",
+
+        title:"Video & Media",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Video Pendek",
+                desc:"Video pendek untuk Instagram, TikTok, YouTube Shorts, dan kebutuhan promosi.",
+                price:"Mulai Rp75.000",
+                link:"video-media.html"
+            },
+
+            {
+                no:"02",
+                name:"Video Acara",
+                desc:"Penyuntingan dokumentasi acara dengan alur yang lebih menarik.",
+                price:"Mulai Rp250.000",
+                link:"video-media.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Subtitle & Penyuntingan",
+                desc:"Subtitle, pemotongan, penyesuaian audio, dan penyuntingan dasar.",
+                price:"Mulai Rp50.000",
+                link:"video-media.html"
+            }
+
+        ]
+
+    },
+
+
+    sosial:{
+
+        category:"SOSIAL MEDIA & BRANDING",
+
+        title:"Sosial Media & Branding",
+
+        packages:[
+
+            {
+                no:"01",
+                name:"Paket Konten",
+                desc:"Materi visual untuk kebutuhan publikasi sosial media.",
+                price:"Mulai Rp150.000",
+                link:"sosial-media.html"
+            },
+
+            {
+                no:"02",
+                name:"Paket Branding",
+                desc:"Merapikan tampilan akun agar lebih konsisten dan profesional.",
+                price:"Mulai Rp350.000",
+                link:"sosial-media.html",
+                featured:true
+            },
+
+            {
+                no:"03",
+                name:"Strategi Konten",
+                desc:"Menyusun arah konten dan ide publikasi berdasarkan tujuan.",
+                price:"Mulai Rp250.000",
+                link:"sosial-media.html"
+            }
+
+        ]
 
     }
 
-});
+};
+
 
 
 /* =========================================================
-   REVEAL ANIMATION
+   MODAL
 ========================================================= */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+function openService(serviceName){
+
+    const service = services[serviceName];
+
+    if(!service) return;
+
+    document.getElementById("modalCategory").textContent =
+        service.category;
+
+    document.getElementById("modalTitle").textContent =
+        service.title;
 
 
-const observer =
-    new IntersectionObserver(
+    const grid =
+        document.getElementById("packageGrid");
 
-        entries => {
+    grid.innerHTML = "";
 
-            entries.forEach(entry => {
 
-                if(entry.isIntersecting){
+    service.packages.forEach(pkg => {
 
-                    entry.target.classList.add("visible");
+        const card =
+            document.createElement("div");
 
-                    observer.unobserve(entry.target);
+        card.className =
+            "package" +
+            (pkg.featured ? " featured" : "");
 
+
+        card.innerHTML = `
+
+            <div class="package-label">
+
+                <span>
+                    ${pkg.no}
+                </span>
+
+                ${
+                    pkg.featured
+                    ? "<span style='color:#e6c46b'>PILIHAN POPULER</span>"
+                    : ""
                 }
 
-            });
-
-        },
-
-        {
-            threshold:.12
-        }
-
-    );
+            </div>
 
 
-revealElements.forEach(element => {
-
-    observer.observe(element);
-
-});
+            <h3>
+                ${pkg.name}
+            </h3>
 
 
-/* =========================================================
-   ACTIVE NAVIGATION
-========================================================= */
-
-const sections =
-    document.querySelectorAll("section[id]");
-
-const navLinks =
-    document.querySelectorAll(".nav-links a");
+            <p class="package-description">
+                ${pkg.desc}
+            </p>
 
 
-window.addEventListener("scroll", () => {
+            <div class="price">
+                ${pkg.price}
+            </div>
 
-    let current = "";
 
-    sections.forEach(section => {
+            <a
+                class="package-button"
+                href="${pkg.link}"
+            >
+                Lihat contoh / detail →
+            </a>
 
-        const sectionTop =
-            section.offsetTop - 180;
+        `;
 
-        if(window.scrollY >= sectionTop){
 
-            current = section.getAttribute("id");
-
-        }
+        grid.appendChild(card);
 
     });
 
 
-    navLinks.forEach(link => {
-
-        link.classList.remove("active");
-
-        if(
-            link.getAttribute("href") ===
-            "#" + current
-        ){
-
-            link.classList.add("active");
-
-        }
-
-    });
-
-});
+    document
+        .getElementById("serviceModal")
+        .classList.add("active");
 
 
-/* =========================================================
-   SERVICE CARD MICRO INTERACTION
-========================================================= */
+    document.body.style.overflow = "hidden";
 
-document
-.querySelectorAll(".service-card")
-.forEach(card => {
-
-    card.addEventListener(
-        "mousemove",
-        e => {
-
-            const rect =
-                card.getBoundingClientRect();
-
-            const x =
-                e.clientX - rect.left;
-
-            const y =
-                e.clientY - rect.top;
-
-            card.style.background =
-                `
-                radial-gradient(
-                    circle at ${x}px ${y}px,
-                    rgba(220,183,101,.08),
-                    transparent 34%
-                ),
-                #111313
-                `;
-
-        }
-    );
+}
 
 
-    card.addEventListener(
-        "mouseleave",
-        () => {
+function closeModal(){
 
-            card.style.background = "";
+    document
+        .getElementById("serviceModal")
+        .classList.remove("active");
 
-        }
-    );
+    document.body.style.overflow = "";
 
-});
+}
+
+
+function closeOutside(event){
+
+    if(
+        event.target ===
+        document.getElementById("serviceModal")
+    ){
+
+        closeModal();
+
+    }
+
+}
 
 
 /* =========================================================
-   SMOOTH ANCHOR
+   WHATSAPP
 ========================================================= */
 
-document
-.querySelectorAll('a[href^="#"]')
-.forEach(anchor => {
+function openWhatsApp(){
 
-    anchor.addEventListener(
-        "click",
-        function(e){
+    const phone =
+        "6280000000000";
 
-            const target =
-                document.querySelector(
-                    this.getAttribute("href")
-                );
+    const message =
+        "Halo XYNY Studio, saya ingin berkonsultasi mengenai sebuah proyek. Saya belum yakin memilih layanan yang mana dan ingin dibantu menentukan pilihan yang paling sesuai.";
 
-            if(target){
+    const url =
+        "https://wa.me/" +
+        phone +
+        "?text=" +
+        encodeURIComponent(message);
 
-                e.preventDefault();
+    window.open(url,"_blank");
 
-                target.scrollIntoView({
-                    behavior:"smooth",
-                    block:"start"
-                });
+}
 
-            }
+
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const nav =
+            document.getElementById("navbar");
+
+        if(window.scrollY > 30){
+
+            nav.classList.add("scrolled");
+
+        }else{
+
+            nav.classList.remove("scrolled");
 
         }
-    );
 
-});
+    }
+);
+
+
+/* =========================================================
+   MENU MOBILE
+========================================================= */
+
+function scrollToServices(){
+
+    document
+        .getElementById("layanan")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* =========================================================
+   ESCAPE CLOSE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeModal();
+
+        }
+
+    }
+);
 
 </script>
 
