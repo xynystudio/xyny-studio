@@ -2,62 +2,41 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NARA — Kopi yang Punya Cerita</title>
 
-<meta name="theme-color" content="#090909">
-
-<meta name="description"
-      content="Landing page profesional dari XYNY Studio. Satu halaman untuk membuat orang memahami produk, layanan, dan mengambil tindakan.">
-
-<title>Landing Page Profesional — XYNY Studio</title>
+<meta
+    name="description"
+    content="NARA Coffee — kopi pilihan dengan karakter yang dibuat untuk menemani hari Anda."
+>
 
 <style>
 
 /* =========================================================
-   XYNY STUDIO
-   DEMO LANDING PAGE
-   ========================================================= */
+   NARA COFFEE — DEMO LANDING PAGE
+   Dibuat sebagai contoh nyata untuk Xyny Studio
+========================================================= */
 
 :root{
-    --hitam:#080808;
-    --hitam-2:#0d0d0c;
-    --hitam-3:#131310;
+    --cream:#f4efe7;
+    --paper:#faf8f4;
+    --brown:#211712;
+    --brown-soft:#5d4639;
+    --gold:#c99a58;
+    --gold-light:#e4c28c;
+    --green:#304437;
+    --white:#ffffff;
+    --black:#11100f;
+    --muted:#766d66;
 
-    --putih:#f7f5ef;
-    --abu:#aaa9a3;
-    --abu-gelap:#77766f;
+    --radius-xl:36px;
+    --radius-lg:24px;
+    --radius-md:16px;
 
-    --emas:#e7bd63;
-    --emas-terang:#f4d88d;
-    --emas-gelap:#a47b2d;
-
-    --garis:rgba(255,255,255,.10);
-    --garis-emas:rgba(231,189,99,.30);
-
-    --radius:28px;
-
-    --serif:
-        "Georgia",
-        "Times New Roman",
-        serif;
-
-    --sans:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Helvetica,
-        Arial,
-        sans-serif;
+    --shadow:
+        0 25px 70px rgba(35,24,18,.12);
 }
-
-
-/* =========================================================
-   RESET
-   ========================================================= */
 
 *{
     margin:0;
@@ -70,53 +49,25 @@ html{
 }
 
 body{
-    background:
-        radial-gradient(
-            circle at 75% 15%,
-            rgba(231,189,99,.08),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 15% 55%,
-            rgba(255,255,255,.035),
-            transparent 25%
-        ),
-        var(--hitam);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-    color:var(--putih);
-
-    font-family:var(--sans);
-
-    line-height:1.6;
+    background:var(--paper);
+    color:var(--brown);
 
     overflow-x:hidden;
 
     -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
 }
 
-
-/* tekstur halus */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-
-    pointer-events:none;
-
-    opacity:.035;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
-
-    z-index:100;
+img{
+    display:block;
+    width:100%;
 }
-
-
-/* =========================================================
-   GLOBAL
-   ========================================================= */
 
 a{
     color:inherit;
@@ -127,211 +78,197 @@ button{
     font:inherit;
 }
 
-.container{
-    width:min(1180px, calc(100% - 40px));
-    margin:auto;
-}
 
-section{
-    position:relative;
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress{
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:0;
+    height:3px;
+
+    background:var(--gold);
+
+    z-index:9999;
 }
 
 
 /* =========================================================
-   HEADER
-   ========================================================= */
+   NAVBAR
+========================================================= */
 
-.header{
+.nav{
     position:fixed;
 
-    top:16px;
+    top:18px;
     left:50%;
 
     transform:translateX(-50%);
 
-    width:min(1180px, calc(100% - 28px));
-
-    height:76px;
+    width:min(1180px, calc(100% - 32px));
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:10px 12px 10px 14px;
+    padding:13px 14px 13px 20px;
 
-    border:1px solid rgba(255,255,255,.12);
+    background:rgba(250,248,244,.84);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    border:1px solid rgba(33,23,18,.10);
 
     border-radius:999px;
 
-    background:
-        rgba(10,10,10,.78);
+    box-shadow:0 10px 35px rgba(25,15,10,.07);
 
-    backdrop-filter:blur(22px);
-    -webkit-backdrop-filter:blur(22px);
-
-    z-index:50;
-
-    transition:
-        background .3s ease,
-        border-color .3s ease,
-        transform .3s ease;
+    z-index:1000;
 }
 
-.header.scrolled{
-    background:rgba(8,8,8,.94);
-    border-color:rgba(231,189,99,.22);
-}
-
-
-/* BRAND */
-
-.brand{
+.logo{
     display:flex;
     align-items:center;
-    gap:12px;
-
-    min-width:0;
+    gap:11px;
 }
 
-.brand-logo{
-    width:52px;
-    height:52px;
+.logo-mark{
+    width:39px;
+    height:39px;
 
-    object-fit:contain;
+    display:grid;
+    place-items:center;
 
-    background:#fff;
+    background:var(--brown);
+    color:var(--gold-light);
 
-    border-radius:14px;
+    border-radius:50%;
 
-    padding:7px;
+    font-family:Georgia,serif;
+    font-size:18px;
 }
 
-.brand-text{
+.logo-text{
     display:flex;
     flex-direction:column;
 
     line-height:1;
 }
 
-.brand-name{
+.logo-text strong{
     font-size:15px;
-    font-weight:800;
-    letter-spacing:.28em;
+    letter-spacing:.18em;
 }
 
-.brand-sub{
-    margin-top:6px;
+.logo-text span{
+    margin-top:5px;
 
-    color:var(--emas);
+    font-size:8px;
+    letter-spacing:.30em;
 
-    font-size:9px;
-    letter-spacing:.32em;
+    color:var(--muted);
 }
 
-
-/* DESKTOP NAV */
-
-.nav{
+.nav-links{
     display:flex;
     align-items:center;
-    gap:30px;
-}
-
-.nav a{
-    color:#9c9b95;
+    gap:28px;
 
     font-size:13px;
-    font-weight:500;
-
-    transition:
-        color .25s ease;
+    color:#675c55;
 }
 
-.nav a:hover{
-    color:#fff;
+.nav-links a{
+    position:relative;
 }
 
+.nav-links a::after{
+    content:"";
 
-/* HEADER CTA */
+    position:absolute;
 
-.header-cta{
-    display:inline-flex;
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:var(--brown);
+
+    transition:.3s ease;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.nav-cta{
+    display:flex;
     align-items:center;
-    gap:10px;
+    gap:9px;
 
-    min-height:50px;
+    padding:11px 17px;
 
-    padding:0 20px;
-
-    border:1px solid rgba(231,189,99,.42);
+    background:var(--brown);
+    color:white;
 
     border-radius:999px;
 
-    color:var(--emas-terang);
-
-    font-size:13px;
+    font-size:12px;
     font-weight:600;
 
-    transition:
-        background .25s ease,
-        color .25s ease,
-        transform .25s ease;
+    transition:.3s ease;
 }
 
-.header-cta:hover{
-    background:var(--emas);
-    color:#111;
-
+.nav-cta:hover{
     transform:translateY(-2px);
+    background:#35231a;
 }
 
-
-/* MOBILE MENU */
-
-.menu-button{
+.menu{
     display:none;
 
-    width:50px;
-    height:50px;
+    width:42px;
+    height:42px;
 
-    border:1px solid rgba(255,255,255,.15);
+    border:1px solid rgba(33,23,18,.15);
 
     border-radius:50%;
 
     background:transparent;
 
-    color:white;
-
     cursor:pointer;
-}
-
-.menu-button span{
-    display:block;
-
-    width:18px;
-    height:1px;
-
-    margin:4px auto;
-
-    background:white;
-
-    transition:.3s;
 }
 
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero{
-    min-height:100svh;
-
-    display:flex;
-    align-items:center;
+    min-height:100vh;
 
     padding:
-        150px 0
-        90px;
+        150px
+        max(24px,5vw)
+        100px;
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(0, .95fr)
+        minmax(420px, 1.05fr);
+
+    gap:70px;
+
+    align-items:center;
+
+    position:relative;
 
     overflow:hidden;
 }
@@ -341,1288 +278,814 @@ section{
 
     position:absolute;
 
-    width:700px;
-    height:700px;
-
-    right:-250px;
-    top:100px;
+    width:600px;
+    height:600px;
 
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(231,189,99,.14),
+            rgba(201,154,88,.15),
             transparent 65%
         );
 
-    filter:blur(20px);
+    right:-250px;
+    top:100px;
 
     pointer-events:none;
 }
 
-.hero-grid{
-    display:grid;
+.hero-copy{
+    max-width:650px;
 
-    grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(420px, .92fr);
-
-    gap:70px;
-
-    align-items:center;
+    position:relative;
+    z-index:2;
 }
-
-
-/* LABEL */
 
 .eyebrow{
     display:inline-flex;
     align-items:center;
     gap:9px;
 
-    margin-bottom:28px;
+    margin-bottom:25px;
 
-    color:var(--emas);
+    padding:8px 13px;
 
-    font-size:11px;
+    border:1px solid rgba(48,68,55,.18);
+
+    border-radius:999px;
+
+    color:var(--green);
+
+    font-size:10px;
     font-weight:700;
 
-    letter-spacing:.27em;
-
+    letter-spacing:.16em;
     text-transform:uppercase;
 }
 
-.eyebrow::before{
-    content:"";
-
+.eyebrow-dot{
     width:7px;
     height:7px;
 
     border-radius:50%;
 
-    background:#a8d66d;
+    background:#6b8d68;
 
     box-shadow:
-        0 0 0 5px rgba(168,214,109,.08),
-        0 0 18px rgba(168,214,109,.4);
+        0 0 0 5px rgba(107,141,104,.10);
 }
-
-
-/* HERO TITLE */
 
 .hero h1{
-    max-width:780px;
-
-    font-size:
-        clamp(
-            54px,
-            7vw,
-            94px
-        );
-
-    line-height:.94;
-
-    letter-spacing:-.065em;
-
-    font-weight:700;
-}
-
-.hero h1 .serif{
-    display:block;
-
-    margin-top:13px;
-
-    color:var(--emas-terang);
-
-    font-family:var(--serif);
-
-    font-style:italic;
+    font-family:Georgia,"Times New Roman",serif;
 
     font-weight:400;
 
-    letter-spacing:-.07em;
+    font-size:
+        clamp(54px,7vw,92px);
+
+    line-height:.93;
+
+    letter-spacing:-.055em;
+
+    margin-bottom:28px;
 }
 
+.hero h1 em{
+    color:var(--gold);
 
-/* DESCRIPTION */
+    font-weight:400;
+}
 
 .hero-description{
-    max-width:640px;
+    max-width:560px;
 
-    margin-top:32px;
-
-    color:#a7a69f;
-
-    font-size:
-        clamp(
-            17px,
-            2vw,
-            20px
-        );
-
-    line-height:1.8;
-}
-
-.hero-description strong{
-    color:#f0eee8;
-}
-
-
-/* HERO BUTTONS */
-
-.hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:38px;
-}
-
-.button{
-    display:inline-flex;
-
-    align-items:center;
-    justify-content:center;
-
-    min-height:56px;
-
-    padding:0 25px;
-
-    border-radius:999px;
-
-    font-size:14px;
-    font-weight:700;
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease,
-        background .25s ease;
-}
-
-.button-primary{
-    background:
-        linear-gradient(
-            135deg,
-            #f4d88d,
-            #dbaa4d
-        );
-
-    color:#17140e;
-
-    box-shadow:
-        0 12px 40px rgba(231,189,99,.15);
-}
-
-.button-primary:hover{
-    transform:translateY(-3px);
-
-    box-shadow:
-        0 18px 50px rgba(231,189,99,.25);
-}
-
-.button-secondary{
-    border:1px solid rgba(255,255,255,.14);
-
-    color:#d5d3cc;
-}
-
-.button-secondary:hover{
-    background:rgba(255,255,255,.06);
-
-    transform:translateY(-3px);
-}
-
-.arrow{
-    margin-left:12px;
+    color:var(--muted);
 
     font-size:18px;
 
-    transition:transform .25s ease;
+    line-height:1.75;
+
+    margin-bottom:34px;
 }
 
-.button:hover .arrow{
-    transform:translate(3px,-3px);
+.hero-description strong{
+    color:var(--brown);
 }
 
-
-/* TRUST */
-
-.hero-trust{
+.hero-buttons{
     display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.btn{
+    display:inline-flex;
     align-items:center;
+    justify-content:center;
+    gap:11px;
 
-    gap:16px;
+    min-height:54px;
 
-    margin-top:34px;
+    padding:0 23px;
 
-    color:#77766f;
+    border-radius:999px;
 
-    font-size:12px;
+    font-size:13px;
+    font-weight:700;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
 }
 
-.trust-dots{
-    display:flex;
+.btn-primary{
+    background:var(--brown);
+    color:white;
+
+    box-shadow:
+        0 12px 28px rgba(33,23,18,.18);
 }
 
-.trust-dots span{
-    width:25px;
-    height:25px;
+.btn-primary:hover{
+    transform:translateY(-3px);
 
-    margin-left:-6px;
-
-    border:2px solid var(--hitam);
-
-    border-radius:50%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #d9d9d9,
-            #777
-        );
+    box-shadow:
+        0 18px 35px rgba(33,23,18,.22);
 }
 
-.trust-dots span:first-child{
-    margin-left:0;
+.btn-secondary{
+    border:1px solid rgba(33,23,18,.16);
 }
 
-.trust-dots span:nth-child(2){
-    background:
-        linear-gradient(
-            145deg,
-            #d9b85c,
-            #7b5a20
-        );
-}
+.btn-secondary:hover{
+    transform:translateY(-3px);
 
-.trust-dots span:nth-child(3){
-    background:
-        linear-gradient(
-            145deg,
-            #eee,
-            #555
-        );
+    background:white;
 }
 
 
 /* =========================================================
    HERO VISUAL
-   ========================================================= */
+========================================================= */
 
-.visual{
+.hero-visual{
     position:relative;
 
-    min-height:540px;
+    min-height:620px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 }
 
-.visual-ring{
+.image-frame{
+    position:relative;
+
+    width:min(520px,100%);
+
+    aspect-ratio:4/5;
+
+    border-radius:
+        220px
+        220px
+        35px
+        35px;
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+    transform:rotate(2deg);
+}
+
+.image-frame img{
+    height:100%;
+    object-fit:cover;
+
+    transition:transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.image-frame:hover img{
+    transform:scale(1.045);
+}
+
+.image-overlay{
     position:absolute;
 
-    width:470px;
-    height:470px;
+    inset:0;
 
-    border:1px solid rgba(231,189,99,.16);
+    background:
+        linear-gradient(
+            180deg,
+            transparent 45%,
+            rgba(20,12,8,.72)
+        );
+}
+
+.product-label{
+    position:absolute;
+
+    left:28px;
+    right:28px;
+    bottom:28px;
+
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+
+    color:white;
+}
+
+.product-label small{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#e1d6c8;
+
+    font-size:10px;
+
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.product-label strong{
+    font-family:Georgia,serif;
+
+    font-size:30px;
+    font-weight:400;
+}
+
+.price{
+    text-align:right;
+}
+
+.price small{
+    margin-bottom:4px;
+}
+
+.price strong{
+    font-family:
+        Inter,
+        sans-serif;
+
+    font-size:17px;
+    font-weight:700;
+}
+
+.floating-note{
+    position:absolute;
+
+    left:-20px;
+    bottom:100px;
+
+    padding:16px 19px;
+
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    background:rgba(255,255,255,.93);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(33,23,18,.08);
+
+    border-radius:17px;
+
+    box-shadow:0 20px 50px rgba(30,18,12,.14);
+
+    transform:rotate(-4deg);
+}
+
+.note-icon{
+    width:39px;
+    height:39px;
+
+    display:grid;
+    place-items:center;
+
+    background:#e7efe1;
 
     border-radius:50%;
 
-    animation:
-        rotate 30s linear infinite;
+    color:var(--green);
 }
 
-.visual-ring::before,
-.visual-ring::after{
+.floating-note strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.floating-note span{
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   TRUST STRIP
+========================================================= */
+
+.trust{
+    padding:25px max(24px,5vw);
+
+    background:var(--brown);
+    color:white;
+}
+
+.trust-inner{
+    max-width:1180px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.trust-item{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    padding:10px 0;
+}
+
+.trust-number{
+    font-family:Georgia,serif;
+
+    color:var(--gold-light);
+
+    font-size:24px;
+}
+
+.trust-item div span{
+    display:block;
+
+    color:#b9aaa0;
+
+    font-size:10px;
+
+    letter-spacing:.08em;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+    padding:130px max(24px,5vw);
+
+    background:var(--paper);
+}
+
+.section-wrap{
+    max-width:1180px;
+    margin:auto;
+}
+
+.story-grid{
+    display:grid;
+
+    grid-template-columns:
+        .8fr 1.2fr;
+
+    gap:100px;
+
+    align-items:start;
+}
+
+.section-kicker{
+    margin-bottom:20px;
+
+    color:var(--gold);
+
+    font-size:10px;
+    font-weight:800;
+
+    letter-spacing:.20em;
+    text-transform:uppercase;
+}
+
+.story h2{
+    max-width:560px;
+
+    font-family:Georgia,serif;
+
+    font-weight:400;
+
+    font-size:
+        clamp(42px,5vw,68px);
+
+    line-height:.98;
+
+    letter-spacing:-.045em;
+}
+
+.story h2 em{
+    color:var(--gold);
+}
+
+.story-content{
+    padding-top:8px;
+}
+
+.story-content p{
+    color:var(--muted);
+
+    font-size:17px;
+
+    line-height:1.85;
+
+    margin-bottom:22px;
+}
+
+.signature{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    margin-top:30px;
+}
+
+.signature-line{
+    width:45px;
+    height:1px;
+
+    background:var(--gold);
+}
+
+.signature span{
+    color:var(--brown-soft);
+
+    font-family:Georgia,serif;
+
+    font-style:italic;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   MENU / PRODUCT
+========================================================= */
+
+.menu-section{
+    padding:120px max(24px,5vw);
+
+    background:#eee7dd;
+}
+
+.section-head{
+    max-width:1180px;
+
+    margin:0 auto 50px;
+
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+
+    gap:30px;
+}
+
+.section-head h2{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(42px,5vw,64px);
+
+    font-weight:400;
+
+    line-height:1;
+}
+
+.section-head h2 em{
+    color:var(--gold);
+}
+
+.section-head p{
+    max-width:400px;
+
+    color:var(--muted);
+
+    line-height:1.7;
+}
+
+.products{
+    max-width:1180px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+}
+
+.product-card{
+    background:var(--paper);
+
+    border:1px solid rgba(33,23,18,.08);
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:0 25px 55px rgba(40,25,15,.12);
+}
+
+.product-image{
+    height:280px;
+
+    overflow:hidden;
+}
+
+.product-image img{
+    height:100%;
+    object-fit:cover;
+
+    transition:transform .7s ease;
+}
+
+.product-card:hover .product-image img{
+    transform:scale(1.06);
+}
+
+.product-info{
+    padding:25px;
+}
+
+.product-meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:12px;
+}
+
+.product-meta span{
+    color:var(--gold);
+
+    font-size:9px;
+    font-weight:800;
+
+    letter-spacing:.15em;
+    text-transform:uppercase;
+}
+
+.product-meta strong{
+    font-size:13px;
+}
+
+.product-info h3{
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:400;
+
+    margin-bottom:10px;
+}
+
+.product-info p{
+    color:var(--muted);
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   EXPERIENCE
+========================================================= */
+
+.experience{
+    padding:130px max(24px,5vw);
+
+    background:var(--green);
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.experience::after{
     content:"";
 
     position:absolute;
 
-    width:8px;
-    height:8px;
+    width:500px;
+    height:500px;
+
+    right:-200px;
+    top:-150px;
 
     border-radius:50%;
 
-    background:var(--emas);
-}
-
-.visual-ring::before{
-    top:42px;
-    left:75px;
-}
-
-.visual-ring::after{
-    right:50px;
-    bottom:110px;
-}
-
-.visual-ring-two{
-    width:360px;
-    height:360px;
-
-    border-color:rgba(255,255,255,.08);
-
-    animation-direction:reverse;
-
-    animation-duration:22s;
-}
-
-.visual-card{
-    position:relative;
-
-    width:min(390px, 80%);
-
-    min-height:490px;
-
-    padding:28px;
-
-    border:1px solid rgba(255,255,255,.15);
-
-    border-radius:32px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.10),
-            rgba(255,255,255,.025)
-        );
+    border:1px solid rgba(228,194,140,.17);
 
     box-shadow:
-        0 40px 100px rgba(0,0,0,.55),
-        inset 0 1px 0 rgba(255,255,255,.07);
-
-    backdrop-filter:blur(18px);
-    -webkit-backdrop-filter:blur(18px);
-
-    transform:
-        rotate(2deg);
-
-    transition:
-        transform .5s ease;
+        0 0 0 90px rgba(228,194,140,.025),
+        0 0 0 180px rgba(228,194,140,.02);
 }
 
-.visual-card:hover{
-    transform:
-        rotate(0deg)
-        translateY(-8px);
-}
+.experience-grid{
+    max-width:1180px;
 
-.card-top{
-    display:flex;
-    justify-content:space-between;
+    margin:auto;
 
-    color:#797872;
-
-    font-size:10px;
-    letter-spacing:.18em;
-}
-
-.card-status{
-    display:flex;
-    align-items:center;
-    gap:6px;
-
-    color:#9bc56a;
-}
-
-.card-status i{
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:#9bc56a;
-
-    box-shadow:
-        0 0 15px rgba(155,197,106,.7);
-}
-
-.mockup{
-    position:absolute;
-
-    left:28px;
-    right:28px;
-
-    top:105px;
-    bottom:70px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:20px;
-
-    background:
-        radial-gradient(
-            circle at 70% 20%,
-            rgba(231,189,99,.16),
-            transparent 32%
-        ),
-        #0a0a09;
-}
-
-.mockup-top{
-    height:35px;
-
-    display:flex;
-    align-items:center;
-
-    gap:5px;
-
-    padding:0 14px;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-}
-
-.mockup-top i{
-    width:6px;
-    height:6px;
-
-    border-radius:50%;
-
-    background:#5b5b56;
-}
-
-.mockup-content{
-    padding:30px 24px;
-}
-
-.mockup-label{
-    color:var(--emas);
-
-    font-size:8px;
-    letter-spacing:.2em;
-}
-
-.mockup-title{
-    width:80%;
-
-    margin-top:18px;
-
-    font-size:30px;
-    line-height:1;
-
-    letter-spacing:-.05em;
-}
-
-.mockup-line{
-    width:65%;
-    height:7px;
-
-    margin-top:17px;
-
-    border-radius:10px;
-
-    background:#343430;
-}
-
-.mockup-line.small{
-    width:45%;
-    margin-top:9px;
-}
-
-.mockup-button{
-    width:95px;
-    height:32px;
-
-    margin-top:22px;
-
-    border-radius:999px;
-
-    background:var(--emas);
-}
-
-.card-bottom{
-    position:absolute;
-
-    bottom:26px;
-    left:28px;
-    right:28px;
-
-    display:flex;
-    justify-content:space-between;
-
-    color:#696862;
-
-    font-size:9px;
-    letter-spacing:.16em;
-}
-
-
-/* FLOATING BADGE */
-
-.floating{
-    position:absolute;
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    padding:15px 18px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:18px;
-
-    background:rgba(15,15,14,.85);
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.35);
-
-    backdrop-filter:blur(15px);
-}
-
-.floating-one{
-    left:0;
-    bottom:80px;
-
-    animation:float 5s ease-in-out infinite;
-}
-
-.floating-two{
-    right:-5px;
-    top:85px;
-
-    animation:float 6s ease-in-out infinite reverse;
-}
-
-.floating-icon{
-    width:38px;
-    height:38px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:12px;
-
-    background:rgba(231,189,99,.10);
-
-    color:var(--emas);
-
-    font-size:18px;
-}
-
-.floating strong{
-    display:block;
-
-    font-size:12px;
-}
-
-.floating small{
-    display:block;
-
-    margin-top:3px;
-
-    color:#73726c;
-
-    font-size:10px;
-}
-
-
-/* =========================================================
-   MARQUEE
-   ========================================================= */
-
-.marquee{
-    overflow:hidden;
-
-    border-top:1px solid var(--garis);
-    border-bottom:1px solid var(--garis);
-
-    padding:20px 0;
-
-    background:rgba(255,255,255,.015);
-}
-
-.marquee-track{
-    width:max-content;
-
-    display:flex;
-    align-items:center;
-
-    gap:30px;
-
-    animation:
-        marquee 28s linear infinite;
-}
-
-.marquee span{
-    color:#696861;
-
-    font-size:11px;
-    font-weight:600;
-
-    letter-spacing:.25em;
-}
-
-.marquee b{
-    color:var(--emas);
-
-    font-size:12px;
-}
-
-
-/* =========================================================
-   PROBLEM
-   ========================================================= */
-
-.problem{
-    padding:150px 0 100px;
-}
-
-.section-label{
-    color:var(--emas);
-
-    font-size:11px;
-    font-weight:700;
-
-    letter-spacing:.27em;
-
-    text-transform:uppercase;
-}
-
-.problem-grid{
     display:grid;
 
     grid-template-columns:
-        .85fr
-        1.15fr;
+        1fr 1fr;
 
-    gap:100px;
+    gap:90px;
 
-    margin-top:30px;
+    align-items:center;
 }
 
-.problem h2{
-    font-size:
-        clamp(
-            40px,
-            5vw,
-            68px
-        );
+.experience h2{
+    max-width:650px;
 
-    line-height:1;
-
-    letter-spacing:-.055em;
-}
-
-.problem h2 em{
-    color:#77766f;
-
-    font-family:var(--serif);
+    font-family:Georgia,serif;
 
     font-weight:400;
+
+    font-size:
+        clamp(45px,5vw,70px);
+
+    line-height:.98;
+
+    letter-spacing:-.04em;
 }
 
-.problem-text{
-    color:#999891;
-
-    font-size:18px;
-
-    line-height:1.9;
+.experience h2 em{
+    color:var(--gold-light);
 }
 
-.problem-list{
+.experience-copy p{
+    color:#c7d0c8;
+
+    line-height:1.85;
+
+    margin-bottom:28px;
+}
+
+.feature-list{
     display:grid;
 
-    grid-template-columns:1fr 1fr;
-
-    gap:1px;
-
-    margin-top:60px;
-
-    border:1px solid var(--garis);
-
-    background:var(--garis);
+    gap:16px;
 }
 
-.problem-item{
-    min-height:180px;
+.feature{
+    display:flex;
+    align-items:center;
+    gap:13px;
 
-    padding:30px;
+    padding-bottom:15px;
 
-    background:var(--hitam);
-
-    transition:
-        background .3s ease;
-}
-
-.problem-item:hover{
-    background:#11110f;
-}
-
-.problem-item span{
-    color:#66655f;
-
-    font-size:11px;
-
-    letter-spacing:.2em;
-}
-
-.problem-item h3{
-    margin-top:25px;
-
-    font-size:19px;
-}
-
-.problem-item p{
-    margin-top:10px;
-
-    color:#77766f;
+    border-bottom:1px solid rgba(255,255,255,.10);
 
     font-size:13px;
 }
 
-
-/* =========================================================
-   VALUE
-   ========================================================= */
-
-.value{
-    padding:100px 0 160px;
-}
-
-.value-header{
-    display:flex;
-
-    justify-content:space-between;
-    align-items:flex-end;
-
-    gap:40px;
-
-    margin-bottom:60px;
-}
-
-.value-header h2{
-    max-width:650px;
-
-    margin-top:15px;
-
-    font-size:
-        clamp(
-            42px,
-            5vw,
-            70px
-        );
-
-    line-height:.98;
-
-    letter-spacing:-.06em;
-}
-
-.value-header h2 em{
-    color:var(--emas);
-
-    font-family:var(--serif);
-
-    font-weight:400;
-}
-
-.value-header p{
-    max-width:350px;
-
-    color:#77766f;
-
-    font-size:14px;
-    line-height:1.8;
-}
-
-.value-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    border-top:1px solid var(--garis);
-    border-left:1px solid var(--garis);
-}
-
-.value-card{
-    min-height:300px;
-
-    padding:34px;
-
-    border-right:1px solid var(--garis);
-    border-bottom:1px solid var(--garis);
-
-    transition:
-        background .3s ease,
-        transform .3s ease;
-}
-
-.value-card:hover{
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(231,189,99,.08),
-            transparent 40%
-        ),
-        #0e0e0d;
-}
-
-.value-number{
-    color:#55544e;
-
-    font-size:11px;
-
-    letter-spacing:.2em;
-}
-
-.value-icon{
-    width:50px;
-    height:50px;
+.feature-check{
+    width:23px;
+    height:23px;
 
     display:grid;
     place-items:center;
 
-    margin-top:30px;
-
-    border:1px solid var(--garis-emas);
-
-    border-radius:15px;
-
-    color:var(--emas);
-
-    font-size:20px;
-}
-
-.value-card h3{
-    margin-top:28px;
-
-    font-size:20px;
-}
-
-.value-card p{
-    margin-top:10px;
-
-    color:#77766f;
-
-    font-size:14px;
-
-    line-height:1.8;
-}
-
-
-/* =========================================================
-   SHOWCASE
-   ========================================================= */
-
-.showcase{
-    padding:120px 0;
-
-    border-top:1px solid var(--garis);
-}
-
-.showcase-inner{
-    display:grid;
-
-    grid-template-columns:
-        .8fr
-        1.2fr;
-
-    gap:80px;
-
-    align-items:center;
-}
-
-.showcase h2{
-    margin-top:15px;
-
-    font-size:
-        clamp(
-            42px,
-            5vw,
-            68px
-        );
-
-    line-height:.98;
-
-    letter-spacing:-.06em;
-}
-
-.showcase h2 em{
-    display:block;
-
-    color:#77766f;
-
-    font-family:var(--serif);
-
-    font-weight:400;
-}
-
-.showcase p{
-    max-width:480px;
-
-    margin-top:25px;
-
-    color:#888780;
-
-    line-height:1.9;
-}
-
-.showcase-note{
-    display:flex;
-
-    align-items:center;
-    gap:10px;
-
-    margin-top:30px;
-
-    color:#a5a49d;
-
-    font-size:12px;
-}
-
-.showcase-note span{
-    color:#9bc56a;
-}
-
-
-/* BIG MOCKUP */
-
-.browser{
-    position:relative;
-
-    padding:12px;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    border-radius:26px;
-
-    background:#121211;
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,.5);
-}
-
-.browser-bar{
-    height:38px;
-
-    display:flex;
-    align-items:center;
-
-    gap:7px;
-
-    padding:0 13px;
-}
-
-.browser-dot{
-    width:7px;
-    height:7px;
-
     border-radius:50%;
 
-    background:#4e4e49;
-}
+    background:rgba(228,194,140,.13);
 
-.browser-screen{
-    min-height:400px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:16px;
-
-    background:
-        radial-gradient(
-            circle at 70% 15%,
-            rgba(231,189,99,.16),
-            transparent 30%
-        ),
-        #0b0b0a;
-
-    padding:45px;
-}
-
-.screen-eyebrow{
-    color:var(--emas);
-
-    font-size:9px;
-
-    letter-spacing:.22em;
-}
-
-.screen-title{
-    max-width:520px;
-
-    margin-top:20px;
-
-    font-size:
-        clamp(
-            32px,
-            4vw,
-            58px
-        );
-
-    line-height:.95;
-
-    letter-spacing:-.06em;
-}
-
-.screen-title i{
-    color:var(--emas);
-
-    font-family:var(--serif);
-}
-
-.screen-text{
-    width:70%;
-
-    margin-top:20px;
-
-    color:#77766f;
-
-    font-size:12px;
-}
-
-.screen-button{
-    width:120px;
-    height:38px;
-
-    margin-top:25px;
-
-    border-radius:999px;
-
-    background:var(--emas);
-}
-
-.screen-blocks{
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:10px;
-
-    margin-top:45px;
-}
-
-.screen-block{
-    height:80px;
-
-    border:1px solid rgba(255,255,255,.07);
-
-    border-radius:12px;
-
-    background:rgba(255,255,255,.025);
-}
-
-
-/* =========================================================
-   PROCESS
-   ========================================================= */
-
-.process{
-    padding:140px 0;
-}
-
-.process-header{
-    max-width:700px;
-
-    margin-bottom:70px;
-}
-
-.process-header h2{
-    margin-top:15px;
-
-    font-size:
-        clamp(
-            42px,
-            5vw,
-            70px
-        );
-
-    line-height:1;
-
-    letter-spacing:-.06em;
-}
-
-.process-header h2 em{
-    color:var(--emas);
-
-    font-family:var(--serif);
-
-    font-weight:400;
-}
-
-.process-list{
-    border-top:1px solid var(--garis);
-}
-
-.process-item{
-    display:grid;
-
-    grid-template-columns:100px 1fr 1fr;
-
-    gap:30px;
-
-    padding:35px 0;
-
-    border-bottom:1px solid var(--garis);
-
-    transition:
-        padding .3s ease;
-}
-
-.process-item:hover{
-    padding-left:15px;
-    padding-right:15px;
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(231,189,99,.025),
-            transparent
-        );
-}
-
-.process-number{
-    color:var(--emas);
-
-    font-size:12px;
-
-    letter-spacing:.2em;
-}
-
-.process-item h3{
-    font-size:21px;
-}
-
-.process-item p{
-    color:#77766f;
-
-    font-size:14px;
-    line-height:1.8;
-}
-
-
-/* =========================================================
-   TESTIMONIAL PLACEHOLDER
-   ========================================================= */
-
-.trust{
-    padding:110px 0;
-
-    border-top:1px solid var(--garis);
-    border-bottom:1px solid var(--garis);
-}
-
-.trust-inner{
-    display:grid;
-
-    grid-template-columns:
-        .7fr
-        1.3fr;
-
-    gap:80px;
-}
-
-.trust h2{
-    margin-top:15px;
-
-    font-size:
-        clamp(
-            38px,
-            4vw,
-            58px
-        );
-
-    line-height:1;
-
-    letter-spacing:-.055em;
-}
-
-.quote{
-    position:relative;
-
-    padding:30px;
-
-    border-left:1px solid var(--garis-emas);
-
-    background:
-        linear-gradient(
-            90deg,
-            rgba(231,189,99,.035),
-            transparent
-        );
-}
-
-.quote-mark{
-    color:var(--emas);
-
-    font-family:var(--serif);
-
-    font-size:55px;
-
-    line-height:.5;
-}
-
-.quote p{
-    margin-top:25px;
-
-    color:#c3c1b9;
-
-    font-family:var(--serif);
-
-    font-size:
-        clamp(
-            22px,
-            3vw,
-            34px
-        );
-
-    line-height:1.35;
-}
-
-.quote small{
-    display:block;
-
-    margin-top:25px;
-
-    color:#77766f;
+    color:var(--gold-light);
 
     font-size:11px;
 }
 
 
 /* =========================================================
-   FINAL CTA
-   ========================================================= */
+   TESTIMONIAL
+========================================================= */
 
-.final{
-    padding:150px 0;
+.testimonial{
+    padding:130px max(24px,5vw);
+
+    background:var(--paper);
+
+    text-align:center;
 }
 
-.final-box{
+.quote{
+    max-width:850px;
+
+    margin:auto;
+}
+
+.quote-mark{
+    color:var(--gold);
+
+    font-family:Georgia,serif;
+
+    font-size:70px;
+
+    line-height:.5;
+
+    margin-bottom:25px;
+}
+
+.quote p{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(28px,4vw,48px);
+
+    line-height:1.15;
+
+    letter-spacing:-.03em;
+}
+
+.quote cite{
+    display:block;
+
+    margin-top:25px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    font-style:normal;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta{
+    padding:0 max(24px,5vw) 100px;
+
+    background:var(--paper);
+}
+
+.cta-box{
+    max-width:1180px;
+
+    margin:auto;
+
+    padding:
+        clamp(45px,7vw,85px);
+
+    border-radius:var(--radius-xl);
+
+    background:
+        linear-gradient(
+            135deg,
+            #271b15,
+            #17120f
+        );
+
+    color:white;
+
     position:relative;
 
     overflow:hidden;
-
-    padding:
-        clamp(50px,8vw,100px);
-
-    border:1px solid rgba(231,189,99,.20);
-
-    border-radius:36px;
-
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(231,189,99,.13),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #15140f,
-            #0c0c0b
-        );
 }
 
-.final-box::before{
+.cta-box::before{
     content:"";
 
     position:absolute;
@@ -1630,76 +1093,87 @@ section{
     width:400px;
     height:400px;
 
-    right:-180px;
-    bottom:-250px;
-
-    border:1px solid rgba(231,189,99,.15);
-
     border-radius:50%;
+
+    right:-130px;
+    top:-170px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(201,154,88,.25),
+            transparent 65%
+        );
 }
 
-.final-box h2{
+.cta-box > *{
     position:relative;
+    z-index:2;
+}
 
-    max-width:850px;
+.cta-box h2{
+    max-width:720px;
+
+    font-family:Georgia,serif;
 
     font-size:
-        clamp(
-            44px,
-            7vw,
-            90px
-        );
+        clamp(42px,5vw,70px);
 
-    line-height:.94;
-
-    letter-spacing:-.065em;
-}
-
-.final-box h2 em{
-    color:var(--emas);
-
-    font-family:var(--serif);
+    line-height:.98;
 
     font-weight:400;
+
+    letter-spacing:-.04em;
+
+    margin-bottom:30px;
 }
 
-.final-box p{
-    position:relative;
-
-    max-width:600px;
-
-    margin-top:25px;
-
-    color:#99978f;
-
-    font-size:16px;
-
-    line-height:1.8;
+.cta-box h2 em{
+    color:var(--gold-light);
 }
 
-.final-actions{
-    position:relative;
-
-    display:flex;
-    flex-wrap:wrap;
-
+.cta-button{
+    display:inline-flex;
+    align-items:center;
     gap:12px;
 
-    margin-top:38px;
+    padding:15px 21px;
+
+    background:var(--gold-light);
+    color:var(--brown);
+
+    border-radius:999px;
+
+    font-size:13px;
+    font-weight:800;
+
+    transition:.3s ease;
+}
+
+.cta-button:hover{
+    transform:translateY(-3px);
+
+    background:#f0d29f;
 }
 
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
-.footer{
-    padding:35px 0 100px;
+footer{
+    padding:35px max(24px,5vw);
 
-    border-top:1px solid var(--garis);
+    background:var(--brown);
+
+    color:white;
 }
 
 .footer-inner{
+    max-width:1180px;
+
+    margin:auto;
+
     display:flex;
 
     align-items:center;
@@ -1709,36 +1183,21 @@ section{
 }
 
 .footer-brand{
-    color:#77766f;
+    font-family:Georgia,serif;
 
-    font-size:12px;
+    font-size:20px;
 }
 
-.footer-brand strong{
-    color:#ddd;
-
-    letter-spacing:.25em;
-}
-
-.footer-copy{
-    color:#55544f;
+.footer-inner span{
+    color:#9f9188;
 
     font-size:11px;
 }
 
 
 /* =========================================================
-   MOBILE STICKY CTA
-   ========================================================= */
-
-.mobile-cta{
-    display:none;
-}
-
-
-/* =========================================================
    REVEAL
-   ========================================================= */
+========================================================= */
 
 .reveal{
     opacity:0;
@@ -1747,425 +1206,247 @@ section{
 
     transition:
         opacity .8s ease,
-        transform .8s ease;
+        transform .8s cubic-bezier(.2,.7,.2,1);
 }
 
 .reveal.visible{
     opacity:1;
 
-    transform:none;
+    transform:translateY(0);
 }
 
 
 /* =========================================================
-   ANIMATIONS
-   ========================================================= */
-
-@keyframes rotate{
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-}
-
-@keyframes marquee{
-    from{
-        transform:translateX(0);
-    }
-
-    to{
-        transform:translateX(-50%);
-    }
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
+   RESPONSIVE — TABLET
+========================================================= */
 
 @media(max-width:900px){
 
     .nav{
+        top:10px;
+    }
+
+    .nav-links,
+    .nav-cta{
         display:none;
     }
 
-    .menu-button{
-        display:block;
-    }
-
-    .header-cta{
-        display:none;
-    }
-
-    .hero-grid{
-        grid-template-columns:1fr;
-
-        gap:70px;
+    .menu{
+        display:grid;
+        place-items:center;
     }
 
     .hero{
-        padding-top:140px;
-    }
-
-    .visual{
-        min-height:500px;
-    }
-
-    .problem-grid{
         grid-template-columns:1fr;
 
-        gap:40px;
+        padding-top:130px;
+
+        gap:50px;
     }
 
-    .value-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+    .hero-copy{
+        max-width:720px;
     }
 
-    .showcase-inner{
+    .hero-visual{
+        min-height:520px;
+    }
+
+    .image-frame{
+        width:min(470px,90%);
+    }
+
+    .floating-note{
+        left:2%;
+    }
+
+    .story-grid{
         grid-template-columns:1fr;
 
-        gap:60px;
+        gap:45px;
     }
 
-    .trust-inner{
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .experience-grid{
         grid-template-columns:1fr;
 
-        gap:40px;
+        gap:50px;
     }
 
 }
 
 
 /* =========================================================
-   MOBILE
-   ========================================================= */
+   RESPONSIVE — MOBILE
+========================================================= */
 
-@media(max-width:600px){
+@media(max-width:620px){
 
-    .container{
-        width:min(
-            100% - 28px,
-            1180px
-        );
+    .nav{
+        width:calc(100% - 20px);
+
+        padding:9px 9px 9px 13px;
     }
 
-    .header{
-        top:10px;
-
-        width:
-            calc(100% - 20px);
-
-        height:68px;
-
-        padding-left:9px;
-    }
-
-    .brand-logo{
-        width:48px;
-        height:48px;
-
-        border-radius:13px;
-    }
-
-    .brand-name{
-        font-size:13px;
-    }
-
-    .brand-sub{
-        font-size:8px;
+    .logo-mark{
+        width:36px;
+        height:36px;
     }
 
     .hero{
-        min-height:auto;
-
         padding:
-            135px 0
+            120px
+            20px
             70px;
+
+        min-height:auto;
     }
 
     .hero h1{
         font-size:
-            clamp(
-                48px,
-                15vw,
-                70px
-            );
+            clamp(48px,15vw,70px);
+
+        letter-spacing:-.06em;
     }
 
     .hero-description{
-        margin-top:26px;
+        font-size:15px;
 
-        font-size:16px;
-
-        line-height:1.75;
+        line-height:1.7;
     }
 
-    .hero-actions{
-        display:grid;
+    .hero-buttons{
+        flex-direction:column;
 
-        grid-template-columns:1fr;
-
-        margin-top:30px;
+        align-items:stretch;
     }
 
-    .button{
+    .btn{
         width:100%;
     }
 
-    .hero-trust{
-        align-items:flex-start;
+    .hero-visual{
+        min-height:460px;
     }
 
-    .visual{
-        min-height:430px;
+    .image-frame{
+        width:86%;
+
+        aspect-ratio:4/5;
+
+        border-radius:
+            150px
+            150px
+            25px
+            25px;
     }
 
-    .visual-ring{
-        width:340px;
-        height:340px;
+    .floating-note{
+        left:0;
+
+        bottom:55px;
+
+        padding:12px;
+
+        transform:rotate(-3deg);
     }
 
-    .visual-ring-two{
-        width:260px;
-        height:260px;
+    .floating-note span{
+        font-size:9px;
     }
 
-    .visual-card{
-        width:80%;
+    .product-label{
+        left:20px;
+        right:20px;
+        bottom:20px;
+    }
 
-        min-height:380px;
+    .product-label strong{
+        font-size:23px;
+    }
 
-        padding:20px;
+    .trust{
+        padding:
+            22px 20px;
+    }
+
+    .trust-inner{
+        grid-template-columns:1fr 1fr;
+
+        gap:12px;
+    }
+
+    .story,
+    .menu-section,
+    .experience,
+    .testimonial{
+        padding:
+            85px 20px;
+    }
+
+    .story h2,
+    .experience h2{
+        font-size:43px;
+    }
+
+    .story-content p{
+        font-size:15px;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-head h2{
+        margin-bottom:18px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .product-image{
+        height:300px;
+    }
+
+    .experience-grid{
+        gap:40px;
+    }
+
+    .quote p{
+        font-size:30px;
+    }
+
+    .cta{
+        padding:
+            0 20px 70px;
+    }
+
+    .cta-box{
+        padding:42px 28px;
 
         border-radius:25px;
     }
 
-    .mockup{
-        top:82px;
-
-        left:20px;
-        right:20px;
-
-        bottom:55px;
-    }
-
-    .mockup-content{
-        padding:22px 18px;
-    }
-
-    .mockup-title{
-        font-size:25px;
-    }
-
-    .floating{
-        padding:11px 13px;
-
-        border-radius:14px;
-    }
-
-    .floating-one{
-        left:-5px;
-        bottom:40px;
-    }
-
-    .floating-two{
-        right:-5px;
-        top:55px;
-    }
-
-    .floating-icon{
-        width:32px;
-        height:32px;
-    }
-
-    .floating strong{
-        font-size:10px;
-    }
-
-    .floating small{
-        font-size:8px;
-    }
-
-    .problem{
-        padding:
-            90px 0
-            70px;
-    }
-
-    .problem h2{
+    .cta-box h2{
         font-size:43px;
     }
 
-    .problem-list{
-        grid-template-columns:1fr;
-
-        margin-top:40px;
-    }
-
-    .problem-item{
-        min-height:150px;
-
-        padding:25px;
-    }
-
-    .value{
-        padding:
-            70px 0
-            90px;
-    }
-
-    .value-header{
-        display:block;
-
-        margin-bottom:40px;
-    }
-
-    .value-header p{
-        margin-top:25px;
-    }
-
-    .value-grid{
-        grid-template-columns:1fr;
-    }
-
-    .value-card{
-        min-height:240px;
-    }
-
-    .showcase{
-        padding:80px 0;
-    }
-
-    .browser-screen{
-        min-height:350px;
-
-        padding:28px;
-    }
-
-    .screen-text{
-        width:90%;
-    }
-
-    .screen-blocks{
-        margin-top:30px;
-    }
-
-    .screen-block{
-        height:60px;
-    }
-
-    .process{
-        padding:90px 0;
-    }
-
-    .process-item{
-        grid-template-columns:55px 1fr;
-
-        gap:10px;
-    }
-
-    .process-item p{
-        grid-column:2;
-    }
-
-    .trust{
-        padding:80px 0;
-    }
-
-    .final{
-        padding:80px 0;
-    }
-
-    .final-box{
-        border-radius:26px;
-
-        padding:
-            45px 25px;
-    }
-
-    .final-box h2{
-        font-size:46px;
-    }
-
-    .footer{
-        padding-bottom:120px;
-    }
-
     .footer-inner{
-        display:block;
-    }
+        align-items:flex-start;
 
-    .footer-copy{
-        margin-top:12px;
-    }
-
-
-    /* STICKY CTA */
-
-    .mobile-cta{
-        position:fixed;
-
-        display:block;
-
-        left:10px;
-        right:10px;
-        bottom:
-            calc(
-                10px +
-                env(safe-area-inset-bottom)
-            );
-
-        z-index:60;
-    }
-
-    .mobile-cta a{
-        display:flex;
-
-        align-items:center;
-        justify-content:center;
-
-        width:100%;
-        height:54px;
-
-        border:1px solid rgba(255,255,255,.12);
-
-        border-radius:999px;
-
-        background:
-            rgba(20,20,18,.90);
-
-        color:#f4d88d;
-
-        font-size:13px;
-        font-weight:700;
-
-        box-shadow:
-            0 15px 40px rgba(0,0,0,.5);
-
-        backdrop-filter:blur(18px);
-        -webkit-backdrop-filter:blur(18px);
+        flex-direction:column;
     }
 
 }
 
 
 /* =========================================================
-   REDUCED MOTION
-   ========================================================= */
+   REDUCE MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -2184,7 +1465,6 @@ section{
         opacity:1;
         transform:none;
     }
-
 }
 
 </style>
@@ -2193,882 +1473,196 @@ section{
 
 <body>
 
+<div class="progress" id="progress"></div>
+
 
 <!-- =====================================================
-     HEADER
-     ===================================================== -->
+     NAVIGATION
+===================================================== -->
 
-<header class="header" id="header">
+<header class="nav">
 
-    <a href="#" class="brand">
+    <a href="#" class="logo" aria-label="NARA Coffee">
 
-        <img
-            src="logo.png"
-            alt="Logo XYNY Studio"
-            class="brand-logo"
-        >
+        <div class="logo-mark">
+            N
+        </div>
 
-        <span class="brand-text">
-
-            <span class="brand-name">
-                XYNY
-            </span>
-
-            <span class="brand-sub">
-                STUDIO
-            </span>
-
-        </span>
+        <div class="logo-text">
+            <strong>NARA</strong>
+            <span>COFFEE HOUSE</span>
+        </div>
 
     </a>
 
 
-    <nav class="nav">
+    <nav class="nav-links">
 
-        <a href="#masalah">
-            Mengapa
+        <a href="#cerita">
+            Cerita
         </a>
 
-        <a href="#keunggulan">
-            Keunggulan
+        <a href="#menu">
+            Menu
         </a>
 
-        <a href="#proses">
-            Proses
-        </a>
-
-        <a href="#kontak">
-            Kontak
+        <a href="#pengalaman">
+            Pengalaman
         </a>
 
     </nav>
 
 
     <a
-        class="header-cta"
-        href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20tertarik%20dengan%20Landing%20Page."
-        target="_blank"
-        rel="noopener"
+        href="#pesan"
+        class="nav-cta"
     >
-        Mulai sekarang
+        Pesan Sekarang
         <span>↗</span>
     </a>
 
 
     <button
-        class="menu-button"
-        id="menuButton"
+        class="menu"
         aria-label="Buka menu"
+        onclick="alert('Menu demo: Cerita · Menu · Pengalaman · Pesan')"
     >
-        <span></span>
-        <span></span>
-        <span></span>
+        ☰
     </button>
 
 </header>
 
 
 
+<main>
+
 <!-- =====================================================
      HERO
-     ===================================================== -->
-
-<main>
+===================================================== -->
 
 <section class="hero">
 
-    <div class="container">
+    <div class="hero-copy reveal">
 
-        <div class="hero-grid">
+        <div class="eyebrow">
 
+            <span class="eyebrow-dot"></span>
 
-            <div class="reveal">
-
-                <div class="eyebrow">
-                    Landing Page Profesional
-                </div>
-
-
-                <h1>
-
-                    Jangan hanya
-                    <span class="serif">
-                        hadir di internet.
-                    </span>
-
-                </h1>
-
-
-                <p class="hero-description">
-
-                    Jadikan satu halaman sebagai tempat orang
-                    <strong>memahami apa yang Anda tawarkan,
-                    percaya kepada Anda,</strong>
-                    lalu tahu harus melakukan apa.
-
-                </p>
-
-
-                <div class="hero-actions">
-
-                    <a
-                        href="#kontak"
-                        class="button button-primary"
-                    >
-                        Buat halaman saya
-                        <span class="arrow">↗</span>
-                    </a>
-
-
-                    <a
-                        href="#contoh"
-                        class="button button-secondary"
-                    >
-                        Lihat contohnya
-                    </a>
-
-                </div>
-
-
-                <div class="hero-trust">
-
-                    <div class="trust-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <span>
-                        Dirancang untuk tampil meyakinkan
-                        di ponsel maupun komputer.
-                    </span>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- VISUAL -->
-
-            <div class="visual reveal">
-
-                <div class="visual-ring"></div>
-
-                <div class="visual-ring visual-ring-two"></div>
-
-
-                <div class="visual-card">
-
-                    <div class="card-top">
-
-                        <span>
-                            XYNY / 01
-                        </span>
-
-                        <span class="card-status">
-                            <i></i>
-                            SIAP
-                        </span>
-
-                    </div>
-
-
-                    <div class="mockup">
-
-                        <div class="mockup-top">
-
-                            <i></i>
-                            <i></i>
-                            <i></i>
-
-                        </div>
-
-
-                        <div class="mockup-content">
-
-                            <div class="mockup-label">
-                                PERKENALKAN DIRI
-                            </div>
-
-                            <div class="mockup-title">
-                                Buat orang
-                                mengerti
-                                <strong>nilai Anda.</strong>
-                            </div>
-
-                            <div class="mockup-line"></div>
-
-                            <div class="mockup-line small"></div>
-
-                            <div class="mockup-button"></div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="card-bottom">
-
-                        <span>
-                            STRATEGI
-                        </span>
-
-                        <span>
-                            VISUAL
-                        </span>
-
-                        <span>
-                            AKSI
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <div class="floating floating-one">
-
-                    <div class="floating-icon">
-                        ✦
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Kesan profesional
-                        </strong>
-
-                        <small>
-                            sejak layar pertama
-                        </small>
-
-                    </div>
-
-                </div>
-
-
-                <div class="floating floating-two">
-
-                    <div class="floating-icon">
-                        ↗
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Fokus pada tindakan
-                        </strong>
-
-                        <small>
-                            bukan sekadar tampilan
-                        </small>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MARQUEE
-     ===================================================== -->
-
-<section class="marquee">
-
-    <div class="marquee-track">
-
-        <span>JELAS</span>
-        <b>✦</b>
-
-        <span>MEYAKINKAN</span>
-        <b>✦</b>
-
-        <span>PROFESIONAL</span>
-        <b>✦</b>
-
-        <span>RESPONSIF</span>
-        <b>✦</b>
-
-        <span>TERARAH</span>
-        <b>✦</b>
-
-        <span>JELAS</span>
-        <b>✦</b>
-
-        <span>MEYAKINKAN</span>
-        <b>✦</b>
-
-        <span>PROFESIONAL</span>
-        <b>✦</b>
-
-        <span>RESPONSIF</span>
-        <b>✦</b>
-
-        <span>TERARAH</span>
-        <b>✦</b>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MASALAH
-     ===================================================== -->
-
-<section
-    class="problem"
-    id="masalah"
->
-
-<div class="container">
-
-    <div class="section-label reveal">
-        Masalah yang sering terjadi
-    </div>
-
-
-    <div class="problem-grid">
-
-        <div class="reveal">
-
-            <h2>
-
-                Orang menemukan Anda,
-                <em>tetapi tidak mengerti.</em>
-
-            </h2>
+            Kopi pilihan · Dibuat setiap hari
 
         </div>
 
 
-        <div class="reveal">
+        <h1>
 
-            <p class="problem-text">
+            Kopi yang
+            <br>
 
-                Banyak orang sebenarnya memiliki produk,
-                jasa, kemampuan, atau cerita yang bagus.
-                Masalahnya bukan selalu pada apa yang mereka
-                miliki.
+            <em>punya cerita.</em>
 
-                <br><br>
-
-                Masalahnya adalah cara semuanya
-                diperlihatkan.
-
-            </p>
-
-        </div>
-
-    </div>
+        </h1>
 
 
-    <div class="problem-list">
+        <p class="hero-description">
 
-        <article class="problem-item reveal">
-
-            <span>01</span>
-
-            <h3>
-                Terlihat seperti biasa saja
-            </h3>
-
-            <p>
-                Padahal kualitas pekerjaan Anda
-                sebenarnya jauh lebih baik.
-            </p>
-
-        </article>
-
-
-        <article class="problem-item reveal">
-
-            <span>02</span>
-
-            <h3>
-                Informasi terlalu berantakan
-            </h3>
-
-            <p>
-                Pengunjung harus mencari sendiri
-                apa yang sebenarnya Anda tawarkan.
-            </p>
-
-        </article>
-
-
-        <article class="problem-item reveal">
-
-            <span>03</span>
-
-            <h3>
-                Orang tidak tahu harus berbuat apa
-            </h3>
-
-            <p>
-                Sudah melihat halaman, tetapi akhirnya
-                tetap pergi tanpa menghubungi Anda.
-            </p>
-
-        </article>
-
-
-        <article class="problem-item reveal">
-
-            <span>04</span>
-
-            <h3>
-                Tidak nyaman dibuka dari ponsel
-            </h3>
-
-            <p>
-                Tulisan kecil, tombol sulit ditekan,
-                dan tampilan berantakan.
-            </p>
-
-        </article>
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     VALUE
-     ===================================================== -->
-
-<section
-    class="value"
-    id="keunggulan"
->
-
-<div class="container">
-
-    <div class="value-header">
-
-        <div class="reveal">
-
-            <div class="section-label">
-                Bukan sekadar halaman
-            </div>
-
-            <h2>
-
-                Setiap bagian punya
-                <em>alasan.</em>
-
-            </h2>
-
-        </div>
-
-
-        <p class="reveal">
-
-            Kami menyusun informasi dari hal yang
-            paling penting terlebih dahulu, sehingga
-            pengunjung tidak perlu bekerja keras
-            untuk memahami Anda.
+            Bukan sekadar secangkir kopi.
+            NARA memilih biji terbaik, memanggangnya
+            dengan karakter yang tepat, lalu menyajikannya
+            untuk menemani <strong>momen yang berarti.</strong>
 
         </p>
 
+
+        <div class="hero-buttons">
+
+            <a
+                href="#menu"
+                class="btn btn-primary"
+            >
+                Lihat Menu
+                <span>↓</span>
+            </a>
+
+
+            <a
+                href="#cerita"
+                class="btn btn-secondary"
+            >
+                Kenali NARA
+            </a>
+
+        </div>
+
     </div>
 
 
-    <div class="value-grid">
+
+    <div class="hero-visual reveal">
+
+        <div class="image-frame">
+
+            <img
+                src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=85"
+                alt="Secangkir kopi NARA"
+                loading="eager"
+            >
+
+            <div class="image-overlay"></div>
 
 
-        <article class="value-card reveal">
+            <div class="product-label">
 
-            <div class="value-number">
-                01 / PESAN
+                <div>
+
+                    <small>
+                        Signature
+                    </small>
+
+                    <strong>
+                        NARA House Blend
+                    </strong>
+
+                </div>
+
+
+                <div class="price">
+
+                    <small>
+                        Mulai
+                    </small>
+
+                    <strong>
+                        Rp28K
+                    </strong>
+
+                </div>
+
             </div>
 
-            <div class="value-icon">
-                ◇
-            </div>
-
-            <h3>
-                Pesan yang langsung dipahami
-            </h3>
-
-            <p>
-                Judul, penjelasan, dan ajakan dibuat
-                agar pengunjung cepat memahami
-                apa yang Anda tawarkan.
-            </p>
-
-        </article>
+        </div>
 
 
-        <article class="value-card reveal">
+        <div class="floating-note">
 
-            <div class="value-number">
-                02 / KEPERCAYAAN
-            </div>
-
-            <div class="value-icon">
-                ✦
-            </div>
-
-            <h3>
-                Kesan yang lebih meyakinkan
-            </h3>
-
-            <p>
-                Tipografi, ruang, warna, struktur,
-                dan detail visual bekerja bersama
-                membangun kesan profesional.
-            </p>
-
-        </article>
-
-
-        <article class="value-card reveal">
-
-            <div class="value-number">
-                03 / TINDAKAN
-            </div>
-
-            <div class="value-icon">
-                ↗
-            </div>
-
-            <h3>
-                Pengunjung tahu langkah berikutnya
-            </h3>
-
-            <p>
-                Tombol dan ajakan ditempatkan
-                pada titik yang masuk akal sehingga
-                orang tidak perlu menebak.
-            </p>
-
-        </article>
-
-
-        <article class="value-card reveal">
-
-            <div class="value-number">
-                04 / PONSEL
-            </div>
-
-            <div class="value-icon">
-                □
-            </div>
-
-            <h3>
-                Nyaman dari layar kecil
-            </h3>
-
-            <p>
-                Tata letak menyesuaikan ukuran layar
-                agar tetap mudah dibaca dan digunakan.
-            </p>
-
-        </article>
-
-
-        <article class="value-card reveal">
-
-            <div class="value-number">
-                05 / IDENTITAS
-            </div>
-
-            <div class="value-icon">
-                ◎
-            </div>
-
-            <h3>
-                Terasa seperti milik Anda
-            </h3>
-
-            <p>
-                Warna, bahasa, gambar, dan karakter
-                halaman dapat disesuaikan dengan
-                identitas pribadi maupun usaha.
-            </p>
-
-        </article>
-
-
-        <article class="value-card reveal">
-
-            <div class="value-number">
-                06 / SIAP
-            </div>
-
-            <div class="value-icon">
+            <div class="note-icon">
                 ✓
             </div>
 
-            <h3>
-                Siap digunakan
-            </h3>
+            <div>
 
-            <p>
-                Setelah selesai, halaman dapat
-                dipasang sebagai pusat informasi
-                dari media sosial maupun tautan lain.
-            </p>
+                <strong>
+                    Baru diseduh
+                </strong>
 
-        </article>
-
-
-    </div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTOH
-     ===================================================== -->
-
-<section
-    class="showcase"
-    id="contoh"
->
-
-<div class="container">
-
-    <div class="showcase-inner">
-
-        <div class="reveal">
-
-            <div class="section-label">
-                Gambaran hasil
-            </div>
-
-            <h2>
-
-                Sederhana
-                <em>di mata.</em>
-
-                <br>
-
-                Terarah
-                <em>di baliknya.</em>
-
-            </h2>
-
-            <p>
-
-                Tampilan yang terlihat sederhana
-                bukan berarti dibuat sembarangan.
-                Justru setiap jarak, ukuran tulisan,
-                kontras, dan tombol dirancang agar
-                pengunjung tidak cepat lelah.
-
-            </p>
-
-            <div class="showcase-note">
-
-                <span>●</span>
-
-                Dirancang untuk pengalaman
-                membaca yang tenang.
-
-            </div>
-
-        </div>
-
-
-        <div class="browser reveal">
-
-            <div class="browser-bar">
-
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-                <span class="browser-dot"></span>
-
-            </div>
-
-
-            <div class="browser-screen">
-
-                <div class="screen-eyebrow">
-                    HALAMAN ANDA
-                </div>
-
-
-                <div class="screen-title">
-
-                    Satu halaman.
-
-                    <br>
-
-                    <i>
-                        Satu tujuan.
-                    </i>
-
-                </div>
-
-
-                <div class="screen-text">
-
-                    Ceritakan siapa Anda,
-                    apa yang Anda tawarkan,
-                    dan arahkan orang ke langkah
-                    yang paling penting.
-
-                </div>
-
-
-                <div class="screen-button"></div>
-
-
-                <div class="screen-blocks">
-
-                    <div class="screen-block"></div>
-                    <div class="screen-block"></div>
-                    <div class="screen-block"></div>
-
-                </div>
+                <span>
+                    Setiap pesanan dibuat dengan perhatian.
+                </span>
 
             </div>
 
         </div>
 
     </div>
-
-</div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PROSES
-     ===================================================== -->
-
-<section
-    class="process"
-    id="proses"
->
-
-<div class="container">
-
-    <div class="process-header reveal">
-
-        <div class="section-label">
-            Cara kerja
-        </div>
-
-        <h2>
-
-            Tidak perlu pusing
-            <em>dengan teknis.</em>
-
-        </h2>
-
-    </div>
-
-
-    <div class="process-list">
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                01
-            </div>
-
-            <div>
-                <h3>
-                    Ceritakan kebutuhan Anda
-                </h3>
-            </div>
-
-            <p>
-                Kirim informasi, contoh, foto,
-                warna, atau sekadar ceritakan
-                apa yang ingin Anda capai.
-            </p>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                02
-            </div>
-
-            <div>
-                <h3>
-                    Kami susun arahnya
-                </h3>
-            </div>
-
-            <p>
-                Informasi diterjemahkan menjadi
-                struktur halaman, tampilan,
-                dan alur yang lebih jelas.
-            </p>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                03
-            </div>
-
-            <div>
-                <h3>
-                    Anda melihat hasilnya
-                </h3>
-            </div>
-
-            <p>
-                Kami melakukan penyempurnaan
-                berdasarkan kebutuhan dan
-                masukan Anda.
-            </p>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                04
-            </div>
-
-            <div>
-                <h3>
-                    Siap diperkenalkan
-                </h3>
-            </div>
-
-            <p>
-                Halaman siap digunakan untuk
-                memperkenalkan usaha, jasa,
-                produk, kegiatan, maupun diri Anda.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</div>
 
 </section>
 
@@ -3076,128 +1670,507 @@ section{
 
 <!-- =====================================================
      TRUST
-     ===================================================== -->
+===================================================== -->
 
 <section class="trust">
 
-<div class="container">
-
     <div class="trust-inner">
 
-        <div class="reveal">
+        <div class="trust-item">
 
-            <div class="section-label">
-                Prinsip XYNY
+            <div class="trust-number">
+                01
             </div>
 
-            <h2>
-                Bagus itu penting.
-                <br>
-                <span style="color:#77766f;">
-                    Berguna lebih penting.
+            <div>
+                <span>
+                    Biji pilihan
                 </span>
-            </h2>
+            </div>
 
         </div>
 
 
-        <div class="quote reveal">
+        <div class="trust-item">
 
-            <div class="quote-mark">
-                “
+            <div class="trust-number">
+                02
             </div>
 
-            <p>
+            <div>
+                <span>
+                    Dipanggang segar
+                </span>
+            </div>
 
-                Kami tidak ingin membuat halaman
-                yang hanya membuat orang berkata,
-                “Wah, bagus.”
+        </div>
 
-                <br><br>
 
-                Kami ingin mereka berkata,
-                “Saya mengerti. Saya mau tahu lebih jauh.”
+        <div class="trust-item">
 
-            </p>
+            <div class="trust-number">
+                03
+            </div>
 
-            <small>
-                — Prinsip desain XYNY Studio
-            </small>
+            <div>
+                <span>
+                    Tanpa terburu-buru
+                </span>
+            </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <div class="trust-number">
+                04
+            </div>
+
+            <div>
+                <span>
+                    Dibuat untukmu
+                </span>
+            </div>
 
         </div>
 
     </div>
-
-</div>
 
 </section>
 
 
 
 <!-- =====================================================
-     FINAL CTA
-     ===================================================== -->
+     STORY
+===================================================== -->
 
 <section
-    class="final"
-    id="kontak"
+    class="story"
+    id="cerita"
 >
 
-<div class="container">
+    <div class="section-wrap">
 
-    <div class="final-box reveal">
+        <div class="story-grid">
 
-        <div class="section-label">
-            Siap memulai?
-        </div>
+            <div class="reveal">
 
+                <div class="section-kicker">
+                    Mengapa NARA
+                </div>
 
-        <h2>
+                <h2>
 
-            Jangan biarkan
-            ide bagus Anda
-            <em>terlihat biasa.</em>
+                    Ada kopi yang
+                    <em>sekadar diminum.</em>
 
-        </h2>
+                    Ada yang
+                    <em>diingat.</em>
 
+                </h2>
 
-        <p>
-
-            Ceritakan apa yang Anda butuhkan.
-            Tidak harus sudah tahu desainnya.
-            Tidak harus mengerti teknisnya.
-            Mulai saja dari ceritanya.
-
-        </p>
+            </div>
 
 
-        <div class="final-actions">
+            <div class="story-content reveal">
 
-            <a
-                href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20membuat%20Landing%20Page."
-                target="_blank"
-                rel="noopener"
-                class="button button-primary"
-            >
-                Konsultasikan kebutuhan saya
-                <span class="arrow">↗</span>
-            </a>
+                <p>
+                    Kami percaya kopi tidak harus rumit
+                    untuk menjadi istimewa.
+                </p>
+
+                <p>
+                    Karena itu NARA berangkat dari sesuatu
+                    yang sederhana: biji yang baik, proses
+                    yang jujur, dan orang-orang yang peduli
+                    pada apa yang mereka sajikan.
+                </p>
+
+                <p>
+                    Dari pagi yang terburu-buru sampai
+                    percakapan yang berlangsung berjam-jam,
+                    kami ingin menjadi bagian kecil dari
+                    cerita Anda.
+                </p>
 
 
-            <a
-                href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20mengetahui%20harga%20Landing%20Page."
-                target="_blank"
-                rel="noopener"
-                class="button button-secondary"
-            >
-                Tanya harga
-            </a>
+                <div class="signature">
+
+                    <div class="signature-line"></div>
+
+                    <span>
+                        Dari kami, untuk hari Anda.
+                    </span>
+
+                </div>
+
+            </div>
 
         </div>
 
     </div>
 
-</div>
+</section>
+
+
+
+<!-- =====================================================
+     MENU
+===================================================== -->
+
+<section
+    class="menu-section"
+    id="menu"
+>
+
+    <div class="section-head reveal">
+
+        <div>
+
+            <div class="section-kicker">
+                Pilihan hari ini
+            </div>
+
+            <h2>
+                Temukan
+                <br>
+                <em>favoritmu.</em>
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Tiga pilihan untuk tiga suasana.
+            Pilih yang paling dekat dengan
+            harimu hari ini.
+
+        </p>
+
+    </div>
+
+
+    <div class="products">
+
+
+        <!-- PRODUCT 01 -->
+
+        <article class="product-card reveal">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=85"
+                    alt="NARA Signature Latte"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-meta">
+
+                    <span>
+                        Paling populer
+                    </span>
+
+                    <strong>
+                        Rp32K
+                    </strong>
+
+                </div>
+
+
+                <h3>
+                    Signature Latte
+                </h3>
+
+
+                <p>
+                    Lembut, seimbang, dan sedikit manis.
+                    Pilihan aman ketika kamu ingin
+                    menikmati sesuatu yang familiar.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 02 -->
+
+        <article class="product-card reveal">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=85"
+                    alt="NARA Black Coffee"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-meta">
+
+                    <span>
+                        Untuk penikmat kopi
+                    </span>
+
+                    <strong>
+                        Rp28K
+                    </strong>
+
+                </div>
+
+
+                <h3>
+                    Black Coffee
+                </h3>
+
+
+                <p>
+                    Karakter biji lebih terasa.
+                    Bersih, aromatik, dan dibuat
+                    untuk dinikmati perlahan.
+                </p>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCT 03 -->
+
+        <article class="product-card reveal">
+
+            <div class="product-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=900&q=85"
+                    alt="NARA Coffee and pastry"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="product-info">
+
+                <div class="product-meta">
+
+                    <span>
+                        Teman sore
+                    </span>
+
+                    <strong>
+                        Rp35K
+                    </strong>
+
+                </div>
+
+
+                <h3>
+                    Coffee & Pastry
+                </h3>
+
+
+                <p>
+                    Secangkir kopi dan pastry hangat
+                    untuk menemani percakapan yang
+                    seharusnya tidak terburu-buru.
+                </p>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EXPERIENCE
+===================================================== -->
+
+<section
+    class="experience"
+    id="pengalaman"
+>
+
+    <div class="experience-grid">
+
+        <div class="reveal">
+
+            <div class="section-kicker">
+                Lebih dari secangkir kopi
+            </div>
+
+            <h2>
+
+                Datang untuk
+                <em>kopinya.</em>
+
+                Tinggal karena
+                <em>suasananya.</em>
+
+            </h2>
+
+        </div>
+
+
+        <div class="experience-copy reveal">
+
+            <p>
+                NARA dirancang untuk menjadi tempat
+                yang terasa nyaman sejak pertama kali
+                Anda datang.
+            </p>
+
+
+            <div class="feature-list">
+
+                <div class="feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    Kopi segar setiap hari
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    Tempat nyaman untuk bekerja
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    Cocok untuk bertemu dan berbincang
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-check">
+                        ✓
+                    </div>
+
+                    Pesan untuk dibawa pulang
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TESTIMONIAL
+===================================================== -->
+
+<section class="testimonial">
+
+    <div class="quote reveal">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+
+        <p>
+
+            “Tempat yang membuat
+            saya ingin memperlambat
+            pagi sedikit lebih lama.”
+
+        </p>
+
+
+        <cite>
+            — Pelanggan NARA
+        </cite>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CTA
+===================================================== -->
+
+<section
+    class="cta"
+    id="pesan"
+>
+
+    <div class="cta-box reveal">
+
+        <div class="section-kicker">
+            Siap menikmati hari?
+        </div>
+
+
+        <h2>
+
+            Kopi yang baik
+            <br>
+
+            selalu punya
+            <em>momen yang tepat.</em>
+
+        </h2>
+
+
+        <!-- GANTI NOMOR WHATSAPP KLIEN -->
+
+        <a
+            href="https://wa.me/6280000000000?text=Halo%20NARA%2C%20saya%20ingin%20memesan%20kopi."
+            class="cta-button"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+
+            Pesan melalui WhatsApp
+
+            <span>
+                ↗
+            </span>
+
+        </a>
+
+    </div>
 
 </section>
 
@@ -3207,285 +2180,128 @@ section{
 
 <!-- =====================================================
      FOOTER
-     ===================================================== -->
+===================================================== -->
 
-<footer class="footer">
-
-<div class="container">
+<footer>
 
     <div class="footer-inner">
 
         <div class="footer-brand">
-
-            <strong>XYNY</strong>
-
-            <span>
-                STUDIO
-            </span>
-
+            NARA Coffee
         </div>
 
+        <span>
+            Contoh landing page — dibuat oleh Xyny Studio
+        </span>
 
-        <div class="footer-copy">
-
-            © 2026 XYNY Studio.
-            Semua hak dilindungi.
-
-        </div>
+        <span>
+            © 2026
+        </span>
 
     </div>
-
-</div>
 
 </footer>
 
 
 
-<!-- =====================================================
-     MOBILE CTA
-     ===================================================== -->
-
-<div class="mobile-cta">
-
-    <a
-        href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20tertarik%20dengan%20Landing%20Page."
-        target="_blank"
-        rel="noopener"
-    >
-        Saya ingin membuat Landing Page ↗
-    </a>
-
-</div>
-
-
-
-<!-- =====================================================
-     JAVASCRIPT
-     ===================================================== -->
-
 <script>
 
 /* =========================================================
-   HEADER SCROLL
-   ========================================================= */
+   PROGRESS BAR
+========================================================= */
 
-const header = document.getElementById("header");
+const progress = document.getElementById("progress");
 
 window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 30){
-        header.classList.add("scrolled");
-    }else{
-        header.classList.remove("scrolled");
-    }
+    const scrollTop =
+        window.scrollY;
 
-}, {passive:true});
+    const height =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
 
+    const percentage =
+        height > 0
+        ? (scrollTop / height) * 100
+        : 0;
+
+    progress.style.width =
+        percentage + "%";
+
+});
 
 
 /* =========================================================
    REVEAL ANIMATION
-   ========================================================= */
-
-const revealElements =
-    document.querySelectorAll(".reveal");
+========================================================= */
 
 const observer =
     new IntersectionObserver(
-
         (entries) => {
 
-            entries.forEach(entry => {
+            entries.forEach(
+                (entry) => {
 
-                if(entry.isIntersecting){
+                    if(entry.isIntersecting){
 
-                    entry.target.classList.add("visible");
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                    observer.unobserve(entry.target);
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
-
         {
-            threshold:.12,
-            rootMargin:"0px 0px -40px 0px"
+            threshold:.12
         }
-
     );
 
 
-revealElements.forEach(element => {
+document
+    .querySelectorAll(".reveal")
+    .forEach(
+        (element) => {
 
-    observer.observe(element);
-
-});
-
-
-
-/* =========================================================
-   MOBILE MENU
-   ========================================================= */
-
-const menuButton =
-    document.getElementById("menuButton");
-
-const nav =
-    document.querySelector(".nav");
-
-let menuOpen = false;
-
-menuButton.addEventListener("click", () => {
-
-    menuOpen = !menuOpen;
-
-    if(menuOpen){
-
-        nav.style.display = "flex";
-
-        nav.style.position = "fixed";
-
-        nav.style.top = "88px";
-
-        nav.style.left = "14px";
-
-        nav.style.right = "14px";
-
-        nav.style.padding = "25px";
-
-        nav.style.flexDirection = "column";
-
-        nav.style.alignItems = "flex-start";
-
-        nav.style.gap = "22px";
-
-        nav.style.border =
-            "1px solid rgba(255,255,255,.12)";
-
-        nav.style.borderRadius = "24px";
-
-        nav.style.background =
-            "rgba(10,10,10,.96)";
-
-        nav.style.backdropFilter =
-            "blur(20px)";
-
-    }else{
-
-        nav.removeAttribute("style");
-
-    }
-
-});
-
-
-
-/* =========================================================
-   FECHAMENTO MENU APÓS CLIQUE
-   ========================================================= */
-
-document.querySelectorAll(".nav a")
-.forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        if(window.innerWidth <= 900){
-
-            nav.removeAttribute("style");
-
-            menuOpen = false;
-
-        }
-
-    });
-
-});
-
-
-
-/* =========================================================
-   MOUSE PARALLAX DESKTOP
-   ========================================================= */
-
-const visual =
-    document.querySelector(".visual");
-
-if(
-    visual &&
-    window.matchMedia("(pointer:fine)").matches
-){
-
-    visual.addEventListener(
-        "mousemove",
-        (event) => {
-
-            const rect =
-                visual.getBoundingClientRect();
-
-            const x =
-                (event.clientX - rect.left)
-                / rect.width
-                - .5;
-
-            const y =
-                (event.clientY - rect.top)
-                / rect.height
-                - .5;
-
-            const card =
-                visual.querySelector(".visual-card");
-
-            if(card){
-
-                card.style.transform =
-                    `
-                    rotateY(${x * 7}deg)
-                    rotateX(${y * -7}deg)
-                    translateY(-4px)
-                    `;
-
-            }
+            observer.observe(element);
 
         }
     );
 
 
-    visual.addEventListener(
-        "mouseleave",
-        () => {
+/* =========================================================
+   IMAGE FALLBACK
+   Jika gambar internet gagal dimuat,
+   kartu tetap terlihat rapi.
+========================================================= */
 
-            const card =
-                visual.querySelector(".visual-card");
+document
+    .querySelectorAll("img")
+    .forEach(
+        (image) => {
 
-            if(card){
+            image.addEventListener(
+                "error",
+                () => {
 
-                card.style.transform =
-                    "rotate(2deg)";
+                    image.style.display =
+                        "none";
 
-            }
+                    image.parentElement.style.background =
+                        "linear-gradient(135deg,#34251c,#16120f)";
+
+                }
+            );
 
         }
     );
-
-}
-
-
-/* =========================================================
-   PREVENT ACCIDENTAL HASH JUMP
-   ========================================================= */
-
-document.querySelectorAll('a[href="#"]')
-.forEach(link => {
-
-    link.addEventListener("click", event => {
-
-        event.preventDefault();
-
-    });
-
-});
 
 </script>
 
