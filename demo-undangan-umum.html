@@ -4,32 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<meta name="theme-color" content="#17231a">
+<meta name="theme-color" content="#f8f2e8">
+<meta name="description" content="Undangan digital premium — Adrian & Elena">
 
-<title>Adrian & Elena — Sebuah Cerita</title>
+<title>Adrian & Elena — Undangan Pernikahan</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
 /* =========================================================
-   CORE
+   ROOT
 ========================================================= */
 
 :root{
-    --cream:#f5efe5;
-    --paper:#fbf8f1;
-    --green:#1c3024;
-    --green-2:#304936;
-    --sage:#8ca38a;
-    --gold:#b9995d;
-    --gold-soft:#e4cc99;
-    --ink:#212b23;
-    --muted:#70776e;
-    --white:#fffdf8;
+    --cream:#f8f2e8;
+    --paper:#fffaf1;
+    --paper-2:#f0e6d6;
+
+    --ink:#253129;
+    --green:#385142;
+    --green-dark:#1b2a21;
+    --sage:#92a68f;
+
+    --gold:#b59659;
+    --gold-light:#e5cf9c;
+
+    --rose:#dcaea6;
+    --muted:#72776f;
+
+    --white:#fffefa;
+
+    --serif:"Cormorant Garamond",serif;
+    --script:"Italianno",cursive;
+    --sans:"DM Sans",sans-serif;
 }
 
 *{
@@ -45,12 +59,17 @@ html{
 body{
     background:var(--cream);
     color:var(--ink);
-    font-family:"DM Sans",sans-serif;
+    font-family:var(--sans);
     overflow-x:hidden;
 }
 
 body.locked{
     overflow:hidden;
+}
+
+img{
+    display:block;
+    width:100%;
 }
 
 a{
@@ -59,14 +78,7 @@ a{
 }
 
 button{
-    border:0;
     font:inherit;
-    cursor:pointer;
-}
-
-img{
-    display:block;
-    width:100%;
 }
 
 ::selection{
@@ -76,82 +88,163 @@ img{
 
 
 /* =========================================================
-   OPENING — CINEMATIC CURTAIN
+   OPENING STAGE
 ========================================================= */
 
 .opening{
     position:fixed;
     inset:0;
     z-index:9999;
-    background:#132019;
-    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255,240,203,.16),
+            transparent 28%
+        ),
+        #17231a;
+
     display:grid;
     place-items:center;
+
+    overflow:hidden;
 }
+
+.opening.hide{
+    pointer-events:none;
+}
+
+
+/* ---------------------------------------------------------
+   GOLDEN LIGHT
+--------------------------------------------------------- */
 
 .opening-light{
     position:absolute;
-    width:60vw;
-    height:60vw;
+
+    width:70vw;
+    height:70vw;
+
     border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(237,214,166,.18),
-            transparent 65%
+            rgba(238,210,157,.17),
+            rgba(238,210,157,.04) 35%,
+            transparent 68%
         );
 
-    filter:blur(30px);
+    filter:blur(10px);
 
     animation:
-        openingBreath 5s ease-in-out infinite;
+        openingPulse
+        5s
+        ease-in-out
+        infinite;
 }
 
-@keyframes openingBreath{
+@keyframes openingPulse{
 
     0%,100%{
         transform:scale(.9);
-        opacity:.45;
+        opacity:.55;
     }
 
     50%{
-        transform:scale(1.12);
+        transform:scale(1.08);
         opacity:1;
     }
-
 }
+
+
+/* ---------------------------------------------------------
+   CURTAINS
+--------------------------------------------------------- */
 
 .curtain{
     position:absolute;
+
     top:0;
-    width:52%;
-    height:100%;
+    bottom:0;
+
+    width:54%;
+
+    z-index:8;
+
+    overflow:hidden;
 
     background:
-        radial-gradient(
-            ellipse at 50% 35%,
-            rgba(255,255,255,.06),
-            transparent 35%
-        ),
         repeating-linear-gradient(
             90deg,
-            rgba(255,255,255,.045) 0 3px,
-            transparent 3px 22px
+            rgba(255,255,255,.03) 0 3px,
+            transparent 3px 18px
         ),
         linear-gradient(
             90deg,
-            #26382a,
-            #162219 55%,
-            #29392c
+            #28392c 0%,
+            #18241b 48%,
+            #29372b 100%
         );
 
-    transition:
-        transform 2.2s
-        cubic-bezier(.83,0,.17,1);
-
     box-shadow:
-        inset 0 0 100px rgba(0,0,0,.35);
+        inset
+        0 0 100px
+        rgba(0,0,0,.38);
+
+    transition:
+        transform
+        2.5s
+        cubic-bezier(.78,0,.17,1);
+}
+
+.curtain::before{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 18%,
+            rgba(255,255,255,.12),
+            transparent 20%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.16),
+            transparent 30%
+        );
+}
+
+.curtain::after{
+    content:"";
+
+    position:absolute;
+
+    width:28px;
+    height:120%;
+
+    top:-10%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.12),
+            transparent
+        );
+
+    filter:blur(8px);
+
+    opacity:.45;
+
+    animation:
+        fabricShimmer
+        3.8s
+        ease-in-out
+        infinite;
 }
 
 .curtain.left{
@@ -164,206 +257,438 @@ img{
     transform-origin:right center;
 }
 
-.opening.open .curtain.left{
-    transform:
-        translateX(-104%)
-        rotate(-2deg);
+.curtain.left::after{
+    right:18%;
 }
 
-.opening.open .curtain.right{
-    transform:
-        translateX(104%)
-        rotate(2deg);
+.curtain.right::after{
+    left:18%;
 }
 
-.opening-inner{
+@keyframes fabricShimmer{
+
+    0%,100%{
+        transform:translateX(-15px);
+    }
+
+    50%{
+        transform:translateX(15px);
+    }
+}
+
+.opening.opened .curtain.left{
+    transform:
+        translateX(-105%)
+        skewX(-3deg)
+        scaleX(.92);
+}
+
+.opening.opened .curtain.right{
+    transform:
+        translateX(105%)
+        skewX(3deg)
+        scaleX(.92);
+}
+
+
+/* =========================================================
+   OPENING FRAME
+========================================================= */
+
+.opening-frame{
+    position:absolute;
+
+    width:min(
+        78vw,
+        680px
+    );
+
+    aspect-ratio:
+        1 / 1.28;
+
+    z-index:10;
+
+    pointer-events:none;
+}
+
+.frame-outer{
+    position:absolute;
+    inset:0;
+
+    border:
+        1px solid
+        rgba(229,207,156,.43);
+
+    border-radius:
+        45%
+        45%
+        5%
+        5%;
+
+    transform:
+        scale(.82);
+
+    opacity:0;
+
+    transition:
+        transform
+        1.4s
+        cubic-bezier(.2,.8,.2,1),
+        opacity
+        1s ease;
+}
+
+.opening.ready .frame-outer{
+    transform:scale(1);
+    opacity:1;
+}
+
+.frame-inner{
+    position:absolute;
+
+    inset:18px;
+
+    border:
+        1px solid
+        rgba(229,207,156,.22);
+
+    border-radius:
+        45%
+        45%
+        5%
+        5%;
+
+    opacity:0;
+
+    transition:
+        opacity
+        1.1s
+        .25s;
+}
+
+.opening.ready .frame-inner{
+    opacity:1;
+}
+
+
+/* =========================================================
+   BOTANICAL SVG
+========================================================= */
+
+.botanical{
+    position:absolute;
+
+    width:
+        min(
+            270px,
+            35vw
+        );
+
+    height:
+        270px;
+
+    opacity:0;
+
+    transition:
+        opacity 1s ease;
+}
+
+.opening.ready .botanical{
+    opacity:1;
+}
+
+.botanical.left{
+    left:-42px;
+    bottom:0;
+
+    transform:
+        rotate(-8deg);
+}
+
+.botanical.right{
+    right:-42px;
+    bottom:0;
+
+    transform:
+        scaleX(-1)
+        rotate(-8deg);
+}
+
+.botanical path{
+    fill:none;
+
+    stroke:
+        rgba(229,207,156,.75);
+
+    stroke-width:
+        1.1;
+
+    stroke-linecap:
+        round;
+
+    stroke-dasharray:
+        560;
+
+    stroke-dashoffset:
+        560;
+
+    transition:
+        stroke-dashoffset
+        2.3s
+        cubic-bezier(.2,.7,.2,1)
+        .7s;
+}
+
+.opening.ready .botanical path{
+    stroke-dashoffset:0;
+}
+
+.botanical ellipse{
+    fill:
+        rgba(229,207,156,.13);
+
+    stroke:
+        rgba(229,207,156,.55);
+
+    stroke-width:
+        1;
+
+    transform-box:
+        fill-box;
+
+    transform-origin:
+        center;
+}
+
+
+/* =========================================================
+   FLOWER OPENING
+========================================================= */
+
+.flower-opening{
+    position:absolute;
+
+    top:16%;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        scale(.65);
+
+    opacity:0;
+
+    width:130px;
+    height:130px;
+
+    transition:
+        transform
+        1.8s
+        cubic-bezier(.2,.8,.2,1)
+        .25s,
+
+        opacity
+        1.3s
+        .25s;
+}
+
+.opening.ready .flower-opening{
+    transform:
+        translateX(-50%)
+        scale(1);
+
+    opacity:1;
+}
+
+.flower-petal-open{
+    position:absolute;
+
+    width:54px;
+    height:82px;
+
+    left:38px;
+    top:5px;
+
+    transform-origin:
+        50%
+        100%;
+
+    border-radius:
+        90%
+        10%
+        90%
+        10%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffaf0,
+            #e3d8c5
+        );
+
+    opacity:.82;
+}
+
+.flower-petal-open:nth-child(1){
+    transform:rotate(0deg);
+}
+
+.flower-petal-open:nth-child(2){
+    transform:rotate(60deg);
+}
+
+.flower-petal-open:nth-child(3){
+    transform:rotate(120deg);
+}
+
+.flower-petal-open:nth-child(4){
+    transform:rotate(180deg);
+}
+
+.flower-petal-open:nth-child(5){
+    transform:rotate(240deg);
+}
+
+.flower-petal-open:nth-child(6){
+    transform:rotate(300deg);
+}
+
+.flower-center{
+    position:absolute;
+
+    width:34px;
+    height:34px;
+
+    left:48px;
+    top:48px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #eed7a0,
+            #ae8950
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(229,207,156,.32);
+}
+
+
+/* =========================================================
+   OPENING TEXT
+========================================================= */
+
+.opening-content{
     position:relative;
-    z-index:5;
+
+    z-index:30;
 
     text-align:center;
 
     color:white;
 
     transition:
-        opacity .8s,
-        transform 1s;
+        opacity
+        .8s
+        ease,
+
+        transform
+        1.1s
+        cubic-bezier(.2,.8,.2,1);
 }
 
-.opening.open .opening-inner{
+.opening.opened .opening-content{
     opacity:0;
-    transform:scale(.94);
+
+    transform:
+        translateY(-20px)
+        scale(.97);
 }
 
 .opening-kicker{
     font-size:9px;
-    letter-spacing:.42em;
+
     text-transform:uppercase;
-    opacity:.62;
+
+    letter-spacing:.4em;
+
+    opacity:.58;
 }
 
-.opening-names{
-    margin-top:32px;
+.opening-title{
+    margin-top:42px;
 
     font:
-        300 clamp(72px,15vw,170px)/.72
-        "Cormorant Garamond",
-        serif;
+        300 clamp(
+            5rem,
+            16vw,
+            10rem
+        )/.68
+        var(--serif);
 }
 
-.opening-names span{
+.opening-title span{
     display:block;
 
     font:
         400 .46em
-        Italianno,
-        cursive;
+        var(--script);
 
-    color:var(--gold-soft);
+    color:var(--gold-light);
 
-    margin:10px 0;
+    margin:14px 0;
 }
 
 .opening-date{
-    margin-top:28px;
+    margin-top:34px;
 
-    font-size:10px;
+    font-size:9px;
 
-    letter-spacing:.28em;
+    letter-spacing:.3em;
 
     text-transform:uppercase;
 
-    opacity:.65;
+    opacity:.58;
 }
 
-.open{
-    margin-top:48px;
+.open-button{
+    margin-top:50px;
 
-    padding:16px 28px;
+    padding:
+        16px
+        30px;
 
-    border:1px solid rgba(255,255,255,.3);
+    border:
+        1px solid
+        rgba(255,255,255,.35);
 
-    border-radius:100px;
+    border-radius:
+        999px;
 
-    background:rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.05);
 
     color:white;
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:
+        blur(15px);
 
-    transition:.35s;
+    transition:.4s;
 }
 
-.open:hover{
+.open-button:hover{
     background:white;
-    color:var(--green);
-    transform:translateY(-3px);
+    color:var(--green-dark);
+
+    transform:
+        translateY(-3px);
 }
 
 
 /* =========================================================
-   AMBIENT PARTICLES
-========================================================= */
-
-.sky{
-    position:fixed;
-    inset:0;
-
-    z-index:1;
-
-    pointer-events:none;
-
-    overflow:hidden;
-}
-
-.petal{
-    position:absolute;
-
-    top:-20px;
-
-    color:#d8b3a5;
-
-    opacity:.7;
-
-    animation:
-        petalFall
-        linear forwards;
-}
-
-@keyframes petalFall{
-
-    0%{
-        transform:
-            translate3d(0,-30px,0)
-            rotate(0deg);
-
-        opacity:0;
-    }
-
-    10%{
-        opacity:.65;
-    }
-
-    55%{
-        transform:
-            translate3d(
-                90px,
-                60vh,
-                0
-            )
-            rotate(230deg);
-    }
-
-    100%{
-        transform:
-            translate3d(
-                -80px,
-                110vh,
-                0
-            )
-            rotate(480deg);
-
-        opacity:0;
-    }
-
-}
-
-.firefly{
-    position:absolute;
-
-    width:3px;
-    height:3px;
-
-    border-radius:50%;
-
-    background:#efd899;
-
-    box-shadow:
-        0 0 14px 4px
-        rgba(239,216,153,.4);
-
-    animation:
-        flyGlow
-        4s ease-in-out
-        infinite alternate;
-}
-
-@keyframes flyGlow{
-
-    from{
-        opacity:.08;
-        transform:translate(0,0);
-    }
-
-    to{
-        opacity:1;
-        transform:translate(25px,-20px);
-    }
-
-}
-
-
-/* =========================================================
-   NAVIGATION
+   MAIN NAV
 ========================================================= */
 
 .nav{
@@ -371,94 +696,97 @@ img{
 
     z-index:100;
 
-    top:16px;
+    top:15px;
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+        translateX(-50%);
 
     width:min(
         980px,
-        calc(100% - 24px)
+        calc(100% - 22px)
     );
 
+    min-height:60px;
+
     padding:
+        8px
         10px
-        13px
-        10px
-        20px;
+        8px
+        19px;
 
     display:flex;
 
     align-items:center;
+
     justify-content:space-between;
 
     border:
         1px solid
-        rgba(30,43,34,.12);
+        rgba(32,44,35,.13);
 
-    border-radius:100px;
+    border-radius:
+        999px;
 
     background:
-        rgba(251,248,241,.74);
+        rgba(255,250,241,.76);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:
+        blur(20px);
 
     box-shadow:
-        0 15px 50px
-        rgba(20,30,22,.08);
+        0 15px
+        45px
+        rgba(25,35,27,.07);
 }
 
-.logo{
+.nav-brand{
     font:
-        500 20px
-        "Cormorant Garamond",
-        serif;
+        500
+        21px
+        var(--serif);
 
-    letter-spacing:.08em;
+    letter-spacing:
+        .08em;
 }
 
-.links{
+.nav-links{
     display:flex;
+
     gap:28px;
 
-    font-size:9px;
+    font-size:8px;
 
     letter-spacing:.22em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 }
 
-.links a{
-    opacity:.5;
+.nav-links a{
+    opacity:.48;
+
+    transition:.25s;
 }
 
-.links a:hover{
+.nav-links a:hover{
     opacity:1;
 }
 
-.music{
-    width:42px;
-    height:42px;
+.music-button{
+    width:41px;
+    height:41px;
 
     border-radius:50%;
 
-    background:var(--green);
+    background:
+        var(--green-dark);
 
     color:white;
 
     display:grid;
 
     place-items:center;
-}
-
-.music::before{
-    content:"◦";
-    font-size:17px;
-}
-
-.music.playing::before{
-    content:"Ⅱ";
-    font-size:10px;
 }
 
 
@@ -488,10 +816,10 @@ img{
 
     background:
         linear-gradient(
-            to bottom,
-            rgba(20,30,22,.04),
-            rgba(20,30,22,.18) 52%,
-            rgba(245,239,229,.98) 96%
+            180deg,
+            rgba(255,255,255,.02),
+            rgba(255,255,255,.04) 45%,
+            rgba(248,242,232,.96) 96%
         ),
         url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2200&q=90")
         center/cover;
@@ -503,19 +831,91 @@ img{
         transform;
 }
 
-.hero-copy{
+.hero-glow{
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(255,245,210,.25),
+            transparent 35%
+        );
+}
+
+.hero-frame{
+    position:absolute;
+
+    inset:
+        5vh
+        3vw;
+
+    z-index:3;
+
+    pointer-events:none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.44);
+
+    box-shadow:
+        inset
+        0 0 90px
+        rgba(255,255,255,.13);
+
+    opacity:
+        .75;
+}
+
+.corner{
+    position:absolute;
+
+    width:65px;
+    height:65px;
+
+    border-color:
+        rgba(185,153,93,.7);
+
+    border-style:
+        solid;
+}
+
+.corner.tl{
+    top:-1px;
+    left:-1px;
+    border-width:1px 0 0 1px;
+}
+
+.corner.tr{
+    top:-1px;
+    right:-1px;
+    border-width:1px 1px 0 0;
+}
+
+.corner.bl{
+    bottom:-1px;
+    left:-1px;
+    border-width:0 0 1px 1px;
+}
+
+.corner.br{
+    bottom:-1px;
+    right:-1px;
+    border-width:0 1px 1px 0;
+}
+
+.hero-content{
     position:relative;
 
-    z-index:5;
-
-    width:min(
-        1000px,
-        calc(100% - 34px)
-    );
+    z-index:7;
 
     text-align:center;
 
-    padding-top:100px;
+    padding:
+        145px
+        18px
+        105px;
 }
 
 .hero-kicker{
@@ -523,46 +923,44 @@ img{
 
     letter-spacing:.4em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 
-    color:#415544;
+    color:
+        #344a3c;
 }
 
-.hero-title{
+.hero h1{
     margin-top:30px;
 
     font:
         300 clamp(
-            80px,
-            16vw,
-            190px
-        )/.64
-        "Cormorant Garamond",
-        serif;
+            5.6rem,
+            15vw,
+            11rem
+        )/.63
+        var(--serif);
 
-    letter-spacing:-.045em;
-
-    transform:
-        translateY(
-            calc(var(--scroll,0) * -.035px)
-        );
+    letter-spacing:
+        -.04em;
 }
 
-.hero-title span{
+.hero h1 span{
     display:block;
 
     font:
         400 .46em
-        Italianno,
-        cursive;
+        var(--script);
 
-    color:var(--gold);
+    color:
+        var(--gold);
 
-    margin:12px 0;
+    margin:
+        13px 0;
 }
 
 .hero-date{
-    margin-top:46px;
+    margin-top:43px;
 
     display:flex;
 
@@ -576,161 +974,224 @@ img{
 
     letter-spacing:.28em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 }
 
 .hero-date::before,
 .hero-date::after{
     content:"";
 
-    width:54px;
+    width:48px;
     height:1px;
 
-    background:var(--gold);
+    background:
+        var(--gold);
 }
 
-.hero-scroll{
+.scroll-cue{
     position:absolute;
 
-    bottom:28px;
+    bottom:26px;
 
     left:50%;
 
     transform:
         translateX(-50%);
 
-    z-index:5;
+    z-index:8;
+
+    font-size:7px;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:.28em;
+
+    opacity:.58;
 
     text-align:center;
-
-    font-size:8px;
-
-    letter-spacing:.3em;
-
-    text-transform:uppercase;
-
-    opacity:.6;
 }
 
-.hero-scroll::after{
+.scroll-cue::after{
     content:"";
-
-    width:1px;
-    height:45px;
 
     display:block;
 
-    background:var(--ink);
+    width:1px;
+    height:44px;
 
-    margin:
-        12px
-        auto
-        0;
+    margin:11px auto 0;
+
+    background:
+        var(--ink);
 
     animation:
-        scrollPulse
+        cue
         1.7s
         ease-in-out
         infinite;
 }
 
-@keyframes scrollPulse{
+@keyframes cue{
 
     0%,100%{
         transform:
-            scaleY(.35);
-        transform-origin:top;
+            scaleY(.3);
+
+        transform-origin:
+            top;
     }
 
     50%{
         transform:
             scaleY(1);
-        transform-origin:top;
-    }
 
+        transform-origin:
+            top;
+    }
 }
 
 
 /* =========================================================
-   ORGANIC DECORATIVE BRANCH
+   FLYING BIRDS — SVG
 ========================================================= */
 
-.branch{
+.bird{
     position:absolute;
 
-    width:270px;
-    height:300px;
+    z-index:5;
 
-    pointer-events:none;
+    width:
+        75px;
 
-    opacity:.72;
+    height:
+        40px;
+
+    left:
+        -100px;
+
+    opacity:
+        .55;
+
+    animation:
+        birdFlight
+        18s
+        linear
+        infinite;
 }
 
-.branch svg{
+.bird svg{
     width:100%;
     height:100%;
-    overflow:visible;
 }
 
-.branch path{
+.bird path{
     fill:none;
 
     stroke:
-        rgba(77,105,80,.8);
+        #344539;
 
-    stroke-width:1.3;
+    stroke-width:
+        2;
 
-    stroke-linecap:round;
-
-    stroke-dasharray:
-        700;
-
-    stroke-dashoffset:
-        700;
-
-    transition:
-        stroke-dashoffset
-        2s
-        cubic-bezier(.2,.7,.2,1);
+    stroke-linecap:
+        round;
 }
 
-.branch.leafed path{
-    stroke-dashoffset:0;
+.bird.one{
+    top:20%;
+
+    animation-duration:
+        19s;
 }
 
-.branch.left{
-    left:-45px;
-    top:30%;
-    transform:rotate(-12deg);
-}
+.bird.two{
+    top:32%;
 
-.branch.right{
-    right:-55px;
-    bottom:8%;
     transform:
-        rotate(158deg);
+        scale(.65);
+
+    animation-delay:
+        7s;
+
+    animation-duration:
+        23s;
+}
+
+.bird.three{
+    top:14%;
+
+    transform:
+        scale(.42);
+
+    animation-delay:
+        12s;
+
+    animation-duration:
+        25s;
+}
+
+@keyframes birdFlight{
+
+    0%{
+        left:-10vw;
+        transform:
+            translateY(15px)
+            scale(1);
+    }
+
+    25%{
+        transform:
+            translateY(-15px)
+            scale(1.05);
+    }
+
+    50%{
+        transform:
+            translateY(8px)
+            scale(.96);
+    }
+
+    75%{
+        transform:
+            translateY(-12px)
+            scale(1.03);
+    }
+
+    100%{
+        left:110vw;
+        transform:
+            translateY(12px)
+            scale(.9);
+    }
 }
 
 
 /* =========================================================
-   SECTION SYSTEM
+   GENERAL SECTION
 ========================================================= */
 
 .scene{
     position:relative;
 
     padding:
-        clamp(90px,12vw,150px)
+        clamp(
+            90px,
+            12vw,
+            150px
+        )
         6vw;
 
     overflow:hidden;
 }
 
 .container{
-    width:min(
-        1160px,
-        100%
-    );
+    width:
+        min(
+            1160px,
+            100%
+        );
 
     margin:auto;
 }
@@ -738,60 +1199,68 @@ img{
 .label{
     font-size:9px;
 
-    letter-spacing:.32em;
+    letter-spacing:.3em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 
-    color:var(--gold);
+    color:
+        var(--gold);
+
+    margin-bottom:22px;
 }
 
 .title{
     font:
         400 clamp(
-            52px,
+            3.4rem,
             7vw,
-            100px
-        )/.82
-        "Cormorant Garamond",
-        serif;
+            6.8rem
+        )/.84
+        var(--serif);
 }
 
 .title em{
     font:
-        400 .78em
-        Italianno,
-        cursive;
+        400 .8em
+        var(--script);
 
-    color:var(--sage);
+    color:
+        var(--green);
 }
 
 .lead{
-    color:var(--muted);
+    max-width:620px;
+
+    color:
+        var(--muted);
 
     line-height:
-        1.95;
+        1.9;
 
-    max-width:
-        620px;
+    font-size:
+        .95rem;
 }
 
 
 /* =========================================================
-   REVEAL — VERY SOFT
+   REVEAL
 ========================================================= */
 
 .reveal{
     opacity:0;
 
     transform:
-        translateY(24px)
-        scale(.99);
+        translateY(22px)
+        scale(.992);
 
     transition:
-        opacity 1.2s
+        opacity
+        1.15s
         cubic-bezier(.2,.7,.2,1),
 
-        transform 1.35s
+        transform
+        1.25s
         cubic-bezier(.2,.7,.2,1);
 }
 
@@ -809,42 +1278,41 @@ img{
 ========================================================= */
 
 .story{
-    background:var(--paper);
+    background:
+        var(--paper);
 }
 
-.story-layout{
+.story-grid{
     display:grid;
 
     grid-template-columns:
-        .9fr
-        1.1fr;
+        .88fr
+        1.12fr;
 
     gap:
-        clamp(50px,10vw,150px);
+        clamp(
+            50px,
+            10vw,
+            145px
+        );
 
     align-items:center;
 }
 
-.portrait{
+.story-photo{
     position:relative;
-
-    transform:
-        translateY(
-            calc(
-                var(--scroll,0) * .025px
-            )
-        );
 }
 
-.portrait img{
+.story-photo img{
     aspect-ratio:
-        4 / 5;
+        4/5;
 
-    object-fit:cover;
+    object-fit:
+        cover;
 
     border-radius:
-        52%
-        52%
+        48%
+        48%
         18px
         18px;
 
@@ -853,28 +1321,29 @@ img{
     z-index:2;
 
     box-shadow:
-        0 45px 100px
-        rgba(28,38,29,.15);
+        0 40px
+        100px
+        rgba(27,40,31,.14);
 }
 
-.portrait::before{
+.story-photo::before{
     content:"";
 
     position:absolute;
 
     inset:
-        28px
+        25px
+        -24px
         -26px
-        -26px
-        26px;
+        24px;
 
     border:
         1px solid
         var(--gold);
 
     border-radius:
-        52%
-        52%
+        48%
+        48%
         18px
         18px;
 }
@@ -882,76 +1351,77 @@ img{
 .story-copy{
     display:grid;
 
-    gap:28px;
+    gap:25px;
 }
 
-.story-copy .number{
+.story-number{
     font:
-        400 120px
-        "Cormorant Garamond",
-        serif;
+        300
+        100px
+        var(--serif);
 
     color:
-        rgba(185,153,93,.12);
+        rgba(185,153,93,.11);
 
-    line-height:.5;
+    line-height:
+        .5;
 }
 
 
 /* =========================================================
-   SCROLLQUOTE
+   QUOTE
 ========================================================= */
 
 .quote{
     min-height:
-        85vh;
+        78vh;
 
     display:grid;
+
     place-items:center;
 
     text-align:center;
 
     background:
         radial-gradient(
-            circle at 25% 25%,
-            rgba(113,134,115,.2),
-            transparent 28%
+            circle at 20% 20%,
+            rgba(146,166,143,.2),
+            transparent 30%
         ),
         radial-gradient(
-            circle at 75% 75%,
-            rgba(185,153,93,.14),
-            transparent 25%
+            circle at 80% 70%,
+            rgba(185,153,93,.15),
+            transparent 28%
         ),
-        #eee7dc;
+        #eee6da;
 }
 
 .quote-symbol{
     font:
-        400 110px
-        Italianno,
-        cursive;
+        400
+        110px
+        var(--script);
 
     color:
-        rgba(185,153,93,.55);
+        rgba(185,153,93,.48);
 }
 
 .quote h2{
     max-width:
-        960px;
+        950px;
 
     margin:
-        5px
+        10px
         auto
         25px;
 
     font:
         300 clamp(
             48px,
-            7vw,
+            7.4vw,
             95px
-        )/.87
-        "Cormorant Garamond",
-        serif;
+        )/.86
+        var(--serif);
 }
 
 .quote small{
@@ -959,23 +1429,24 @@ img{
 
     letter-spacing:.3em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 
-    opacity:.5;
+    opacity:.55;
 }
 
 
 /* =========================================================
-   CINEMATIC COUNTDOWN
+   COUNTDOWN
 ========================================================= */
 
 .countdown{
     background:
         linear-gradient(
-            rgba(13,20,15,.84),
-            rgba(13,20,15,.94)
+            rgba(16,25,19,.84),
+            rgba(16,25,19,.96)
         ),
-        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=85")
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=88")
         center/cover;
 
     color:white;
@@ -983,27 +1454,31 @@ img{
     text-align:center;
 }
 
+.countdown .label{
+    color:
+        var(--gold-light);
+}
+
 .countdown h2{
-    margin-top:18px;
+    margin-top:16px;
 
     font:
         300 clamp(
             48px,
             7vw,
-            95px
-        )/.85
-        "Cormorant Garamond",
-        serif;
+            92px
+        )/.86
+        var(--serif);
 }
 
 .timer{
     margin:
-        70px
+        65px
         auto
         0;
 
     max-width:
-        900px;
+        880px;
 
     display:grid;
 
@@ -1012,13 +1487,12 @@ img{
 
     border-block:
         1px solid
-        rgba(255,255,255,.13);
+        rgba(255,255,255,.12);
 }
 
 .time{
     padding:
-        30px
-        10px;
+        32px 10px;
 
     border-right:
         1px solid
@@ -1029,13 +1503,13 @@ img{
         .5s;
 }
 
-.time:hover{
-    background:
-        rgba(255,255,255,.04);
-}
-
 .time:last-child{
     border-right:0;
+}
+
+.time:hover{
+    background:
+        rgba(255,255,255,.035);
 }
 
 .time strong{
@@ -1045,10 +1519,9 @@ img{
         300 clamp(
             48px,
             7vw,
-            90px
+            88px
         )
-        "Cormorant Garamond",
-        serif;
+        var(--serif);
 }
 
 .time span{
@@ -1056,14 +1529,15 @@ img{
 
     letter-spacing:.28em;
 
-    text-transform:uppercase;
+    text-transform:
+        uppercase;
 
-    opacity:.45;
+    opacity:.46;
 }
 
 
 /* =========================================================
-   FLOWER — SCROLL GROWTH
+   FLOWER GROWTH
 ========================================================= */
 
 .flower-scene{
@@ -1076,107 +1550,38 @@ img{
 
     text-align:center;
 
-    background:var(--paper);
+    background:
+        var(--paper);
 }
 
 .flower-stage{
+    position:relative;
+
     width:
         min(
-            360px,
+            350px,
             90vw
         );
 
     aspect-ratio:
-        1 / 1;
+        1;
 
     margin:
-        65px
-        auto
+        65px auto
         45px;
-
-    position:relative;
 }
 
-.flower-core{
+.flower-stem{
     position:absolute;
-
-    width:54px;
-    height:54px;
-
-    border-radius:50%;
-
-    left:50%;
-    top:48%;
-
-    transform:
-        translate(-50%,-50%)
-        scale(
-            calc(.65 + var(--flower,.1) * .35)
-        );
-
-    background:
-        radial-gradient(
-            circle,
-            #edd9aa,
-            #ae8b52
-        );
-
-    box-shadow:
-        0 0 45px
-        rgba(185,153,93,.35);
-}
-
-.flower-petal{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    width:95px;
-    height:155px;
-
-    transform-origin:
-        50% 100%;
-
-    background:
-        linear-gradient(
-            145deg,
-            #fffdf7,
-            #d8e3d5
-        );
-
-    border-radius:
-        80%
-        8%
-        80%
-        8%;
-
-    opacity:
-        calc(.2 + var(--flower,.1) * .8);
-
-    transition:
-        transform
-        .8s
-        cubic-bezier(.2,.8,.2,1);
-}
-
-.flower-petal:nth-child(1){transform:translate(-50%,-100%) rotate(0deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(2){transform:translate(-50%,-100%) rotate(45deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(3){transform:translate(-50%,-100%) rotate(90deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(4){transform:translate(-50%,-100%) rotate(135deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(5){transform:translate(-50%,-100%) rotate(180deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(6){transform:translate(-50%,-100%) rotate(225deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(7){transform:translate(-50%,-100%) rotate(270deg) scaleY(calc(.45 + var(--flower,.1)))}
-.flower-petal:nth-child(8){transform:translate(-50%,-100%) rotate(315deg) scaleY(calc(.45 + var(--flower,.1)))}
-
-.stem{
-    position:absolute;
-
-    left:50%;
-    top:55%;
 
     width:2px;
-    height:150px;
+
+    height:
+        155px;
+
+    left:50%;
+
+    top:54%;
 
     background:
         linear-gradient(
@@ -1184,28 +1589,29 @@ img{
             transparent
         );
 
-    transform:
-        rotate(8deg)
-        scaleY(
-            calc(
-                .3 + var(--flower,.1) * .7
-            )
-        );
+    transform-origin:
+        top;
 
-    transform-origin:top;
+    transform:
+        rotate(
+            7deg
+        )
+        scaleY(
+            var(--growth,0)
+        );
 }
 
-.leaf-shape{
+.flower-leaf{
     position:absolute;
 
-    width:80px;
-    height:38px;
+    width:78px;
+    height:37px;
 
     background:
         linear-gradient(
             135deg,
-            #9daf95,
-            #657b66
+            #a7b69f,
+            #607760
         );
 
     border-radius:
@@ -1215,44 +1621,133 @@ img{
         0;
 
     opacity:
-        calc(
-            .15 +
-            var(--flower,.1) * .85
-        );
+        var(--growth,0);
 }
 
-.leaf-left{
-    left:21%;
-    top:70%;
+.flower-leaf.left{
+    left:20%;
+    top:72%;
 
     transform:
         rotate(18deg)
         scale(
-            calc(.5 + var(--flower,.1))
+            var(--growth,0)
         );
 }
 
-.leaf-right{
-    right:20%;
-    top:76%;
+.flower-leaf.right{
+    right:19%;
+    top:77%;
 
     transform:
-        rotate(150deg)
+        rotate(148deg)
         scale(
-            calc(.5 + var(--flower,.1))
+            var(--growth,0)
         );
+}
+
+.flower-bloom{
+    position:absolute;
+
+    left:50%;
+    top:45%;
+
+    width:90px;
+    height:90px;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(
+            calc(
+                .25 +
+                var(--growth,0) * .9
+            )
+        );
+
+    transition:
+        transform
+        .2s linear;
+}
+
+.bloom-petal{
+    position:absolute;
+
+    width:82px;
+    height:128px;
+
+    left:4px;
+    top:-40px;
+
+    transform-origin:
+        50%
+        100%;
+
+    border-radius:
+        86%
+        8%
+        86%
+        8%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf8,
+            #dce5d9
+        );
+
+    opacity:
+        calc(
+            .18 +
+            var(--growth,0)*.82
+        );
+}
+
+.bloom-petal:nth-child(1){transform:rotate(0)}
+.bloom-petal:nth-child(2){transform:rotate(45deg)}
+.bloom-petal:nth-child(3){transform:rotate(90deg)}
+.bloom-petal:nth-child(4){transform:rotate(135deg)}
+.bloom-petal:nth-child(5){transform:rotate(180deg)}
+.bloom-petal:nth-child(6){transform:rotate(225deg)}
+.bloom-petal:nth-child(7){transform:rotate(270deg)}
+.bloom-petal:nth-child(8){transform:rotate(315deg)}
+
+.bloom-center{
+    position:absolute;
+
+    left:29px;
+    top:29px;
+
+    width:32px;
+    height:32px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #eed8a3,
+            #ad8751
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(185,153,93,.32);
 }
 
 
 /* =========================================================
-   DETAILS
+   EVENT DETAILS
 ========================================================= */
 
 .details{
-    background:#e8e1d5;
+    background:
+        #e9e1d5;
 }
 
-.details-header{
+.details-head{
     display:flex;
 
     justify-content:space-between;
@@ -1263,81 +1758,90 @@ img{
 }
 
 .details-grid{
+    margin-top:
+        75px;
+
     display:grid;
 
     grid-template-columns:
         repeat(2,1fr);
-
-    margin-top:75px;
 }
 
 .detail{
-    min-height:290px;
+    min-height:
+        285px;
 
     padding:
-        45px;
+        48px;
 
     border:
         1px solid
-        rgba(23,32,25,.12);
+        rgba(23,32,25,.11);
 
     transition:
-        transform .7s
+        transform
+        .65s
         cubic-bezier(.2,.8,.2,1),
-        background .5s;
+
+        background
+        .4s;
 }
 
 .detail:hover{
+    background:
+        rgba(255,255,255,.4);
+
     transform:
         translateY(-8px);
-
-    background:
-        rgba(255,255,255,.45);
 }
 
-.detail-number{
+.detail-no{
     font-size:8px;
 
     letter-spacing:.25em;
 
-    color:var(--gold);
+    color:
+        var(--gold);
 }
 
 .detail h3{
     margin:
-        28px
+        27px
         0
         12px;
 
     font:
         500 42px
-        "Cormorant Garamond",
-        serif;
+        var(--serif);
 }
 
 .detail p{
-    color:var(--muted);
+    color:
+        var(--muted);
 
     line-height:
         1.85;
 }
 
-.map{
+.map-button{
     display:inline-flex;
 
-    margin-top:25px;
+    margin-top:
+        22px;
 
-    font-size:8px;
-
-    letter-spacing:.22em;
-
-    text-transform:uppercase;
+    padding-bottom:
+        5px;
 
     border-bottom:
         1px solid
         var(--gold);
 
-    padding-bottom:5px;
+    font-size:8px;
+
+    letter-spacing:.2em;
+
+    text-transform:
+        uppercase;
 }
 
 
@@ -1346,22 +1850,23 @@ img{
 ========================================================= */
 
 .timeline{
-    background:var(--paper);
+    background:
+        var(--paper);
 }
 
-.timeline-wrap{
+.timeline-line{
     max-width:
-        950px;
+        960px;
 
     margin:
-        80px
+        75px
         auto
         0;
 
     position:relative;
 }
 
-.timeline-wrap::before{
+.timeline-line::before{
     content:"";
 
     position:absolute;
@@ -1376,19 +1881,19 @@ img{
     background:
         linear-gradient(
             var(--gold),
-            rgba(185,153,93,.1)
+            rgba(185,153,93,.08)
         );
 }
 
 .timeline-item{
+    position:relative;
+
     width:50%;
 
     padding:
         0
         58px
-        80px;
-
-    position:relative;
+        75px;
 }
 
 .timeline-item:nth-child(even){
@@ -1397,57 +1902,57 @@ img{
     padding-right:0;
 }
 
-.timeline-item::after{
+.timeline-item::before{
     content:"";
 
     position:absolute;
 
-    top:0;
+    top:2px;
 
     width:10px;
     height:10px;
-
-    border-radius:50%;
 
     border:
         1px solid
         var(--gold);
 
-    background:var(--paper);
+    border-radius:50%;
+
+    background:
+        var(--paper);
 
     box-shadow:
         0 0 0 7px
-        rgba(185,153,93,.06);
+        rgba(185,153,93,.07);
 }
 
-.timeline-item:nth-child(odd)::after{
+.timeline-item:nth-child(odd)::before{
     right:-5px;
 }
 
-.timeline-item:nth-child(even)::after{
+.timeline-item:nth-child(even)::before{
     left:-5px;
 }
 
 .timeline-year{
+    font-size:8px;
+    letter-spacing:.25em;
     color:var(--gold);
-
-    font-size:9px;
-
-    letter-spacing:.22em;
 }
 
 .timeline-item h3{
     margin:
-        14px 0;
+        14px
+        0;
 
     font:
         500 38px
-        "Cormorant Garamond",
-        serif;
+        var(--serif);
 }
 
 .timeline-item p{
-    color:var(--muted);
+    color:
+        var(--muted);
 
     line-height:
         1.8;
@@ -1459,23 +1964,26 @@ img{
 ========================================================= */
 
 .gallery{
-    background:#f1eadf;
+    background:
+        #f1e9dd;
 }
 
 .gallery-grid{
+    margin-top:
+        70px;
+
     display:grid;
 
     grid-template-columns:
-        1.25fr
-        .75fr;
+        1.2fr
+        .8fr;
 
     grid-template-rows:
-        340px
-        340px;
+        330px
+        330px;
 
-    gap:14px;
-
-    margin-top:70px;
+    gap:
+        14px;
 }
 
 .gallery-item{
@@ -1493,20 +2001,20 @@ img{
 }
 
 .gallery-item img{
-    width:100%;
     height:100%;
 
-    object-fit:cover;
+    object-fit:
+        cover;
 
     transition:
         transform
-        1.4s
+        1.3s
         cubic-bezier(.2,.8,.2,1);
 }
 
 .gallery-item:hover img{
     transform:
-        scale(1.08);
+        scale(1.07);
 }
 
 
@@ -1517,10 +2025,10 @@ img{
 .rsvp{
     background:
         linear-gradient(
-            rgba(11,17,13,.76),
-            rgba(11,17,13,.95)
+            rgba(16,24,18,.78),
+            rgba(16,24,18,.96)
         ),
-        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=85")
+        url("https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=2200&q=88")
         center/cover fixed;
 
     color:white;
@@ -1530,22 +2038,27 @@ img{
 
 .rsvp-content{
     max-width:
-        760px;
+        750px;
 
     margin:auto;
 }
 
+.rsvp .label{
+    color:
+        var(--gold-light);
+}
+
 .rsvp h2{
-    margin-top:18px;
+    margin-top:
+        18px;
 
     font:
         300 clamp(
-            54px,
+            4rem,
             8vw,
-            108px
+            7.5rem
         )/.8
-        "Cormorant Garamond",
-        serif;
+        var(--serif);
 }
 
 .rsvp p{
@@ -1553,12 +2066,12 @@ img{
         560px;
 
     margin:
-        34px
+        35px
         auto
         40px;
 
     color:
-        rgba(255,255,255,.62);
+        rgba(255,255,255,.6);
 
     line-height:
         1.9;
@@ -1571,12 +2084,14 @@ img{
         18px
         32px;
 
+    background:
+        #fff;
+
+    color:
+        var(--green-dark);
+
     border-radius:
         999px;
-
-    background:white;
-
-    color:var(--ink);
 
     transition:.4s;
 }
@@ -1589,7 +2104,7 @@ img{
         0
         25px
         60px
-        rgba(0,0,0,.3);
+        rgba(0,0,0,.28);
 }
 
 
@@ -1599,17 +2114,7 @@ img{
 
 .final{
     min-height:
-        88vh;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(185,153,93,.12),
-            transparent 35%
-        ),
-        var(--deep);
-
-    color:white;
+        90vh;
 
     display:grid;
 
@@ -1617,84 +2122,129 @@ img{
 
     text-align:center;
 
+    background:
+        linear-gradient(
+            135deg,
+            #0b120d,
+            #17291d 55%,
+            #0a100c
+        );
+
+    color:
+        #fff;
+
     position:relative;
 
     overflow:hidden;
 }
 
-.final::before{
+.final-glow{
+    position:absolute;
+
+    width:
+        600px;
+
+    height:
+        600px;
+
+    border-radius:
+        50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(229,207,156,.14),
+            transparent 68%
+        );
+
+    filter:
+        blur(20px);
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+}
+
+.final-frame{
+    position:absolute;
+
+    inset:
+        38px;
+
+    border:
+        1px solid
+        rgba(229,207,156,.15);
+
+    pointer-events:none;
+}
+
+.final-frame::before,
+.final-frame::after{
     content:"";
 
     position:absolute;
 
-    width:
-        min(850px,90vw);
-
-    aspect-ratio:1;
-
-    border-radius:50%;
+    width:65px;
+    height:65px;
 
     border:
         1px solid
-        rgba(185,153,93,.12);
-
-    animation:
-        slowRotate
-        30s
-        linear
-        infinite;
+        rgba(229,207,156,.45);
 }
 
-.final::after{
-    content:"XYNY";
+.final-frame::before{
+    top:-1px;
+    left:-1px;
 
-    position:absolute;
-
-    bottom:-8vw;
-
-    left:0;
-
-    right:0;
-
-    text-align:center;
-
-    font:
-        300 29vw
-        "Cormorant Garamond",
-        serif;
-
-    color:#fff0006;
+    border-width:
+        1px 0 0 1px;
 }
 
-@keyframes slowRotate{
-    to{
-        transform:
-            rotate(360deg);
-    }
+.final-frame::after{
+    bottom:-1px;
+    right:-1px;
+
+    border-width:
+        0 1px 1px 0;
 }
 
-.final-inner{
+.final-content{
     position:relative;
 
     z-index:3;
 
     width:min(
-        800px,
-        100%
+        830px,
+        calc(100% - 34px)
     );
 }
 
+.final .label{
+    color:
+        var(--gold-light);
+}
+
 .final h2{
-    margin-top:25px;
+    margin-top:
+        24px;
 
     font:
         300 clamp(
-            58px,
+            4rem,
             9vw,
-            120px
+            8.5rem
         )/.78
-        "Cormorant Garamond",
-        serif;
+        var(--serif);
+}
+
+.final h2 em{
+    color:
+        var(--gold-light);
 }
 
 .final p{
@@ -1705,7 +2255,7 @@ img{
         35px auto;
 
     color:
-        rgba(255,255,255,.58);
+        rgba(255,255,255,.72);
 
     line-height:
         1.9;
@@ -1716,43 +2266,68 @@ img{
 
     align-items:center;
 
+    justify-content:center;
+
     padding:
         18px
         32px;
 
     border:
         1px solid
-        rgba(255,255,255,.3);
+        rgba(255,255,255,.55);
 
     border-radius:
         999px;
 
-    transition:.4s;
+    background:
+        rgba(255,255,255,.04);
+
+    color:
+        #fff;
+
+    transition:
+        .4s;
 }
 
 .xyny-button:hover{
-    background:white;
-    color:var(--ink);
+    background:
+        #fff;
+
+    color:
+        var(--green-dark);
 
     transform:
         translateY(-5px);
+
+    box-shadow:
+        0
+        20px
+        50px
+        rgba(0,0,0,.25);
 }
 
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .footer{
-    background:#080c09;
-
-    color:
-        rgba(255,255,255,.38);
-
     padding:
         24px;
 
     text-align:center;
 
-    font-size:8px;
+    background:
+        #070b08;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size:
+        8px;
 
     letter-spacing:
-        .2em;
+        .22em;
 
     text-transform:
         uppercase;
@@ -1765,38 +2340,46 @@ img{
 
 @media(max-width:800px){
 
-    .nav{
-        top:9px;
-    }
-
-    .links{
+    .nav-links{
         display:none;
     }
 
-    .hero-copy{
+    .nav{
+        top:8px;
+    }
+
+    .hero-content{
         padding-top:
             150px;
     }
 
-    .hero-title{
+    .hero h1{
         font-size:
-            23vw;
+            20vw;
     }
 
-    .story-layout{
-        grid-template-columns:1fr;
-
-        gap:70px;
+    .hero-frame{
+        inset:
+            4vh
+            3vw;
     }
 
-    .portrait{
+    .story-grid{
+        grid-template-columns:
+            1fr;
+
+        gap:
+            70px;
+    }
+
+    .story-photo{
         max-width:
-            540px;
+            520px;
 
         margin:auto;
     }
 
-    .details-header{
+    .details-head{
         display:block;
     }
 
@@ -1811,17 +2394,19 @@ img{
     }
 
     .time:nth-child(2){
-        border-right:0;
+        border-right:
+            0;
     }
 
     .time{
         border-bottom:
             1px solid
-            rgba(255,255,255,.09);
+            rgba(255,255,255,.08);
     }
 
-    .timeline-wrap::before{
-        left:7px;
+    .timeline-line::before{
+        left:
+            7px;
     }
 
     .timeline-item,
@@ -1838,11 +2423,14 @@ img{
             45px;
     }
 
-    .timeline-item:nth-child(odd)::after,
-    .timeline-item:nth-child(even)::after{
+    .timeline-item:nth-child(odd)::before,
+    .timeline-item:nth-child(even)::before{
 
-        left:2px;
-        right:auto;
+        left:
+            2px;
+
+        right:
+            auto;
     }
 
     .gallery-grid{
@@ -1866,13 +2454,17 @@ img{
             22px;
     }
 
+    .final-frame{
+        inset:
+            18px;
+    }
 }
 
 @media(max-width:480px){
 
-    .opening-names{
+    .opening-title{
         font-size:
-            18vw;
+            19vw;
     }
 
     .hero h1{
@@ -1883,7 +2475,7 @@ img{
     .hero-date::before,
     .hero-date::after{
         width:
-            25px;
+            23px;
     }
 
     .title{
@@ -1903,14 +2495,13 @@ img{
             180px
             180px;
     }
-
 }
 
 @media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
-    *::after{
+    *:after{
 
         animation-duration:
             .001ms !important;
@@ -1924,7 +2515,6 @@ img{
         scroll-behavior:
             auto !important;
     }
-
 }
 
 </style>
@@ -1945,18 +2535,151 @@ img{
 
     <div class="opening-light"></div>
 
+
     <div class="curtain left"></div>
     <div class="curtain right"></div>
 
 
-    <div class="opening-inner">
+    <div class="opening-frame">
+
+        <div class="frame-outer"></div>
+        <div class="frame-inner"></div>
+
+
+        <svg
+            class="botanical left"
+            viewBox="0 0 270 270"
+        >
+
+            <path
+                d="
+                M18 266
+                C42 221
+                72 206
+                69 160
+                C67 124
+                92 106
+                116 76
+                C139 47
+                170 25
+                233 4
+                "
+            />
+
+            <ellipse
+                cx="105"
+                cy="100"
+                rx="13"
+                ry="27"
+                transform="rotate(-34 105 100)"
+            />
+
+            <ellipse
+                cx="77"
+                cy="151"
+                rx="13"
+                ry="28"
+                transform="rotate(48 77 151)"
+            />
+
+            <ellipse
+                cx="143"
+                cy="61"
+                rx="12"
+                ry="25"
+                transform="rotate(-43 143 61)"
+            />
+
+            <ellipse
+                cx="184"
+                cy="32"
+                rx="11"
+                ry="23"
+                transform="rotate(-30 184 32)"
+            />
+
+        </svg>
+
+
+        <svg
+            class="botanical right"
+            viewBox="0 0 270 270"
+        >
+
+            <path
+                d="
+                M18 266
+                C42 221
+                72 206
+                69 160
+                C67 124
+                92 106
+                116 76
+                C139 47
+                170 25
+                233 4
+                "
+            />
+
+            <ellipse
+                cx="105"
+                cy="100"
+                rx="13"
+                ry="27"
+                transform="rotate(-34 105 100)"
+            />
+
+            <ellipse
+                cx="77"
+                cy="151"
+                rx="13"
+                ry="28"
+                transform="rotate(48 77 151)"
+            />
+
+            <ellipse
+                cx="143"
+                cy="61"
+                rx="12"
+                ry="25"
+                transform="rotate(-43 143 61)"
+            />
+
+            <ellipse
+                cx="184"
+                cy="32"
+                rx="11"
+                ry="23"
+                transform="rotate(-30 184 32)"
+            />
+
+        </svg>
+
+
+        <div class="flower-opening">
+
+            <div class="flower-petal-open"></div>
+            <div class="flower-petal-open"></div>
+            <div class="flower-petal-open"></div>
+            <div class="flower-petal-open"></div>
+            <div class="flower-petal-open"></div>
+            <div class="flower-petal-open"></div>
+
+            <div class="flower-center"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="opening-content">
 
         <div class="opening-kicker">
             Sebuah cerita akan dimulai
         </div>
 
 
-        <div class="opening-names">
+        <div class="opening-title">
 
             Adrian
 
@@ -1975,7 +2698,7 @@ img{
 
 
         <button
-            class="open"
+            class="open-button"
             id="openInvitation"
         >
             Buka Undangan
@@ -1987,7 +2710,7 @@ img{
 
 
 <!-- =========================================================
-     AMBIENCE
+     ATMOSPHERE
 ========================================================= -->
 
 <div
@@ -2002,12 +2725,12 @@ img{
 
 <nav class="nav">
 
-    <div class="logo">
+    <div class="nav-brand">
         A &amp; E
     </div>
 
 
-    <div class="links">
+    <div class="nav-links">
 
         <a href="#kisah">
             Kisah
@@ -2029,10 +2752,12 @@ img{
 
 
     <button
-        class="music"
-        id="music"
-        aria-label="Musik"
-    ></button>
+        class="music-button"
+        id="musicButton"
+        aria-label="Putar musik"
+    >
+        ♪
+    </button>
 
 </nav>
 
@@ -2049,40 +2774,62 @@ img{
     ></div>
 
 
-    <div class="branch left">
+    <div class="hero-glow"></div>
 
-        <svg viewBox="0 0 300 320">
 
-            <path
-                d="M18 310 C60 260,82 221,72 168 C65 130,104 106,122 76 C146 37,161 26,197 11"
-            />
+    <div class="hero-frame">
+
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+
+    </div>
+
+
+    <!-- BIRDS -->
+
+    <div class="bird one">
+
+        <svg viewBox="0 0 100 45">
+
+            <path d="M6 27 Q23 8 43 25 Q50 31 57 25 Q77 8 94 27"/>
 
         </svg>
 
     </div>
 
 
-    <div class="branch right">
+    <div class="bird two">
 
-        <svg viewBox="0 0 300 320">
+        <svg viewBox="0 0 100 45">
 
-            <path
-                d="M18 310 C60 260,82 221,72 168 C65 130,104 106,122 76 C146 37,161 26,197 11"
-            />
+            <path d="M6 27 Q23 8 43 25 Q50 31 57 25 Q77 8 94 27"/>
 
         </svg>
 
     </div>
 
 
-    <div class="hero-copy">
+    <div class="bird three">
+
+        <svg viewBox="0 0 100 45">
+
+            <path d="M6 27 Q23 8 43 25 Q50 31 57 25 Q77 8 94 27"/>
+
+        </svg>
+
+    </div>
+
+
+    <div class="hero-content">
 
         <div class="hero-kicker">
             Dengan penuh kebahagiaan
         </div>
 
 
-        <h1 class="hero-title">
+        <h1>
 
             Adrian
 
@@ -2097,18 +2844,14 @@ img{
 
         <div class="hero-date">
 
-            Minggu
-            ·
-            18 Oktober 2026
-            ·
-            Jakarta
+            Minggu · 18 Oktober 2026 · Jakarta
 
         </div>
 
     </div>
 
 
-    <div class="hero-scroll">
+    <div class="scroll-cue">
         Gulir perlahan
     </div>
 
@@ -2124,10 +2867,9 @@ img{
     id="kisah"
 >
 
-    <div class="container story-layout">
+    <div class="container story-grid">
 
-
-        <div class="portrait reveal">
+        <div class="story-photo reveal">
 
             <img
                 src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=90"
@@ -2146,7 +2888,7 @@ img{
 
 
             <div class="label reveal">
-                Our story
+                Kisah Kami
             </div>
 
 
@@ -2157,26 +2899,20 @@ img{
 
 
             <p class="lead reveal">
-
                 Ada pertemuan yang awalnya terasa
                 seperti hal kecil.
-
                 Sebuah percakapan.
                 Sebuah tawa.
                 Sebuah hari biasa.
-
             </p>
 
 
             <p class="lead reveal">
-
                 Lalu waktu bekerja dengan caranya sendiri.
-
-                Percakapan menjadi kebiasaan.
-                Kebiasaan menjadi kedekatan.
-                Dan tanpa disadari, dua kehidupan
-                mulai berjalan menuju arah yang sama.
-
+                Percakapan menjadi kebiasaan,
+                kebiasaan menjadi kedekatan,
+                dan perlahan dua kehidupan mulai
+                berjalan menuju arah yang sama.
             </p>
 
         </div>
@@ -2233,7 +2969,7 @@ img{
     <div class="container">
 
         <div class="label reveal">
-            Save the date
+            Hitung mundur
         </div>
 
 
@@ -2245,46 +2981,23 @@ img{
         <div class="timer">
 
             <div class="time reveal">
-                <strong id="days">
-                    00
-                </strong>
-
-                <span>
-                    Hari
-                </span>
+                <strong id="days">00</strong>
+                <span>Hari</span>
             </div>
 
-
             <div class="time reveal">
-                <strong id="hours">
-                    00
-                </strong>
-
-                <span>
-                    Jam
-                </span>
+                <strong id="hours">00</strong>
+                <span>Jam</span>
             </div>
 
-
             <div class="time reveal">
-                <strong id="minutes">
-                    00
-                </strong>
-
-                <span>
-                    Menit
-                </span>
+                <strong id="minutes">00</strong>
+                <span>Menit</span>
             </div>
 
-
             <div class="time reveal">
-                <strong id="seconds">
-                    00
-                </strong>
-
-                <span>
-                    Detik
-                </span>
+                <strong id="seconds">00</strong>
+                <span>Detik</span>
             </div>
 
         </div>
@@ -2295,7 +3008,7 @@ img{
 
 
 <!-- =========================================================
-     FLOWER SCENE
+     FLOWER GROW
 ========================================================= -->
 
 <section
@@ -2306,18 +3019,13 @@ img{
     <div class="container">
 
         <div class="label reveal">
-            A little reminder
+            Sebuah pengingat
         </div>
 
 
         <h2 class="title reveal">
-
             Cinta juga tahu
-
-            <em>
-                cara bertumbuh.
-            </em>
-
+            <em>cara bertumbuh.</em>
         </h2>
 
 
@@ -2326,55 +3034,28 @@ img{
             id="flowerStage"
         >
 
-            <div
-                class="stem"
-            ></div>
+            <div class="flower-stem"></div>
+
+            <div class="flower-leaf left"></div>
+
+            <div class="flower-leaf right"></div>
 
 
-            <div
-                class="leaf-shape leaf-left"
-            ></div>
+            <div class="flower-bloom">
+
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
+                <div class="bloom-petal"></div>
 
 
-            <div
-                class="leaf-shape leaf-right"
-            ></div>
+                <div class="bloom-center"></div>
 
-
-            <div class="flower-core"></div>
-
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
-
-            <div
-                class="flower-petal"
-            ></div>
+            </div>
 
         </div>
 
@@ -2383,14 +3064,10 @@ img{
             class="lead reveal"
             style="margin:auto;text-align:center"
         >
-
             Pelan-pelan.
-
             Kelopak demi kelopak.
-
             Sampai akhirnya sesuatu yang indah
             menjadi nyata.
-
         </p>
 
     </div>
@@ -2399,7 +3076,7 @@ img{
 
 
 <!-- =========================================================
-     EVENT DETAILS
+     DETAILS
 ========================================================= -->
 
 <section
@@ -2409,12 +3086,12 @@ img{
 
     <div class="container">
 
-        <div class="details-header">
+        <div class="details-head">
 
             <div>
 
                 <div class="label reveal">
-                    The celebration
+                    Hari Bahagia
                 </div>
 
 
@@ -2427,11 +3104,9 @@ img{
 
 
             <p class="lead reveal">
-
                 Kehadiran dan doa baik Anda
-                akan membuat hari ini
-                jauh lebih berarti.
-
+                akan membuat hari ini jauh
+                lebih berarti.
             </p>
 
         </div>
@@ -2442,7 +3117,7 @@ img{
 
             <article class="detail reveal">
 
-                <div class="detail-number">
+                <div class="detail-no">
                     01 · AKAD
                 </div>
 
@@ -2453,18 +3128,9 @@ img{
 
 
                 <p>
-
-                    Minggu, 18 Oktober 2026
-
-                    <br>
-
-                    09.00 WIB
-
-                    <br>
-
-                    Gedung Cempaka,
-                    Jakarta
-
+                    Minggu, 18 Oktober 2026<br>
+                    09.00 WIB<br>
+                    Gedung Cempaka, Jakarta
                 </p>
 
             </article>
@@ -2472,29 +3138,20 @@ img{
 
             <article class="detail reveal">
 
-                <div class="detail-number">
+                <div class="detail-no">
                     02 · RESEPSI
                 </div>
 
 
                 <h3>
-                    Celebration
+                    Perayaan
                 </h3>
 
 
                 <p>
-
-                    Minggu, 18 Oktober 2026
-
-                    <br>
-
-                    12.00 – 15.00 WIB
-
-                    <br>
-
-                    Gedung Cempaka,
-                    Jakarta
-
+                    Minggu, 18 Oktober 2026<br>
+                    12.00 – 15.00 WIB<br>
+                    Gedung Cempaka, Jakarta
                 </p>
 
             </article>
@@ -2502,23 +3159,20 @@ img{
 
             <article class="detail reveal">
 
-                <div class="detail-number">
-                    03 · DRESS CODE
+                <div class="detail-no">
+                    03 · BUSANA
                 </div>
 
 
                 <h3>
-                    Soft &amp; Elegant
+                    Lembut &amp; Elegan
                 </h3>
 
 
                 <p>
-
                     Tidak ada aturan khusus.
-
                     Datanglah dengan pakaian terbaik
                     dan senyum yang paling tulus.
-
                 </p>
 
             </article>
@@ -2526,8 +3180,8 @@ img{
 
             <article class="detail reveal">
 
-                <div class="detail-number">
-                    04 · LOCATION
+                <div class="detail-no">
+                    04 · LOKASI
                 </div>
 
 
@@ -2537,18 +3191,13 @@ img{
 
 
                 <p>
-
-                    Jl. Contoh Bahagia No. 18
-
-                    <br>
-
+                    Jl. Contoh Bahagia No. 18<br>
                     Jakarta
-
                 </p>
 
 
                 <a
-                    class="map"
+                    class="map-button"
                     href="https://maps.google.com/?q=Jakarta"
                     target="_blank"
                     rel="noopener"
@@ -2575,7 +3224,7 @@ img{
     <div class="container">
 
         <div class="label reveal">
-            Our journey
+            Perjalanan
         </div>
 
 
@@ -2585,7 +3234,7 @@ img{
         </h2>
 
 
-        <div class="timeline-wrap">
+        <div class="timeline-line">
 
 
             <article class="timeline-item reveal">
@@ -2657,8 +3306,8 @@ img{
 
                 <p>
                     Kami ingin merayakannya
-                    bersama orang-orang yang
-                    kami cintai.
+                    bersama orang-orang
+                    yang kami cintai.
                 </p>
 
             </article>
@@ -2683,18 +3332,13 @@ img{
     <div class="container">
 
         <div class="label reveal">
-            Memories
+            Galeri
         </div>
 
 
         <h2 class="title reveal">
-
             Beberapa momen
-
-            <em>
-                yang kami simpan.
-            </em>
-
+            <em>yang kami simpan.</em>
         </h2>
 
 
@@ -2753,7 +3397,7 @@ img{
     <div class="rsvp-content">
 
         <div class="label reveal">
-            Your presence means everything
+            Kehadiran Anda berarti
         </div>
 
 
@@ -2763,16 +3407,9 @@ img{
 
 
         <p class="reveal">
-
-            Kehadiran dan doa baik Anda
-            adalah hadiah yang sangat berarti
-            bagi kami.
-
-            <br><br>
-
-            Silakan konfirmasi kehadiran melalui
-            WhatsApp.
-
+            Doa dan kehadiran Anda adalah
+            hadiah yang sangat berarti bagi kami.
+            Silakan konfirmasi melalui WhatsApp.
         </p>
 
 
@@ -2791,52 +3428,50 @@ img{
 
 
 <!-- =========================================================
-     FINAL XYNY
+     XYNY FINAL
 ========================================================= -->
 
 <section class="final">
 
-    <div class="final-inner reveal">
+    <div class="final-glow"></div>
+
+    <div class="final-frame"></div>
+
+
+    <div class="final-content reveal">
 
         <div class="label">
-            Digital Invitation · XYNY Studio
+            Undangan Digital · XYNY Studio
         </div>
 
 
         <h2>
-
             Punya cerita
-
-            <em>
-                sendiri?
-            </em>
-
+            <em>sendiri?</em>
         </h2>
 
 
         <p>
-
             Ini hanyalah sebuah contoh.
-
-            Setiap pasangan memiliki cerita,
-            budaya, warna, suasana, dan konsep
-            yang berbeda.
+            Setiap pasangan mempunyai cerita,
+            suasana, warna, budaya, dan
+            keinginan yang berbeda.
 
             <br><br>
 
-            Anda tertarik membuat undangan seperti ini?
-            Atau punya konsep lain yang ingin diwujudkan?
+            <strong>
+                Anda tertarik?
+            </strong>
+
+            Atau punya konsep lain?
 
             <br><br>
 
             Ceritakan kepada kami.
-
-            <strong>
-                XYNY Studio
-            </strong>
-            akan membantu mengubahnya menjadi
-            pengalaman digital yang terasa personal.
-
+            <strong>XYNY Studio</strong>
+            siap membantu mengubah gagasan
+            Anda menjadi undangan digital
+            yang terasa benar-benar personal.
         </p>
 
 
@@ -2855,10 +3490,35 @@ img{
 
 
 <footer class="footer">
-
     © 2026 XYNY STUDIO · DIGITAL EXPERIENCE
-
 </footer>
+
+
+<!-- =========================================================
+     YOUTUBE MUSIC
+========================================================= -->
+
+<div style="
+    position:fixed;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    opacity:.01;
+    pointer-events:none;
+    left:-20px;
+    top:-20px;
+">
+
+    <iframe
+        id="ytMusic"
+        width="1"
+        height="1"
+        src="https://www.youtube.com/embed/3gtvwCcMaBU?enablejsapi=1&loop=1&playlist=3gtvwCcMaBU"
+        title="Musik Undangan"
+        allow="autoplay; encrypted-media"
+    ></iframe>
+
+</div>
 
 
 <script>
@@ -2875,32 +3535,61 @@ const $$ = selector =>
 
 
 /* =========================================================
-   OPENING
+   OPENING SEQUENCE
 ========================================================= */
 
-$("#openInvitation").addEventListener(
+const opening =
+    $("#opening");
+
+const openInvitation =
+    $("#openInvitation");
+
+
+/*
+    Urutan:
+    1. ilustrasi muncul
+    2. bunga muncul
+    3. frame menggambar dirinya
+    4. pengguna membuka
+    5. tirai tertarik
+    6. ambience dimulai
+*/
+
+setTimeout(
+    () => {
+
+        opening
+            .classList
+            .add("ready");
+
+    },
+    350
+);
+
+
+openInvitation.addEventListener(
     "click",
     () => {
 
-        $("#opening")
+        opening
             .classList
-            .add("open");
+            .add("opened");
 
         document.body
             .classList
             .remove("locked");
 
+
         setTimeout(
             () => {
 
-                $("#opening")
-                    .style
-                    .display = "none";
+                opening.style.display =
+                    "none";
 
-                startPetals();
+                startAtmosphere();
 
             },
-            2200
+            2500
         );
 
     }
@@ -2913,73 +3602,79 @@ $("#openInvitation").addEventListener(
 
 function createPetal(){
 
-    const petal =
+    const p =
         document.createElement("span");
 
-    petal.className =
+    p.className =
         "petal";
 
-    const symbols =
-        ["✦","·","❀","✿"];
-
-    petal.textContent =
-        symbols[
+    p.textContent =
+        [
+            "✿",
+            "❀",
+            "·",
+            "✦"
+        ][
             Math.floor(
-                Math.random() *
-                symbols.length
+                Math.random()*4
             )
         ];
 
-    petal.style.left =
-        Math.random()*100 + "vw";
+    p.style.left =
+        Math.random()*100 +
+        "vw";
 
-    petal.style.fontSize =
-        8 +
-        Math.random()*15 +
+    p.style.fontSize =
+        (8 +
+        Math.random()*14) +
         "px";
 
-    petal.style.animationDuration =
-        7 +
-        Math.random()*8 +
+    p.style.animationDuration =
+        (7 +
+        Math.random()*8) +
         "s";
 
     $("#sky")
-        .appendChild(petal);
+        .appendChild(p);
+
 
     setTimeout(
-        () => petal.remove(),
+        () => p.remove(),
         16000
     );
 
 }
 
 
-function startPetals(){
+function startAtmosphere(){
 
     for(
         let i=0;
-        i<18;
+        i<16;
         i++
     ){
 
         setTimeout(
             createPetal,
-            i*120
+            i*140
         );
 
     }
 
+
     setInterval(
         createPetal,
-        900
+        1000
     );
 
 
-    /* fireflies */
+    /*
+       Fireflies dibuat sekali.
+    */
 
     for(
         let i=0;
-        i<22;
+        i<18;
         i++
     ){
 
@@ -2990,15 +3685,18 @@ function startPetals(){
             "firefly";
 
         light.style.left =
-            Math.random()*100 + "vw";
+            Math.random()*100 +
+            "vw";
 
         light.style.top =
-            10 +
-            Math.random()*80 +
+            (
+                10 +
+                Math.random()*80
+            ) +
             "vh";
 
         light.style.animationDelay =
-            Math.random()*4 +
+            Math.random()*5 +
             "s";
 
         $("#sky")
@@ -3048,52 +3746,14 @@ const revealObserver =
 $$(".reveal")
     .forEach(
         element =>
-            revealObserver.observe(element)
+            revealObserver.observe(
+                element
+            )
     );
 
 
 /* =========================================================
-   BRANCH DRAWING
-========================================================= */
-
-const branches =
-    $$(".branch");
-
-const branchObserver =
-    new IntersectionObserver(
-        entries => {
-
-            entries.forEach(
-                entry => {
-
-                    if(
-                        entry.isIntersecting
-                    ){
-
-                        entry.target
-                            .classList
-                            .add("leafed");
-
-                    }
-
-                }
-            );
-
-        },
-        {
-            threshold:.2
-        }
-    );
-
-
-branches.forEach(
-    branch =>
-        branchObserver.observe(branch)
-);
-
-
-/* =========================================================
-   FLOWER — RESPONDS TO SCROLL
+   FLOWER GROWTH
 ========================================================= */
 
 const flowerScene =
@@ -3102,17 +3762,19 @@ const flowerScene =
 function updateFlower(){
 
     const rect =
-        flowerScene.getBoundingClientRect();
+        flowerScene
+            .getBoundingClientRect();
 
-    const vh =
+    const viewport =
         window.innerHeight;
 
     let progress =
         1 -
         (
             rect.top /
-            (vh * .9)
+            (viewport * .88)
         );
+
 
     progress =
         Math.max(
@@ -3123,14 +3785,15 @@ function updateFlower(){
             )
         );
 
-    flowerScene
-        .style
+
+    flowerScene.style
         .setProperty(
-            "--flower",
+            "--growth",
             progress
         );
 
 }
+
 
 window.addEventListener(
     "scroll",
@@ -3150,25 +3813,23 @@ updateFlower();
 const heroPhoto =
     $("#heroPhoto");
 
-function updateParallax(){
+function heroParallax(){
 
-    const y =
+    const scroll =
         window.scrollY;
 
-    document.documentElement
-        .style
-        .setProperty(
-            "--scroll",
-            y
-        );
-
     if(
-        y <
+        scroll <
         window.innerHeight
     ){
 
         heroPhoto.style.transform =
-            `scale(1.08) translate3d(0,${y*.075}px,0)`;
+            `scale(1.08)
+             translate3d(
+                0,
+                ${scroll*.08}px,
+                0
+             )`;
 
     }
 
@@ -3176,277 +3837,174 @@ function updateParallax(){
 
 window.addEventListener(
     "scroll",
-    updateParallax,
+    heroParallax,
     {
         passive:true
     }
 );
 
-updateParallax();
+heroParallax();
 
 
 /* =========================================================
    COUNTDOWN
 ========================================================= */
 
-const targetDate =
+const weddingDate =
     new Date(
         "2026-10-18T09:00:00+07:00"
     ).getTime();
 
 
-function countdown(){
+function updateCountdown(){
 
-    let distance =
+    const difference =
         Math.max(
             0,
-            targetDate -
+            weddingDate -
             Date.now()
         );
 
 
+    const days =
+        Math.floor(
+            difference /
+            86400000
+        );
+
+
+    const hours =
+        Math.floor(
+            difference /
+            3600000
+        ) % 24;
+
+
+    const minutes =
+        Math.floor(
+            difference /
+            60000
+        ) % 60;
+
+
+    const seconds =
+        Math.floor(
+            difference /
+            1000
+        ) % 60;
+
+
     $("#days")
         .textContent =
-        String(
-            Math.floor(
-                distance /
-                86400000
-            )
-        ).padStart(
-            2,
-            "0"
-        );
+        String(days)
+            .padStart(2,"0");
 
 
     $("#hours")
         .textContent =
-        String(
-            Math.floor(
-                distance /
-                3600000
-            ) % 24
-        ).padStart(
-            2,
-            "0"
-        );
+        String(hours)
+            .padStart(2,"0");
 
 
     $("#minutes")
         .textContent =
-        String(
-            Math.floor(
-                distance /
-                60000
-            ) % 60
-        ).padStart(
-            2,
-            "0"
-        );
+        String(minutes)
+            .padStart(2,"0");
 
 
     $("#seconds")
         .textContent =
-        String(
-            Math.floor(
-                distance /
-                1000
-            ) % 60
-        ).padStart(
-            2,
-            "0"
-        );
+        String(seconds)
+            .padStart(2,"0");
 
 }
 
-countdown();
+
+updateCountdown();
+
 
 setInterval(
-    countdown,
+    updateCountdown,
     1000
 );
 
 
 /* =========================================================
-   MUSIC READY
+   YOUTUBE MUSIC
 ========================================================= */
 
-/*
-   Tambahkan sebelum </body> bila sudah memiliki musik:
+let musicPlaying =
+    false;
 
-   <audio
-       id="weddingAudio"
-       src="musik-undangan.mp3"
-       loop>
-   </audio>
 
-   Gunakan musik yang memang memiliki izin
-   penggunaan untuk produk komersial.
-*/
-
-$("#music")
+$("#musicButton")
     .addEventListener(
         "click",
         () => {
 
-            const audio =
-                $("#weddingAudio");
+            const iframe =
+                $("#ytMusic");
 
-            if(!audio){
 
-                alert(
-                    "Tambahkan musik berlisensi pada elemen weddingAudio."
+            const command =
+                musicPlaying
+                    ? "pauseVideo"
+                    : "playVideo";
+
+
+            iframe.contentWindow
+                .postMessage(
+                    JSON.stringify({
+                        event:"command",
+                        func:command,
+                        args:[]
+                    }),
+                    "*"
                 );
 
-                return;
 
-            }
+            musicPlaying =
+                !musicPlaying;
 
 
-            if(
-                audio.paused
-            ){
-
-                audio.play();
-
-                $("#music")
-                    .classList
-                    .add("playing");
-
-            }else{
-
-                audio.pause();
-
-                $("#music")
-                    .classList
-                    .remove("playing");
-
-            }
+            $("#musicButton")
+                .textContent =
+                musicPlaying
+                    ? "Ⅱ"
+                    : "♪";
 
         }
     );
 
 
 /* =========================================================
-   DESKTOP CURSOR
+   PERSONALISASI TAMU
+   ?to=Rocxy
 ========================================================= */
 
-if(
-    matchMedia(
-        "(pointer:fine)"
-    ).matches
-){
-
-    const cursor =
-        document.createElement("div");
-
-    const dot =
-        document.createElement("div");
-
-    cursor.style.cssText =
-        `
-        position:fixed;
-        width:38px;
-        height:38px;
-        border:1px solid rgba(23,32,25,.4);
-        border-radius:50%;
-        pointer-events:none;
-        z-index:9998;
-        transform:translate(-50%,-50%);
-        transition:transform .2s ease;
-        `;
-
-    dot.style.cssText =
-        `
-        position:fixed;
-        width:5px;
-        height:5px;
-        background:#172019;
-        border-radius:50%;
-        pointer-events:none;
-        z-index:9999;
-        transform:translate(-50%,-50%);
-        `;
-
-    document.body.appendChild(cursor);
-    document.body.appendChild(dot);
-
-
-    window.addEventListener(
-        "pointermove",
-        event => {
-
-            cursor.style.left =
-                event.clientX + "px";
-
-            cursor.style.top =
-                event.clientY + "px";
-
-            dot.style.left =
-                event.clientX + "px";
-
-            dot.style.top =
-                event.clientY + "px";
-
-        }
+const params =
+    new URLSearchParams(
+        window.location.search
     );
 
 
-    $$(
-        "a,button"
-    ).forEach(
-        element => {
-
-            element.addEventListener(
-                "mouseenter",
-                () => {
-
-                    cursor.style.transform =
-                        "translate(-50%,-50%) scale(1.5)";
-
-                }
-            );
+const guest =
+    params.get("to");
 
 
-            element.addEventListener(
-                "mouseleave",
-                () => {
+if(guest){
 
-                    cursor.style.transform =
-                        "translate(-50%,-50%) scale(1)";
+    /*
+       Bisa dikembangkan dengan menambahkan
+       elemen nama tamu pada cover.
+    */
 
-                }
-            );
-
-        }
+    console.log(
+        "Tamu:",
+        guest
     );
 
 }
-
-
-/* =========================================================
-   IMAGE FALLBACK
-========================================================= */
-
-$$("img")
-    .forEach(
-        image => {
-
-            image.addEventListener(
-                "error",
-                () => {
-
-                    image.style.background =
-                        "linear-gradient(135deg,#d9cdb9,#738571)";
-
-                    image.removeAttribute(
-                        "src"
-                    );
-
-                }
-            );
-
-        }
-    );
 
 </script>
 
