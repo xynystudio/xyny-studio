@@ -1,588 +1,1340 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>XYNY — Creative Studio</title>
-
 <meta name="description" content="XYNY — Independent Creative Studio">
 
 <style>
+/* =========================================================
+   XYNY STUDIO — HOMEPAGE V2
+   ========================================================= */
 
-/* =========================
-   RESET
-========================= */
+:root{
+    --paper:#ffffff;
+    --ink:#0b0b0b;
+    --soft:#f1f1ee;
+    --muted:#777772;
+    --line:rgba(11,11,11,.14);
+    --dark:#0b0b0b;
+    --darkText:#f5f5f2;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --pad:clamp(18px,4vw,64px);
+    --ease:cubic-bezier(.22,1,.36,1);
 }
 
-html {
-    scroll-behavior: smooth;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: #f4f4f0;
-    color: #111;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+html{
+    scroll-behavior:smooth;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
 
+body::selection{
+    background:#000;
+    color:#fff;
+}
 
-/* =========================
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+img{
+    display:block;
+    max-width:100%;
+}
+
+/* =========================================================
+   PAGE LOADER
+   ========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity 1s var(--ease),visibility 1s var(--ease);
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    width:min(120px,30vw);
+    margin:auto;
+}
+
+.loader-text{
+    margin-top:20px;
+    font-size:9px;
+    letter-spacing:.25em;
+    opacity:.45;
+}
+
+/* =========================================================
+   GRAIN
+   ========================================================= */
+
+.grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:8000;
+    opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+/* =========================================================
+   CURSOR
+   ========================================================= */
+
+.cursor{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#000;
+    z-index:9000;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    transition:
+        width .35s var(--ease),
+        height .35s var(--ease),
+        background .35s ease;
+}
+
+.cursor.active{
+    width:55px;
+    height:55px;
+    background:#fff;
+    mix-blend-mode:difference;
+}
+
+/* =========================================================
    HEADER
-========================= */
+   ========================================================= */
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
+.header{
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:82px;
+    padding:0 var(--pad);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    z-index:7000;
 
-    width: 100%;
-    height: 76px;
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
-    padding: 0 5vw;
+    border-bottom:1px solid rgba(0,0,0,.08);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    z-index: 100;
-
-    background: rgba(244,244,240,.75);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    border-bottom: 1px solid rgba(0,0,0,.1);
+    transition:
+        background .4s ease,
+        color .4s ease,
+        transform .5s var(--ease);
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: -.12em;
+.header.dark{
+    background:rgba(11,11,11,.7);
+    color:#fff;
+    border-color:rgba(255,255,255,.1);
 }
 
-nav {
-    display: flex;
-    gap: 28px;
+.brand{
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:-.12em;
 }
 
-nav a {
-    font-size: 10px;
-    letter-spacing: .12em;
-    transition: opacity .3s;
+.nav{
+    display:flex;
+    align-items:center;
+    gap:clamp(15px,3vw,38px);
 }
 
-nav a:hover {
-    opacity: .4;
+.nav a{
+    font-size:10px;
+    letter-spacing:.13em;
+    position:relative;
 }
 
+.nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-7px;
+    width:0;
+    height:1px;
+    background:currentColor;
+    transition:width .4s var(--ease);
+}
 
-/* =========================
+.nav a:hover::after{
+    width:100%;
+}
+
+.menu{
+    display:none;
+    font-size:10px;
+    letter-spacing:.15em;
+}
+
+/* =========================================================
    HERO
-========================= */
+   ========================================================= */
 
-.hero {
-    min-height: 100vh;
+.hero{
+    min-height:100svh;
+    padding:
+        130px var(--pad) 35px;
 
-    padding: 130px 5vw 70px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position:relative;
+    overflow:hidden;
 
-    text-align: center;
-
-    position: relative;
-
-    overflow: hidden;
+    background:#fff;
 }
 
-.hero::before {
-    content: "XYNY";
+/*
+   LOGO BACKGROUND:
+   Karena logo kamu memiliki background putih,
+   hero dibuat putih murni sehingga kotaknya menyatu.
+*/
 
-    position: absolute;
+.hero-logo-wrap{
+    min-height:56vh;
 
-    top: 50%;
-    left: 50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    transform: translate(-50%,-50%);
-
-    font-size: 42vw;
-
-    font-weight: 900;
-
-    letter-spacing: -.14em;
-
-    color: rgba(0,0,0,.025);
-
-    white-space: nowrap;
-
-    pointer-events: none;
+    position:relative;
 }
 
-.hero-logo {
-    position: relative;
-    z-index: 2;
-
-    width: min(260px,55vw);
-
-    margin-bottom: 45px;
-
-    animation: reveal 1.2s ease both;
+.hero-logo-wrap::before{
+    content:"";
+    position:absolute;
+    width:min(55vw,700px);
+    height:min(55vw,700px);
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:50%;
+    animation:orbit 16s linear infinite;
 }
 
-.hero-label {
-    position: relative;
-    z-index: 2;
-
-    font-size: 9px;
-
-    letter-spacing: .25em;
-
-    opacity: .5;
-
-    margin-bottom: 25px;
-
-    animation: up 1s .2s ease both;
+.hero-logo-wrap::after{
+    content:"";
+    position:absolute;
+    width:min(32vw,420px);
+    height:min(32vw,420px);
+    border:1px solid rgba(0,0,0,.06);
+    border-radius:50%;
+    transform:rotate(25deg);
 }
 
-.hero h1 {
-    position: relative;
-    z-index: 2;
+.hero-logo{
+    position:relative;
+    z-index:2;
+    width:min(330px,55vw);
+    mix-blend-mode:multiply;
 
-    font-size: clamp(55px,10vw,150px);
-
-    line-height: .82;
-
-    letter-spacing: -.1em;
-
-    font-weight: 800;
-
-    animation: up 1s .35s ease both;
+    animation:
+        logoIn 1.4s var(--ease) both;
 }
 
-.hero-button {
-    position: relative;
-    z-index: 2;
+.hero-top{
+    display:flex;
+    justify-content:space-between;
 
-    margin-top: 55px;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.17em;
 
-    font-size: 10px;
-
-    letter-spacing: .16em;
-
-    border-bottom: 1px solid #111;
-
-    padding-bottom: 9px;
-
-    transition: padding .4s ease;
+    opacity:.45;
 }
 
-.hero-button:hover {
-    padding-left: 25px;
-    padding-right: 25px;
+.hero-title{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:30px;
+    position:relative;
+    z-index:4;
 }
 
+.hero-title h1{
+    font-size:clamp(55px,11vw,170px);
+    line-height:.78;
+    letter-spacing:-.11em;
+    font-weight:800;
+}
 
-/* =========================
+.hero-title h1 span{
+    color:transparent;
+    -webkit-text-stroke:1px #111;
+}
+
+.hero-note{
+    max-width:260px;
+    padding-bottom:8px;
+
+    font-size:11px;
+    line-height:1.7;
+    color:var(--muted);
+}
+
+.hero-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    opacity:.45;
+}
+
+.scroll{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.scroll-line{
+    width:60px;
+    height:1px;
+    background:#000;
+}
+
+@keyframes logoIn{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.93);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+@keyframes orbit{
+    from{transform:rotate(0deg)}
+    to{transform:rotate(360deg)}
+}
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee{
+    overflow:hidden;
+    white-space:nowrap;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.marquee-track{
+    display:inline-flex;
+    animation:marquee 24s linear infinite;
+}
+
+.marquee-item{
+    font-size:clamp(32px,6vw,90px);
+    letter-spacing:-.07em;
+    font-weight:700;
+    margin-right:50px;
+}
+
+.marquee-item.outline{
+    color:transparent;
+    -webkit-text-stroke:1px #111;
+}
+
+@keyframes marquee{
+    from{transform:translateX(0)}
+    to{transform:translateX(-50%)}
+}
+
+/* =========================================================
    INTRO
-========================= */
+   ========================================================= */
 
-.intro {
-    min-height: 80vh;
+.intro{
+    min-height:85vh;
+    padding:clamp(100px,12vw,180px) var(--pad);
 
-    padding: 12vw 5vw;
-
-    display: grid;
-
-    grid-template-columns: 1fr 2fr;
-
-    gap: 8vw;
-
-    border-top: 1px solid rgba(0,0,0,.12);
+    display:grid;
+    grid-template-columns:1fr 1.8fr;
+    gap:8vw;
 }
 
-.number {
-    font-size: 10px;
-    letter-spacing: .15em;
-    opacity: .4;
+.eyebrow{
+    font-size:9px;
+    letter-spacing:.17em;
+    opacity:.45;
+    text-transform:uppercase;
 }
 
-.intro h2 {
-    font-size: clamp(45px,7vw,110px);
-
-    line-height: .85;
-
-    letter-spacing: -.08em;
+.intro-title{
+    margin-top:60px;
+    font-size:clamp(55px,8vw,125px);
+    line-height:.78;
+    letter-spacing:-.11em;
 }
 
-.intro p {
-    margin-top: 45px;
+.intro-copy{
+    align-self:end;
+    max-width:700px;
 
-    max-width: 550px;
-
-    font-size: 16px;
-
-    line-height: 1.7;
-
-    opacity: .6;
+    font-size:clamp(24px,3.4vw,50px);
+    line-height:1.08;
+    letter-spacing:-.055em;
 }
 
+.intro-copy span{
+    opacity:.3;
+}
 
-/* =========================
+/* =========================================================
    WORK
-========================= */
+   ========================================================= */
 
-.work {
-    background: #111;
-    color: #f4f4f0;
-
-    padding: 13vw 5vw;
+.work-section{
+    background:#0b0b0b;
+    color:#f5f5f2;
+    padding:clamp(100px,12vw,180px) var(--pad);
 }
 
-.section-title {
-    font-size: clamp(60px,12vw,180px);
-
-    line-height: .75;
-
-    letter-spacing: -.1em;
-
-    margin-top: 50px;
-
-    margin-bottom: 10vw;
+.work-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
 }
 
-.projects {
-    display: grid;
-
-    grid-template-columns: repeat(2,1fr);
-
-    gap: 2vw;
+.work-big{
+    margin-top:50px;
+    font-size:clamp(70px,13vw,200px);
+    line-height:.74;
+    letter-spacing:-.12em;
 }
 
-.project {
-    aspect-ratio: 1/1;
-
-    background: #222;
-
-    display: flex;
-
-    align-items: flex-end;
-
-    padding: 30px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    transition: transform .5s ease;
+.work-big span{
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.65);
 }
 
-.project:hover {
-    transform: scale(.98);
+.work-grid{
+    margin-top:120px;
+
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:18px;
 }
 
-.project span {
-    font-size: 10px;
-    letter-spacing: .15em;
+.project{
+    position:relative;
+    min-height:520px;
+    overflow:hidden;
+    background:#191919;
+    border:1px solid rgba(255,255,255,.08);
+    cursor:pointer;
+    transition:transform .7s var(--ease);
 }
 
-.project:nth-child(2) {
-    margin-top: 10vw;
+.project:hover{
+    transform:scale(.985);
 }
 
-.project:nth-child(3) {
-    margin-top: -5vw;
+.project.one{grid-column:span 7}
+.project.two{grid-column:span 5; margin-top:100px}
+.project.three{grid-column:span 5; margin-top:-30px}
+.project.four{grid-column:span 7; margin-top:70px}
+
+.project-visual{
+    position:absolute;
+    inset:0;
+    transition:transform 1s var(--ease);
 }
 
-.project:nth-child(4) {
-    margin-top: 5vw;
+.project:hover .project-visual{
+    transform:scale(1.08);
 }
 
+/* placeholder visual */
 
-/* =========================
+.project.one .project-visual{
+    background:
+        linear-gradient(125deg,transparent 35%,#fff 36%,#fff 38%,transparent 39%),
+        radial-gradient(circle at 70% 35%,#777,transparent 22%),
+        #171717;
+}
+
+.project.two .project-visual{
+    background:
+        radial-gradient(circle at 30% 35%,#fff 0 10%,transparent 11%),
+        linear-gradient(145deg,#252525,#090909);
+}
+
+.project.three .project-visual{
+    background:
+        repeating-linear-gradient(
+            45deg,
+            #111 0 18px,
+            #2b2b2b 18px 19px
+        );
+}
+
+.project.four .project-visual{
+    background:
+        radial-gradient(circle at 50% 50%,#eee,transparent 18%),
+        radial-gradient(circle at 50% 50%,#555,#111 58%);
+}
+
+.project-info{
+    position:absolute;
+    left:25px;
+    right:25px;
+    bottom:22px;
+    z-index:3;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+}
+
+.project-name{
+    font-size:clamp(22px,2.5vw,34px);
+    letter-spacing:-.06em;
+}
+
+.project-meta{
+    margin-top:7px;
+    font-size:8px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    opacity:.5;
+}
+
+/* =========================================================
    SERVICES
-========================= */
+   ========================================================= */
 
-.services {
-    padding: 13vw 5vw;
+.services{
+    padding:clamp(100px,12vw,180px) var(--pad);
 }
 
-.service {
-    border-top: 1px solid rgba(0,0,0,.15);
-
-    padding: 30px 0;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: clamp(25px,4vw,55px);
-
-    letter-spacing: -.05em;
-
-    transition: padding .4s ease;
+.services-title{
+    margin-top:50px;
+    font-size:clamp(65px,12vw,185px);
+    line-height:.75;
+    letter-spacing:-.12em;
 }
 
-.service:last-child {
-    border-bottom: 1px solid rgba(0,0,0,.15);
+.service-list{
+    margin-top:100px;
+    border-top:1px solid var(--line);
 }
 
-.service:hover {
-    padding-left: 25px;
+.service{
+    display:grid;
+    grid-template-columns:70px 1fr 1fr;
+    gap:25px;
+    align-items:center;
+
+    padding:30px 0;
+    border-bottom:1px solid var(--line);
+
+    transition:
+        padding .5s var(--ease),
+        background .5s ease;
 }
 
-.service small {
-    font-size: 10px;
-
-    letter-spacing: .1em;
-
-    opacity: .4;
-
-    align-self: center;
+.service:hover{
+    padding-left:20px;
+    padding-right:20px;
+    background:#f0f0ec;
 }
 
+.service-number{
+    font-size:9px;
+    opacity:.4;
+}
 
-/* =========================
+.service-name{
+    font-size:clamp(28px,4vw,58px);
+    letter-spacing:-.07em;
+}
+
+.service-description{
+    max-width:340px;
+    font-size:11px;
+    line-height:1.7;
+    color:var(--muted);
+}
+
+/* =========================================================
+   STATEMENT
+   ========================================================= */
+
+.statement{
+    min-height:85vh;
+    padding:120px var(--pad);
+
+    display:flex;
+    align-items:center;
+
+    background:#e8e8e4;
+    overflow:hidden;
+    position:relative;
+}
+
+.statement::after{
+    content:"XYNY";
+    position:absolute;
+    right:-7vw;
+    bottom:-10vw;
+    font-size:40vw;
+    font-weight:900;
+    letter-spacing:-.13em;
+    opacity:.035;
+    pointer-events:none;
+}
+
+.statement h2{
+    position:relative;
+    z-index:2;
+
+    font-size:clamp(60px,11vw,175px);
+    line-height:.76;
+    letter-spacing:-.11em;
+}
+
+.statement h2 span{
+    color:transparent;
+    -webkit-text-stroke:1px #111;
+}
+
+/* =========================================================
+   LAB
+   ========================================================= */
+
+.lab-section{
+    min-height:85vh;
+    padding:120px var(--pad);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    background:#fff;
+}
+
+.lab-wrap{
+    width:100%;
+    max-width:1200px;
+}
+
+.lab-title{
+    font-size:clamp(100px,20vw,310px);
+    line-height:.7;
+    letter-spacing:-.13em;
+}
+
+.lab-sub{
+    max-width:480px;
+    margin:55px auto 0;
+    font-size:12px;
+    line-height:1.8;
+    color:var(--muted);
+}
+
+/* =========================================================
+   JOURNAL
+   ========================================================= */
+
+.journal{
+    padding:120px var(--pad);
+}
+
+.journal-title{
+    margin-top:50px;
+    font-size:clamp(60px,11vw,175px);
+    line-height:.75;
+    letter-spacing:-.11em;
+}
+
+.journal-list{
+    margin-top:100px;
+    border-top:1px solid var(--line);
+}
+
+.journal-item{
+    display:grid;
+    grid-template-columns:80px 1fr 100px;
+    gap:25px;
+
+    padding:28px 0;
+
+    border-bottom:1px solid var(--line);
+
+    transition:padding .45s var(--ease);
+}
+
+.journal-item:hover{
+    padding-left:22px;
+}
+
+.journal-number,
+.journal-date{
+    font-size:9px;
+    opacity:.4;
+}
+
+.journal-item h3{
+    font-size:clamp(20px,3vw,40px);
+    letter-spacing:-.05em;
+}
+
+/* =========================================================
    CONTACT
-========================= */
+   ========================================================= */
 
-.contact {
-    min-height: 90vh;
+.contact{
+    min-height:90vh;
+    padding:120px var(--pad);
 
-    padding: 10vw 5vw;
+    background:#0b0b0b;
+    color:#f5f5f2;
 
-    background: #deded9;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.contact h2 {
-    font-size: clamp(70px,15vw,230px);
-
-    line-height: .72;
-
-    letter-spacing: -.12em;
+.contact-title{
+    margin-top:50px;
+    font-size:clamp(70px,14vw,220px);
+    line-height:.72;
+    letter-spacing:-.12em;
 }
 
-.contact a {
-    width: fit-content;
-
-    margin-top: 70px;
-
-    padding-bottom: 10px;
-
-    border-bottom: 1px solid #111;
-
-    font-size: 20px;
+.contact-title span{
+    color:transparent;
+    -webkit-text-stroke:1px #f5f5f2;
 }
 
+.contact-bottom{
+    margin-top:80px;
 
-/* =========================
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:40px;
+}
+
+.contact-email{
+    width:fit-content;
+
+    font-size:clamp(20px,3vw,38px);
+
+    border-bottom:1px solid #fff;
+    padding-bottom:10px;
+}
+
+.contact-meta{
+    font-size:9px;
+    line-height:2;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    opacity:.45;
+    text-align:right;
+}
+
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 
-footer {
-    min-height: 100px;
+footer{
+    padding:28px var(--pad);
 
-    background: #111;
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
 
-    color: white;
+    background:#0b0b0b;
+    color:#fff;
 
-    padding: 30px 5vw;
+    border-top:1px solid rgba(255,255,255,.1);
 
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 9px;
-
-    letter-spacing: .15em;
+    font-size:8px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    opacity:.65;
 }
 
+/* =========================================================
+   REVEAL
+   ========================================================= */
 
-/* =========================
-   ANIMATION
-========================= */
-
-@keyframes reveal {
-
-    from {
-        opacity: 0;
-        transform: scale(.85) translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
 }
 
-@keyframes up {
-
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
 }
 
-
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+   ========================================================= */
 
-@media(max-width:700px) {
+@media(max-width:800px){
 
-    header {
-        height: 65px;
+    .header{
+        height:68px;
     }
 
-    nav {
-        gap: 12px;
+    .nav{
+        gap:14px;
     }
 
-    nav a {
-        font-size: 7px;
+    .nav a{
+        font-size:7px;
     }
 
-    .hero {
-        padding-top: 110px;
+    .hero{
+        padding-top:105px;
     }
 
-    .hero-logo {
-        width: 55vw;
+    .hero-logo{
+        width:min(260px,64vw);
     }
 
-    .intro {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    .hero-title{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-    .projects {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    .hero-title h1{
+        font-size:clamp(55px,17vw,115px);
     }
 
-    .project:nth-child(2),
-    .project:nth-child(3),
-    .project:nth-child(4) {
-        margin-top: 0;
+    .hero-note{
+        max-width:280px;
     }
 
-    .service {
-        font-size: 25px;
+    .intro{
+        grid-template-columns:1fr;
+        gap:55px;
     }
 
-    footer {
-        flex-direction: column;
-        gap: 15px;
+    .work-grid{
+        grid-template-columns:1fr;
     }
 
+    .project.one,
+    .project.two,
+    .project.three,
+    .project.four{
+        grid-column:span 12;
+        margin-top:0;
+        min-height:420px;
+    }
+
+    .service{
+        grid-template-columns:45px 1fr;
+    }
+
+    .service-description{
+        grid-column:2;
+    }
+
+    .journal-item{
+        grid-template-columns:45px 1fr;
+    }
+
+    .journal-date{
+        display:none;
+    }
+
+    .contact-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .contact-meta{
+        text-align:left;
+    }
+
+    footer{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 }
 
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
+}
 </style>
 </head>
 
-
 <body>
 
+<div class="loader">
+    <div class="loader-inner">
+        <img
+            src="assets/image/xyny-logo.png"
+            class="loader-logo"
+            alt="XYNY"
+        >
+        <div class="loader-text">LOADING EXPERIENCE</div>
+    </div>
+</div>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<div class="grain"></div>
+<div class="cursor"></div>
 
-<header>
+<header class="header">
 
-    <a href="/" class="logo">
+    <a href="#" class="brand">
         XYNY
     </a>
 
-    <nav>
+    <nav class="nav">
         <a href="#work">WORK</a>
         <a href="#studio">STUDIO</a>
-        <a href="#services">SERVICES</a>
+        <a href="#lab">LAB</a>
+        <a href="#journal">JOURNAL</a>
         <a href="#contact">CONTACT</a>
     </nav>
+
+    <div class="menu">
+        MENU
+    </div>
 
 </header>
 
 
-
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
-    <img
-        src="assets/image/xyny-logo.png"
-        class="hero-logo"
-        alt="XYNY Studio Logo"
-    >
-
-    <div class="hero-label">
-        INDEPENDENT CREATIVE STUDIO
+    <div class="hero-top">
+        <span>Independent Creative Studio</span>
+        <span>Indonesia — 2026</span>
     </div>
 
-    <h1>
-        WE MAKE<br>
-        IDEAS<br>
-        MATTER.
-    </h1>
+    <div class="hero-logo-wrap">
 
-    <a href="#work" class="hero-button">
-        EXPLORE OUR WORK ↓
-    </a>
+        <img
+            src="assets/image/xyny-logo.png"
+            class="hero-logo"
+            alt="XYNY Studio Logo"
+        >
+
+    </div>
+
+    <div class="hero-title">
+
+        <h1>
+            MAKE<br>
+            <span>IMPACT.</span>
+        </h1>
+
+        <p class="hero-note">
+            We build identities, visuals and digital
+            experiences for people, brands and ideas
+            worth remembering.
+        </p>
+
+    </div>
+
+    <div class="hero-bottom">
+
+        <div class="scroll">
+            <span class="scroll-line"></span>
+            Scroll to explore
+        </div>
+
+        <span>01 / 07</span>
+
+    </div>
 
 </section>
 
 
+<!-- =====================================================
+     MARQUEE
+===================================================== -->
 
-<!-- =========================
-     INTRO
-========================= -->
+<div class="marquee">
 
-<section class="intro" id="studio">
+    <div class="marquee-track">
 
-    <div class="number">
-        01 / STUDIO
+        <span class="marquee-item">DESIGN</span>
+        <span class="marquee-item outline">VISUAL</span>
+        <span class="marquee-item">DIGITAL</span>
+        <span class="marquee-item outline">IDEAS</span>
+
+        <span class="marquee-item">DESIGN</span>
+        <span class="marquee-item outline">VISUAL</span>
+        <span class="marquee-item">DIGITAL</span>
+        <span class="marquee-item outline">IDEAS</span>
+
     </div>
+
+</div>
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="intro reveal" id="studio">
 
     <div>
 
-        <h2>
-            WE CREATE<br>
-            WITH<br>
-            PURPOSE.
+        <div class="eyebrow">
+            02 / The Studio
+        </div>
+
+        <h2 class="intro-title">
+            NOT JUST<br>
+            ANOTHER<br>
+            STUDIO.
         </h2>
 
-        <p>
-            XYNY is an independent creative studio exploring
-            design, visual culture, technology and ideas.
-            We create identities, digital experiences and
-            visual stories that are built to matter.
+    </div>
+
+    <div class="intro-copy">
+
+        We believe creativity is not decoration.
+
+        <span>
+            It is a way of thinking,
+            seeing and making.
+        </span>
+
+        <br><br>
+
+        XYNY turns ideas into visual experiences
+        that feel <strong>distinct, human and alive.</strong>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     WORK
+===================================================== -->
+
+<section class="work-section reveal" id="work">
+
+    <div class="work-header">
+
+        <div class="eyebrow">
+            03 / Selected Work
+        </div>
+
+        <div class="eyebrow">
+            2026 — 001
+        </div>
+
+    </div>
+
+    <div class="work-big">
+        SELECTED<br>
+        <span>WORK.</span>
+    </div>
+
+    <div class="work-grid">
+
+        <article class="project one">
+
+            <div class="project-visual"></div>
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        Identity 001
+                    </div>
+
+                    <div class="project-meta">
+                        Branding / Art Direction
+                    </div>
+                </div>
+
+                <div>↗</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project two">
+
+            <div class="project-visual"></div>
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        Form / Space
+                    </div>
+
+                    <div class="project-meta">
+                        Photography / Visual
+                    </div>
+                </div>
+
+                <div>↗</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project three">
+
+            <div class="project-visual"></div>
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        System 003
+                    </div>
+
+                    <div class="project-meta">
+                        Digital / UI / UX
+                    </div>
+                </div>
+
+                <div>↗</div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project four">
+
+            <div class="project-visual"></div>
+
+            <div class="project-info">
+
+                <div>
+                    <div class="project-name">
+                        Afterlight
+                    </div>
+
+                    <div class="project-meta">
+                        Motion / Film
+                    </div>
+                </div>
+
+                <div>↗</div>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SERVICES
+===================================================== -->
+
+<section class="services reveal">
+
+    <div class="eyebrow">
+        04 / Capabilities
+    </div>
+
+    <div class="services-title">
+        WHAT<br>
+        WE DO.
+    </div>
+
+    <div class="service-list">
+
+        <div class="service">
+
+            <div class="service-number">01</div>
+
+            <div class="service-name">
+                Branding
+            </div>
+
+            <div class="service-description">
+                Identity systems, logos,
+                visual language and creative direction.
+            </div>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-number">02</div>
+
+            <div class="service-name">
+                Graphic Design
+            </div>
+
+            <div class="service-description">
+                Campaigns, publications,
+                social media and visual communication.
+            </div>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-number">03</div>
+
+            <div class="service-name">
+                Digital
+            </div>
+
+            <div class="service-description">
+                Websites, interfaces and
+                memorable digital experiences.
+            </div>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-number">04</div>
+
+            <div class="service-name">
+                Photography
+            </div>
+
+            <div class="service-description">
+                Portrait, editorial,
+                commercial and documentary imagery.
+            </div>
+
+        </div>
+
+
+        <div class="service">
+
+            <div class="service-number">05</div>
+
+            <div class="service-name">
+                Motion
+            </div>
+
+            <div class="service-description">
+                Film, editing, motion graphics
+                and moving image.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     STATEMENT
+===================================================== -->
+
+<section class="statement reveal">
+
+    <h2>
+        MAKE<br>
+        <span>THINGS</span><br>
+        MATTER.
+    </h2>
+
+</section>
+
+
+<!-- =====================================================
+     XYNY LAB
+===================================================== -->
+
+<section class="lab-section reveal" id="lab">
+
+    <div class="lab-wrap">
+
+        <div class="eyebrow">
+            06 / XYNY Lab
+        </div>
+
+        <div class="lab-title">
+            LAB.
+        </div>
+
+        <p class="lab-sub">
+            Experiments in creative coding,
+            visual art, technology, motion,
+            photography and ideas.
         </p>
 
     </div>
@@ -590,127 +1342,300 @@ footer {
 </section>
 
 
+<!-- =====================================================
+     JOURNAL
+===================================================== -->
 
-<!-- =========================
-     WORK
-========================= -->
+<section class="journal reveal" id="journal">
 
-<section class="work" id="work">
-
-    <div class="number">
-        02 / SELECTED WORK
+    <div class="eyebrow">
+        07 / Journal
     </div>
 
-    <h2 class="section-title">
-        SELECTED<br>
-        WORK.
-    </h2>
-
-
-    <div class="projects">
-
-        <div class="project">
-            <span>PROJECT 01 — BRANDING</span>
-        </div>
-
-        <div class="project">
-            <span>PROJECT 02 — DIGITAL</span>
-        </div>
-
-        <div class="project">
-            <span>PROJECT 03 — VISUAL</span>
-        </div>
-
-        <div class="project">
-            <span>PROJECT 04 — EXPERIMENTAL</span>
-        </div>
-
+    <div class="journal-title">
+        IDEAS<br>
+        BEHIND<br>
+        THE WORK.
     </div>
 
-</section>
+    <div class="journal-list">
+
+        <article class="journal-item">
+
+            <div class="journal-number">
+                001
+            </div>
+
+            <h3>
+                Why We Create
+            </h3>
+
+            <div class="journal-date">
+                2026
+            </div>
+
+        </article>
 
 
+        <article class="journal-item">
 
-<!-- =========================
-     SERVICES
-========================= -->
+            <div class="journal-number">
+                002
+            </div>
 
-<section class="services" id="services">
+            <h3>
+                Behind The Work
+            </h3>
 
-    <div class="number">
-        03 / WHAT WE DO
-    </div>
+            <div class="journal-date">
+                2026
+            </div>
 
-    <h2 class="section-title">
-        WHAT<br>
-        WE DO.
-    </h2>
+        </article>
 
 
-    <div class="service">
-        <span>01 — BRAND IDENTITY</span>
-        <small>IDENTITY</small>
-    </div>
+        <article class="journal-item">
 
-    <div class="service">
-        <span>02 — DIGITAL DESIGN</span>
-        <small>DIGITAL</small>
-    </div>
+            <div class="journal-number">
+                003
+            </div>
 
-    <div class="service">
-        <span>03 — ART DIRECTION</span>
-        <small>VISUAL</small>
-    </div>
+            <h3>
+                Ideas / Process / Design
+            </h3>
 
-    <div class="service">
-        <span>04 — CREATIVE DEVELOPMENT</span>
-        <small>TECH</small>
+            <div class="journal-date">
+                2026
+            </div>
+
+        </article>
+
     </div>
 
 </section>
 
 
-
-<!-- =========================
+<!-- =====================================================
      CONTACT
-========================= -->
+===================================================== -->
 
-<section class="contact" id="contact">
+<section class="contact reveal" id="contact">
 
-    <div class="number">
-        04 / CONTACT
+    <div class="eyebrow">
+        08 / Start a Project
     </div>
 
-    <h2>
-        LET'S<br>
-        MAKE<br>
-        SOMETHING.
-    </h2>
+    <div class="contact-title">
 
-    <a href="mailto:hello@xyny.studio">
-        hello@xyny.studio →
-    </a>
+        HAVE<br>
+        <span>AN IDEA?</span>
+
+    </div>
+
+    <div class="contact-bottom">
+
+        <a
+            href="mailto:hello@xyny.studio"
+            class="contact-email"
+        >
+            hello@xyny.studio ↗
+        </a>
+
+        <div class="contact-meta">
+            Independent Creative Studio<br>
+            Indonesia / Worldwide<br>
+            © 2026 XYNY
+        </div>
+
+    </div>
 
 </section>
 
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
-    <span>
-        © 2026 XYNY STUDIO
-    </span>
+    <span>XYNY® — Creative Studio</span>
 
-    <span>
-        INDONESIA
-    </span>
+    <span>Work / Studio / Lab / Journal</span>
 
 </footer>
 
+
+<script>
+
+/* =====================================================
+   LOADER
+===================================================== */
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document
+            .querySelector(".loader")
+            .classList.add("hide");
+
+    }, 800);
+
+});
+
+
+/* =====================================================
+   CURSOR
+===================================================== */
+
+const cursor = document.querySelector(".cursor");
+
+if (cursor && window.innerWidth > 800) {
+
+    document.addEventListener("mousemove", (event) => {
+
+        cursor.style.left = event.clientX + "px";
+        cursor.style.top = event.clientY + "px";
+
+    });
+
+    document
+        .querySelectorAll("a, .project, .service")
+        .forEach(element => {
+
+            element.addEventListener("mouseenter", () => {
+                cursor.classList.add("active");
+            });
+
+            element.addEventListener("mouseleave", () => {
+                cursor.classList.remove("active");
+            });
+
+        });
+
+}
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold:0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =====================================================
+   PROJECT TILT
+===================================================== */
+
+if (window.innerWidth > 900) {
+
+    document
+        .querySelectorAll(".project")
+        .forEach(project => {
+
+            project.addEventListener(
+                "mousemove",
+                event => {
+
+                    const rect =
+                        project.getBoundingClientRect();
+
+                    const x =
+                        event.clientX - rect.left;
+
+                    const y =
+                        event.clientY - rect.top;
+
+                    const rotateY =
+                        (x - rect.width / 2) / 35;
+
+                    const rotateX =
+                        -(y - rect.height / 2) / 35;
+
+                    project.style.transform =
+                        `perspective(1000px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         scale(.99)`;
+
+                }
+            );
+
+            project.addEventListener(
+                "mouseleave",
+                () => {
+
+                    project.style.transform =
+                        "";
+
+                }
+            );
+
+        });
+
+}
+
+
+/* =====================================================
+   HEADER DARK MODE ON DARK SECTIONS
+===================================================== */
+
+const header =
+    document.querySelector(".header");
+
+const darkSection =
+    document.querySelector(".work-section");
+
+window.addEventListener("scroll", () => {
+
+    if (!header || !darkSection) return;
+
+    const rect =
+        darkSection.getBoundingClientRect();
+
+    if (
+        rect.top < 100 &&
+        rect.bottom > 100
+    ) {
+
+        header.classList.add("dark");
+
+    } else {
+
+        header.classList.remove("dark");
+
+    }
+
+});
+
+
+</script>
 
 </body>
 </html>
