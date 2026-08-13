@@ -4,22 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description"
-content="Gereja Kasih Anugerah — Bertumbuh dalam Kristus, melayani dengan kasih, dan menjadi berkat bagi sesama.">
+<meta name="description" content="Demo website gereja modern — contoh website gereja dan pelayanan yang dapat dibuat oleh XYNY Studio.">
+<meta name="theme-color" content="#101614">
 
-<meta name="theme-color" content="#17251f">
-
-<title>Gereja Kasih Anugerah — Bertumbuh, Melayani, Menjadi Berkat</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link
-href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-rel="stylesheet">
+<title>Gereja Harapan Baru — Demo Website Gereja | XYNY Studio</title>
 
 <style>
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -35,15 +25,19 @@ html{
 }
 
 body{
-    font-family:"DM Sans",sans-serif;
-    background:#f7f5ef;
-    color:#1b211e;
-    overflow-x:hidden;
-}
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
 
-img{
-    display:block;
-    max-width:100%;
+    background:#f7f6f1;
+    color:#17201d;
+    line-height:1.6;
+    overflow-x:hidden;
 }
 
 a{
@@ -55,50 +49,40 @@ button{
     font:inherit;
 }
 
-
-/* =========================================================
-   VARIABLES
-========================================================= */
+img{
+    display:block;
+    width:100%;
+}
 
 :root{
-
-    --forest:#17251f;
-    --forest-2:#21372e;
-
-    --cream:#f7f5ef;
-    --cream-2:#eeece3;
-
-    --gold:#c9a86a;
-    --gold-light:#e2c994;
-
-    --white:#fff;
-
-    --text:#1b211e;
-    --muted:#73776f;
-
-    --line:rgba(27,33,30,.12);
-
+    --ink:#17201d;
+    --green:#214b3a;
+    --green-dark:#123326;
+    --green-soft:#dfe9df;
+    --gold:#b9914c;
+    --cream:#f7f6f1;
+    --white:#ffffff;
+    --muted:#68716d;
+    --line:rgba(23,32,29,.12);
+    --shadow:0 25px 70px rgba(19,39,30,.10);
+    --radius:28px;
 }
 
 
 /* =========================================================
-   LOADER
+   LOADING
 ========================================================= */
 
 .loader{
     position:fixed;
     inset:0;
-    background:var(--forest);
-    color:white;
     z-index:9999;
-
+    background:var(--green-dark);
     display:flex;
     align-items:center;
     justify-content:center;
-
-    transition:
-        opacity .8s ease,
-        visibility .8s ease;
+    color:white;
+    transition:.8s ease;
 }
 
 .loader.hide{
@@ -106,180 +90,173 @@ button{
     visibility:hidden;
 }
 
-.loader-content{
+.loader-inner{
     text-align:center;
 }
 
-.loader-cross{
-    width:30px;
-    height:42px;
-    margin:0 auto 22px;
+.loader-mark{
+    width:62px;
+    height:62px;
+    border:1px solid rgba(255,255,255,.3);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    margin:auto auto 20px;
     position:relative;
 }
 
-.loader-cross::before,
-.loader-cross::after{
+.loader-mark::after{
     content:"";
-    position:absolute;
+    width:10px;
+    height:10px;
     background:var(--gold);
+    border-radius:50%;
 }
 
-.loader-cross::before{
-    width:2px;
-    height:42px;
-    left:14px;
-}
-
-.loader-cross::after{
-    width:30px;
-    height:2px;
-    left:0;
-    top:13px;
-}
-
-.loader-name{
-    font-family:"Playfair Display",serif;
-    font-size:18px;
-    letter-spacing:.08em;
-}
-
-.loader-sub{
-    margin-top:7px;
-    font-size:9px;
-    letter-spacing:.25em;
+.loader p{
+    font-size:.75rem;
+    letter-spacing:.2em;
     text-transform:uppercase;
-    color:rgba(255,255,255,.45);
+    opacity:.65;
 }
 
 
 /* =========================================================
-   NAVBAR
+   TOP DEMO BAR
 ========================================================= */
 
-.navbar{
-    position:fixed;
-    top:0;
+.demo-bar{
+    background:#101614;
+    color:#fff;
+    min-height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:9px 20px;
+    font-size:.72rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    position:relative;
+    z-index:1000;
+}
+
+.demo-bar span{
+    color:#d9bd83;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav{
+    position:absolute;
+    top:42px;
     left:0;
     width:100%;
-    z-index:1000;
+    z-index:100;
+    color:white;
+    transition:.35s ease;
+}
 
-    padding:20px 5vw;
+.nav.scrolled{
+    position:fixed;
+    top:0;
+    background:rgba(18,51,38,.94);
+    backdrop-filter:blur(18px);
+    box-shadow:0 10px 40px rgba(0,0,0,.12);
+}
 
+.nav-inner{
+    max-width:1240px;
+    margin:auto;
+    padding:22px 28px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    color:white;
-
-    transition:.4s ease;
+    gap:30px;
 }
 
-.navbar.scrolled{
-    padding:13px 5vw;
-
-    background:rgba(23,37,31,.94);
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-        0 8px 30px rgba(0,0,0,.12);
-}
-
-.church-brand{
+.logo{
     display:flex;
     align-items:center;
     gap:12px;
 }
 
-.cross-logo{
-    width:37px;
-    height:37px;
-    border:1px solid rgba(255,255,255,.45);
-
+.logo-symbol{
+    width:42px;
+    height:42px;
+    border:1px solid rgba(255,255,255,.5);
+    border-radius:50%;
     display:grid;
     place-items:center;
-
     position:relative;
 }
 
-.cross-logo::before,
-.cross-logo::after{
-    content:"";
-    position:absolute;
-    background:var(--gold);
-}
-
-.cross-logo::before{
-    width:2px;
-    height:22px;
-}
-
-.cross-logo::after{
-    width:16px;
-    height:2px;
-    top:13px;
-}
-
-.brand-text strong{
-    display:block;
-    font-family:"Playfair Display",serif;
+.logo-symbol::before{
+    content:"✦";
+    color:#d8b66e;
     font-size:17px;
-    font-weight:600;
 }
 
-.brand-text small{
+.logo-text strong{
     display:block;
-    margin-top:2px;
+    font-size:.92rem;
+    letter-spacing:.12em;
+}
 
-    font-size:8px;
-    letter-spacing:.18em;
-    color:rgba(255,255,255,.5);
-    text-transform:uppercase;
+.logo-text small{
+    display:block;
+    font-size:.58rem;
+    opacity:.65;
+    letter-spacing:.16em;
+    margin-top:2px;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
     gap:28px;
-
-    font-size:12px;
-    color:rgba(255,255,255,.7);
+    font-size:.82rem;
 }
 
 .nav-links a{
-    transition:.25s ease;
+    opacity:.82;
+    transition:.25s;
 }
 
 .nav-links a:hover{
-    color:white;
+    opacity:1;
+    color:#e1c583;
 }
 
-.nav-button{
+.nav-cta{
     padding:11px 18px;
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:999px;
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.3s ease;
+    border:1px solid rgba(255,255,255,.35);
+    border-radius:100px;
+    font-size:.78rem;
+    transition:.25s;
 }
 
-.nav-button:hover{
-    background:white;
-    color:var(--forest);
+.nav-cta:hover{
+    background:#fff;
+    color:var(--green-dark);
 }
 
-.menu-button{
+.menu{
     display:none;
-
-    width:42px;
-    height:42px;
-
-    border:1px solid rgba(255,255,255,.3);
-    border-radius:50%;
-
-    background:transparent;
+    border:0;
+    background:none;
     color:white;
+    cursor:pointer;
+}
+
+.menu span{
+    width:25px;
+    height:1px;
+    background:white;
+    display:block;
+    margin:5px;
 }
 
 
@@ -288,255 +265,137 @@ button{
 ========================================================= */
 
 .hero{
-    min-height:100svh;
-
+    min-height:820px;
     position:relative;
-
-    display:flex;
-    align-items:flex-end;
-
-    overflow:hidden;
-
     background:
         linear-gradient(
             90deg,
-            rgba(10,19,15,.88),
-            rgba(10,19,15,.42),
-            rgba(10,19,15,.12)
+            rgba(8,26,19,.90) 0%,
+            rgba(8,26,19,.68) 45%,
+            rgba(8,26,19,.35) 100%
         ),
-        url("https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=2200&q=90")
+        url("https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=2200&q=85")
         center/cover;
+
+    color:white;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
 }
 
 .hero::after{
     content:"";
-
     position:absolute;
-    inset:0;
-
-    background:
-        linear-gradient(
-            to top,
-            rgba(10,19,15,.85),
-            transparent 55%
-        );
+    inset:auto 0 0;
+    height:180px;
+    background:linear-gradient(transparent,var(--cream));
 }
 
 .hero-content{
+    width:min(1240px,100%);
+    margin:auto;
+    padding:150px 28px 120px;
     position:relative;
     z-index:2;
-
-    padding:150px 5vw 80px;
-
-    width:100%;
-    max-width:1250px;
-
-    color:white;
 }
 
 .hero-kicker{
     display:flex;
     align-items:center;
-    gap:12px;
-
-    margin-bottom:28px;
-
-    color:rgba(255,255,255,.65);
-
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.2em;
+    gap:10px;
     text-transform:uppercase;
+    letter-spacing:.2em;
+    font-size:.68rem;
+    color:#d9bd83;
+    margin-bottom:25px;
 }
 
-.hero-kicker span{
-    width:8px;
-    height:8px;
-
-    border-radius:50%;
-
-    background:var(--gold);
+.hero-kicker::before{
+    content:"";
+    width:35px;
+    height:1px;
+    background:#d9bd83;
 }
 
 .hero h1{
-    max-width:950px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(3.7rem,8vw,8.5rem);
-
-    font-weight:500;
-
-    line-height:.92;
-
+    max-width:800px;
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:400;
+    font-size:clamp(3.4rem,7vw,7rem);
+    line-height:.95;
     letter-spacing:-.055em;
 }
 
 .hero h1 em{
-    color:var(--gold-light);
+    color:#d8bd82;
     font-style:italic;
 }
 
-.hero-bottom{
-    margin-top:55px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-
-    gap:40px;
-}
-
 .hero-description{
-    max-width:480px;
-
-    color:rgba(255,255,255,.7);
-
-    line-height:1.75;
-    font-size:15px;
+    max-width:590px;
+    margin:30px 0;
+    font-size:1.05rem;
+    line-height:1.8;
+    color:rgba(255,255,255,.78);
 }
 
 .hero-actions{
     display:flex;
     gap:12px;
+    flex-wrap:wrap;
 }
 
-.hero-button{
+.btn{
     display:inline-flex;
     align-items:center;
+    justify-content:center;
     gap:12px;
-
-    padding:15px 20px;
-
-    border-radius:999px;
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.3s ease;
+    min-height:50px;
+    padding:0 22px;
+    border-radius:100px;
+    font-size:.82rem;
+    font-weight:600;
+    transition:.3s;
 }
 
-.hero-button.primary{
-    background:var(--gold);
-    color:#172019;
+.btn-primary{
+    background:#d5b66f;
+    color:#14271e;
 }
 
-.hero-button.secondary{
-    border:1px solid rgba(255,255,255,.3);
-    color:white;
-}
-
-.hero-button:hover{
+.btn-primary:hover{
     transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(213,182,111,.2);
 }
 
-
-/* =========================================================
-   QUICK INFO
-========================================================= */
-
-.quick-info{
-    position:relative;
-    z-index:5;
-
-    margin-top:-1px;
-
-    background:var(--forest);
+.btn-outline{
+    border:1px solid rgba(255,255,255,.35);
     color:white;
-
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
 }
 
-.quick-item{
-    padding:28px 5vw;
-
-    border-right:1px solid rgba(255,255,255,.1);
+.btn-outline:hover{
+    background:white;
+    color:var(--green-dark);
 }
 
-.quick-item:last-child{
-    border-right:0;
-}
-
-.quick-label{
-    font-size:9px;
-    letter-spacing:.18em;
+.hero-bottom{
+    position:absolute;
+    bottom:70px;
+    right:6%;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:.68rem;
+    letter-spacing:.12em;
     text-transform:uppercase;
-    color:rgba(255,255,255,.4);
-
-    margin-bottom:8px;
+    opacity:.7;
 }
 
-.quick-value{
-    font-family:"Playfair Display",serif;
-    font-size:20px;
-}
-
-.quick-note{
-    margin-top:4px;
-
-    color:rgba(255,255,255,.55);
-    font-size:11px;
-}
-
-
-/* =========================================================
-   GENERAL
-========================================================= */
-
-.section{
-    padding:120px 5vw;
-}
-
-.section-inner{
-    max-width:1300px;
-    margin:auto;
-}
-
-.kicker{
-    font-size:10px;
-    font-weight:700;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-
-    color:#8c8e86;
-}
-
-.heading{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(2.8rem,5.5vw,6rem);
-
-    line-height:.95;
-
-    letter-spacing:-.045em;
-
-    font-weight:500;
-}
-
-.heading em{
-    font-style:italic;
-    color:#85877e;
-}
-
-.section-intro{
-    display:grid;
-    grid-template-columns:.75fr 1.25fr;
-
-    gap:80px;
-
-    margin-bottom:70px;
-}
-
-.section-text{
-    max-width:580px;
-
-    color:var(--muted);
-
-    line-height:1.85;
-    font-size:15px;
+.scroll-line{
+    width:70px;
+    height:1px;
+    background:white;
 }
 
 
@@ -544,93 +403,181 @@ button{
    WELCOME
 ========================================================= */
 
-.welcome{
-    background:var(--cream);
+.section{
+    width:min(1180px,calc(100% - 40px));
+    margin:auto;
+    padding:110px 0;
 }
 
-.welcome-grid{
+.intro{
     display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
-    align-items:center;
+    grid-template-columns:.8fr 1.2fr;
+    gap:100px;
+    align-items:start;
 }
 
-.welcome-image{
-    position:relative;
-
-    min-height:600px;
-
-    overflow:hidden;
+.overline{
+    font-size:.68rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:700;
 }
 
-.welcome-image img{
-    width:100%;
-    height:600px;
-    object-fit:cover;
-
-    transition:transform 1s ease;
+.intro h2,
+.section-heading h2{
+    font-family:Georgia,"Times New Roman",serif;
+    font-size:clamp(2.5rem,5vw,4.5rem);
+    line-height:1;
+    font-weight:400;
+    letter-spacing:-.045em;
+    margin-top:18px;
 }
 
-.welcome-image:hover img{
-    transform:scale(1.04);
+.intro h2 em,
+.section-heading h2 em{
+    color:var(--green);
+    font-style:italic;
 }
 
-.image-caption{
-    position:absolute;
-
-    left:25px;
-    bottom:25px;
-
-    padding:14px 17px;
-
-    background:rgba(23,37,31,.9);
-    color:white;
-
-    font-size:10px;
-
-    backdrop-filter:blur(12px);
-}
-
-.welcome-content{
-    padding-right:5vw;
-}
-
-.welcome-content .heading{
-    margin:25px 0 30px;
-}
-
-.welcome-content p{
+.intro-text{
+    font-size:1.05rem;
     color:var(--muted);
-    line-height:1.85;
-    font-size:15px;
+    max-width:620px;
+}
+
+.intro-text p + p{
+    margin-top:20px;
 }
 
 .signature{
-    margin-top:40px;
-
-    display:flex;
-    align-items:center;
-    gap:15px;
+    margin-top:35px;
+    font-family:Georgia,serif;
+    font-style:italic;
+    color:var(--green);
 }
 
-.signature-line{
-    width:45px;
-    height:1px;
-    background:var(--gold);
+
+/* =========================================================
+   QUICK INFO
+========================================================= */
+
+.info-strip{
+    width:min(1180px,calc(100% - 40px));
+    margin:-30px auto 0;
+    position:relative;
+    z-index:5;
+    background:white;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    border-radius:var(--radius);
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    overflow:hidden;
 }
 
-.signature strong{
-    font-family:"Playfair Display",serif;
-    font-size:16px;
+.info-item{
+    padding:30px;
+    border-right:1px solid var(--line);
 }
 
-.signature small{
+.info-item:last-child{
+    border:0;
+}
+
+.info-item small{
     display:block;
-    color:#999;
-    margin-top:3px;
-    font-size:10px;
+    color:var(--muted);
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    margin-bottom:8px;
+}
+
+.info-item strong{
+    font-size:.92rem;
+}
+
+
+/* =========================================================
+   PROGRAM
+========================================================= */
+
+.program-section{
+    background:#edf0e9;
+}
+
+.program-header{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    align-items:end;
+    margin-bottom:45px;
+}
+
+.program-header p{
+    max-width:430px;
+    color:var(--muted);
+}
+
+.program-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.program-card{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    transition:.35s;
+}
+
+.program-card:hover{
+    transform:translateY(-8px);
+    box-shadow:var(--shadow);
+}
+
+.program-image{
+    height:240px;
+    background-size:cover;
+    background-position:center;
+}
+
+.program-card:nth-child(1) .program-image{
+    background-image:url("https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1000&q=80");
+}
+
+.program-card:nth-child(2) .program-image{
+    background-image:url("https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1000&q=80");
+}
+
+.program-card:nth-child(3) .program-image{
+    background-image:url("https://images.unsplash.com/photo-1472162072942-cd5147eb3902?auto=format&fit=crop&w=1000&q=80");
+}
+
+.program-content{
+    padding:28px;
+}
+
+.program-content small{
+    color:var(--gold);
+    font-weight:700;
+    letter-spacing:.12em;
+    font-size:.65rem;
+}
+
+.program-content h3{
+    font-family:Georgia,serif;
+    font-size:1.55rem;
+    font-weight:400;
+    margin:10px 0;
+}
+
+.program-content p{
+    color:var(--muted);
+    font-size:.88rem;
 }
 
 
@@ -639,560 +586,342 @@ button{
 ========================================================= */
 
 .verse{
-    padding:105px 5vw;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(23,37,31,.97),
-            rgba(34,55,46,.92)
-        );
-
+    background:var(--green-dark);
     color:white;
-
-    text-align:center;
-
     position:relative;
     overflow:hidden;
 }
 
 .verse::before{
     content:"“";
-
     position:absolute;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:500px;
-
-    line-height:.8;
-
+    font-family:Georgia,serif;
+    font-size:30rem;
+    line-height:.7;
     color:rgba(255,255,255,.025);
-
-    top:-60px;
-    left:5%;
+    left:-40px;
+    top:80px;
 }
 
-.verse-content{
-    position:relative;
-    z-index:2;
-
-    max-width:950px;
+.verse-inner{
+    width:min(850px,calc(100% - 40px));
     margin:auto;
+    text-align:center;
+    position:relative;
+    z-index:1;
 }
 
-.verse-label{
-    color:var(--gold);
+.verse-mark{
+    color:#d8b66e;
+    font-size:2rem;
+    margin-bottom:25px;
+}
 
-    font-size:10px;
-    font-weight:700;
+.verse blockquote{
+    font-family:Georgia,serif;
+    font-size:clamp(1.8rem,4vw,3.5rem);
+    line-height:1.25;
+}
 
-    letter-spacing:.2em;
+.verse cite{
+    display:block;
+    margin-top:25px;
+    font-style:normal;
+    color:rgba(255,255,255,.55);
+    font-size:.72rem;
+    letter-spacing:.16em;
     text-transform:uppercase;
-
-    margin-bottom:30px;
-}
-
-.verse-text{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(2.2rem,5vw,5rem);
-
-    line-height:1.1;
-
-    font-style:italic;
-}
-
-.verse-reference{
-    margin-top:28px;
-
-    color:rgba(255,255,255,.5);
-
-    font-size:11px;
-    letter-spacing:.1em;
 }
 
 
 /* =========================================================
-   SERVICE / MINISTRY
+   NEWS / ANNOUNCEMENTS
+========================================================= */
+
+.news-layout{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:60px;
+}
+
+.news-feature{
+    min-height:440px;
+    border-radius:28px;
+    overflow:hidden;
+    position:relative;
+    color:white;
+    background:
+        linear-gradient(0deg,rgba(5,19,13,.85),rgba(5,19,13,.05)),
+        url("https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1400&q=85")
+        center/cover;
+    display:flex;
+    align-items:end;
+    padding:38px;
+}
+
+.news-feature h3{
+    font-family:Georgia,serif;
+    font-size:2.3rem;
+    line-height:1.05;
+    margin:10px 0;
+}
+
+.news-feature p{
+    color:rgba(255,255,255,.72);
+    max-width:480px;
+}
+
+.news-list{
+    display:flex;
+    flex-direction:column;
+}
+
+.news-item{
+    padding:24px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.news-item:first-child{
+    padding-top:0;
+}
+
+.news-item small{
+    color:var(--gold);
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+}
+
+.news-item h3{
+    font-family:Georgia,serif;
+    font-size:1.35rem;
+    font-weight:400;
+    margin:5px 0;
+}
+
+.news-item p{
+    color:var(--muted);
+    font-size:.84rem;
+}
+
+
+/* =========================================================
+   MINISTRY
 ========================================================= */
 
 .ministry{
-    background:#ebe8df;
+    background:#fff;
 }
 
 .ministry-grid{
     display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:1px;
-
-    background:var(--line);
-
-    border:1px solid var(--line);
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    margin-top:45px;
 }
 
 .ministry-card{
-    background:var(--cream);
-
-    padding:38px 32px;
-
-    min-height:280px;
-
-    position:relative;
-
-    transition:.35s ease;
+    border:1px solid var(--line);
+    padding:30px 24px;
+    border-radius:22px;
+    transition:.3s;
 }
 
 .ministry-card:hover{
-    background:white;
+    background:var(--green);
+    color:white;
     transform:translateY(-5px);
-    box-shadow:0 20px 40px rgba(0,0,0,.06);
-    z-index:2;
 }
 
 .ministry-number{
-    color:#aaa;
-    font-size:10px;
-}
-
-.ministry-icon{
-    margin:30px 0 22px;
-
-    width:45px;
-    height:45px;
-
-    border:1px solid rgba(27,33,30,.15);
-    border-radius:50%;
-
-    display:grid;
-    place-items:center;
-
     color:var(--gold);
-
-    font-size:17px;
+    font-size:.7rem;
+    letter-spacing:.12em;
 }
 
 .ministry-card h3{
-    font-family:"Playfair Display",serif;
-    font-size:25px;
-    font-weight:500;
-
-    margin-bottom:10px;
+    margin:35px 0 10px;
+    font-family:Georgia,serif;
+    font-size:1.35rem;
+    font-weight:400;
 }
 
 .ministry-card p{
-    color:#777;
-    font-size:13px;
-    line-height:1.7;
+    font-size:.8rem;
+    color:var(--muted);
+}
+
+.ministry-card:hover p{
+    color:rgba(255,255,255,.65);
 }
 
 
 /* =========================================================
-   SCHEDULE
+   PASTOR
 ========================================================= */
 
-.schedule{
-    background:white;
-}
-
-.schedule-grid{
+.pastor{
     display:grid;
-    grid-template-columns:1fr 1fr;
-
-    border-top:1px solid var(--line);
-}
-
-.schedule-item{
-    padding:35px 0;
-
-    border-bottom:1px solid var(--line);
-
-    display:grid;
-    grid-template-columns:100px 1fr 30px;
-
-    gap:20px;
-}
-
-.schedule-date{
-    color:#999;
-    font-size:11px;
-    line-height:1.5;
-}
-
-.schedule-date strong{
-    display:block;
-
-    color:var(--forest);
-
-    font-family:"Playfair Display",serif;
-
-    font-size:28px;
-}
-
-.schedule-item h3{
-    font-family:"Playfair Display",serif;
-    font-size:22px;
-    font-weight:500;
-}
-
-.schedule-item p{
-    margin-top:5px;
-
-    color:#888;
-
-    font-size:12px;
-}
-
-.schedule-arrow{
-    color:var(--gold);
-}
-
-
-/* =========================================================
-   SERMON
-========================================================= */
-
-.sermon{
-    background:var(--forest);
-    color:white;
-}
-
-.sermon-layout{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-
-    gap:70px;
-
+    grid-template-columns:.8fr 1.2fr;
+    gap:80px;
     align-items:center;
 }
 
-.sermon-image{
-    min-height:570px;
-    overflow:hidden;
+.pastor-photo{
+    height:520px;
+    border-radius:28px;
+    background:
+        linear-gradient(rgba(18,51,38,.08),rgba(18,51,38,.08)),
+        url("https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85")
+        center/cover;
 }
 
-.sermon-image img{
-    width:100%;
-    height:570px;
-    object-fit:cover;
-
-    filter:saturate(.75);
-}
-
-.sermon-content .kicker{
-    color:var(--gold);
-}
-
-.sermon-content .heading{
-    margin:25px 0;
-
-    color:white;
-}
-
-.sermon-content .heading em{
-    color:#8e9a91;
-}
-
-.sermon-content p{
-    color:rgba(255,255,255,.58);
-    line-height:1.8;
-    font-size:14px;
-}
-
-.sermon-meta{
-    margin-top:35px;
-
-    display:flex;
-    gap:30px;
-
-    color:#8b938d;
-
-    font-size:10px;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-}
-
-.sermon-button{
-    display:inline-flex;
-
-    margin-top:35px;
-
-    padding:14px 20px;
-
-    border:1px solid rgba(255,255,255,.2);
-
-    border-radius:999px;
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.3s ease;
-}
-
-.sermon-button:hover{
-    background:white;
-    color:var(--forest);
-}
-
-
-/* =========================================================
-   NEWS
-========================================================= */
-
-.news-grid{
-    display:grid;
-    grid-template-columns:1.2fr .8fr .8fr;
-
-    gap:20px;
-}
-
-.news-card{
-    overflow:hidden;
-}
-
-.news-image{
-    height:260px;
-    overflow:hidden;
-}
-
-.news-card:first-child .news-image{
-    height:390px;
-}
-
-.news-image img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-
-    transition:transform .8s ease;
-}
-
-.news-card:hover img{
-    transform:scale(1.06);
-}
-
-.news-content{
-    padding-top:20px;
-}
-
-.news-category{
-    color:#a3834b;
-
-    font-size:9px;
-    font-weight:700;
-
-    letter-spacing:.15em;
-    text-transform:uppercase;
-}
-
-.news-content h3{
-    margin-top:10px;
-
-    font-family:"Playfair Display",serif;
-
-    font-size:23px;
-    line-height:1.15;
-}
-
-.news-content p{
-    margin-top:10px;
-
-    color:#777;
-
-    font-size:12px;
-    line-height:1.7;
-}
-
-
-/* =========================================================
-   PASTORAL CTA
-========================================================= */
-
-.pastoral{
-    background:#e4e0d6;
-
-    padding:100px 5vw;
-}
-
-.pastoral-box{
-    max-width:1100px;
-    margin:auto;
-
-    display:flex;
-
-    justify-content:space-between;
-    align-items:center;
-
-    gap:50px;
-}
-
-.pastoral h2{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(2.8rem,6vw,6rem);
-
-    line-height:.95;
-
-    font-weight:500;
-}
-
-.pastoral h2 em{
-    color:#888;
-}
-
-.pastoral p{
+.pastor-copy p{
+    color:var(--muted);
     margin-top:20px;
-
-    max-width:480px;
-
-    color:#777;
-
-    line-height:1.7;
-    font-size:14px;
+    max-width:600px;
 }
 
-.pastoral-button{
-    flex-shrink:0;
+.pastor-quote{
+    margin-top:30px;
+    padding-left:22px;
+    border-left:2px solid var(--gold);
+    font-family:Georgia,serif;
+    font-size:1.3rem;
+    color:var(--green);
+}
 
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact{
+    background:#e9eee8;
+}
+
+.contact-box{
+    background:var(--green-dark);
+    color:white;
+    border-radius:34px;
+    padding:70px;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:40px;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.contact-box::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    border-radius:50%;
+    border:1px solid rgba(216,182,110,.15);
+    right:-130px;
+    top:-150px;
+}
+
+.contact-box h2{
+    font-family:Georgia,serif;
+    font-weight:400;
+    font-size:clamp(2.3rem,5vw,4.2rem);
+    line-height:1;
+    position:relative;
+    z-index:1;
+}
+
+.contact-box h2 em{
+    color:#d8b66e;
+}
+
+.contact-box p{
+    max-width:560px;
+    color:rgba(255,255,255,.62);
+    margin-top:18px;
+    position:relative;
+    z-index:1;
+}
+
+
+/* =========================================================
+   XYNY CTA
+========================================================= */
+
+.xyny{
+    padding:120px 20px;
+    text-align:center;
+    background:#f7f6f1;
+}
+
+.xyny-inner{
+    max-width:760px;
+    margin:auto;
+}
+
+.xyny-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    padding:8px 14px;
+    font-size:.65rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    margin-bottom:25px;
+}
+
+.xyny-badge i{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--gold);
+}
+
+.xyny h2{
+    font-family:Georgia,serif;
+    font-weight:400;
+    font-size:clamp(2.5rem,6vw,5rem);
+    line-height:.98;
+    letter-spacing:-.045em;
+}
+
+.xyny h2 em{
+    color:var(--green);
+}
+
+.xyny p{
+    color:var(--muted);
+    max-width:580px;
+    margin:25px auto 32px;
+}
+
+.xyny-button{
     display:inline-flex;
     align-items:center;
     gap:12px;
-
-    padding:17px 23px;
-
-    background:var(--forest);
+    background:var(--green);
     color:white;
-
-    border-radius:999px;
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.3s ease;
+    padding:15px 24px;
+    border-radius:100px;
+    font-size:.82rem;
+    transition:.3s;
 }
 
-.pastoral-button:hover{
-    background:#294438;
+.xyny-button:hover{
+    background:#102d20;
     transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(18,51,38,.2);
 }
 
-
-/* =========================================================
-   FINAL CTA
-========================================================= */
-
-.final-cta{
-    min-height:650px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            rgba(23,37,31,.88),
-            rgba(23,37,31,.95)
-        ),
-        url("https://images.unsplash.com/photo-1519491050282-cf00c82424b4?auto=format&fit=crop&w=2000&q=85")
-        center/cover;
-
-    color:white;
-
-    padding:100px 5vw;
-}
-
-.final-cta-content{
-    max-width:850px;
-}
-
-.final-cross{
-    width:30px;
-    height:42px;
-
-    position:relative;
-
-    margin:0 auto 35px;
-}
-
-.final-cross::before,
-.final-cross::after{
-    content:"";
-
-    position:absolute;
-
-    background:var(--gold);
-}
-
-.final-cross::before{
-    width:2px;
-    height:42px;
-    left:14px;
-}
-
-.final-cross::after{
-    width:28px;
-    height:2px;
-    left:0;
-    top:13px;
-}
-
-.final-cta h2{
-    font-family:"Playfair Display",serif;
-
-    font-size:
-        clamp(3.2rem,7vw,7rem);
-
-    font-weight:500;
-
-    line-height:.95;
-
-    letter-spacing:-.04em;
-}
-
-.final-cta h2 em{
-    color:var(--gold-light);
-}
-
-.final-cta p{
-    max-width:550px;
-
-    margin:28px auto 35px;
-
-    color:rgba(255,255,255,.6);
-
-    line-height:1.8;
-
-    font-size:14px;
-}
-
-.final-button{
-    display:inline-flex;
-    align-items:center;
-    gap:14px;
-
-    background:var(--gold);
-    color:#172019;
-
-    padding:16px 23px;
-
-    border-radius:999px;
-
-    font-size:11px;
-    font-weight:700;
-
-    transition:.3s ease;
-}
-
-.final-button:hover{
-    transform:translateY(-3px);
-    background:var(--gold-light);
+.xyny-note{
+    display:block;
+    margin-top:20px;
+    color:#929994;
+    font-size:.7rem;
 }
 
 
@@ -1200,74 +929,55 @@ button{
    FOOTER
 ========================================================= */
 
-.footer{
-    background:#101814;
-
+footer{
+    background:#101614;
     color:white;
+    padding:55px 28px 25px;
+}
 
-    padding:65px 5vw 25px;
+.footer-inner{
+    width:min(1180px,100%);
+    margin:auto;
 }
 
 .footer-top{
-    max-width:1300px;
-    margin:auto;
-
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-
-    gap:50px;
-
-    padding-bottom:70px;
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    padding-bottom:45px;
 }
 
 .footer-brand{
-    font-family:"Playfair Display",serif;
-    font-size:28px;
+    font-family:Georgia,serif;
+    font-size:1.5rem;
 }
 
-.footer-title{
-    font-size:10px;
-    letter-spacing:.15em;
-    text-transform:uppercase;
-    color:#68736c;
-
-    margin-bottom:15px;
-}
-
-.footer-text{
-    color:#7d857f;
-    font-size:12px;
-    line-height:1.8;
+.footer-top p{
+    max-width:330px;
+    color:rgba(255,255,255,.45);
+    font-size:.8rem;
 }
 
 .footer-bottom{
-    max-width:1300px;
-    margin:auto;
-
-    padding-top:25px;
-
-    border-top:1px solid rgba(255,255,255,.08);
-
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:20px;
     display:flex;
     justify-content:space-between;
-
-    color:#555e58;
-
-    font-size:10px;
+    color:rgba(255,255,255,.35);
+    font-size:.68rem;
 }
 
 
 /* =========================================================
-   REVEAL
+   REVEAL ANIMATION
 ========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
-
+    transform:translateY(30px);
     transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.2,.7,.2,1);
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.visible{
@@ -1280,211 +990,166 @@ button{
    RESPONSIVE
 ========================================================= */
 
-@media(max-width:950px){
+@media(max-width:900px){
 
     .nav-links,
-    .nav-button{
+    .nav-cta{
         display:none;
     }
 
-    .menu-button{
-        display:grid;
-        place-items:center;
+    .menu{
+        display:block;
     }
 
-    .hero-content{
-        padding-top:140px;
+    .nav.open{
+        background:rgba(18,51,38,.98);
     }
 
-    .hero-bottom{
+    .nav.open .nav-links{
+        display:flex;
+        position:absolute;
+        left:0;
+        right:0;
+        top:84px;
+        background:#123326;
+        padding:25px;
         flex-direction:column;
         align-items:flex-start;
-    }
-
-    .section-intro{
-        grid-template-columns:1fr;
-        gap:30px;
-    }
-
-    .welcome-grid{
-        grid-template-columns:1fr;
-    }
-
-    .welcome-content{
-        padding-right:0;
-    }
-
-    .welcome-image{
-        min-height:500px;
-    }
-
-    .welcome-image img{
-        height:500px;
-    }
-
-    .ministry-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .schedule-grid{
-        grid-template-columns:1fr;
-    }
-
-    .sermon-layout{
-        grid-template-columns:1fr;
-    }
-
-    .sermon-image{
-        min-height:450px;
-    }
-
-    .sermon-image img{
-        height:450px;
-    }
-
-    .news-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .news-card:first-child{
-        grid-column:1/-1;
-    }
-
-    .pastoral-box{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .footer-top{
-        grid-template-columns:1fr 1fr;
-    }
-}
-
-
-@media(max-width:600px){
-
-    .navbar{
-        padding:17px 5vw;
+        gap:20px;
     }
 
     .hero{
-        min-height:780px;
+        min-height:760px;
     }
 
-    .hero-content{
-        padding:125px 6vw 55px;
+    .intro,
+    .pastor,
+    .news-layout{
+        grid-template-columns:1fr;
+        gap:45px;
     }
 
-    .hero h1{
-        font-size:clamp(3.6rem,17vw,6rem);
+    .info-strip{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .hero-bottom{
-        margin-top:40px;
+    .info-item:nth-child(2){
+        border-right:0;
     }
 
-    .hero-actions{
-        width:100%;
-        flex-direction:column;
+    .info-item:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
     }
 
-    .hero-button{
-        justify-content:center;
-    }
-
-    .quick-info{
+    .program-grid{
         grid-template-columns:1fr;
     }
 
-    .quick-item{
-        border-right:0;
-        border-bottom:1px solid rgba(255,255,255,.1);
-        padding:23px 6vw;
+    .ministry-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .contact-box{
+        grid-template-columns:1fr;
+        padding:45px 30px;
+    }
+}
+
+@media(max-width:600px){
+
+    .demo-bar{
+        font-size:.6rem;
+    }
+
+    .nav-inner{
+        padding:16px 20px;
+    }
+
+    .hero-content{
+        padding:130px 20px 100px;
+    }
+
+    .hero h1{
+        font-size:clamp(3rem,15vw,5rem);
+    }
+
+    .hero-description{
+        font-size:.94rem;
+    }
+
+    .hero-bottom{
+        display:none;
     }
 
     .section{
-        padding:80px 6vw;
+        width:min(100% - 30px,1180px);
+        padding:80px 0;
     }
 
-    .heading{
-        font-size:clamp(2.8rem,13vw,4.5rem);
+    .info-strip{
+        width:calc(100% - 30px);
+        grid-template-columns:1fr;
+        margin-top:-20px;
     }
 
-    .welcome-image{
-        min-height:400px;
+    .info-item{
+        border-right:0!important;
+        border-bottom:1px solid var(--line);
     }
 
-    .welcome-image img{
-        height:400px;
+    .info-item:last-child{
+        border-bottom:0;
+    }
+
+    .program-header{
+        display:block;
+    }
+
+    .program-header p{
+        margin-top:20px;
+    }
+
+    .program-image{
+        height:220px;
     }
 
     .ministry-grid{
         grid-template-columns:1fr;
     }
 
-    .ministry-card{
-        min-height:240px;
+    .pastor-photo{
+        height:420px;
     }
 
-    .schedule-item{
-        grid-template-columns:70px 1fr 20px;
-        gap:12px;
+    .news-feature{
+        min-height:380px;
     }
 
-    .schedule-date strong{
-        font-size:23px;
+    .contact-box{
+        border-radius:24px;
     }
 
-    .news-grid{
-        grid-template-columns:1fr;
-    }
-
-    .news-card:first-child{
-        grid-column:auto;
-    }
-
-    .news-image,
-    .news-card:first-child .news-image{
-        height:300px;
-    }
-
-    .pastoral{
-        padding:75px 6vw;
-    }
-
-    .pastoral-button{
-        width:100%;
-        justify-content:center;
-    }
-
-    .final-cta{
-        min-height:600px;
-        padding:80px 6vw;
+    .footer-top,
+    .footer-bottom{
+        flex-direction:column;
     }
 
     .footer-top{
-        grid-template-columns:1fr;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        gap:10px;
+        gap:20px;
     }
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
 @media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
 
     *,
     *::before,
     *::after{
         animation:none!important;
         transition:none!important;
-        scroll-behavior:auto!important;
     }
 
     .reveal{
@@ -1492,165 +1157,206 @@ button{
         transform:none;
     }
 }
-
 </style>
 </head>
 
 
 <body>
 
-
 <!-- =======================================================
      LOADER
 ======================================================= -->
 
 <div class="loader" id="loader">
-
-    <div class="loader-content">
-
-        <div class="loader-cross"></div>
-
-        <div class="loader-name">
-            Gereja Kasih Anugerah
-        </div>
-
-        <div class="loader-sub">
-            Bertumbuh · Melayani · Menjadi Berkat
-        </div>
-
+    <div class="loader-inner">
+        <div class="loader-mark"></div>
+        <p>Menyiapkan halaman</p>
     </div>
-
 </div>
 
 
-
 <!-- =======================================================
-     NAVBAR
+     DEMO BAR
 ======================================================= -->
 
-<header class="navbar" id="navbar">
-
-    <a href="#" class="church-brand">
-
-        <div class="cross-logo"></div>
-
-        <div class="brand-text">
-
-            <strong>
-                Gereja Kasih Anugerah
-            </strong>
-
-            <small>
-                Sebuah keluarga dalam Kristus
-            </small>
-
-        </div>
-
-    </a>
+<div class="demo-bar">
+    Contoh website gereja · <span>Dirancang oleh XYNY Studio</span>
+</div>
 
 
-    <nav class="nav-links">
+<!-- =======================================================
+     NAVIGATION
+======================================================= -->
 
-        <a href="#tentang">
-            Tentang
+<header class="nav" id="nav">
+
+    <div class="nav-inner">
+
+        <a href="#beranda" class="logo">
+
+            <div class="logo-symbol"></div>
+
+            <div class="logo-text">
+                <strong>HARAPAN BARU</strong>
+                <small>GEREJA & PELAYANAN</small>
+            </div>
+
         </a>
 
-        <a href="#pelayanan">
-            Pelayanan
+
+        <nav class="nav-links">
+
+            <a href="#tentang">Tentang</a>
+            <a href="#program">Program</a>
+            <a href="#berita">Berita</a>
+            <a href="#pelayanan">Pelayanan</a>
+            <a href="#kontak">Kontak</a>
+
+        </nav>
+
+
+        <a href="#jadwal" class="nav-cta">
+            Jadwal Ibadah ↗
         </a>
 
-        <a href="#ibadah">
-            Ibadah
-        </a>
 
-        <a href="#khotbah">
-            Khotbah
-        </a>
+        <button class="menu" id="menu" aria-label="Buka menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-        <a href="#berita">
-            Berita
-        </a>
-
-    </nav>
-
-
-    <a href="#kontak" class="nav-button">
-        Hubungi Gereja
-    </a>
-
-
-    <button class="menu-button" id="menuButton">
-        ☰
-    </button>
+    </div>
 
 </header>
 
+
+<main>
 
 
 <!-- =======================================================
      HERO
 ======================================================= -->
 
-<section class="hero">
+<section class="hero" id="beranda">
 
     <div class="hero-content reveal">
 
         <div class="hero-kicker">
-
-            <span></span>
-
-            Selamat Datang di Rumah
-
+            Selamat datang di rumah
         </div>
-
 
         <h1>
-
-            Iman yang
+            Bertumbuh.
             <br>
-
-            <em>hidup.</em>
-
-            Kasih yang
+            <em>Melayani.</em>
             <br>
-
-            <em>nyata.</em>
-
+            Menjadi berkat.
         </h1>
 
+        <p class="hero-description">
+            Gereja bukan hanya tempat untuk datang pada hari Minggu.
+            Gereja adalah rumah bagi setiap orang untuk mengenal Tuhan,
+            menemukan keluarga, bertumbuh dalam iman, dan membawa kasih
+            kepada sesama.
+        </p>
 
-        <div class="hero-bottom">
+        <div class="hero-actions">
 
-            <p class="hero-description">
+            <a href="#jadwal" class="btn btn-primary">
+                Lihat Jadwal Ibadah
+                <span>↗</span>
+            </a>
 
-                Kami percaya gereja bukan hanya tempat
-                untuk datang pada hari Minggu.
+            <a href="#tentang" class="btn btn-outline">
+                Kenali Kami
+            </a>
 
-                <br><br>
+        </div>
 
-                Gereja adalah keluarga tempat kita
-                <strong>bertumbuh, melayani, menguatkan,
-                dan berjalan bersama dalam Kristus.</strong>
+    </div>
 
+
+    <div class="hero-bottom">
+
+        <span>Iman · Pengharapan · Kasih</span>
+
+        <div class="scroll-line"></div>
+
+        <span>Gulir untuk menjelajah</span>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     INFO STRIP
+======================================================= -->
+
+<div class="info-strip" id="jadwal">
+
+    <div class="info-item">
+        <small>Ibadah Umum</small>
+        <strong>Minggu · 09.00 WIB</strong>
+    </div>
+
+    <div class="info-item">
+        <small>Sekolah Minggu</small>
+        <strong>Minggu · 09.00 WIB</strong>
+    </div>
+
+    <div class="info-item">
+        <small>Pemuda</small>
+        <strong>Sabtu · 19.00 WIB</strong>
+    </div>
+
+    <div class="info-item">
+        <small>Alamat</small>
+        <strong>Jl. Harapan No. 10</strong>
+    </div>
+
+</div>
+
+
+<!-- =======================================================
+     TENTANG
+======================================================= -->
+
+<section class="section" id="tentang">
+
+    <div class="intro reveal">
+
+        <div>
+
+            <div class="overline">
+                Tentang Kami
+            </div>
+
+            <h2>
+                Sebuah rumah
+                <br>
+                untuk <em>bertumbuh.</em>
+            </h2>
+
+        </div>
+
+
+        <div class="intro-text">
+
+            <p>
+                Gereja Harapan Baru hadir sebagai komunitas yang ingin
+                berjalan bersama setiap orang dalam perjalanan iman.
             </p>
 
+            <p>
+                Di sini, kita belajar mengenal Tuhan, menguatkan satu sama
+                lain, melayani dengan talenta yang Tuhan berikan, dan
+                menghadirkan kasih di tengah masyarakat.
+            </p>
 
-            <div class="hero-actions">
-
-                <a href="#ibadah" class="hero-button primary">
-
-                    Lihat Jadwal Ibadah
-                    <span>↓</span>
-
-                </a>
-
-
-                <a href="#tentang" class="hero-button secondary">
-
-                    Kenali Gereja Kami
-
-                </a>
-
+            <div class="signature">
+                “Mari berjalan bersama.”
             </div>
 
         </div>
@@ -1660,148 +1366,110 @@ button{
 </section>
 
 
-
 <!-- =======================================================
-     QUICK INFO
+     PROGRAM
 ======================================================= -->
 
-<section class="quick-info">
+<section class="program-section">
 
-    <div class="quick-item">
+    <div class="section" id="program">
 
-        <div class="quick-label">
-            Ibadah Utama
-        </div>
+        <div class="program-header reveal">
 
-        <div class="quick-value">
-            Minggu · 09.00 WIB
-        </div>
+            <div>
 
-        <div class="quick-note">
-            Gedung Gereja Utama
-        </div>
-
-    </div>
-
-
-    <div class="quick-item">
-
-        <div class="quick-label">
-            Ibadah Tengah Minggu
-        </div>
-
-        <div class="quick-value">
-            Rabu · 19.00 WIB
-        </div>
-
-        <div class="quick-note">
-            Ruang Persekutuan
-        </div>
-
-    </div>
-
-
-    <div class="quick-item">
-
-        <div class="quick-label">
-            Butuh Doa?
-        </div>
-
-        <div class="quick-value">
-            Kami siap mendengar
-        </div>
-
-        <div class="quick-note">
-            Hubungi tim pastoral
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     WELCOME
-======================================================= -->
-
-<section class="section welcome" id="tentang">
-
-    <div class="section-inner">
-
-        <div class="welcome-grid">
-
-            <div class="welcome-image reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1548625361-9b4b8a8d7d5c?auto=format&fit=crop&w=1400&q=85"
-                    alt="Suasana persekutuan gereja"
-                    loading="lazy"
-                >
-
-                <div class="image-caption">
-                    Bersama dalam kasih.
+                <div class="overline">
+                    Kehidupan Gereja
                 </div>
 
-            </div>
-
-
-            <div class="welcome-content reveal">
-
-                <div class="kicker">
-                    Tentang Kami
-                </div>
-
-
-                <h2 class="heading">
-
-                    Tempat untuk
-                    <em>pulang.</em>
-
+                <h2>
+                    Ada tempat
+                    <br>
+                    untuk <em>semua.</em>
                 </h2>
 
+            </div>
 
-                <p>
+            <p>
+                Temukan berbagai kegiatan yang dirancang untuk membantu
+                jemaat bertumbuh dalam iman, relasi, keluarga, dan pelayanan.
+            </p>
 
-                    Gereja Kasih Anugerah hadir sebagai komunitas
-                    yang ingin berjalan bersama setiap orang—
-                    dalam sukacita maupun pergumulan.
-
-                    <br><br>
-
-                    Di sini, tidak ada manusia yang sempurna.
-                    Kita semua sedang belajar mengenal Tuhan,
-                    mengasihi sesama, dan bertumbuh setiap hari.
-
-                </p>
+        </div>
 
 
-                <div class="signature">
+        <div class="program-grid">
 
-                    <div class="signature-line"></div>
+            <article class="program-card reveal">
 
-                    <div>
+                <div class="program-image"></div>
 
-                        <strong>
-                            Pdt. Andreas Simanjuntak
-                        </strong>
+                <div class="program-content">
 
-                        <small>
-                            Gembala Jemaat
-                        </small>
+                    <small>01 · PEMBINAAN</small>
 
-                    </div>
+                    <h3>
+                        Pendalaman Iman
+                    </h3>
+
+                    <p>
+                        Ruang untuk membaca, memahami, dan menghidupi
+                        firman Tuhan bersama-sama.
+                    </p>
 
                 </div>
 
-            </div>
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image"></div>
+
+                <div class="program-content">
+
+                    <small>02 · GENERASI</small>
+
+                    <h3>
+                        Pemuda & Anak
+                    </h3>
+
+                    <p>
+                        Membentuk generasi yang mengenal Tuhan dan berani
+                        menggunakan hidupnya untuk menjadi berkat.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="program-card reveal">
+
+                <div class="program-image"></div>
+
+                <div class="program-content">
+
+                    <small>03 · SOSIAL</small>
+
+                    <h3>
+                        Melayani Sesama
+                    </h3>
+
+                    <p>
+                        Menghadirkan kepedulian gereja melalui pelayanan
+                        sosial dan perhatian kepada masyarakat.
+                    </p>
+
+                </div>
+
+            </article>
 
         </div>
 
     </div>
 
 </section>
-
 
 
 <!-- =======================================================
@@ -1810,23 +1478,24 @@ button{
 
 <section class="verse">
 
-    <div class="verse-content reveal">
+    <div class="section">
 
-        <div class="verse-label">
-            Ayat Tema
-        </div>
+        <div class="verse-inner reveal">
 
+            <div class="verse-mark">
+                ✦
+            </div>
 
-        <div class="verse-text">
+            <blockquote>
+                “Hendaklah kamu saling mengasihi
+                sebagai saudara dan saling mendahului
+                dalam memberi hormat.”
+            </blockquote>
 
-            “Hendaklah kamu saling mengasihi,
-            sama seperti Aku telah mengasihi kamu.”
+            <cite>
+                Roma 12:10
+            </cite>
 
-        </div>
-
-
-        <div class="verse-reference">
-            Yohanes 13:34
         </div>
 
     </div>
@@ -1834,178 +1503,195 @@ button{
 </section>
 
 
-
 <!-- =======================================================
-     MINISTRY
+     BERITA
 ======================================================= -->
 
-<section class="section ministry" id="pelayanan">
+<section class="section" id="berita">
 
-    <div class="section-inner">
+    <div class="news-layout">
 
-        <div class="section-intro reveal">
+        <article class="news-feature reveal">
 
             <div>
 
-                <div class="kicker">
-                    Pelayanan
+                <div class="overline">
+                    Agenda Utama
                 </div>
 
-            </div>
+                <h3>
+                    Minggu Kasih:
+                    Berbagi, Melayani,
+                    dan Bertumbuh Bersama
+                </h3>
 
-
-            <div>
-
-                <h2 class="heading">
-
-                    Ada tempat
-                    <em>untukmu.</em>
-
-                </h2>
-
-                <p class="section-text" style="margin-top:28px;">
-
-                    Setiap orang memiliki tempat untuk bertumbuh
-                    dan melayani. Temukan komunitas yang sesuai
-                    dengan perjalanan imanmu.
-
+                <p>
+                    Satu hari untuk berhenti sejenak,
+                    melihat kebutuhan di sekitar kita,
+                    dan melakukan sesuatu bersama.
                 </p>
 
             </div>
+
+        </article>
+
+
+        <div class="news-list">
+
+            <article class="news-item reveal">
+
+                <small>15 Agustus 2026</small>
+
+                <h3>
+                    Doa Bersama Jemaat
+                </h3>
+
+                <p>
+                    Mari mengambil waktu untuk berdoa
+                    bagi keluarga, gereja, dan masyarakat.
+                </p>
+
+            </article>
+
+
+            <article class="news-item reveal">
+
+                <small>22 Agustus 2026</small>
+
+                <h3>
+                    Persekutuan Pemuda
+                </h3>
+
+                <p>
+                    Malam kebersamaan, diskusi, pujian,
+                    dan refleksi untuk generasi muda.
+                </p>
+
+            </article>
+
+
+            <article class="news-item reveal">
+
+                <small>30 Agustus 2026</small>
+
+                <h3>
+                    Pelayanan Sosial
+                </h3>
+
+                <p>
+                    Bersama-sama hadir bagi masyarakat
+                    yang membutuhkan.
+                </p>
+
+            </article>
+
+
+            <article class="news-item reveal">
+
+                <small>Setiap Minggu</small>
+
+                <h3>
+                    Ibadah & Persekutuan
+                </h3>
+
+                <p>
+                    Informasi jadwal lengkap dapat dilihat
+                    melalui halaman kegiatan gereja.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =======================================================
+     PELAYANAN
+======================================================= -->
+
+<section class="ministry">
+
+    <div class="section" id="pelayanan">
+
+        <div class="section-heading reveal">
+
+            <div class="overline">
+                Pelayanan
+            </div>
+
+            <h2>
+                Setiap orang
+                <br>
+                punya <em>tempat.</em>
+            </h2>
 
         </div>
 
 
-        <div class="ministry-grid reveal">
+        <div class="ministry-grid">
 
+            <article class="ministry-card reveal">
 
-            <article class="ministry-card">
-
-                <div class="ministry-number">
-                    01
-                </div>
-
-                <div class="ministry-icon">
-                    ♡
-                </div>
+                <span class="ministry-number">01</span>
 
                 <h3>
-                    Sekolah Minggu
+                    Anak & Sekolah Minggu
                 </h3>
 
                 <p>
-                    Menolong anak-anak mengenal kasih Tuhan
-                    melalui firman, permainan, dan komunitas.
+                    Menanamkan iman sejak dini melalui pembelajaran,
+                    kreativitas, dan kebersamaan.
                 </p>
 
             </article>
 
 
-            <article class="ministry-card">
+            <article class="ministry-card reveal">
 
-                <div class="ministry-number">
-                    02
-                </div>
-
-                <div class="ministry-icon">
-                    ✦
-                </div>
+                <span class="ministry-number">02</span>
 
                 <h3>
-                    Pemuda & Remaja
+                    Pemuda
                 </h3>
 
                 <p>
-                    Ruang bagi generasi muda untuk bertumbuh,
-                    berdiskusi, berkarya, dan melayani bersama.
+                    Ruang bertumbuh bagi generasi muda untuk membangun
+                    iman, persahabatan, dan masa depan.
                 </p>
 
             </article>
 
 
-            <article class="ministry-card">
+            <article class="ministry-card reveal">
 
-                <div class="ministry-number">
-                    03
-                </div>
-
-                <div class="ministry-icon">
-                    ♫
-                </div>
+                <span class="ministry-number">03</span>
 
                 <h3>
-                    Musik & Paduan Suara
+                    Keluarga
                 </h3>
 
                 <p>
-                    Melayani Tuhan melalui musik, pujian,
-                    paduan suara, dan kreativitas.
+                    Mendampingi keluarga agar menjadi tempat pertama
+                    untuk mengalami kasih dan iman.
                 </p>
 
             </article>
 
 
-            <article class="ministry-card">
+            <article class="ministry-card reveal">
 
-                <div class="ministry-number">
-                    04
-                </div>
-
-                <div class="ministry-icon">
-                    ◉
-                </div>
-
-                <h3>
-                    Persekutuan Keluarga
-                </h3>
-
-                <p>
-                    Pertemuan sederhana untuk saling menguatkan
-                    dan membawa firman ke dalam kehidupan keluarga.
-                </p>
-
-            </article>
-
-
-            <article class="ministry-card">
-
-                <div class="ministry-number">
-                    05
-                </div>
-
-                <div class="ministry-icon">
-                    +
-                </div>
+                <span class="ministry-number">04</span>
 
                 <h3>
                     Diakonia
                 </h3>
 
                 <p>
-                    Menghadirkan kepedulian gereja bagi mereka
-                    yang membutuhkan pertolongan.
-                </p>
-
-            </article>
-
-
-            <article class="ministry-card">
-
-                <div class="ministry-number">
-                    06
-                </div>
-
-                <div class="ministry-icon">
-                    ◎
-                </div>
-
-                <h3>
-                    Doa & Pastoral
-                </h3>
-
-                <p>
-                    Mendampingi jemaat dalam doa, pergumulan,
-                    penghiburan, dan perjalanan kehidupan.
+                    Menghidupi panggilan gereja untuk peduli dan hadir
+                    bagi mereka yang membutuhkan.
                 </p>
 
             </article>
@@ -2017,562 +1703,179 @@ button{
 </section>
 
 
-
 <!-- =======================================================
-     SCHEDULE
+     PASTOR / PIMPINAN
 ======================================================= -->
 
-<section class="section schedule" id="ibadah">
+<section class="section">
 
-    <div class="section-inner">
+    <div class="pastor">
 
-        <div class="section-intro reveal">
+        <div class="pastor-photo reveal"></div>
 
-            <div>
 
-                <div class="kicker">
-                    Jadwal Ibadah
-                </div>
+        <div class="pastor-copy reveal">
 
+            <div class="overline">
+                Gembala Jemaat
             </div>
-
-
-            <div>
-
-                <h2 class="heading">
-
-                    Mari
-                    <em>berjumpa.</em>
-
-                </h2>
-
-                <p class="section-text" style="margin-top:28px;">
-
-                    Datang sebagaimana adanya.
-                    Ada tempat untukmu di tengah-tengah kami.
-
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="schedule-grid reveal">
-
-
-            <article class="schedule-item">
-
-                <div class="schedule-date">
-
-                    <strong>
-                        09
-                    </strong>
-
-                    MINGGU
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Ibadah Minggu
-                    </h3>
-
-                    <p>
-                        09.00 WIB · Gedung Gereja Utama
-                    </p>
-
-                </div>
-
-                <div class="schedule-arrow">
-                    ↗
-                </div>
-
-            </article>
-
-
-            <article class="schedule-item">
-
-                <div class="schedule-date">
-
-                    <strong>
-                        19
-                    </strong>
-
-                    RABU
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Ibadah Tengah Minggu
-                    </h3>
-
-                    <p>
-                        19.00 WIB · Ruang Persekutuan
-                    </p>
-
-                </div>
-
-                <div class="schedule-arrow">
-                    ↗
-                </div>
-
-            </article>
-
-
-            <article class="schedule-item">
-
-                <div class="schedule-date">
-
-                    <strong>
-                        19
-                    </strong>
-
-                    JUMAT
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Persekutuan Pemuda
-                    </h3>
-
-                    <p>
-                        19.00 WIB · Aula Pemuda
-                    </p>
-
-                </div>
-
-                <div class="schedule-arrow">
-                    ↗
-                </div>
-
-            </article>
-
-
-            <article class="schedule-item">
-
-                <div class="schedule-date">
-
-                    <strong>
-                        08
-                    </strong>
-
-                    SABTU
-
-                </div>
-
-                <div>
-
-                    <h3>
-                        Sekolah Minggu
-                    </h3>
-
-                    <p>
-                        08.00 WIB · Ruang Anak
-                    </p>
-
-                </div>
-
-                <div class="schedule-arrow">
-                    ↗
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     SERMON
-======================================================= -->
-
-<section class="section sermon" id="khotbah">
-
-    <div class="section-inner">
-
-        <div class="sermon-layout">
-
-            <div class="sermon-image reveal">
-
-                <img
-                    src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1400&q=85"
-                    alt="Alkitab terbuka"
-                    loading="lazy"
-                >
-
-            </div>
-
-
-            <div class="sermon-content reveal">
-
-                <div class="kicker">
-                    Khotbah Minggu Ini
-                </div>
-
-
-                <h2 class="heading">
-
-                    Ketika Tuhan
-                    <em>memanggil kita maju.</em>
-
-                </h2>
-
-
-                <p>
-
-                    Tidak semua jalan yang Tuhan buka langsung
-                    terlihat jelas. Namun iman mengajarkan kita
-                    untuk tetap berjalan, bahkan ketika kita
-                    belum melihat seluruh jawabannya.
-
-                </p>
-
-
-                <div class="sermon-meta">
-
-                    <span>
-                        Yohanes 10:11–16
-                    </span>
-
-                    <span>
-                        09.00 WIB
-                    </span>
-
-                </div>
-
-
-                <a href="#" class="sermon-button">
-                    Lihat Khotbah
-                    <span>↗</span>
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     NEWS
-======================================================= -->
-
-<section class="section" id="berita">
-
-    <div class="section-inner">
-
-        <div class="section-intro reveal">
-
-            <div>
-
-                <div class="kicker">
-                    Kabar Jemaat
-                </div>
-
-            </div>
-
-
-            <div>
-
-                <h2 class="heading">
-
-                    Cerita yang
-                    <em>perlu dibagikan.</em>
-
-                </h2>
-
-            </div>
-
-        </div>
-
-
-        <div class="news-grid">
-
-
-            <article class="news-card reveal">
-
-                <div class="news-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1400&q=85"
-                        alt="Persekutuan jemaat"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="news-content">
-
-                    <div class="news-category">
-                        Jemaat
-                    </div>
-
-                    <h3>
-                        Satu keluarga, banyak cerita,
-                        satu kasih yang mempersatukan.
-                    </h3>
-
-                    <p>
-                        Momen kebersamaan jemaat dalam
-                        kegiatan persekutuan bulan ini.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="news-card reveal">
-
-                <div class="news-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1000&q=85"
-                        alt="Pemuda berkumpul"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="news-content">
-
-                    <div class="news-category">
-                        Pemuda
-                    </div>
-
-                    <h3>
-                        Generasi muda dan panggilan untuk melayani.
-                    </h3>
-
-                    <p>
-                        Belajar bahwa pelayanan dapat dimulai
-                        dari hal-hal sederhana.
-                    </p>
-
-                </div>
-
-            </article>
-
-
-            <article class="news-card reveal">
-
-                <div class="news-image">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1504159506876-f8338247a14a?auto=format&fit=crop&w=1000&q=85"
-                        alt="Doa bersama"
-                        loading="lazy"
-                    >
-
-                </div>
-
-
-                <div class="news-content">
-
-                    <div class="news-category">
-                        Doa
-                    </div>
-
-                    <h3>
-                        Ketika kita berhenti sejenak
-                        dan kembali berdoa.
-                    </h3>
-
-                    <p>
-                        Mengingat kembali kekuatan doa
-                        dalam kehidupan sehari-hari.
-                    </p>
-
-                </div>
-
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =======================================================
-     PASTORAL
-======================================================= -->
-
-<section class="pastoral">
-
-    <div class="pastoral-box reveal">
-
-        <div>
-
-            <div class="kicker">
-                Pelayanan Pastoral
-            </div>
-
 
             <h2>
-
-                Sedang
-                <em>menghadapi sesuatu?</em>
-
+                Melayani dengan
+                <br>
+                <em>hati.</em>
             </h2>
 
-
             <p>
-
-                Jangan memikul semuanya sendirian.
-                Jika Anda membutuhkan doa, percakapan,
-                atau pendampingan pastoral, kami siap
-                mendengarkan.
-
+                “Gereja yang sehat bukanlah gereja yang hanya dipenuhi
+                kegiatan. Gereja yang sehat adalah gereja yang membuat
+                orang semakin mengenal Tuhan dan semakin mampu mengasihi
+                sesamanya.”
             </p>
+
+            <div class="pastor-quote">
+                Mari bertumbuh bukan sendirian,
+                tetapi bersama sebagai satu keluarga.
+            </div>
 
         </div>
 
-
-        <a href="#kontak" class="pastoral-button">
-
-            Minta Pendampingan
-
-            <span>↗</span>
-
-        </a>
-
     </div>
 
 </section>
-
 
 
 <!-- =======================================================
-     FINAL CTA
+     CONTACT
 ======================================================= -->
 
-<section class="final-cta" id="kontak">
+<section class="contact" id="kontak">
 
-    <div class="final-cta-content reveal">
+    <div class="section">
 
-        <div class="final-cross"></div>
+        <div class="contact-box reveal">
+
+            <div>
+
+                <div class="overline">
+                    Mari Terhubung
+                </div>
+
+                <h2>
+                    Ada pertanyaan?
+                    <br>
+                    <em>Datang dan kenali kami.</em>
+                </h2>
+
+                <p>
+                    Hubungi sekretariat gereja untuk informasi ibadah,
+                    pelayanan, kegiatan, baptisan, pemberkatan,
+                    maupun kebutuhan lainnya.
+                </p>
+
+            </div>
 
 
-        <h2>
+            <a href="https://wa.me/6280000000000"
+               target="_blank"
+               rel="noopener"
+               class="btn btn-primary">
 
-            Kamu tidak
-            <br>
+                Hubungi Gereja
+                <span>↗</span>
 
-            <em>sendirian.</em>
+            </a>
 
-        </h2>
-
-
-        <p>
-
-            Apa pun musim kehidupan yang sedang kamu jalani,
-            kami percaya selalu ada ruang untuk pulang,
-            berdoa, dan bertumbuh bersama.
-
-        </p>
-
-
-        <a
-            href="https://wa.me/6280000000000"
-            target="_blank"
-            rel="noopener"
-            class="final-button"
-        >
-
-            Hubungi Gereja
-
-            <span>↗</span>
-
-        </a>
+        </div>
 
     </div>
 
 </section>
 
+
+<!-- =======================================================
+     XYNY STUDIO CTA
+======================================================= -->
+
+<section class="xyny">
+
+    <div class="xyny-inner reveal">
+
+        <div class="xyny-badge">
+            <i></i>
+            Contoh website gereja
+        </div>
+
+        <h2>
+            Website gereja Anda
+            <br>
+            bisa <em>seperti ini.</em>
+        </h2>
+
+        <p>
+            Ini adalah contoh konsep website yang dapat dikembangkan
+            sesuai identitas, kebutuhan pelayanan, struktur organisasi,
+            program, dan karakter gereja Anda.
+        </p>
+
+        <a href="https://xynystudio.github.io/xyny-studio/"
+           class="xyny-button">
+
+            Kembali ke XYNY Studio
+
+            <span>↗</span>
+
+        </a>
+
+        <small class="xyny-note">
+            Punya konsep sendiri? Ceritakan kepada kami.
+        </small>
+
+    </div>
+
+</section>
+
+</main>
 
 
 <!-- =======================================================
      FOOTER
 ======================================================= -->
 
-<footer class="footer">
+<footer>
 
-    <div class="footer-top">
+    <div class="footer-inner">
 
-        <div>
+        <div class="footer-top">
 
             <div class="footer-brand">
-                Gereja Kasih Anugerah
+                Gereja Harapan Baru
             </div>
+
+            <p>
+                Bertumbuh dalam iman.
+                Melayani dengan kasih.
+                Menjadi berkat bagi sesama.
+            </p>
 
         </div>
 
 
-        <div>
+        <div class="footer-bottom">
 
-            <div class="footer-title">
-                Alamat
-            </div>
+            <span>
+                © 2026 Gereja Harapan Baru
+            </span>
 
-            <div class="footer-text">
-
-                Jl. Kasih Anugerah No. 10<br>
-                Kota Contoh, Indonesia
-
-            </div>
+            <span>
+                Contoh desain · XYNY Studio
+            </span>
 
         </div>
-
-
-        <div>
-
-            <div class="footer-title">
-                Hubungi
-            </div>
-
-            <div class="footer-text">
-
-                WhatsApp: +62 800 0000 0000<br>
-                Email: gereja@example.com
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
-        <span>
-            © 2026 Gereja Kasih Anugerah
-        </span>
-
-        <span>
-            Bertumbuh · Melayani · Menjadi Berkat
-        </span>
 
     </div>
 
 </footer>
-
 
 
 <script>
@@ -2581,55 +1884,68 @@ button{
    LOADER
 ========================================================= */
 
-window.addEventListener("load",()=>{
+window.addEventListener("load", () => {
 
-    setTimeout(()=>{
+    setTimeout(() => {
 
         document
-        .getElementById("loader")
-        .classList
-        .add("hide");
+            .getElementById("loader")
+            .classList.add("hide");
 
-    },700);
+    }, 500);
 
 });
 
 
 /* =========================================================
-   NAVBAR
+   NAVIGATION SCROLL
 ========================================================= */
 
-const navbar =
-document.getElementById("navbar");
+const nav = document.getElementById("nav");
 
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", () => {
 
-    if(window.scrollY > 50){
-
-        navbar.classList.add("scrolled");
-
+    if(window.scrollY > 80){
+        nav.classList.add("scrolled");
     }else{
-
-        navbar.classList.remove("scrolled");
-
+        nav.classList.remove("scrolled");
     }
 
 });
 
 
 /* =========================================================
-   SCROLL REVEAL
+   MOBILE MENU
 ========================================================= */
 
-const reveal =
-document.querySelectorAll(".reveal");
+const menu = document.getElementById("menu");
 
-const observer =
-new IntersectionObserver(
+menu.addEventListener("click", () => {
 
-    entries=>{
+    nav.classList.toggle("open");
 
-        entries.forEach(entry=>{
+});
+
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        nav.classList.remove("open");
+
+    });
+
+});
+
+
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
 
             if(entry.isIntersecting){
 
@@ -2642,32 +1958,15 @@ new IntersectionObserver(
         });
 
     },
-
     {
         threshold:.12
     }
-
 );
 
-reveal.forEach(element=>{
+
+document.querySelectorAll(".reveal").forEach(element => {
 
     observer.observe(element);
-
-});
-
-
-/* =========================================================
-   MOBILE MENU
-========================================================= */
-
-const menuButton =
-document.getElementById("menuButton");
-
-menuButton.addEventListener("click",()=>{
-
-    alert(
-        "Menu gereja dapat dikembangkan menjadi navigasi layar penuh sesuai kebutuhan jemaat."
-    );
 
 });
 
@@ -2676,21 +1975,19 @@ menuButton.addEventListener("click",()=>{
    SMOOTH ANCHOR
 ========================================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(link=>{
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-    link.addEventListener("click",function(e){
+    anchor.addEventListener("click", function(e){
 
-        const target =
-        document.querySelector(
-            this.getAttribute("href")
-        );
+        const target = document.querySelector(this.getAttribute("href"));
 
         if(target){
 
             e.preventDefault();
 
             target.scrollIntoView({
-                behavior:"smooth"
+                behavior:"smooth",
+                block:"start"
             });
 
         }
