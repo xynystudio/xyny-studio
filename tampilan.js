@@ -1,120 +1,99 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const navbar = document.getElementById("navbar");
     const menuButton = document.getElementById("menuButton");
     const navLinks = document.getElementById("navLinks");
+    const whatsappButton = document.getElementById("whatsappButton");
 
-    const choiceCards =
-        document.querySelectorAll(".choice-card");
+    /* ==============================
+       NAVIGASI SAAT DIGULIR
+    ============================== */
 
-    const whatsappButton =
-        document.getElementById("whatsappButton");
+    function perbaruiNavbar() {
 
-
-    /* =========================
-       NAVBAR
-    ========================== */
-
-    function updateNavbar() {
-
-        if (window.scrollY > 18) {
-
+        if (window.scrollY > 30) {
             navbar.classList.add("scrolled");
-
         } else {
-
             navbar.classList.remove("scrolled");
-
         }
 
     }
-
-    updateNavbar();
 
     window.addEventListener(
         "scroll",
-        updateNavbar,
+        perbaruiNavbar,
         { passive: true }
     );
 
+    perbaruiNavbar();
 
-    /* =========================
+
+    /* ==============================
        MENU PONSEL
-    ========================== */
+    ============================== */
 
-    function closeMenu() {
+    menuButton.addEventListener("click", function () {
 
-        navLinks.classList.remove("open");
+        const terbuka =
+            navLinks.classList.toggle("open");
 
         menuButton.setAttribute(
             "aria-expanded",
-            "false"
+            terbuka ? "true" : "false"
         );
 
-        document.body.classList.remove(
-            "menu-open"
+        document.body.classList.toggle(
+            "menu-open",
+            terbuka
         );
 
-    }
+    });
 
 
-    menuButton.addEventListener(
-        "click",
-        () => {
+    navLinks.querySelectorAll("a")
+        .forEach(function (tautan) {
 
-            const isOpen =
-                navLinks.classList.toggle("open");
-
-            menuButton.setAttribute(
-                "aria-expanded",
-                String(isOpen)
-            );
-
-            document.body.classList.toggle(
-                "menu-open",
-                isOpen
-            );
-
-        }
-    );
-
-
-    navLinks
-        .querySelectorAll("a")
-        .forEach(link => {
-
-            link.addEventListener(
+            tautan.addEventListener(
                 "click",
-                closeMenu
+                function () {
+
+                    navLinks.classList.remove("open");
+
+                    menuButton.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                    document.body.classList.remove(
+                        "menu-open"
+                    );
+
+                }
             );
 
         });
 
 
-    /* =========================
-       ANIMASI
-    ========================== */
+    /* ==============================
+       ANIMASI SAAT MUNCUL
+    ============================== */
 
-    const revealItems =
+    const elemen =
         document.querySelectorAll(".reveal");
-
 
     if ("IntersectionObserver" in window) {
 
-        const observer =
+        const pengamat =
             new IntersectionObserver(
+                function (entries, observer) {
 
-                (entries, observer) => {
+                    entries.forEach(function (entry) {
 
-                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
 
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target
-                                .classList
-                                .add("is-visible");
+                            entry.target.classList.add(
+                                "is-visible"
+                            );
 
                             observer.unobserve(
                                 entry.target
@@ -125,91 +104,145 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
 
                 },
-
                 {
                     threshold: 0.12
                 }
-
             );
 
-
-        revealItems.forEach(item => {
-
-            observer.observe(item);
-
+        elemen.forEach(function (item) {
+            pengamat.observe(item);
         });
 
     } else {
 
-        revealItems.forEach(item => {
-
-            item.classList.add(
-                "is-visible"
-            );
-
+        elemen.forEach(function (item) {
+            item.classList.add("is-visible");
         });
 
     }
 
 
-    /* =========================
-       WHATSAPP KONTEKS
-    ========================== */
+    /* ==============================
+       CAHAYA MENGIKUTI KURSOR
+    ============================== */
 
-    choiceCards.forEach(card => {
+    const cahaya =
+        document.querySelector(".cursor-glow");
 
-        card.addEventListener(
+    if (cahaya) {
+
+        window.addEventListener(
+            "pointermove",
+            function (event) {
+
+                cahaya.style.left =
+                    event.clientX + "px";
+
+                cahaya.style.top =
+                    event.clientY + "px";
+
+            },
+            { passive: true }
+        );
+
+    }
+
+
+    /* ==============================
+       PILIHAN KEBUTUHAN
+    ============================== */
+
+    const kartuKebutuhan =
+        document.querySelectorAll(".need-card");
+
+    kartuKebutuhan.forEach(function (kartu) {
+
+        kartu.addEventListener(
             "click",
-            () => {
+            function () {
 
-                const choice =
-                    card.dataset.choice;
+                const kebutuhan =
+                    kartu.dataset.need;
 
-                if (
-                    !choice ||
-                    !whatsappButton
-                ) {
+                if (!whatsappButton || !kebutuhan) {
                     return;
                 }
 
+                const nomor =
+                    "6280000000000";
 
-                const currentURL =
-                    whatsappButton
-                        .getAttribute("href");
+                const pesan =
+                    "Halo Xyny Studio, saya ingin berkonsultasi mengenai kebutuhan " +
+                    kebutuhan +
+                    ". Saya ingin mengetahui solusi yang paling sesuai.";
 
-
-                try {
-
-                    const url =
-                        new URL(currentURL);
-
-
-                    const message =
-                        `Halo Xyny Studio, saya ingin berkonsultasi mengenai kebutuhan ${choice}.`;
-
-
-                    url.searchParams.set(
-                        "text",
-                        message
-                    );
-
-
-                    whatsappButton.setAttribute(
-                        "href",
-                        url.toString()
-                    );
-
-                } catch (error) {
-
-                    console.log(
-                        "Nomor WhatsApp belum diganti."
-                    );
-
-                }
+                whatsappButton.href =
+                    "https://wa.me/" +
+                    nomor +
+                    "?text=" +
+                    encodeURIComponent(pesan);
 
             }
         );
 
     });
+
+
+    /* ==============================
+       TUTUP FAQ LAIN
+    ============================== */
+
+    const faq =
+        document.querySelectorAll(".faq-item");
+
+    faq.forEach(function (item) {
+
+        item.addEventListener(
+            "toggle",
+            function () {
+
+                if (!item.open) {
+                    return;
+                }
+
+                faq.forEach(function (lain) {
+
+                    if (lain !== item) {
+                        lain.removeAttribute("open");
+                    }
+
+                });
+
+            }
+        );
+
+    });
+
+
+    /* ==============================
+       KLIK ESC UNTUK MENU
+    ============================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                navLinks.classList.remove("open");
+
+                menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+                document.body.classList.remove(
+                    "menu-open"
+                );
+
+            }
+
+        }
+    );
 
 });
