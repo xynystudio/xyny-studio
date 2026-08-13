@@ -1,0 +1,3493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta name="theme-color" content="#090909">
+
+<meta name="description"
+      content="Landing page profesional dari XYNY Studio. Satu halaman untuk membuat orang memahami produk, layanan, dan mengambil tindakan.">
+
+<title>Landing Page Profesional — XYNY Studio</title>
+
+<style>
+
+/* =========================================================
+   XYNY STUDIO
+   DEMO LANDING PAGE
+   ========================================================= */
+
+:root{
+    --hitam:#080808;
+    --hitam-2:#0d0d0c;
+    --hitam-3:#131310;
+
+    --putih:#f7f5ef;
+    --abu:#aaa9a3;
+    --abu-gelap:#77766f;
+
+    --emas:#e7bd63;
+    --emas-terang:#f4d88d;
+    --emas-gelap:#a47b2d;
+
+    --garis:rgba(255,255,255,.10);
+    --garis-emas:rgba(231,189,99,.30);
+
+    --radius:28px;
+
+    --serif:
+        "Georgia",
+        "Times New Roman",
+        serif;
+
+    --sans:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(
+            circle at 75% 15%,
+            rgba(231,189,99,.08),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 15% 55%,
+            rgba(255,255,255,.035),
+            transparent 25%
+        ),
+        var(--hitam);
+
+    color:var(--putih);
+
+    font-family:var(--sans);
+
+    line-height:1.6;
+
+    overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+}
+
+
+/* tekstur halus */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+
+    z-index:100;
+}
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+.container{
+    width:min(1180px, calc(100% - 40px));
+    margin:auto;
+}
+
+section{
+    position:relative;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header{
+    position:fixed;
+
+    top:16px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(1180px, calc(100% - 28px));
+
+    height:76px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:10px 12px 10px 14px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:999px;
+
+    background:
+        rgba(10,10,10,.78);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    z-index:50;
+
+    transition:
+        background .3s ease,
+        border-color .3s ease,
+        transform .3s ease;
+}
+
+.header.scrolled{
+    background:rgba(8,8,8,.94);
+    border-color:rgba(231,189,99,.22);
+}
+
+
+/* BRAND */
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    min-width:0;
+}
+
+.brand-logo{
+    width:52px;
+    height:52px;
+
+    object-fit:contain;
+
+    background:#fff;
+
+    border-radius:14px;
+
+    padding:7px;
+}
+
+.brand-text{
+    display:flex;
+    flex-direction:column;
+
+    line-height:1;
+}
+
+.brand-name{
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:.28em;
+}
+
+.brand-sub{
+    margin-top:6px;
+
+    color:var(--emas);
+
+    font-size:9px;
+    letter-spacing:.32em;
+}
+
+
+/* DESKTOP NAV */
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:30px;
+}
+
+.nav a{
+    color:#9c9b95;
+
+    font-size:13px;
+    font-weight:500;
+
+    transition:
+        color .25s ease;
+}
+
+.nav a:hover{
+    color:#fff;
+}
+
+
+/* HEADER CTA */
+
+.header-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    min-height:50px;
+
+    padding:0 20px;
+
+    border:1px solid rgba(231,189,99,.42);
+
+    border-radius:999px;
+
+    color:var(--emas-terang);
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:
+        background .25s ease,
+        color .25s ease,
+        transform .25s ease;
+}
+
+.header-cta:hover{
+    background:var(--emas);
+    color:#111;
+
+    transform:translateY(-2px);
+}
+
+
+/* MOBILE MENU */
+
+.menu-button{
+    display:none;
+
+    width:50px;
+    height:50px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:50%;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.menu-button span{
+    display:block;
+
+    width:18px;
+    height:1px;
+
+    margin:4px auto;
+
+    background:white;
+
+    transition:.3s;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero{
+    min-height:100svh;
+
+    display:flex;
+    align-items:center;
+
+    padding:
+        150px 0
+        90px;
+
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:700px;
+    height:700px;
+
+    right:-250px;
+    top:100px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(231,189,99,.14),
+            transparent 65%
+        );
+
+    filter:blur(20px);
+
+    pointer-events:none;
+}
+
+.hero-grid{
+    display:grid;
+
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(420px, .92fr);
+
+    gap:70px;
+
+    align-items:center;
+}
+
+
+/* LABEL */
+
+.eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+
+    margin-bottom:28px;
+
+    color:var(--emas);
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.27em;
+
+    text-transform:uppercase;
+}
+
+.eyebrow::before{
+    content:"";
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#a8d66d;
+
+    box-shadow:
+        0 0 0 5px rgba(168,214,109,.08),
+        0 0 18px rgba(168,214,109,.4);
+}
+
+
+/* HERO TITLE */
+
+.hero h1{
+    max-width:780px;
+
+    font-size:
+        clamp(
+            54px,
+            7vw,
+            94px
+        );
+
+    line-height:.94;
+
+    letter-spacing:-.065em;
+
+    font-weight:700;
+}
+
+.hero h1 .serif{
+    display:block;
+
+    margin-top:13px;
+
+    color:var(--emas-terang);
+
+    font-family:var(--serif);
+
+    font-style:italic;
+
+    font-weight:400;
+
+    letter-spacing:-.07em;
+}
+
+
+/* DESCRIPTION */
+
+.hero-description{
+    max-width:640px;
+
+    margin-top:32px;
+
+    color:#a7a69f;
+
+    font-size:
+        clamp(
+            17px,
+            2vw,
+            20px
+        );
+
+    line-height:1.8;
+}
+
+.hero-description strong{
+    color:#f0eee8;
+}
+
+
+/* HERO BUTTONS */
+
+.hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:38px;
+}
+
+.button{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:56px;
+
+    padding:0 25px;
+
+    border-radius:999px;
+
+    font-size:14px;
+    font-weight:700;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+}
+
+.button-primary{
+    background:
+        linear-gradient(
+            135deg,
+            #f4d88d,
+            #dbaa4d
+        );
+
+    color:#17140e;
+
+    box-shadow:
+        0 12px 40px rgba(231,189,99,.15);
+}
+
+.button-primary:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 50px rgba(231,189,99,.25);
+}
+
+.button-secondary{
+    border:1px solid rgba(255,255,255,.14);
+
+    color:#d5d3cc;
+}
+
+.button-secondary:hover{
+    background:rgba(255,255,255,.06);
+
+    transform:translateY(-3px);
+}
+
+.arrow{
+    margin-left:12px;
+
+    font-size:18px;
+
+    transition:transform .25s ease;
+}
+
+.button:hover .arrow{
+    transform:translate(3px,-3px);
+}
+
+
+/* TRUST */
+
+.hero-trust{
+    display:flex;
+    align-items:center;
+
+    gap:16px;
+
+    margin-top:34px;
+
+    color:#77766f;
+
+    font-size:12px;
+}
+
+.trust-dots{
+    display:flex;
+}
+
+.trust-dots span{
+    width:25px;
+    height:25px;
+
+    margin-left:-6px;
+
+    border:2px solid var(--hitam);
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #d9d9d9,
+            #777
+        );
+}
+
+.trust-dots span:first-child{
+    margin-left:0;
+}
+
+.trust-dots span:nth-child(2){
+    background:
+        linear-gradient(
+            145deg,
+            #d9b85c,
+            #7b5a20
+        );
+}
+
+.trust-dots span:nth-child(3){
+    background:
+        linear-gradient(
+            145deg,
+            #eee,
+            #555
+        );
+}
+
+
+/* =========================================================
+   HERO VISUAL
+   ========================================================= */
+
+.visual{
+    position:relative;
+
+    min-height:540px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.visual-ring{
+    position:absolute;
+
+    width:470px;
+    height:470px;
+
+    border:1px solid rgba(231,189,99,.16);
+
+    border-radius:50%;
+
+    animation:
+        rotate 30s linear infinite;
+}
+
+.visual-ring::before,
+.visual-ring::after{
+    content:"";
+
+    position:absolute;
+
+    width:8px;
+    height:8px;
+
+    border-radius:50%;
+
+    background:var(--emas);
+}
+
+.visual-ring::before{
+    top:42px;
+    left:75px;
+}
+
+.visual-ring::after{
+    right:50px;
+    bottom:110px;
+}
+
+.visual-ring-two{
+    width:360px;
+    height:360px;
+
+    border-color:rgba(255,255,255,.08);
+
+    animation-direction:reverse;
+
+    animation-duration:22s;
+}
+
+.visual-card{
+    position:relative;
+
+    width:min(390px, 80%);
+
+    min-height:490px;
+
+    padding:28px;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.07);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    transform:
+        rotate(2deg);
+
+    transition:
+        transform .5s ease;
+}
+
+.visual-card:hover{
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+}
+
+.card-top{
+    display:flex;
+    justify-content:space-between;
+
+    color:#797872;
+
+    font-size:10px;
+    letter-spacing:.18em;
+}
+
+.card-status{
+    display:flex;
+    align-items:center;
+    gap:6px;
+
+    color:#9bc56a;
+}
+
+.card-status i{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#9bc56a;
+
+    box-shadow:
+        0 0 15px rgba(155,197,106,.7);
+}
+
+.mockup{
+    position:absolute;
+
+    left:28px;
+    right:28px;
+
+    top:105px;
+    bottom:70px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:20px;
+
+    background:
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(231,189,99,.16),
+            transparent 32%
+        ),
+        #0a0a09;
+}
+
+.mockup-top{
+    height:35px;
+
+    display:flex;
+    align-items:center;
+
+    gap:5px;
+
+    padding:0 14px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.mockup-top i{
+    width:6px;
+    height:6px;
+
+    border-radius:50%;
+
+    background:#5b5b56;
+}
+
+.mockup-content{
+    padding:30px 24px;
+}
+
+.mockup-label{
+    color:var(--emas);
+
+    font-size:8px;
+    letter-spacing:.2em;
+}
+
+.mockup-title{
+    width:80%;
+
+    margin-top:18px;
+
+    font-size:30px;
+    line-height:1;
+
+    letter-spacing:-.05em;
+}
+
+.mockup-line{
+    width:65%;
+    height:7px;
+
+    margin-top:17px;
+
+    border-radius:10px;
+
+    background:#343430;
+}
+
+.mockup-line.small{
+    width:45%;
+    margin-top:9px;
+}
+
+.mockup-button{
+    width:95px;
+    height:32px;
+
+    margin-top:22px;
+
+    border-radius:999px;
+
+    background:var(--emas);
+}
+
+.card-bottom{
+    position:absolute;
+
+    bottom:26px;
+    left:28px;
+    right:28px;
+
+    display:flex;
+    justify-content:space-between;
+
+    color:#696862;
+
+    font-size:9px;
+    letter-spacing:.16em;
+}
+
+
+/* FLOATING BADGE */
+
+.floating{
+    position:absolute;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:15px 18px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:18px;
+
+    background:rgba(15,15,14,.85);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35);
+
+    backdrop-filter:blur(15px);
+}
+
+.floating-one{
+    left:0;
+    bottom:80px;
+
+    animation:float 5s ease-in-out infinite;
+}
+
+.floating-two{
+    right:-5px;
+    top:85px;
+
+    animation:float 6s ease-in-out infinite reverse;
+}
+
+.floating-icon{
+    width:38px;
+    height:38px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:12px;
+
+    background:rgba(231,189,99,.10);
+
+    color:var(--emas);
+
+    font-size:18px;
+}
+
+.floating strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.floating small{
+    display:block;
+
+    margin-top:3px;
+
+    color:#73726c;
+
+    font-size:10px;
+}
+
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+
+.marquee{
+    overflow:hidden;
+
+    border-top:1px solid var(--garis);
+    border-bottom:1px solid var(--garis);
+
+    padding:20px 0;
+
+    background:rgba(255,255,255,.015);
+}
+
+.marquee-track{
+    width:max-content;
+
+    display:flex;
+    align-items:center;
+
+    gap:30px;
+
+    animation:
+        marquee 28s linear infinite;
+}
+
+.marquee span{
+    color:#696861;
+
+    font-size:11px;
+    font-weight:600;
+
+    letter-spacing:.25em;
+}
+
+.marquee b{
+    color:var(--emas);
+
+    font-size:12px;
+}
+
+
+/* =========================================================
+   PROBLEM
+   ========================================================= */
+
+.problem{
+    padding:150px 0 100px;
+}
+
+.section-label{
+    color:var(--emas);
+
+    font-size:11px;
+    font-weight:700;
+
+    letter-spacing:.27em;
+
+    text-transform:uppercase;
+}
+
+.problem-grid{
+    display:grid;
+
+    grid-template-columns:
+        .85fr
+        1.15fr;
+
+    gap:100px;
+
+    margin-top:30px;
+}
+
+.problem h2{
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            68px
+        );
+
+    line-height:1;
+
+    letter-spacing:-.055em;
+}
+
+.problem h2 em{
+    color:#77766f;
+
+    font-family:var(--serif);
+
+    font-weight:400;
+}
+
+.problem-text{
+    color:#999891;
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+.problem-list{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:1px;
+
+    margin-top:60px;
+
+    border:1px solid var(--garis);
+
+    background:var(--garis);
+}
+
+.problem-item{
+    min-height:180px;
+
+    padding:30px;
+
+    background:var(--hitam);
+
+    transition:
+        background .3s ease;
+}
+
+.problem-item:hover{
+    background:#11110f;
+}
+
+.problem-item span{
+    color:#66655f;
+
+    font-size:11px;
+
+    letter-spacing:.2em;
+}
+
+.problem-item h3{
+    margin-top:25px;
+
+    font-size:19px;
+}
+
+.problem-item p{
+    margin-top:10px;
+
+    color:#77766f;
+
+    font-size:13px;
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
+
+.value{
+    padding:100px 0 160px;
+}
+
+.value-header{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:flex-end;
+
+    gap:40px;
+
+    margin-bottom:60px;
+}
+
+.value-header h2{
+    max-width:650px;
+
+    margin-top:15px;
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            70px
+        );
+
+    line-height:.98;
+
+    letter-spacing:-.06em;
+}
+
+.value-header h2 em{
+    color:var(--emas);
+
+    font-family:var(--serif);
+
+    font-weight:400;
+}
+
+.value-header p{
+    max-width:350px;
+
+    color:#77766f;
+
+    font-size:14px;
+    line-height:1.8;
+}
+
+.value-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    border-top:1px solid var(--garis);
+    border-left:1px solid var(--garis);
+}
+
+.value-card{
+    min-height:300px;
+
+    padding:34px;
+
+    border-right:1px solid var(--garis);
+    border-bottom:1px solid var(--garis);
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+.value-card:hover{
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(231,189,99,.08),
+            transparent 40%
+        ),
+        #0e0e0d;
+}
+
+.value-number{
+    color:#55544e;
+
+    font-size:11px;
+
+    letter-spacing:.2em;
+}
+
+.value-icon{
+    width:50px;
+    height:50px;
+
+    display:grid;
+    place-items:center;
+
+    margin-top:30px;
+
+    border:1px solid var(--garis-emas);
+
+    border-radius:15px;
+
+    color:var(--emas);
+
+    font-size:20px;
+}
+
+.value-card h3{
+    margin-top:28px;
+
+    font-size:20px;
+}
+
+.value-card p{
+    margin-top:10px;
+
+    color:#77766f;
+
+    font-size:14px;
+
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   SHOWCASE
+   ========================================================= */
+
+.showcase{
+    padding:120px 0;
+
+    border-top:1px solid var(--garis);
+}
+
+.showcase-inner{
+    display:grid;
+
+    grid-template-columns:
+        .8fr
+        1.2fr;
+
+    gap:80px;
+
+    align-items:center;
+}
+
+.showcase h2{
+    margin-top:15px;
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            68px
+        );
+
+    line-height:.98;
+
+    letter-spacing:-.06em;
+}
+
+.showcase h2 em{
+    display:block;
+
+    color:#77766f;
+
+    font-family:var(--serif);
+
+    font-weight:400;
+}
+
+.showcase p{
+    max-width:480px;
+
+    margin-top:25px;
+
+    color:#888780;
+
+    line-height:1.9;
+}
+
+.showcase-note{
+    display:flex;
+
+    align-items:center;
+    gap:10px;
+
+    margin-top:30px;
+
+    color:#a5a49d;
+
+    font-size:12px;
+}
+
+.showcase-note span{
+    color:#9bc56a;
+}
+
+
+/* BIG MOCKUP */
+
+.browser{
+    position:relative;
+
+    padding:12px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:26px;
+
+    background:#121211;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,.5);
+}
+
+.browser-bar{
+    height:38px;
+
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    padding:0 13px;
+}
+
+.browser-dot{
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#4e4e49;
+}
+
+.browser-screen{
+    min-height:400px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:16px;
+
+    background:
+        radial-gradient(
+            circle at 70% 15%,
+            rgba(231,189,99,.16),
+            transparent 30%
+        ),
+        #0b0b0a;
+
+    padding:45px;
+}
+
+.screen-eyebrow{
+    color:var(--emas);
+
+    font-size:9px;
+
+    letter-spacing:.22em;
+}
+
+.screen-title{
+    max-width:520px;
+
+    margin-top:20px;
+
+    font-size:
+        clamp(
+            32px,
+            4vw,
+            58px
+        );
+
+    line-height:.95;
+
+    letter-spacing:-.06em;
+}
+
+.screen-title i{
+    color:var(--emas);
+
+    font-family:var(--serif);
+}
+
+.screen-text{
+    width:70%;
+
+    margin-top:20px;
+
+    color:#77766f;
+
+    font-size:12px;
+}
+
+.screen-button{
+    width:120px;
+    height:38px;
+
+    margin-top:25px;
+
+    border-radius:999px;
+
+    background:var(--emas);
+}
+
+.screen-blocks{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:45px;
+}
+
+.screen-block{
+    height:80px;
+
+    border:1px solid rgba(255,255,255,.07);
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.025);
+}
+
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.process{
+    padding:140px 0;
+}
+
+.process-header{
+    max-width:700px;
+
+    margin-bottom:70px;
+}
+
+.process-header h2{
+    margin-top:15px;
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            70px
+        );
+
+    line-height:1;
+
+    letter-spacing:-.06em;
+}
+
+.process-header h2 em{
+    color:var(--emas);
+
+    font-family:var(--serif);
+
+    font-weight:400;
+}
+
+.process-list{
+    border-top:1px solid var(--garis);
+}
+
+.process-item{
+    display:grid;
+
+    grid-template-columns:100px 1fr 1fr;
+
+    gap:30px;
+
+    padding:35px 0;
+
+    border-bottom:1px solid var(--garis);
+
+    transition:
+        padding .3s ease;
+}
+
+.process-item:hover{
+    padding-left:15px;
+    padding-right:15px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(231,189,99,.025),
+            transparent
+        );
+}
+
+.process-number{
+    color:var(--emas);
+
+    font-size:12px;
+
+    letter-spacing:.2em;
+}
+
+.process-item h3{
+    font-size:21px;
+}
+
+.process-item p{
+    color:#77766f;
+
+    font-size:14px;
+    line-height:1.8;
+}
+
+
+/* =========================================================
+   TESTIMONIAL PLACEHOLDER
+   ========================================================= */
+
+.trust{
+    padding:110px 0;
+
+    border-top:1px solid var(--garis);
+    border-bottom:1px solid var(--garis);
+}
+
+.trust-inner{
+    display:grid;
+
+    grid-template-columns:
+        .7fr
+        1.3fr;
+
+    gap:80px;
+}
+
+.trust h2{
+    margin-top:15px;
+
+    font-size:
+        clamp(
+            38px,
+            4vw,
+            58px
+        );
+
+    line-height:1;
+
+    letter-spacing:-.055em;
+}
+
+.quote{
+    position:relative;
+
+    padding:30px;
+
+    border-left:1px solid var(--garis-emas);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(231,189,99,.035),
+            transparent
+        );
+}
+
+.quote-mark{
+    color:var(--emas);
+
+    font-family:var(--serif);
+
+    font-size:55px;
+
+    line-height:.5;
+}
+
+.quote p{
+    margin-top:25px;
+
+    color:#c3c1b9;
+
+    font-family:var(--serif);
+
+    font-size:
+        clamp(
+            22px,
+            3vw,
+            34px
+        );
+
+    line-height:1.35;
+}
+
+.quote small{
+    display:block;
+
+    margin-top:25px;
+
+    color:#77766f;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   FINAL CTA
+   ========================================================= */
+
+.final{
+    padding:150px 0;
+}
+
+.final-box{
+    position:relative;
+
+    overflow:hidden;
+
+    padding:
+        clamp(50px,8vw,100px);
+
+    border:1px solid rgba(231,189,99,.20);
+
+    border-radius:36px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(231,189,99,.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #15140f,
+            #0c0c0b
+        );
+}
+
+.final-box::before{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    right:-180px;
+    bottom:-250px;
+
+    border:1px solid rgba(231,189,99,.15);
+
+    border-radius:50%;
+}
+
+.final-box h2{
+    position:relative;
+
+    max-width:850px;
+
+    font-size:
+        clamp(
+            44px,
+            7vw,
+            90px
+        );
+
+    line-height:.94;
+
+    letter-spacing:-.065em;
+}
+
+.final-box h2 em{
+    color:var(--emas);
+
+    font-family:var(--serif);
+
+    font-weight:400;
+}
+
+.final-box p{
+    position:relative;
+
+    max-width:600px;
+
+    margin-top:25px;
+
+    color:#99978f;
+
+    font-size:16px;
+
+    line-height:1.8;
+}
+
+.final-actions{
+    position:relative;
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:38px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer{
+    padding:35px 0 100px;
+
+    border-top:1px solid var(--garis);
+}
+
+.footer-inner{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.footer-brand{
+    color:#77766f;
+
+    font-size:12px;
+}
+
+.footer-brand strong{
+    color:#ddd;
+
+    letter-spacing:.25em;
+}
+
+.footer-copy{
+    color:#55544f;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   MOBILE STICKY CTA
+   ========================================================= */
+
+.mobile-cta{
+    display:none;
+}
+
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:none;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes rotate{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media(max-width:900px){
+
+    .nav{
+        display:none;
+    }
+
+    .menu-button{
+        display:block;
+    }
+
+    .header-cta{
+        display:none;
+    }
+
+    .hero-grid{
+        grid-template-columns:1fr;
+
+        gap:70px;
+    }
+
+    .hero{
+        padding-top:140px;
+    }
+
+    .visual{
+        min-height:500px;
+    }
+
+    .problem-grid{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+    .value-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .showcase-inner{
+        grid-template-columns:1fr;
+
+        gap:60px;
+    }
+
+    .trust-inner{
+        grid-template-columns:1fr;
+
+        gap:40px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media(max-width:600px){
+
+    .container{
+        width:min(
+            100% - 28px,
+            1180px
+        );
+    }
+
+    .header{
+        top:10px;
+
+        width:
+            calc(100% - 20px);
+
+        height:68px;
+
+        padding-left:9px;
+    }
+
+    .brand-logo{
+        width:48px;
+        height:48px;
+
+        border-radius:13px;
+    }
+
+    .brand-name{
+        font-size:13px;
+    }
+
+    .brand-sub{
+        font-size:8px;
+    }
+
+    .hero{
+        min-height:auto;
+
+        padding:
+            135px 0
+            70px;
+    }
+
+    .hero h1{
+        font-size:
+            clamp(
+                48px,
+                15vw,
+                70px
+            );
+    }
+
+    .hero-description{
+        margin-top:26px;
+
+        font-size:16px;
+
+        line-height:1.75;
+    }
+
+    .hero-actions{
+        display:grid;
+
+        grid-template-columns:1fr;
+
+        margin-top:30px;
+    }
+
+    .button{
+        width:100%;
+    }
+
+    .hero-trust{
+        align-items:flex-start;
+    }
+
+    .visual{
+        min-height:430px;
+    }
+
+    .visual-ring{
+        width:340px;
+        height:340px;
+    }
+
+    .visual-ring-two{
+        width:260px;
+        height:260px;
+    }
+
+    .visual-card{
+        width:80%;
+
+        min-height:380px;
+
+        padding:20px;
+
+        border-radius:25px;
+    }
+
+    .mockup{
+        top:82px;
+
+        left:20px;
+        right:20px;
+
+        bottom:55px;
+    }
+
+    .mockup-content{
+        padding:22px 18px;
+    }
+
+    .mockup-title{
+        font-size:25px;
+    }
+
+    .floating{
+        padding:11px 13px;
+
+        border-radius:14px;
+    }
+
+    .floating-one{
+        left:-5px;
+        bottom:40px;
+    }
+
+    .floating-two{
+        right:-5px;
+        top:55px;
+    }
+
+    .floating-icon{
+        width:32px;
+        height:32px;
+    }
+
+    .floating strong{
+        font-size:10px;
+    }
+
+    .floating small{
+        font-size:8px;
+    }
+
+    .problem{
+        padding:
+            90px 0
+            70px;
+    }
+
+    .problem h2{
+        font-size:43px;
+    }
+
+    .problem-list{
+        grid-template-columns:1fr;
+
+        margin-top:40px;
+    }
+
+    .problem-item{
+        min-height:150px;
+
+        padding:25px;
+    }
+
+    .value{
+        padding:
+            70px 0
+            90px;
+    }
+
+    .value-header{
+        display:block;
+
+        margin-bottom:40px;
+    }
+
+    .value-header p{
+        margin-top:25px;
+    }
+
+    .value-grid{
+        grid-template-columns:1fr;
+    }
+
+    .value-card{
+        min-height:240px;
+    }
+
+    .showcase{
+        padding:80px 0;
+    }
+
+    .browser-screen{
+        min-height:350px;
+
+        padding:28px;
+    }
+
+    .screen-text{
+        width:90%;
+    }
+
+    .screen-blocks{
+        margin-top:30px;
+    }
+
+    .screen-block{
+        height:60px;
+    }
+
+    .process{
+        padding:90px 0;
+    }
+
+    .process-item{
+        grid-template-columns:55px 1fr;
+
+        gap:10px;
+    }
+
+    .process-item p{
+        grid-column:2;
+    }
+
+    .trust{
+        padding:80px 0;
+    }
+
+    .final{
+        padding:80px 0;
+    }
+
+    .final-box{
+        border-radius:26px;
+
+        padding:
+            45px 25px;
+    }
+
+    .final-box h2{
+        font-size:46px;
+    }
+
+    .footer{
+        padding-bottom:120px;
+    }
+
+    .footer-inner{
+        display:block;
+    }
+
+    .footer-copy{
+        margin-top:12px;
+    }
+
+
+    /* STICKY CTA */
+
+    .mobile-cta{
+        position:fixed;
+
+        display:block;
+
+        left:10px;
+        right:10px;
+        bottom:
+            calc(
+                10px +
+                env(safe-area-inset-bottom)
+            );
+
+        z-index:60;
+    }
+
+    .mobile-cta a{
+        display:flex;
+
+        align-items:center;
+        justify-content:center;
+
+        width:100%;
+        height:54px;
+
+        border:1px solid rgba(255,255,255,.12);
+
+        border-radius:999px;
+
+        background:
+            rgba(20,20,18,.90);
+
+        color:#f4d88d;
+
+        font-size:13px;
+        font-weight:700;
+
+        box-shadow:
+            0 15px 40px rgba(0,0,0,.5);
+
+        backdrop-filter:blur(18px);
+        -webkit-backdrop-filter:blur(18px);
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+
+        transition-duration:.01ms !important;
+    }
+
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+     ===================================================== -->
+
+<header class="header" id="header">
+
+    <a href="#" class="brand">
+
+        <img
+            src="logo.png"
+            alt="Logo XYNY Studio"
+            class="brand-logo"
+        >
+
+        <span class="brand-text">
+
+            <span class="brand-name">
+                XYNY
+            </span>
+
+            <span class="brand-sub">
+                STUDIO
+            </span>
+
+        </span>
+
+    </a>
+
+
+    <nav class="nav">
+
+        <a href="#masalah">
+            Mengapa
+        </a>
+
+        <a href="#keunggulan">
+            Keunggulan
+        </a>
+
+        <a href="#proses">
+            Proses
+        </a>
+
+        <a href="#kontak">
+            Kontak
+        </a>
+
+    </nav>
+
+
+    <a
+        class="header-cta"
+        href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20tertarik%20dengan%20Landing%20Page."
+        target="_blank"
+        rel="noopener"
+    >
+        Mulai sekarang
+        <span>↗</span>
+    </a>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<main>
+
+<section class="hero">
+
+    <div class="container">
+
+        <div class="hero-grid">
+
+
+            <div class="reveal">
+
+                <div class="eyebrow">
+                    Landing Page Profesional
+                </div>
+
+
+                <h1>
+
+                    Jangan hanya
+                    <span class="serif">
+                        hadir di internet.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Jadikan satu halaman sebagai tempat orang
+                    <strong>memahami apa yang Anda tawarkan,
+                    percaya kepada Anda,</strong>
+                    lalu tahu harus melakukan apa.
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#kontak"
+                        class="button button-primary"
+                    >
+                        Buat halaman saya
+                        <span class="arrow">↗</span>
+                    </a>
+
+
+                    <a
+                        href="#contoh"
+                        class="button button-secondary"
+                    >
+                        Lihat contohnya
+                    </a>
+
+                </div>
+
+
+                <div class="hero-trust">
+
+                    <div class="trust-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span>
+                        Dirancang untuk tampil meyakinkan
+                        di ponsel maupun komputer.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- VISUAL -->
+
+            <div class="visual reveal">
+
+                <div class="visual-ring"></div>
+
+                <div class="visual-ring visual-ring-two"></div>
+
+
+                <div class="visual-card">
+
+                    <div class="card-top">
+
+                        <span>
+                            XYNY / 01
+                        </span>
+
+                        <span class="card-status">
+                            <i></i>
+                            SIAP
+                        </span>
+
+                    </div>
+
+
+                    <div class="mockup">
+
+                        <div class="mockup-top">
+
+                            <i></i>
+                            <i></i>
+                            <i></i>
+
+                        </div>
+
+
+                        <div class="mockup-content">
+
+                            <div class="mockup-label">
+                                PERKENALKAN DIRI
+                            </div>
+
+                            <div class="mockup-title">
+                                Buat orang
+                                mengerti
+                                <strong>nilai Anda.</strong>
+                            </div>
+
+                            <div class="mockup-line"></div>
+
+                            <div class="mockup-line small"></div>
+
+                            <div class="mockup-button"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-bottom">
+
+                        <span>
+                            STRATEGI
+                        </span>
+
+                        <span>
+                            VISUAL
+                        </span>
+
+                        <span>
+                            AKSI
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating floating-one">
+
+                    <div class="floating-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Kesan profesional
+                        </strong>
+
+                        <small>
+                            sejak layar pertama
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating floating-two">
+
+                    <div class="floating-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Fokus pada tindakan
+                        </strong>
+
+                        <small>
+                            bukan sekadar tampilan
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MARQUEE
+     ===================================================== -->
+
+<section class="marquee">
+
+    <div class="marquee-track">
+
+        <span>JELAS</span>
+        <b>✦</b>
+
+        <span>MEYAKINKAN</span>
+        <b>✦</b>
+
+        <span>PROFESIONAL</span>
+        <b>✦</b>
+
+        <span>RESPONSIF</span>
+        <b>✦</b>
+
+        <span>TERARAH</span>
+        <b>✦</b>
+
+        <span>JELAS</span>
+        <b>✦</b>
+
+        <span>MEYAKINKAN</span>
+        <b>✦</b>
+
+        <span>PROFESIONAL</span>
+        <b>✦</b>
+
+        <span>RESPONSIF</span>
+        <b>✦</b>
+
+        <span>TERARAH</span>
+        <b>✦</b>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MASALAH
+     ===================================================== -->
+
+<section
+    class="problem"
+    id="masalah"
+>
+
+<div class="container">
+
+    <div class="section-label reveal">
+        Masalah yang sering terjadi
+    </div>
+
+
+    <div class="problem-grid">
+
+        <div class="reveal">
+
+            <h2>
+
+                Orang menemukan Anda,
+                <em>tetapi tidak mengerti.</em>
+
+            </h2>
+
+        </div>
+
+
+        <div class="reveal">
+
+            <p class="problem-text">
+
+                Banyak orang sebenarnya memiliki produk,
+                jasa, kemampuan, atau cerita yang bagus.
+                Masalahnya bukan selalu pada apa yang mereka
+                miliki.
+
+                <br><br>
+
+                Masalahnya adalah cara semuanya
+                diperlihatkan.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="problem-list">
+
+        <article class="problem-item reveal">
+
+            <span>01</span>
+
+            <h3>
+                Terlihat seperti biasa saja
+            </h3>
+
+            <p>
+                Padahal kualitas pekerjaan Anda
+                sebenarnya jauh lebih baik.
+            </p>
+
+        </article>
+
+
+        <article class="problem-item reveal">
+
+            <span>02</span>
+
+            <h3>
+                Informasi terlalu berantakan
+            </h3>
+
+            <p>
+                Pengunjung harus mencari sendiri
+                apa yang sebenarnya Anda tawarkan.
+            </p>
+
+        </article>
+
+
+        <article class="problem-item reveal">
+
+            <span>03</span>
+
+            <h3>
+                Orang tidak tahu harus berbuat apa
+            </h3>
+
+            <p>
+                Sudah melihat halaman, tetapi akhirnya
+                tetap pergi tanpa menghubungi Anda.
+            </p>
+
+        </article>
+
+
+        <article class="problem-item reveal">
+
+            <span>04</span>
+
+            <h3>
+                Tidak nyaman dibuka dari ponsel
+            </h3>
+
+            <p>
+                Tulisan kecil, tombol sulit ditekan,
+                dan tampilan berantakan.
+            </p>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VALUE
+     ===================================================== -->
+
+<section
+    class="value"
+    id="keunggulan"
+>
+
+<div class="container">
+
+    <div class="value-header">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Bukan sekadar halaman
+            </div>
+
+            <h2>
+
+                Setiap bagian punya
+                <em>alasan.</em>
+
+            </h2>
+
+        </div>
+
+
+        <p class="reveal">
+
+            Kami menyusun informasi dari hal yang
+            paling penting terlebih dahulu, sehingga
+            pengunjung tidak perlu bekerja keras
+            untuk memahami Anda.
+
+        </p>
+
+    </div>
+
+
+    <div class="value-grid">
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                01 / PESAN
+            </div>
+
+            <div class="value-icon">
+                ◇
+            </div>
+
+            <h3>
+                Pesan yang langsung dipahami
+            </h3>
+
+            <p>
+                Judul, penjelasan, dan ajakan dibuat
+                agar pengunjung cepat memahami
+                apa yang Anda tawarkan.
+            </p>
+
+        </article>
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                02 / KEPERCAYAAN
+            </div>
+
+            <div class="value-icon">
+                ✦
+            </div>
+
+            <h3>
+                Kesan yang lebih meyakinkan
+            </h3>
+
+            <p>
+                Tipografi, ruang, warna, struktur,
+                dan detail visual bekerja bersama
+                membangun kesan profesional.
+            </p>
+
+        </article>
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                03 / TINDAKAN
+            </div>
+
+            <div class="value-icon">
+                ↗
+            </div>
+
+            <h3>
+                Pengunjung tahu langkah berikutnya
+            </h3>
+
+            <p>
+                Tombol dan ajakan ditempatkan
+                pada titik yang masuk akal sehingga
+                orang tidak perlu menebak.
+            </p>
+
+        </article>
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                04 / PONSEL
+            </div>
+
+            <div class="value-icon">
+                □
+            </div>
+
+            <h3>
+                Nyaman dari layar kecil
+            </h3>
+
+            <p>
+                Tata letak menyesuaikan ukuran layar
+                agar tetap mudah dibaca dan digunakan.
+            </p>
+
+        </article>
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                05 / IDENTITAS
+            </div>
+
+            <div class="value-icon">
+                ◎
+            </div>
+
+            <h3>
+                Terasa seperti milik Anda
+            </h3>
+
+            <p>
+                Warna, bahasa, gambar, dan karakter
+                halaman dapat disesuaikan dengan
+                identitas pribadi maupun usaha.
+            </p>
+
+        </article>
+
+
+        <article class="value-card reveal">
+
+            <div class="value-number">
+                06 / SIAP
+            </div>
+
+            <div class="value-icon">
+                ✓
+            </div>
+
+            <h3>
+                Siap digunakan
+            </h3>
+
+            <p>
+                Setelah selesai, halaman dapat
+                dipasang sebagai pusat informasi
+                dari media sosial maupun tautan lain.
+            </p>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CONTOH
+     ===================================================== -->
+
+<section
+    class="showcase"
+    id="contoh"
+>
+
+<div class="container">
+
+    <div class="showcase-inner">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Gambaran hasil
+            </div>
+
+            <h2>
+
+                Sederhana
+                <em>di mata.</em>
+
+                <br>
+
+                Terarah
+                <em>di baliknya.</em>
+
+            </h2>
+
+            <p>
+
+                Tampilan yang terlihat sederhana
+                bukan berarti dibuat sembarangan.
+                Justru setiap jarak, ukuran tulisan,
+                kontras, dan tombol dirancang agar
+                pengunjung tidak cepat lelah.
+
+            </p>
+
+            <div class="showcase-note">
+
+                <span>●</span>
+
+                Dirancang untuk pengalaman
+                membaca yang tenang.
+
+            </div>
+
+        </div>
+
+
+        <div class="browser reveal">
+
+            <div class="browser-bar">
+
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+                <span class="browser-dot"></span>
+
+            </div>
+
+
+            <div class="browser-screen">
+
+                <div class="screen-eyebrow">
+                    HALAMAN ANDA
+                </div>
+
+
+                <div class="screen-title">
+
+                    Satu halaman.
+
+                    <br>
+
+                    <i>
+                        Satu tujuan.
+                    </i>
+
+                </div>
+
+
+                <div class="screen-text">
+
+                    Ceritakan siapa Anda,
+                    apa yang Anda tawarkan,
+                    dan arahkan orang ke langkah
+                    yang paling penting.
+
+                </div>
+
+
+                <div class="screen-button"></div>
+
+
+                <div class="screen-blocks">
+
+                    <div class="screen-block"></div>
+                    <div class="screen-block"></div>
+                    <div class="screen-block"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PROSES
+     ===================================================== -->
+
+<section
+    class="process"
+    id="proses"
+>
+
+<div class="container">
+
+    <div class="process-header reveal">
+
+        <div class="section-label">
+            Cara kerja
+        </div>
+
+        <h2>
+
+            Tidak perlu pusing
+            <em>dengan teknis.</em>
+
+        </h2>
+
+    </div>
+
+
+    <div class="process-list">
+
+
+        <div class="process-item reveal">
+
+            <div class="process-number">
+                01
+            </div>
+
+            <div>
+                <h3>
+                    Ceritakan kebutuhan Anda
+                </h3>
+            </div>
+
+            <p>
+                Kirim informasi, contoh, foto,
+                warna, atau sekadar ceritakan
+                apa yang ingin Anda capai.
+            </p>
+
+        </div>
+
+
+        <div class="process-item reveal">
+
+            <div class="process-number">
+                02
+            </div>
+
+            <div>
+                <h3>
+                    Kami susun arahnya
+                </h3>
+            </div>
+
+            <p>
+                Informasi diterjemahkan menjadi
+                struktur halaman, tampilan,
+                dan alur yang lebih jelas.
+            </p>
+
+        </div>
+
+
+        <div class="process-item reveal">
+
+            <div class="process-number">
+                03
+            </div>
+
+            <div>
+                <h3>
+                    Anda melihat hasilnya
+                </h3>
+            </div>
+
+            <p>
+                Kami melakukan penyempurnaan
+                berdasarkan kebutuhan dan
+                masukan Anda.
+            </p>
+
+        </div>
+
+
+        <div class="process-item reveal">
+
+            <div class="process-number">
+                04
+            </div>
+
+            <div>
+                <h3>
+                    Siap diperkenalkan
+                </h3>
+            </div>
+
+            <p>
+                Halaman siap digunakan untuk
+                memperkenalkan usaha, jasa,
+                produk, kegiatan, maupun diri Anda.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUST
+     ===================================================== -->
+
+<section class="trust">
+
+<div class="container">
+
+    <div class="trust-inner">
+
+        <div class="reveal">
+
+            <div class="section-label">
+                Prinsip XYNY
+            </div>
+
+            <h2>
+                Bagus itu penting.
+                <br>
+                <span style="color:#77766f;">
+                    Berguna lebih penting.
+                </span>
+            </h2>
+
+        </div>
+
+
+        <div class="quote reveal">
+
+            <div class="quote-mark">
+                “
+            </div>
+
+            <p>
+
+                Kami tidak ingin membuat halaman
+                yang hanya membuat orang berkata,
+                “Wah, bagus.”
+
+                <br><br>
+
+                Kami ingin mereka berkata,
+                “Saya mengerti. Saya mau tahu lebih jauh.”
+
+            </p>
+
+            <small>
+                — Prinsip desain XYNY Studio
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+     ===================================================== -->
+
+<section
+    class="final"
+    id="kontak"
+>
+
+<div class="container">
+
+    <div class="final-box reveal">
+
+        <div class="section-label">
+            Siap memulai?
+        </div>
+
+
+        <h2>
+
+            Jangan biarkan
+            ide bagus Anda
+            <em>terlihat biasa.</em>
+
+        </h2>
+
+
+        <p>
+
+            Ceritakan apa yang Anda butuhkan.
+            Tidak harus sudah tahu desainnya.
+            Tidak harus mengerti teknisnya.
+            Mulai saja dari ceritanya.
+
+        </p>
+
+
+        <div class="final-actions">
+
+            <a
+                href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20membuat%20Landing%20Page."
+                target="_blank"
+                rel="noopener"
+                class="button button-primary"
+            >
+                Konsultasikan kebutuhan saya
+                <span class="arrow">↗</span>
+            </a>
+
+
+            <a
+                href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20mengetahui%20harga%20Landing%20Page."
+                target="_blank"
+                rel="noopener"
+                class="button button-secondary"
+            >
+                Tanya harga
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="footer">
+
+<div class="container">
+
+    <div class="footer-inner">
+
+        <div class="footer-brand">
+
+            <strong>XYNY</strong>
+
+            <span>
+                STUDIO
+            </span>
+
+        </div>
+
+
+        <div class="footer-copy">
+
+            © 2026 XYNY Studio.
+            Semua hak dilindungi.
+
+        </div>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     MOBILE CTA
+     ===================================================== -->
+
+<div class="mobile-cta">
+
+    <a
+        href="https://wa.me/6281234567890?text=Halo%20XYNY%20Studio%2C%20saya%20tertarik%20dengan%20Landing%20Page."
+        target="_blank"
+        rel="noopener"
+    >
+        Saya ingin membuat Landing Page ↗
+    </a>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script>
+
+/* =========================================================
+   HEADER SCROLL
+   ========================================================= */
+
+const header = document.getElementById("header");
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 30){
+        header.classList.add("scrolled");
+    }else{
+        header.classList.remove("scrolled");
+    }
+
+}, {passive:true});
+
+
+
+/* =========================================================
+   REVEAL ANIMATION
+   ========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12,
+            rootMargin:"0px 0px -40px 0px"
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+
+/* =========================================================
+   MOBILE MENU
+   ========================================================= */
+
+const menuButton =
+    document.getElementById("menuButton");
+
+const nav =
+    document.querySelector(".nav");
+
+let menuOpen = false;
+
+menuButton.addEventListener("click", () => {
+
+    menuOpen = !menuOpen;
+
+    if(menuOpen){
+
+        nav.style.display = "flex";
+
+        nav.style.position = "fixed";
+
+        nav.style.top = "88px";
+
+        nav.style.left = "14px";
+
+        nav.style.right = "14px";
+
+        nav.style.padding = "25px";
+
+        nav.style.flexDirection = "column";
+
+        nav.style.alignItems = "flex-start";
+
+        nav.style.gap = "22px";
+
+        nav.style.border =
+            "1px solid rgba(255,255,255,.12)";
+
+        nav.style.borderRadius = "24px";
+
+        nav.style.background =
+            "rgba(10,10,10,.96)";
+
+        nav.style.backdropFilter =
+            "blur(20px)";
+
+    }else{
+
+        nav.removeAttribute("style");
+
+    }
+
+});
+
+
+
+/* =========================================================
+   FECHAMENTO MENU APÓS CLIQUE
+   ========================================================= */
+
+document.querySelectorAll(".nav a")
+.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+        if(window.innerWidth <= 900){
+
+            nav.removeAttribute("style");
+
+            menuOpen = false;
+
+        }
+
+    });
+
+});
+
+
+
+/* =========================================================
+   MOUSE PARALLAX DESKTOP
+   ========================================================= */
+
+const visual =
+    document.querySelector(".visual");
+
+if(
+    visual &&
+    window.matchMedia("(pointer:fine)").matches
+){
+
+    visual.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const rect =
+                visual.getBoundingClientRect();
+
+            const x =
+                (event.clientX - rect.left)
+                / rect.width
+                - .5;
+
+            const y =
+                (event.clientY - rect.top)
+                / rect.height
+                - .5;
+
+            const card =
+                visual.querySelector(".visual-card");
+
+            if(card){
+
+                card.style.transform =
+                    `
+                    rotateY(${x * 7}deg)
+                    rotateX(${y * -7}deg)
+                    translateY(-4px)
+                    `;
+
+            }
+
+        }
+    );
+
+
+    visual.addEventListener(
+        "mouseleave",
+        () => {
+
+            const card =
+                visual.querySelector(".visual-card");
+
+            if(card){
+
+                card.style.transform =
+                    "rotate(2deg)";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL HASH JUMP
+   ========================================================= */
+
+document.querySelectorAll('a[href="#"]')
+.forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        event.preventDefault();
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
