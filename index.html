@@ -2,1212 +2,995 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
+    <meta name="description"
+        content="XYNY Studio — Website, undangan digital, gereja, akademik, desain, media, dan kebutuhan digital profesional.">
 
-    <meta
-        name="description"
-        content="XYNY Studio membantu mengubah ide menjadi website, undangan digital, desain, kebutuhan usaha, gereja, mahasiswa, dan media yang profesional."
-    >
-
-    <meta name="theme-color" content="#090a0b">
+    <meta name="theme-color" content="#090a0a">
 
     <title>XYNY Studio — Ide yang baik pantas terlihat luar biasa.</title>
 
-    <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&display=swap"
-        rel="stylesheet"
-    >
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="tampilan.css">
 </head>
 
-
 <body>
 
-<!-- ==================================================
-     PEMBUKA
-================================================== -->
-
-<div class="preloader" id="preloader">
-
-    <div class="preloader-inner">
-
-        <div class="preloader-mark">
-            <img src="logo.png" alt="XYNY">
-        </div>
-
-        <div class="preloader-name">
-            XYNY
-        </div>
-
-        <div class="preloader-line">
-            <span></span>
-        </div>
-
-        <small>
-            STUDIO
-        </small>
-
-    </div>
-
-</div>
-
-
-<!-- ==================================================
-     KURSOR DEKORATIF DESKTOP
-================================================== -->
-
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-
-<!-- ==================================================
-     LATAR
-================================================== -->
-
-<div class="background">
-
+    <div class="cursor-glow"></div>
     <div class="noise"></div>
+    <div class="progress" id="progress"></div>
 
-    <div class="light light-one"></div>
-    <div class="light light-two"></div>
 
-    <div class="grid-background"></div>
+    <!-- ================= NAVBAR ================= -->
 
-</div>
-
-
-<!-- ==================================================
-     NAVIGASI
-================================================== -->
-
-<header class="navbar" id="navbar">
-
-    <a href="#beranda" class="brand">
-
-        <div class="brand-image">
-            <img src="logo.png" alt="Logo XYNY Studio">
-        </div>
-
-        <div class="brand-text">
-            <strong>XYNY</strong>
-            <span>STUDIO</span>
-        </div>
-
-    </a>
-
-
-    <nav class="desktop-nav">
-
-        <a href="#beranda" class="active">
-            Beranda
-        </a>
-
-        <a href="#layanan">
-            Layanan
-        </a>
-
-        <a href="#mengapa">
-            Mengapa Kami
-        </a>
-
-        <a href="#proses">
-            Proses
-        </a>
-
-        <a href="#kontak">
-            Kontak
-        </a>
-
-    </nav>
-
-
-    <a
-        href="#kontak"
-        class="nav-cta magnetic"
-    >
-        <span>Mulai Sekarang</span>
-        <b>↗</b>
-    </a>
-
-
-    <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Buka menu"
-        aria-expanded="false"
-    >
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-
-</header>
-
-
-<!-- ==================================================
-     MENU MOBILE
-================================================== -->
-
-<div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-inner">
-
-        <a href="#beranda">
-            <small>01</small>
-            Beranda
-        </a>
-
-        <a href="#layanan">
-            <small>02</small>
-            Layanan
-        </a>
-
-        <a href="#mengapa">
-            <small>03</small>
-            Mengapa Kami
-        </a>
-
-        <a href="#proses">
-            <small>04</small>
-            Proses
-        </a>
-
-        <a href="#kontak">
-            <small>05</small>
-            Kontak
-        </a>
-
-    </div>
-
-</div>
-
-
-<main>
-
-
-<!-- ==================================================
-     HERO
-================================================== -->
-
-<section class="hero" id="beranda">
-
-    <div class="hero-copy">
-
-        <div class="availability reveal">
-
-            <span class="status-dot"></span>
-
-            <span>
-                MENERIMA PROYEK BARU
-            </span>
-
-        </div>
-
-
-        <div class="hero-title-wrap">
-
-            <div class="hero-kicker reveal">
-                XYNY STUDIO
-            </div>
-
-
-            <h1 class="hero-title reveal">
-
-                <span>
-                    Ide yang baik
-                </span>
-
-                <em>
-                    pantas terlihat
-                    <br class="desktop-only">
-                    luar biasa.
-                </em>
-
-            </h1>
-
-        </div>
-
-
-        <p class="hero-description reveal">
-
-            Kami membantu mengubah ide, kebutuhan, dan cerita
-            menjadi karya digital yang
-            <strong>profesional, menarik, dan siap digunakan.</strong>
-
-        </p>
-
-
-        <div class="hero-actions reveal">
-
-            <a
-                href="#layanan"
-                class="button button-primary magnetic"
-            >
-                <span>Lihat Layanan</span>
-                <b>↗</b>
-            </a>
-
-
-            <a
-                href="#kontak"
-                class="button button-secondary"
-            >
-                Konsultasi Gratis
-            </a>
-
-        </div>
-
-
-        <div class="hero-steps reveal">
-
-            <div class="step active">
-
-                <strong>01</strong>
-
-                <span>
-                    IDE
-                </span>
-
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div class="step">
-
-                <strong>02</strong>
-
-                <span>
-                    RANCANG
-                </span>
-
-            </div>
-
-
-            <div class="step-line"></div>
-
-
-            <div class="step">
-
-                <strong>03</strong>
-
-                <span>
-                    WUJUDKAN
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- ==================================================
-         HERO VISUAL
-    ================================================== -->
-
-    <div class="hero-visual reveal">
-
-        <div class="orbit orbit-one"></div>
-        <div class="orbit orbit-two"></div>
-        <div class="orbit orbit-three"></div>
-
-
-        <div class="hero-card">
-
-            <div class="hero-card-top">
-
-                <span>
-                    XYNY / 2026
-                </span>
-
-                <span class="card-status">
-                    <i></i>
-                    AKTIF
-                </span>
-
-            </div>
-
-
-            <div class="logo-stage">
-
-                <div class="logo-halo"></div>
-
-                <img
-                    src="logo.png"
-                    alt="XYNY Studio"
-                    class="hero-logo"
-                >
-
-            </div>
-
-
-            <div class="hero-card-bottom">
-
-                <span>
-                    KREATIF
-                </span>
-
-                <span>
-                    DIGITAL
-                </span>
-
-                <span>
-                    STRATEGIS
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <!-- KARTU MENGAMBANG -->
-
-        <div class="floating-card floating-one">
-
-            <div class="floating-icon">
-                ✦
-            </div>
-
-            <div>
-                <strong>
-                    Profesional
-                </strong>
-
-                <small>
-                    Tampilan yang meyakinkan
-                </small>
-            </div>
-
-        </div>
-
-
-        <div class="floating-card floating-two">
-
-            <div class="floating-number">
-                07
-            </div>
-
-            <div>
-                <strong>
-                    Jenis kebutuhan
-                </strong>
-
-                <small>
-                    Dalam satu studio
-                </small>
-            </div>
-
-        </div>
-
-
-        <div class="floating-card floating-three">
-
-            <div class="phone-icon">
-                ☎
-            </div>
-
-            <div>
-                <strong>
-                    Konsultasi
-                </strong>
-
-                <small>
-                    Mulai dari kebutuhanmu
-                </small>
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <div class="scroll-indicator">
-
-        <span>
-            GULIR UNTUK MELIHAT
-        </span>
-
-        <i></i>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     MARQUEE
-================================================== -->
-
-<section class="marquee">
-
-    <div class="marquee-track">
-
-        <span>WEBSITE</span>
-        <i>✦</i>
-
-        <span>UNDANGAN DIGITAL</span>
-        <i>✦</i>
-
-        <span>UMKM</span>
-        <i>✦</i>
-
-        <span>GEREJA</span>
-        <i>✦</i>
-
-        <span>MAHASISWA</span>
-        <i>✦</i>
-
-        <span>DESAIN</span>
-        <i>✦</i>
-
-        <span>MEDIA</span>
-        <i>✦</i>
-
-        <span>WEBSITE</span>
-        <i>✦</i>
-
-        <span>UNDANGAN DIGITAL</span>
-        <i>✦</i>
-
-        <span>UMKM</span>
-        <i>✦</i>
-
-        <span>GEREJA</span>
-        <i>✦</i>
-
-        <span>MAHASISWA</span>
-        <i>✦</i>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     LAYANAN
-================================================== -->
-
-<section class="section services" id="layanan">
-
-    <div class="section-top reveal">
-
-        <div class="section-label">
-            <span>01</span>
-            YANG KAMI KERJAKAN
-        </div>
-
-
-        <div class="section-intro">
-
-            <h2>
-                Apa yang ingin
-                <em>Anda wujudkan?</em>
-            </h2>
-
-            <p>
-                Tidak perlu tahu istilah teknisnya.
-                Ceritakan kebutuhan Anda. Kami membantu
-                menerjemahkannya menjadi sesuatu yang siap digunakan.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="service-grid">
-
-
-        <article class="service-card service-main reveal">
-
-            <div class="service-top">
-
-                <span>
-                    01
-                </span>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
-            </div>
-
-
-            <div class="service-icon">
-                &lt;/&gt;
-            </div>
-
-
-            <h3>
-                Website
-            </h3>
-
-
-            <p>
-                Website untuk usaha, gereja, organisasi,
-                sekolah, pribadi, profesional, dan berbagai kebutuhan.
-            </p>
-
-
-            <div class="service-tags">
-
-                <span>
-                    Profil
-                </span>
-
-                <span>
-                    Landing Page
-                </span>
-
-                <span>
-                    Informasi
-                </span>
-
-            </div>
-
-        </article>
-
-
-        <article class="service-card reveal">
-
-            <div class="service-top">
-                <span>02</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-icon">
-                ♡
-            </div>
-
-            <h3>
-                Undangan Digital
-            </h3>
-
-            <p>
-                Undangan yang lebih personal, praktis,
-                elegan, dan mudah dibagikan.
-            </p>
-
-            <div class="service-tags">
-                <span>Pernikahan</span>
-                <span>Wisuda</span>
-                <span>Acara</span>
-            </div>
-
-        </article>
-
-
-        <article class="service-card reveal">
-
-            <div class="service-top">
-                <span>03</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-icon">
-                ◎
-            </div>
-
-            <h3>
-                Untuk UMKM
-            </h3>
-
-            <p>
-                Membantu usaha kecil terlihat lebih profesional
-                dan lebih mudah ditemukan secara digital.
-            </p>
-
-            <div class="service-tags">
-                <span>Usaha</span>
-                <span>Katalog</span>
-                <span>Promosi</span>
-            </div>
-
-        </article>
-
-
-        <article class="service-card reveal">
-
-            <div class="service-top">
-                <span>04</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-icon">
-                ⌂
-            </div>
-
-            <h3>
-                Gereja & Organisasi
-            </h3>
-
-            <p>
-                Rumah digital untuk informasi, kegiatan,
-                pelayanan, dan komunikasi organisasi.
-            </p>
-
-            <div class="service-tags">
-                <span>Website</span>
-                <span>Informasi</span>
-                <span>Media</span>
-            </div>
-
-        </article>
-
-
-        <article class="service-card reveal">
-
-            <div class="service-top">
-                <span>05</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-icon">
-                Aa
-            </div>
-
-            <h3>
-                Mahasiswa
-            </h3>
-
-            <p>
-                Membantu menata dokumen, presentasi,
-                penyuntingan bahasa, dan kebutuhan akademik.
-            </p>
-
-            <div class="service-tags">
-                <span>Dokumen</span>
-                <span>Presentasi</span>
-                <span>Bahasa</span>
-            </div>
-
-        </article>
-
-
-        <article class="service-card reveal">
-
-            <div class="service-top">
-                <span>06</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-icon">
-                ▶
-            </div>
-
-            <h3>
-                Video & Media
-            </h3>
-
-            <p>
-                Konten visual untuk membuat cerita,
-                kegiatan, dan pesan lebih menarik.
-            </p>
-
-            <div class="service-tags">
-                <span>Video</span>
-                <span>Reels</span>
-                <span>Konten</span>
-            </div>
-
-        </article>
-
-
-        <article class="service-card service-wide reveal">
-
-            <div class="service-top">
-                <span>07</span>
-                <div class="service-arrow">↗</div>
-            </div>
-
-            <div class="service-wide-content">
-
-                <div>
-
-                    <div class="service-icon">
-                        ✳
-                    </div>
-
-                    <h3>
-                        Desain & Identitas
-                    </h3>
-
-                </div>
-
-                <p>
-                    Logo, poster, presentasi, materi promosi,
-                    identitas visual, dan kebutuhan desain lainnya.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     STATEMENT
-================================================== -->
-
-<section class="statement section" id="mengapa">
-
-    <div class="statement-glow"></div>
-
-    <div class="statement-number">
-        02
-    </div>
-
-
-    <div class="statement-content reveal">
-
-        <div class="section-label">
-            <span>02</span>
-            MENGAPA XYNY
-        </div>
-
-
-        <h2>
-            Bukan sekadar
-            <br>
-            <em>dibuat.</em>
-        </h2>
-
-
-        <p class="statement-big">
-            Kami ingin setiap karya memiliki alasan
-            untuk ada.
-        </p>
-
-
-        <p class="statement-small">
-            Karena tampilan yang bagus memang menarik.
-            Tetapi karya yang jelas, mudah digunakan,
-            dan sesuai kebutuhan akan jauh lebih berarti.
-        </p>
-
-    </div>
-
-
-    <div class="principles">
-
-        <div class="principle reveal">
-
-            <span>01</span>
-
-            <strong>
-                Jelas
-            </strong>
-
-            <p>
-                Tidak membuat orang bingung
-                ketika melihat hasilnya.
-            </p>
-
-        </div>
-
-
-        <div class="principle reveal">
-
-            <span>02</span>
-
-            <strong>
-                Berkarakter
-            </strong>
-
-            <p>
-                Tidak sekadar mengikuti
-                tampilan yang sudah ada.
-            </p>
-
-        </div>
-
-
-        <div class="principle reveal">
-
-            <span>03</span>
-
-            <strong>
-                Berguna
-            </strong>
-
-            <p>
-                Indah dilihat sekaligus
-                benar-benar siap digunakan.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     AUDIENCE
-================================================== -->
-
-<section class="section audience">
-
-    <div class="section-top reveal">
-
-        <div class="section-label">
-            <span>03</span>
-            MUNGKIN ANDA DI SINI
-        </div>
-
-
-        <div class="section-intro">
-
-            <h2>
-                Anda tidak perlu
-                <em>tahu caranya.</em>
-            </h2>
-
-            <p>
-                Anda cukup tahu apa yang ingin diwujudkan.
-                Selebihnya, mari kita pikirkan bersama.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="audience-list">
-
-        <a href="#kontak" class="audience-item reveal">
-
-            <span>01</span>
-
-            <div>
-                <strong>
-                    “Saya punya usaha, tetapi tampilannya belum profesional.”
-                </strong>
-
-                <small>
-                    → Untuk UMKM
-                </small>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-
-        <a href="#kontak" class="audience-item reveal">
-
-            <span>02</span>
-
-            <div>
-                <strong>
-                    “Saya ingin gereja kami memiliki rumah digital.”
-                </strong>
-
-                <small>
-                    → Untuk Gereja & Organisasi
-                </small>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-
-        <a href="#kontak" class="audience-item reveal">
-
-            <span>03</span>
-
-            <div>
-                <strong>
-                    “Saya ingin undangan acara saya terasa berbeda.”
-                </strong>
-
-                <small>
-                    → Untuk Undangan Digital
-                </small>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-
-        <a href="#kontak" class="audience-item reveal">
-
-            <span>04</span>
-
-            <div>
-                <strong>
-                    “Saya punya bahan, tetapi tidak tahu bagaimana merapikannya.”
-                </strong>
-
-                <small>
-                    → Untuk Mahasiswa & Profesional
-                </small>
-            </div>
-
-            <b>↗</b>
-
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     PROSES
-================================================== -->
-
-<section class="section process" id="proses">
-
-    <div class="section-top reveal">
-
-        <div class="section-label">
-            <span>04</span>
-            CARA KERJA
-        </div>
-
-
-        <div class="section-intro">
-
-            <h2>
-                Sederhana dari
-                <em>awal sampai akhir.</em>
-            </h2>
-
-            <p>
-                Anda tidak perlu pusing dengan hal teknis.
-                Kami akan membantu membawa kebutuhan Anda
-                dari ide hingga siap digunakan.
-            </p>
-
-        </div>
-
-    </div>
-
-
-    <div class="process-line">
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                01
-            </div>
-
-            <div>
-
-                <h3>
-                    Ceritakan
-                </h3>
-
-                <p>
-                    Sampaikan apa yang Anda butuhkan.
-                    Tidak perlu menggunakan istilah teknis.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                02
-            </div>
-
-            <div>
-
-                <h3>
-                    Kami susun
-                </h3>
-
-                <p>
-                    Kebutuhan Anda diterjemahkan menjadi
-                    konsep dan struktur yang jelas.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                03
-            </div>
-
-            <div>
-
-                <h3>
-                    Anda melihat
-                </h3>
-
-                <p>
-                    Hasil ditinjau bersama dan disesuaikan
-                    dengan kebutuhan yang sebenarnya.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="process-item reveal">
-
-            <div class="process-number">
-                04
-            </div>
-
-            <div>
-
-                <h3>
-                    Siap digunakan
-                </h3>
-
-                <p>
-                    Hasil akhir disiapkan agar mudah digunakan,
-                    dibagikan, atau dipublikasikan.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ==================================================
-     CTA
-================================================== -->
-
-<section class="contact section" id="kontak">
-
-    <div class="contact-glow"></div>
-
-
-    <div class="contact-inner reveal">
-
-        <div class="section-label">
-            <span>05</span>
-            MULAI DARI SINI
-        </div>
-
-
-        <h2>
-            Punya sesuatu
-            <br>
-            <em>yang ingin diwujudkan?</em>
-        </h2>
-
-
-        <p>
-            Ceritakan saja. Tidak harus sudah tahu desainnya,
-            teknologinya, atau harus mulai dari mana.
-        </p>
-
-
-        <!-- GANTI NOMOR INI -->
-        <a
-            href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20berkonsultasi%20mengenai%20kebutuhan%20saya."
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-button magnetic"
-        >
-
-            <span>
-                Konsultasikan Kebutuhan
-            </span>
-
-            <b>
-                ↗
-            </b>
-
-        </a>
-
-
-        <small class="contact-note">
-            Konsultasi awal · Ceritakan kebutuhan Anda · Kami bantu arahkan
-        </small>
-
-    </div>
-
-</section>
-
-</main>
-
-
-<!-- ==================================================
-     FOOTER
-================================================== -->
-
-<footer class="footer">
-
-    <div class="footer-top">
+    <header class="navbar" id="navbar">
 
         <a href="#beranda" class="brand">
 
-            <div class="brand-image">
-                <img src="logo.png" alt="XYNY">
-            </div>
+            <span class="brand-mark">
+                <img src="logo.png" alt="Logo XYNY Studio">
+            </span>
 
-            <div class="brand-text">
+            <span class="brand-text">
                 <strong>XYNY</strong>
-                <span>STUDIO</span>
+                <small>STUDIO</small>
+            </span>
+
+        </a>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="#beranda" class="active">
+                Beranda
+            </a>
+
+            <a href="#layanan">
+                Layanan
+            </a>
+
+            <a href="#mengapa">
+                Mengapa Kami
+            </a>
+
+            <a href="#proses">
+                Proses
+            </a>
+
+            <a href="#kontak">
+                Kontak
+            </a>
+
+        </nav>
+
+
+        <a href="#kontak" class="nav-cta">
+            Mulai Sekarang
+            <span>↗</span>
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Buka menu"
+            aria-expanded="false">
+
+            <i></i>
+            <i></i>
+            <i></i>
+
+        </button>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero" id="beranda">
+
+            <div class="hero-grid"></div>
+
+            <div class="hero-orb orb-a"></div>
+            <div class="hero-orb orb-b"></div>
+
+
+            <div class="hero-copy reveal">
+
+                <div class="availability">
+
+                    <span></span>
+
+                    MENERIMA PROYEK BARU
+
+                </div>
+
+
+                <p class="hero-kicker">
+                    XYNY / DIGITAL CREATIVE STUDIO
+                </p>
+
+
+                <h1>
+
+                    Ide yang baik
+
+                    <em>
+                        pantas terlihat luar biasa.
+                    </em>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Kami membantu mengubah ide, kebutuhan, dan cerita
+                    Anda menjadi karya digital yang
+                    <strong>
+                        profesional, menarik, dan siap digunakan.
+                    </strong>
+
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a href="#layanan" class="btn btn-primary">
+
+                        Lihat Layanan
+
+                        <span>↗</span>
+
+                    </a>
+
+
+                    <a href="#kontak" class="btn btn-secondary">
+
+                        Konsultasi Gratis
+
+                    </a>
+
+                </div>
+
+
+                <div class="hero-steps">
+
+                    <div>
+                        <b>01</b>
+                        <span>IDE</span>
+                    </div>
+
+                    <i></i>
+
+                    <div>
+                        <b>02</b>
+                        <span>RANCANG</span>
+                    </div>
+
+                    <i></i>
+
+                    <div>
+                        <b>03</b>
+                        <span>WUJUDKAN</span>
+                    </div>
+
+                </div>
+
             </div>
 
-        </a>
 
 
-        <p>
-            Mengubah ide menjadi sesuatu
-            yang layak dilihat.
-        </p>
+            <!-- ================= HERO VISUAL ================= -->
+
+            <div class="hero-visual reveal reveal-right">
+
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-3"></div>
 
 
-        <a href="#beranda" class="back-top">
-            Kembali ke atas ↑
-        </a>
+                <div class="floating-note note-left">
 
-    </div>
+                    <span class="note-icon">
+                        ✦
+                    </span>
+
+                    <div>
+
+                        <b>
+                            Profesional
+                        </b>
+
+                        <small>
+                            Tampilan yang meyakinkan
+                        </small>
+
+                    </div>
+
+                </div>
 
 
-    <div class="footer-bottom">
+                <div class="showcase-card">
 
-        <span>
-            © 2026 XYNY Studio
-        </span>
+                    <div class="showcase-top">
 
-        <span>
-            Dibuat dengan tujuan.
-        </span>
+                        <span>
+                            XYNY / 2026
+                        </span>
 
-    </div>
+                        <span class="live">
+                            <i></i>
+                            AKTIF
+                        </span>
 
-</footer>
+                    </div>
 
 
-<script src="tampilan.js"></script>
+                    <div class="logo-stage">
+
+                        <div class="logo-halo"></div>
+
+                        <img
+                            src="logo.png"
+                            alt="XYNY Studio">
+
+                    </div>
+
+
+                    <div class="showcase-bottom">
+
+                        <span>
+                            KREATIF
+                        </span>
+
+                        <span>
+                            DIGITAL
+                        </span>
+
+                        <span>
+                            STRATEGIS
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="floating-note note-right">
+
+                    <span class="number">
+                        7+
+                    </span>
+
+                    <div>
+
+                        <b>
+                            Layanan
+                        </b>
+
+                        <small>
+                            Dalam satu studio
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="scroll-cue">
+
+                <span></span>
+
+                GULIR UNTUK MENJELAJAH
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TICKER ================= -->
+
+        <div class="ticker">
+
+            <div class="ticker-track">
+
+                <span>WEBSITE</span>
+                <b>✦</b>
+
+                <span>UNDANGAN DIGITAL</span>
+                <b>✦</b>
+
+                <span>GEREJA</span>
+                <b>✦</b>
+
+                <span>AKADEMIK</span>
+                <b>✦</b>
+
+                <span>DESAIN</span>
+                <b>✦</b>
+
+                <span>MEDIA</span>
+                <b>✦</b>
+
+                <span>SOSIAL MEDIA</span>
+                <b>✦</b>
+
+                <span>WEBSITE</span>
+                <b>✦</b>
+
+                <span>UNDANGAN DIGITAL</span>
+                <b>✦</b>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= LAYANAN ================= -->
+
+        <section class="section services" id="layanan">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <span class="eyebrow">
+                        01 / LAYANAN
+                    </span>
+
+                    <h2>
+
+                        Satu tempat untuk
+
+                        <br>
+
+                        <em>
+                            mewujudkan banyak hal.
+                        </em>
+
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    Kami tidak menjual sekadar "jasa".
+                    Kami membantu Anda menemukan bentuk terbaik
+                    dari sesuatu yang ingin Anda hadirkan.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="service-grid">
+
+
+                <a class="service-card service-featured reveal" href="#kontak">
+
+                    <span class="service-no">
+                        01
+                    </span>
+
+                    <div class="service-symbol">
+                        &lt;/&gt;
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Website & Pemrograman
+                        </h3>
+
+                        <p>
+
+                            Website bisnis, gereja, organisasi,
+                            profesional, halaman promosi,
+                            hingga sistem digital yang disesuaikan
+                            dengan kebutuhan.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        02
+                    </span>
+
+                    <div class="service-symbol">
+                        ♡
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Undangan Digital
+                        </h3>
+
+                        <p>
+
+                            Undangan pernikahan, wisuda,
+                            ulang tahun, acara keluarga,
+                            dan berbagai momen yang ingin dikenang.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        03
+                    </span>
+
+                    <div class="service-symbol">
+                        ⌂
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Digital Gereja & Organisasi
+                        </h3>
+
+                        <p>
+
+                            Website, informasi pelayanan,
+                            materi visual, dan kebutuhan digital
+                            untuk gereja serta organisasi.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        04
+                    </span>
+
+                    <div class="service-symbol">
+                        Aa
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Akademik
+                        </h3>
+
+                        <p>
+
+                            Penataan dokumen, presentasi,
+                            penyuntingan bahasa, visualisasi materi,
+                            dan kebutuhan pendukung akademik.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        05
+                    </span>
+
+                    <div class="service-symbol">
+                        ✳
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Desain & Identitas
+                        </h3>
+
+                        <p>
+
+                            Logo, poster, presentasi,
+                            materi promosi, identitas visual,
+                            dan kebutuhan desain yang konsisten.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        06
+                    </span>
+
+                    <div class="service-symbol">
+                        ▶
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Video & Media
+                        </h3>
+
+                        <p>
+
+                            Video pendek, media sosial,
+                            penyuntingan, subtitle, materi acara,
+                            dan konten visual yang lebih menarik.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <a class="service-card reveal" href="#kontak">
+
+                    <span class="service-no">
+                        07
+                    </span>
+
+                    <div class="service-symbol">
+                        ◎
+                    </div>
+
+                    <div class="service-content">
+
+                        <h3>
+                            Sosial Media & Branding
+                        </h3>
+
+                        <p>
+
+                            Konsep konten, kalender publikasi,
+                            materi visual, penulisan,
+                            dan tampilan akun yang lebih profesional.
+
+                        </p>
+
+                    </div>
+
+                    <span class="service-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MENGAPA ================= -->
+
+        <section class="statement section" id="mengapa">
+
+            <div class="statement-line reveal"></div>
+
+            <span class="eyebrow reveal">
+                02 / MENGAPA XYNY
+            </span>
+
+
+            <h2 class="reveal">
+
+                Bukan sekadar membuatnya jadi.
+
+                <br>
+
+                <em>
+                    Kami membuatnya terasa tepat.
+                </em>
+
+            </h2>
+
+
+            <p class="statement-text reveal">
+
+                Karena sebuah karya bukan hanya soal bentuk.
+                Cara ia dilihat, dipahami, dan dirasakan menentukan
+                apakah orang akan berhenti sejenak —
+                atau langsung pergi.
+
+            </p>
+
+
+
+            <div class="principles">
+
+                <article class="principle reveal">
+
+                    <span>01</span>
+
+                    <h3>
+                        Terlihat meyakinkan
+                    </h3>
+
+                    <p>
+                        Setiap detail dirancang agar kesan pertama
+                        bekerja untuk Anda.
+                    </p>
+
+                </article>
+
+
+                <article class="principle reveal">
+
+                    <span>02</span>
+
+                    <h3>
+                        Mudah dipahami
+                    </h3>
+
+                    <p>
+                        Desain yang baik tidak membuat orang
+                        berpikir terlalu keras untuk mengerti.
+                    </p>
+
+                </article>
+
+
+                <article class="principle reveal">
+
+                    <span>03</span>
+
+                    <h3>
+                        Siap digunakan
+                    </h3>
+
+                    <p>
+                        Hasil akhir bukan sekadar bagus dilihat,
+                        tetapi benar-benar berguna.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PROSES ================= -->
+
+        <section class="process section" id="proses">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <span class="eyebrow">
+                        03 / CARA KERJA
+                    </span>
+
+                    <h2>
+
+                        Sederhana di Anda.
+
+                        <br>
+
+                        <em>
+                            Serius di kami.
+                        </em>
+
+                    </h2>
+
+                </div>
+
+
+                <p>
+
+                    Anda tidak perlu memahami hal teknis.
+                    Ceritakan apa yang Anda butuhkan;
+                    kami membantu menerjemahkannya menjadi hasil
+                    yang jelas.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="process-list">
+
+                <article class="process-item reveal">
+
+                    <span>
+                        01
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Ceritakan kebutuhan
+                        </h3>
+
+                        <p>
+                            Kirim ide, contoh, bahan,
+                            atau sekadar gambaran yang ada
+                            di kepala Anda.
+                        </p>
+
+                    </div>
+
+                    <b>
+                        →
+                    </b>
+
+                </article>
+
+
+
+                <article class="process-item reveal">
+
+                    <span>
+                        02
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Kami susun arahnya
+                        </h3>
+
+                        <p>
+                            Kebutuhan diterjemahkan menjadi
+                            konsep, struktur, dan rancangan
+                            yang masuk akal.
+                        </p>
+
+                    </div>
+
+                    <b>
+                        →
+                    </b>
+
+                </article>
+
+
+
+                <article class="process-item reveal">
+
+                    <span>
+                        03
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Kami kerjakan
+                        </h3>
+
+                        <p>
+                            Proses produksi berjalan dengan
+                            komunikasi yang jelas dan terarah.
+                        </p>
+
+                    </div>
+
+                    <b>
+                        →
+                    </b>
+
+                </article>
+
+
+
+                <article class="process-item reveal">
+
+                    <span>
+                        04
+                    </span>
+
+                    <div>
+
+                        <h3>
+                            Siap digunakan
+                        </h3>
+
+                        <p>
+                            Hasil akhir dirapikan dan disiapkan
+                            sesuai kebutuhan Anda.
+                        </p>
+
+                    </div>
+
+                    <b>
+                        ✓
+                    </b>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CTA ================= -->
+
+        <section class="cta section" id="kontak">
+
+            <div class="cta-inner reveal">
+
+                <span class="eyebrow">
+                    04 / MULAI SESUATU
+                </span>
+
+
+                <h2>
+
+                    Ada ide di kepala?
+
+                    <br>
+
+                    <em>
+                        Mari kita wujudkan.
+                    </em>
+
+                </h2>
+
+
+                <p>
+                    Tidak harus sudah tahu persis bentuknya.
+                    Ceritakan saja dulu.
+                </p>
+
+
+                <!-- GANTI NOMOR INI -->
+
+                <a
+                    class="btn btn-primary btn-large"
+                    href="https://wa.me/6280000000000"
+                    target="_blank"
+                    rel="noopener">
+
+                    Konsultasi Gratis
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <div class="cta-mark">
+                XYNY
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-main">
+
+            <a class="brand" href="#beranda">
+
+                <span class="brand-mark">
+
+                    <img
+                        src="logo.png"
+                        alt="Logo XYNY Studio">
+
+                </span>
+
+                <span class="brand-text">
+
+                    <strong>
+                        XYNY
+                    </strong>
+
+                    <small>
+                        STUDIO
+                    </small>
+
+                </span>
+
+            </a>
+
+
+            <p>
+                Ide. Rancang. Wujudkan.
+            </p>
+
+
+            <a href="#beranda" class="top-link">
+                Kembali ke atas ↑
+            </a>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 XYNY Studio
+            </span>
+
+            <span>
+                Dibuat dengan tujuan.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="tampilan.js"></script>
 
 </body>
 </html>
