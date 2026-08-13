@@ -1,1 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>XYNY — Creative Studio</title>
+
+<meta name="description" content="XYNY — Independent Creative Studio">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f4f4f0;
+    color: #111;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 76px;
+
+    padding: 0 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 100;
+
+    background: rgba(244,244,240,.75);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.12em;
+}
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    font-size: 10px;
+    letter-spacing: .12em;
+    transition: opacity .3s;
+}
+
+nav a:hover {
+    opacity: .4;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding: 130px 5vw 70px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "XYNY";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%,-50%);
+
+    font-size: 42vw;
+
+    font-weight: 900;
+
+    letter-spacing: -.14em;
+
+    color: rgba(0,0,0,.025);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+}
+
+.hero-logo {
+    position: relative;
+    z-index: 2;
+
+    width: min(260px,55vw);
+
+    margin-bottom: 45px;
+
+    animation: reveal 1.2s ease both;
+}
+
+.hero-label {
+    position: relative;
+    z-index: 2;
+
+    font-size: 9px;
+
+    letter-spacing: .25em;
+
+    opacity: .5;
+
+    margin-bottom: 25px;
+
+    animation: up 1s .2s ease both;
+}
+
+.hero h1 {
+    position: relative;
+    z-index: 2;
+
+    font-size: clamp(55px,10vw,150px);
+
+    line-height: .82;
+
+    letter-spacing: -.1em;
+
+    font-weight: 800;
+
+    animation: up 1s .35s ease both;
+}
+
+.hero-button {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 55px;
+
+    font-size: 10px;
+
+    letter-spacing: .16em;
+
+    border-bottom: 1px solid #111;
+
+    padding-bottom: 9px;
+
+    transition: padding .4s ease;
+}
+
+.hero-button:hover {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    min-height: 80vh;
+
+    padding: 12vw 5vw;
+
+    display: grid;
+
+    grid-template-columns: 1fr 2fr;
+
+    gap: 8vw;
+
+    border-top: 1px solid rgba(0,0,0,.12);
+}
+
+.number {
+    font-size: 10px;
+    letter-spacing: .15em;
+    opacity: .4;
+}
+
+.intro h2 {
+    font-size: clamp(45px,7vw,110px);
+
+    line-height: .85;
+
+    letter-spacing: -.08em;
+}
+
+.intro p {
+    margin-top: 45px;
+
+    max-width: 550px;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    opacity: .6;
+}
+
+
+/* =========================
+   WORK
+========================= */
+
+.work {
+    background: #111;
+    color: #f4f4f0;
+
+    padding: 13vw 5vw;
+}
+
+.section-title {
+    font-size: clamp(60px,12vw,180px);
+
+    line-height: .75;
+
+    letter-spacing: -.1em;
+
+    margin-top: 50px;
+
+    margin-bottom: 10vw;
+}
+
+.projects {
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 2vw;
+}
+
+.project {
+    aspect-ratio: 1/1;
+
+    background: #222;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition: transform .5s ease;
+}
+
+.project:hover {
+    transform: scale(.98);
+}
+
+.project span {
+    font-size: 10px;
+    letter-spacing: .15em;
+}
+
+.project:nth-child(2) {
+    margin-top: 10vw;
+}
+
+.project:nth-child(3) {
+    margin-top: -5vw;
+}
+
+.project:nth-child(4) {
+    margin-top: 5vw;
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+    padding: 13vw 5vw;
+}
+
+.service {
+    border-top: 1px solid rgba(0,0,0,.15);
+
+    padding: 30px 0;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: clamp(25px,4vw,55px);
+
+    letter-spacing: -.05em;
+
+    transition: padding .4s ease;
+}
+
+.service:last-child {
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+.service:hover {
+    padding-left: 25px;
+}
+
+.service small {
+    font-size: 10px;
+
+    letter-spacing: .1em;
+
+    opacity: .4;
+
+    align-self: center;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    min-height: 90vh;
+
+    padding: 10vw 5vw;
+
+    background: #deded9;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.contact h2 {
+    font-size: clamp(70px,15vw,230px);
+
+    line-height: .72;
+
+    letter-spacing: -.12em;
+}
+
+.contact a {
+    width: fit-content;
+
+    margin-top: 70px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid #111;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    min-height: 100px;
+
+    background: #111;
+
+    color: white;
+
+    padding: 30px 5vw;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 9px;
+
+    letter-spacing: .15em;
+}
+
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes reveal {
+
+    from {
+        opacity: 0;
+        transform: scale(.85) translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+}
+
+@keyframes up {
+
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px) {
+
+    header {
+        height: 65px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 7px;
+    }
+
+    .hero {
+        padding-top: 110px;
+    }
+
+    .hero-logo {
+        width: 55vw;
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .projects {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .project:nth-child(2),
+    .project:nth-child(3),
+    .project:nth-child(4) {
+        margin-top: 0;
+    }
+
+    .service {
+        font-size: 25px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <a href="/" class="logo">
+        XYNY
+    </a>
+
+    <nav>
+        <a href="#work">WORK</a>
+        <a href="#studio">STUDIO</a>
+        <a href="#services">SERVICES</a>
+        <a href="#contact">CONTACT</a>
+    </nav>
+
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <img
+        src="assets/image/xyny-logo.png"
+        class="hero-logo"
+        alt="XYNY Studio Logo"
+    >
+
+    <div class="hero-label">
+        INDEPENDENT CREATIVE STUDIO
+    </div>
+
+    <h1>
+        WE MAKE<br>
+        IDEAS<br>
+        MATTER.
+    </h1>
+
+    <a href="#work" class="hero-button">
+        EXPLORE OUR WORK ↓
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="intro" id="studio">
+
+    <div class="number">
+        01 / STUDIO
+    </div>
+
+    <div>
+
+        <h2>
+            WE CREATE<br>
+            WITH<br>
+            PURPOSE.
+        </h2>
+
+        <p>
+            XYNY is an independent creative studio exploring
+            design, visual culture, technology and ideas.
+            We create identities, digital experiences and
+            visual stories that are built to matter.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     WORK
+========================= -->
+
+<section class="work" id="work">
+
+    <div class="number">
+        02 / SELECTED WORK
+    </div>
+
+    <h2 class="section-title">
+        SELECTED<br>
+        WORK.
+    </h2>
+
+
+    <div class="projects">
+
+        <div class="project">
+            <span>PROJECT 01 — BRANDING</span>
+        </div>
+
+        <div class="project">
+            <span>PROJECT 02 — DIGITAL</span>
+        </div>
+
+        <div class="project">
+            <span>PROJECT 03 — VISUAL</span>
+        </div>
+
+        <div class="project">
+            <span>PROJECT 04 — EXPERIMENTAL</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     SERVICES
+========================= -->
+
+<section class="services" id="services">
+
+    <div class="number">
+        03 / WHAT WE DO
+    </div>
+
+    <h2 class="section-title">
+        WHAT<br>
+        WE DO.
+    </h2>
+
+
+    <div class="service">
+        <span>01 — BRAND IDENTITY</span>
+        <small>IDENTITY</small>
+    </div>
+
+    <div class="service">
+        <span>02 — DIGITAL DESIGN</span>
+        <small>DIGITAL</small>
+    </div>
+
+    <div class="service">
+        <span>03 — ART DIRECTION</span>
+        <small>VISUAL</small>
+    </div>
+
+    <div class="service">
+        <span>04 — CREATIVE DEVELOPMENT</span>
+        <small>TECH</small>
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section class="contact" id="contact">
+
+    <div class="number">
+        04 / CONTACT
+    </div>
+
+    <h2>
+        LET'S<br>
+        MAKE<br>
+        SOMETHING.
+    </h2>
+
+    <a href="mailto:hello@xyny.studio">
+        hello@xyny.studio →
+    </a>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <span>
+        © 2026 XYNY STUDIO
+    </span>
+
+    <span>
+        INDONESIA
+    </span>
+
+</footer>
+
+
+</body>
+</html>
