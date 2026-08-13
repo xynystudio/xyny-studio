@@ -2,37 +2,62 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
 <meta name="theme-color" content="#090909">
-<meta name="description" content="Pilih gaya undangan digital XYNY Studio — Tradisional, Umum, atau Internasional.">
+
+<meta name="description"
+      content="Pilih konsep undangan digital XYNY Studio: Tradisional, Umum, atau Internasional.">
 
 <title>Undangan Digital — XYNY Studio</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+      href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@400;500;600;700&family=Italianno&display=swap"
+      rel="stylesheet">
 
 <style>
 
+/* =========================================================
+   XYNY STUDIO
+   UNDANGAN DIGITAL — PRODUCT SELECTION
+========================================================= */
+
 :root{
-    --bg:#080909;
-    --bg-soft:#101111;
-    --surface:#121313;
-    --surface-2:#171818;
+    --black:#080909;
+    --black-2:#0f1010;
+    --black-3:#151616;
 
-    --text:#f5f2eb;
-    --muted:#969795;
-    --muted-2:#666865;
+    --white:#f6f3eb;
 
-    --gold:#e6bd67;
-    --gold-light:#f4d58d;
-    --line:rgba(255,255,255,.11);
+    --muted:#959793;
+    --muted-2:#626561;
 
-    --radius:28px;
+    --gold:#dcb66c;
+    --gold-light:#f0d596;
+
+    --line:rgba(255,255,255,.10);
+
+    --green:#274637;
+    --maroon:#6e2930;
+
+    --serif:"Playfair Display",Georgia,serif;
+    --sans:"DM Sans",Arial,sans-serif;
+
     --max:1400px;
 }
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     margin:0;
@@ -46,696 +71,1360 @@ html{
 
 body{
     background:
-        radial-gradient(circle at 78% 18%, rgba(230,189,103,.075), transparent 30%),
-        radial-gradient(circle at 10% 65%, rgba(255,255,255,.025), transparent 28%),
-        var(--bg);
-    color:var(--text);
-    font-family:"DM Sans",sans-serif;
-    min-height:100vh;
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(220,182,108,.08),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(255,255,255,.025),
+            transparent 30%
+        ),
+        var(--black);
+
+    color:var(--white);
+
+    font-family:var(--sans);
+
     overflow-x:hidden;
 }
 
-/* =========================
-   GRAIN
-========================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.045;
-    z-index:100;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+body.menu-open{
+    overflow:hidden;
 }
 
-/* =========================
-   AMBIENT LIGHT
-========================= */
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-.ambient{
+button{
+    font:inherit;
+}
+
+::selection{
+    background:var(--gold);
+    color:#111;
+}
+
+
+/* =========================================================
+   GRAIN
+========================================================= */
+
+body::after{
+    content:"";
+
     position:fixed;
-    width:550px;
-    height:550px;
-    border-radius:50%;
-    background:rgba(230,189,103,.055);
-    filter:blur(100px);
+    inset:0;
+
+    z-index:100;
+
     pointer-events:none;
+
+    opacity:.035;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+
+/* =========================================================
+   BACKGROUND ORBS
+========================================================= */
+
+.glow{
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(220,182,108,.05);
+
+    filter:blur(100px);
+
+    pointer-events:none;
+
     z-index:-1;
 }
 
-.ambient.one{
-    top:-220px;
-    right:-180px;
+.glow-one{
+    top:-230px;
+    right:-200px;
 }
 
-.ambient.two{
-    bottom:-300px;
+.glow-two{
+    bottom:-260px;
     left:-220px;
-    opacity:.45;
+
+    opacity:.5;
 }
 
-/* =========================
+
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 .navbar{
     position:sticky;
-    top:18px;
-    z-index:50;
 
-    width:min(calc(100% - 36px), 1370px);
-    margin:18px auto 0;
+    top:13px;
 
-    min-height:88px;
-    padding:12px 14px 12px 18px;
+    z-index:90;
+
+    width:min(
+        calc(100% - 28px),
+        1370px
+    );
+
+    min-height:76px;
+
+    margin:13px auto 0;
+
+    padding:8px 10px 8px 14px;
 
     display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:25px;
 
-    background:rgba(10,10,10,.78);
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    border:1px solid rgba(220,182,108,.20);
+
+    border-radius:999px;
+
+    background:
+        rgba(8,9,9,.78);
+
     backdrop-filter:blur(24px);
     -webkit-backdrop-filter:blur(24px);
 
-    border:1px solid rgba(230,189,103,.22);
-    border-radius:999px;
-
     box-shadow:
-        0 20px 70px rgba(0,0,0,.35),
-        inset 0 1px rgba(255,255,255,.035);
+        0 18px 60px rgba(0,0,0,.35);
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:14px;
-    text-decoration:none;
-    color:var(--text);
+    gap:11px;
 }
 
 .brand-logo{
-    width:62px;
-    height:62px;
+    width:52px;
+    height:52px;
+
+    background:white;
+
+    border-radius:12px;
+
     object-fit:contain;
-    border-radius:14px;
-    background:#fff;
+
     padding:7px;
 }
 
-.brand-text{
+.brand-name{
     display:flex;
     flex-direction:column;
+    gap:5px;
     line-height:1;
-    gap:7px;
 }
 
-.brand-name{
-    font-size:18px;
-    font-weight:700;
-    letter-spacing:.24em;
+.brand-name strong{
+    font-size:15px;
+    letter-spacing:.25em;
 }
 
-.brand-sub{
+.brand-name small{
     color:var(--gold);
-    font-size:9px;
-    letter-spacing:.35em;
+
+    font-size:8px;
+
+    letter-spacing:.32em;
 }
 
-.nav-center{
+.nav-links{
     display:flex;
     align-items:center;
-    gap:34px;
+    gap:31px;
 }
 
-.nav-center a{
-    color:#969696;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s ease;
+.nav-links a{
+    color:#929591;
+
+    font-size:12px;
+
+    transition:.25s ease;
 }
 
-.nav-center a:hover{
+.nav-links a:hover{
     color:white;
 }
 
-.nav-center a.active{
+.nav-links a.active{
     color:white;
 }
 
 .nav-cta{
-    color:#111;
     background:var(--gold);
-    text-decoration:none;
-    padding:15px 21px;
+
+    color:#111;
+
+    padding:12px 18px;
+
     border-radius:999px;
-    font-size:14px;
+
+    font-size:12px;
+
     font-weight:700;
-    transition:.35s ease;
+
+    transition:.3s;
 }
 
 .nav-cta:hover{
-    transform:translateY(-2px);
     background:var(--gold-light);
-    box-shadow:0 12px 35px rgba(230,189,103,.2);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 12px 35px rgba(220,182,108,.16);
 }
 
-.menu{
-    width:50px;
-    height:50px;
+.menu-button{
     display:none;
-    align-items:center;
-    justify-content:center;
+
+    width:43px;
+    height:43px;
+
     border:1px solid var(--line);
+
     border-radius:50%;
+
     background:transparent;
+
     color:white;
-    font-size:23px;
 }
 
-/* =========================
+
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-    width:min(calc(100% - 50px), 1250px);
-    margin:0 auto;
-    padding:145px 0 100px;
+    width:min(
+        calc(100% - 35px),
+        1200px
+    );
+
+    margin:auto;
+
+    padding:
+        125px
+        0
+        80px;
+
     text-align:center;
 }
 
 .eyebrow{
     display:inline-flex;
+
     align-items:center;
-    gap:10px;
+
+    gap:9px;
+
     color:var(--gold);
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:700;
-    letter-spacing:.28em;
+
+    letter-spacing:.27em;
+
     text-transform:uppercase;
-    margin-bottom:28px;
+
+    margin-bottom:26px;
 }
 
 .eyebrow::before{
     content:"";
+
     width:7px;
     height:7px;
-    border-radius:50%;
+
     background:var(--gold);
-    box-shadow:0 0 20px rgba(230,189,103,.7);
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 0 5px
+        rgba(220,182,108,.08),
+        0 0 22px
+        rgba(220,182,108,.45);
 }
 
 .hero h1{
-    max-width:1000px;
-    margin:auto;
+    font-size:
+        clamp(
+            48px,
+            7vw,
+            100px
+        );
 
-    font-size:clamp(48px,7vw,105px);
-    line-height:.95;
-    letter-spacing:-.055em;
+    line-height:.94;
+
+    letter-spacing:-.06em;
+
     font-weight:600;
 }
 
 .hero h1 em{
     display:block;
-    font-family:"Playfair Display",serif;
-    font-weight:500;
+
+    font-family:var(--serif);
+
     color:var(--gold-light);
+
+    font-weight:500;
+
     letter-spacing:-.045em;
 }
 
-.hero-description{
-    max-width:650px;
-    margin:34px auto 0;
+.hero-copy{
+    max-width:670px;
+
+    margin:31px auto 0;
 
     color:var(--muted);
-    font-size:clamp(16px,1.7vw,20px);
+
+    font-size:
+        clamp(
+            15px,
+            1.6vw,
+            19px
+        );
+
     line-height:1.8;
 }
 
-.hero-description strong{
-    color:#ddd;
+.hero-copy strong{
+    color:#d9dbd8;
 }
 
-/* =========================
-   TRUST STRIP
-========================= */
+
+/* =========================================================
+   MICRO TRUST
+========================================================= */
 
 .trust{
     display:flex;
-    justify-content:center;
+
     align-items:center;
-    gap:30px;
-    margin-top:42px;
-    color:#777;
-    font-size:11px;
-    letter-spacing:.12em;
+
+    justify-content:center;
+
+    gap:18px;
+
+    margin-top:38px;
+
+    color:#686b68;
+
+    font-size:9px;
+
+    letter-spacing:.14em;
+
     text-transform:uppercase;
 }
 
 .trust-line{
-    width:40px;
+    width:35px;
     height:1px;
     background:var(--line);
 }
 
-/* =========================
+
+/* =========================================================
    CHOICES
-========================= */
+========================================================= */
 
 .choices{
-    width:min(calc(100% - 50px), 1370px);
+    width:min(
+        calc(100% - 28px),
+        var(--max)
+    );
+
     margin:auto;
-    padding-bottom:130px;
+
+    padding-bottom:110px;
 }
 
 .choice-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     border:1px solid var(--line);
 }
 
+
+/* =========================================================
+   CHOICE BASE
+========================================================= */
+
 .choice{
     position:relative;
-    min-height:610px;
-    padding:42px;
+
+    min-height:690px;
+
+    padding:32px;
 
     display:flex;
+
     flex-direction:column;
-    justify-content:space-between;
 
-    text-decoration:none;
-    color:white;
-
-    border-right:1px solid var(--line);
     overflow:hidden;
 
+    border-right:1px solid var(--line);
+
     transition:
-        transform .6s cubic-bezier(.2,.8,.2,1),
-        background .5s ease;
+        background .5s ease,
+        transform .5s cubic-bezier(.2,.8,.2,1);
 }
 
 .choice:last-child{
     border-right:0;
 }
 
-/* glow */
-
-.choice::before{
-    content:"";
-    position:absolute;
-    width:350px;
-    height:350px;
-    border-radius:50%;
-    background:rgba(230,189,103,.075);
-    filter:blur(90px);
-    top:-150px;
-    right:-140px;
-    opacity:0;
-    transition:.6s ease;
-}
-
 .choice:hover{
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.045),
-        rgba(255,255,255,.012)
-    );
+    z-index:2;
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.025);
 }
 
-.choice:hover::before{
+.choice::after{
+    content:"";
+
+    position:absolute;
+
+    width:360px;
+    height:360px;
+
+    border-radius:50%;
+
+    right:-180px;
+    top:50px;
+
+    background:rgba(220,182,108,.055);
+
+    filter:blur(80px);
+
+    opacity:0;
+
+    transition:.6s ease;
+
+    pointer-events:none;
+}
+
+.choice:hover::after{
     opacity:1;
 }
 
-.choice:hover .choice-arrow{
-    transform:translate(4px,-4px);
-    background:var(--gold);
-    color:#111;
-}
 
-.choice:hover .visual-ring{
-    transform:scale(1.08) rotate(8deg);
-}
-
-/* top */
+/* =========================================================
+   TOP
+========================================================= */
 
 .choice-top{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
+    position:relative;
+
+    z-index:4;
 }
 
 .choice-number{
-    font-size:11px;
-    letter-spacing:.2em;
-    color:#646664;
+    color:#555854;
+
+    font-size:10px;
+
+    letter-spacing:.18em;
 }
 
 .choice-icon{
-    width:58px;
-    height:58px;
+    width:54px;
+    height:54px;
+
+    border:1px solid rgba(220,182,108,.34);
+
+    border-radius:17px;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    border:1px solid rgba(230,189,103,.38);
-    border-radius:18px;
-
     color:var(--gold);
-    font-family:"Playfair Display",serif;
-    font-size:25px;
+
+    font-family:var(--serif);
+
+    font-size:22px;
 }
 
-/* visual */
 
-.choice-visual{
-    position:absolute;
-    top:145px;
-    right:35px;
-    width:190px;
-    height:190px;
-    opacity:.85;
+/* =========================================================
+   CULTURAL VISUAL — TRADITIONAL
+========================================================= */
+
+.traditional{
+    background:
+        linear-gradient(
+            145deg,
+            #15110f,
+            #100d0d
+        );
 }
 
-.visual-ring{
+/* batik field */
+
+.batik-pattern{
     position:absolute;
-    inset:20px;
-    border:1px solid rgba(230,189,103,.3);
+
+    inset:0;
+
+    opacity:.18;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 20%,
+            transparent 0 23px,
+            rgba(220,182,108,.4) 24px 26px,
+            transparent 27px
+        ),
+        radial-gradient(
+            ellipse at 70% 60%,
+            transparent 0 28px,
+            rgba(220,182,108,.25) 29px 31px,
+            transparent 32px
+        );
+
+    background-size:
+        75px 70px,
+        90px 82px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 78%
+        );
+}
+
+/* budaya badge */
+
+.culture-badge{
+    position:absolute;
+
+    right:26px;
+    top:115px;
+
+    display:flex;
+
+    gap:6px;
+
+    flex-wrap:wrap;
+
+    max-width:170px;
+
+    justify-content:flex-end;
+
+    opacity:.78;
+
+    z-index:3;
+}
+
+.culture-badge span{
+    padding:6px 9px;
+
+    border:
+        1px solid
+        rgba(220,182,108,.28);
+
+    border-radius:999px;
+
+    color:#c9aa6a;
+
+    font-size:8px;
+
+    letter-spacing:.08em;
+
+    text-transform:uppercase;
+}
+
+
+/* central cultural emblem */
+
+.traditional-art{
+    position:absolute;
+
+    width:285px;
+    height:285px;
+
+    right:25px;
+    top:180px;
+
+    border:
+        1px solid
+        rgba(220,182,108,.18);
+
     border-radius:50%;
-    transition:1s cubic-bezier(.2,.8,.2,1);
+
+    transform:rotate(-8deg);
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
 }
 
-.visual-ring::before{
+.traditional:hover
+.traditional-art{
+    transform:
+        rotate(0deg)
+        scale(1.06);
+}
+
+.traditional-art::before,
+.traditional-art::after{
     content:"";
+
     position:absolute;
-    inset:25px;
-    border:1px solid rgba(230,189,103,.18);
-    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(220,182,108,.23);
+
+    transform:rotate(45deg);
+
+    inset:38px;
 }
 
-.visual-core{
+.traditional-art::after{
+    inset:72px;
+
+    transform:rotate(0deg);
+
+    border-radius:25%;
+}
+
+.traditional-center{
     position:absolute;
-    inset:65px;
-    border:1px solid rgba(230,189,103,.5);
-    border-radius:50%;
+
+    inset:0;
+
     display:flex;
+
+    flex-direction:column;
+
     align-items:center;
+
     justify-content:center;
+
     color:var(--gold);
-    font-family:"Playfair Display",serif;
-    font-size:24px;
+
+    text-align:center;
 }
 
-/* text */
+.traditional-center strong{
+    font-family:var(--serif);
+
+    font-size:34px;
+
+    font-weight:400;
+}
+
+.traditional-center small{
+    margin-top:7px;
+
+    color:#8d7960;
+
+    font-size:8px;
+
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   GENERAL VISUAL
+========================================================= */
+
+.general{
+    background:
+        linear-gradient(
+            135deg,
+            #111414,
+            #0c0d0d
+        );
+}
+
+.general-art{
+    position:absolute;
+
+    top:145px;
+    right:25px;
+
+    width:270px;
+    height:330px;
+
+    border-radius:
+        135px
+        135px
+        18px
+        18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        radial-gradient(
+            circle at 50% 28%,
+            rgba(220,182,108,.13),
+            transparent 26%
+        ),
+        linear-gradient(
+            145deg,
+            #222624,
+            #111312
+        );
+
+    transform:rotate(5deg);
+
+    transition:
+        transform .9s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.general:hover
+.general-art{
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+}
+
+.general-art::before{
+    content:"SAVE THE DATE";
+
+    position:absolute;
+
+    top:55px;
+    left:0;
+    right:0;
+
+    text-align:center;
+
+    font-size:8px;
+
+    letter-spacing:.3em;
+
+    color:#888b87;
+}
+
+.general-art::after{
+    content:"A & R";
+
+    position:absolute;
+
+    top:95px;
+    left:0;
+    right:0;
+
+    text-align:center;
+
+    font-family:var(--serif);
+
+    font-size:50px;
+
+    color:var(--gold-light);
+
+    font-style:italic;
+}
+
+.general-lines{
+    position:absolute;
+
+    left:35px;
+    right:35px;
+    bottom:55px;
+}
+
+.general-lines span{
+    display:block;
+
+    height:1px;
+
+    margin-top:12px;
+
+    background:
+        rgba(255,255,255,.12);
+}
+
+
+/* =========================================================
+   INTERNATIONAL
+========================================================= */
+
+.international{
+    background:
+        radial-gradient(
+            circle at 80% 25%,
+            rgba(140,170,190,.07),
+            transparent 30%
+        ),
+        #0c0e10;
+}
+
+.international-art{
+    position:absolute;
+
+    top:145px;
+    right:30px;
+
+    width:290px;
+    height:290px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(185,207,220,.25);
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+.international:hover
+.international-art{
+    transform:
+        rotate(18deg)
+        scale(1.05);
+}
+
+.international-art::before{
+    content:"";
+
+    position:absolute;
+
+    inset:34px;
+
+    border:
+        1px solid
+        rgba(185,207,220,.18);
+
+    border-radius:50%;
+}
+
+.international-art::after{
+    content:"";
+
+    position:absolute;
+
+    width:85px;
+    height:85px;
+
+    border:
+        1px solid
+        rgba(220,182,108,.6);
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(45deg);
+}
+
+.international-center{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+}
+
+.international-center strong{
+    font-family:var(--serif);
+
+    font-weight:400;
+
+    font-size:28px;
+}
+
+.international-center small{
+    color:#7f898e;
+
+    font-size:8px;
+
+    letter-spacing:.2em;
+
+    margin-top:8px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
 
 .choice-content{
     position:relative;
-    z-index:2;
+
+    z-index:5;
+
     margin-top:auto;
-    max-width:410px;
+
+    max-width:430px;
 }
 
 .choice-label{
-    color:#7d7f7c;
-    font-family:"Playfair Display",serif;
+    font-family:var(--serif);
+
     font-style:italic;
-    font-size:18px;
-    margin-bottom:12px;
+
+    color:#858782;
+
+    font-size:17px;
+
+    margin-bottom:10px;
 }
 
 .choice h2{
-    font-size:clamp(27px,2.4vw,38px);
+    font-size:
+        clamp(
+            26px,
+            2.25vw,
+            35px
+        );
+
+    line-height:1.05;
+
     letter-spacing:-.04em;
-    margin-bottom:17px;
+
+    margin-bottom:15px;
 }
 
 .choice-description{
-    color:#898b88;
+    color:#858884;
+
+    font-size:14px;
+
     line-height:1.75;
-    font-size:15px;
 }
 
 .choice-tags{
     display:flex;
+
     flex-wrap:wrap;
-    gap:8px;
-    margin-top:25px;
+
+    gap:7px;
+
+    margin-top:21px;
 }
 
 .choice-tags span{
-    padding:7px 11px;
-    border:1px solid var(--line);
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    padding:6px 9px;
+
     border-radius:999px;
-    color:#777;
-    font-size:10px;
+
+    color:#70736f;
+
+    font-size:9px;
 }
+
+
+/* =========================================================
+   PRICE
+========================================================= */
 
 .choice-bottom{
     position:relative;
-    z-index:2;
+
+    z-index:5;
+
+    margin-top:28px;
+
     display:flex;
-    align-items:center;
+
+    align-items:end;
+
     justify-content:space-between;
-    margin-top:38px;
+
+    gap:15px;
 }
 
-.choice-price{
-    font-size:12px;
-    color:#777;
+.price-label{
+    color:#666965;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.1em;
 }
 
-.choice-price strong{
-    display:block;
+.price{
+    margin-top:3px;
+
+    font-size:19px;
+
     color:var(--gold-light);
-    font-size:16px;
-    margin-top:4px;
+
+    font-weight:700;
+}
+
+.price-old{
+    margin-left:7px;
+
+    color:#555752;
+
+    font-size:10px;
+
+    text-decoration:line-through;
+
+    font-weight:400;
 }
 
 .choice-arrow{
-    width:48px;
-    height:48px;
-    border:1px solid var(--line);
+    width:45px;
+    height:45px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
     border-radius:50%;
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
-    color:#aaa;
+
+    color:#8c8f8b;
+
     transition:.35s ease;
 }
 
-/* =========================
+.choice:hover
+.choice-arrow{
+    background:var(--gold);
+
+    color:#111;
+
+    transform:
+        translate(3px,-3px);
+}
+
+
+/* =========================================================
+   SMALL PROMISE
+========================================================= */
+
+.under-choices{
+    display:flex;
+
+    justify-content:center;
+
+    gap:35px;
+
+    flex-wrap:wrap;
+
+    padding-top:25px;
+
+    color:#666965;
+
+    font-size:9px;
+
+    text-transform:uppercase;
+
+    letter-spacing:.13em;
+}
+
+.under-choices span::before{
+    content:"✓";
+
+    color:var(--gold);
+
+    margin-right:7px;
+}
+
+
+/* =========================================================
    CUSTOM
-========================= */
+========================================================= */
 
 .custom{
-    width:min(calc(100% - 50px), 1370px);
+    width:min(
+        calc(100% - 28px),
+        1370px
+    );
+
     margin:auto;
-    padding-bottom:140px;
+
+    padding-bottom:110px;
 }
 
 .custom-box{
     position:relative;
+
     overflow:hidden;
 
-    padding:70px;
+    padding:
+        clamp(40px,6vw,75px);
 
-    border:1px solid rgba(230,189,103,.24);
+    border:
+        1px solid
+        rgba(220,182,108,.22);
+
     border-radius:32px;
 
     background:
         radial-gradient(
-            circle at 85% 25%,
-            rgba(230,189,103,.11),
-            transparent 32%
+            circle at 86% 20%,
+            rgba(220,182,108,.11),
+            transparent 30%
         ),
         linear-gradient(
             135deg,
             rgba(255,255,255,.045),
-            rgba(255,255,255,.012)
+            rgba(255,255,255,.01)
         );
 }
 
-.custom-box::after{
+.custom-box::before{
     content:"";
+
     position:absolute;
-    width:300px;
-    height:300px;
-    border:1px solid rgba(230,189,103,.12);
+
+    width:410px;
+    height:410px;
+
+    border:
+        1px solid
+        rgba(220,182,108,.08);
+
     border-radius:50%;
-    right:-120px;
-    bottom:-170px;
+
+    right:-180px;
+    bottom:-220px;
 }
 
-.custom-eyebrow{
+.custom-label{
     color:var(--gold);
-    font-size:11px;
+
+    font-size:10px;
+
     font-weight:700;
+
     letter-spacing:.25em;
-    margin-bottom:22px;
+
+    margin-bottom:20px;
 }
 
 .custom h2{
-    max-width:750px;
-    font-size:clamp(36px,5vw,68px);
-    line-height:1;
+    max-width:800px;
+
+    font-size:
+        clamp(
+            35px,
+            5vw,
+            67px
+        );
+
+    line-height:.98;
+
     letter-spacing:-.055em;
 }
 
 .custom h2 em{
-    font-family:"Playfair Display",serif;
+    font-family:var(--serif);
+
+    color:#a9aaa6;
+
     font-weight:400;
-    color:#aaa;
 }
 
 .custom p{
     max-width:650px;
-    color:#898b88;
+
+    color:#858783;
+
     line-height:1.8;
-    margin-top:25px;
+
+    margin-top:22px;
+
+    font-size:14px;
 }
 
 .custom-actions{
     display:flex;
-    gap:12px;
-    margin-top:35px;
+
     flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:32px;
 }
 
 .button{
     display:inline-flex;
+
     align-items:center;
-    gap:12px;
-    padding:16px 22px;
+
+    justify-content:center;
+
+    gap:11px;
+
+    padding:15px 21px;
+
     border-radius:999px;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:600;
-    transition:.35s ease;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    transition:.3s;
 }
 
-.button.primary{
-    color:#111;
+.button-primary{
     background:var(--gold);
+
+    color:#111;
 }
 
-.button.primary:hover{
+.button-primary:hover{
     transform:translateY(-3px);
+
     background:var(--gold-light);
-    box-shadow:0 18px 40px rgba(230,189,103,.16);
 }
 
-.button.secondary{
-    color:#ddd;
-    border:1px solid var(--line);
+.button-secondary{
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    color:#c4c6c2;
 }
 
-.button.secondary:hover{
-    border-color:rgba(230,189,103,.45);
+.button-secondary:hover{
+    border-color:
+        rgba(220,182,108,.4);
 }
 
-/* =========================
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-    width:min(calc(100% - 50px), 1370px);
+    width:min(
+        calc(100% - 35px),
+        1370px
+    );
+
     margin:auto;
-    padding:35px 0 45px;
 
     border-top:1px solid var(--line);
 
+    padding:30px 0 45px;
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
+
+    justify-content:space-between;
+
     gap:25px;
 
-    color:#666;
-    font-size:11px;
+    color:#626561;
+
+    font-size:10px;
 }
 
 footer a{
-    color:#888;
-    text-decoration:none;
+    color:#8c8e8a;
+
+    transition:.2s;
 }
 
 footer a:hover{
     color:var(--gold);
 }
 
-/* =========================
+
+/* =========================================================
    REVEAL
-========================= */
+========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(35px);
+
+    transform:translateY(30px);
+
     transition:
-        opacity .9s ease,
-        transform .9s cubic-bezier(.2,.8,.2,1);
+        opacity .85s ease,
+        transform .85s
+        cubic-bezier(.2,.8,.2,1);
 }
 
 .reveal.show{
     opacity:1;
+
     transform:none;
 }
 
-/* =========================
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media(max-width:900px){
+@media(max-width:930px){
 
-    .navbar{
-        min-height:72px;
-        top:10px;
-        margin-top:10px;
-        width:calc(100% - 24px);
-    }
-
-    .brand-logo{
-        width:48px;
-        height:48px;
-    }
-
-    .brand-name{
-        font-size:15px;
-    }
-
-    .brand-sub{
-        font-size:7px;
-    }
-
-    .nav-center,
+    .nav-links,
     .nav-cta{
         display:none;
     }
 
-    .menu{
+    .menu-button{
         display:flex;
-    }
-
-    .hero{
-        width:calc(100% - 35px);
-        padding:105px 0 75px;
-    }
-
-    .hero h1{
-        font-size:clamp(47px,12vw,80px);
-    }
-
-    .hero-description{
-        font-size:16px;
-        line-height:1.7;
-    }
-
-    .trust{
-        gap:15px;
-        font-size:9px;
-    }
-
-    .choices{
-        width:calc(100% - 24px);
-        padding-bottom:80px;
+        align-items:center;
+        justify-content:center;
     }
 
     .choice-grid{
@@ -743,103 +1432,169 @@ footer a:hover{
     }
 
     .choice{
-        min-height:560px;
+        min-height:610px;
+
         border-right:0;
+
         border-bottom:1px solid var(--line);
-        padding:30px;
     }
 
     .choice:last-child{
         border-bottom:0;
     }
 
-    .choice-visual{
-        top:110px;
-        right:10px;
-        transform:scale(.8);
-        transform-origin:top right;
-    }
-
-    .custom{
-        width:calc(100% - 24px);
-        padding-bottom:80px;
-    }
-
-    .custom-box{
-        padding:40px 28px;
-        border-radius:24px;
-    }
-
-    footer{
-        width:calc(100% - 30px);
-        flex-direction:column;
-        align-items:flex-start;
-    }
 }
 
-@media(max-width:480px){
 
-    .brand-text{
-        gap:5px;
+@media(max-width:600px){
+
+    .navbar{
+        top:8px;
+
+        min-height:66px;
+
+        width:
+            calc(100% - 18px);
+
+        margin-top:8px;
     }
 
-    .brand-name{
+    .brand-logo{
+        width:44px;
+        height:44px;
+    }
+
+    .brand-name strong{
         font-size:13px;
-        letter-spacing:.2em;
+    }
+
+    .brand-name small{
+        font-size:6px;
     }
 
     .hero{
-        padding-top:85px;
-    }
+        width:
+            calc(100% - 25px);
 
-    .eyebrow{
-        font-size:9px;
-        letter-spacing:.2em;
+        padding:
+            90px
+            0
+            65px;
     }
 
     .hero h1{
-        font-size:47px;
+        font-size:
+            clamp(
+                43px,
+                13vw,
+                65px
+            );
     }
 
-    .hero-description{
+    .hero-copy{
         font-size:15px;
     }
 
+    .trust{
+        gap:10px;
+        font-size:7px;
+    }
+
+    .trust-line{
+        width:22px;
+    }
+
+    .choices{
+        width:
+            calc(100% - 14px);
+    }
+
     .choice{
-        min-height:530px;
+        min-height:570px;
         padding:25px;
     }
 
     .choice h2{
-        font-size:28px;
+        font-size:27px;
     }
 
     .choice-description{
-        font-size:14px;
+        font-size:13px;
     }
 
-    .choice-visual{
-        opacity:.55;
-        transform:scale(.7);
+    .traditional-art{
+        width:245px;
+        height:245px;
+        right:0;
+        top:165px;
+        opacity:.65;
+    }
+
+    .culture-badge{
+        right:20px;
+        top:105px;
+    }
+
+    .general-art{
+        width:245px;
+        height:300px;
+        right:5px;
+        top:145px;
+        opacity:.65;
+    }
+
+    .international-art{
+        width:245px;
+        height:245px;
+        right:0;
+        top:165px;
+        opacity:.65;
+    }
+
+    .custom{
+        width:
+            calc(100% - 14px);
+    }
+
+    .custom-box{
+        padding:
+            38px
+            24px;
+
+        border-radius:24px;
     }
 
     .custom h2{
-        font-size:40px;
+        font-size:38px;
     }
+
+    footer{
+        width:
+            calc(100% - 24px);
+
+        flex-direction:column;
+
+        align-items:flex-start;
+    }
+
 }
+
 
 @media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
     *::after{
-        scroll-behavior:auto!important;
         animation:none!important;
+
         transition:none!important;
+
+        scroll-behavior:auto!important;
     }
 
     .reveal{
         opacity:1;
+
         transform:none;
     }
 }
@@ -847,19 +1602,24 @@ footer a:hover{
 </style>
 </head>
 
+
 <body>
 
-<div class="ambient one"></div>
-<div class="ambient two"></div>
+
+<div class="glow glow-one"></div>
+<div class="glow glow-two"></div>
 
 
-<!-- =========================
+<!-- =====================================================
      NAVBAR
-========================= -->
+===================================================== -->
 
 <header class="navbar">
 
-    <a href="index.html" class="brand">
+    <a
+        href="index.html"
+        class="brand"
+    >
 
         <img
             src="logo.png"
@@ -867,21 +1627,31 @@ footer a:hover{
             class="brand-logo"
         >
 
-        <div class="brand-text">
-            <span class="brand-name">XYNY</span>
-            <span class="brand-sub">STUDIO</span>
+        <div class="brand-name">
+
+            <strong>
+                XYNY
+            </strong>
+
+            <small>
+                STUDIO
+            </small>
+
         </div>
 
     </a>
 
 
-    <nav class="nav-center">
+    <nav class="nav-links">
 
         <a href="index.html">
             Beranda
         </a>
 
-        <a href="index.html#layanan" class="active">
+        <a
+            href="index.html#layanan"
+            class="active"
+        >
             Layanan
         </a>
 
@@ -910,7 +1680,10 @@ footer a:hover{
     </a>
 
 
-    <button class="menu" aria-label="Menu">
+    <button
+        class="menu-button"
+        aria-label="Menu"
+    >
         ☰
     </button>
 
@@ -918,9 +1691,9 @@ footer a:hover{
 
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <main>
 
@@ -930,28 +1703,46 @@ footer a:hover{
         UNDANGAN DIGITAL
     </div>
 
+
     <h1>
+
         Sebuah momen.
-        <em>Layak dikenang.</em>
+
+        <em>
+            Layak dikenang.
+        </em>
+
     </h1>
 
-    <p class="hero-description">
-        Bukan sekadar mengirim tautan.
-        Pilih tampilan undangan yang paling sesuai dengan
-        cerita, budaya, dan orang-orang yang ingin kamu undang.
+
+    <p class="hero-copy">
+
+        Tidak semua momen membutuhkan undangan yang mewah.
+        Tetapi setiap momen layak memiliki sesuatu yang
+        <strong>terasa seperti milikmu sendiri.</strong>
+
+        Pilih karakter yang paling dekat dengan ceritamu.
+
     </p>
+
 
     <div class="trust">
 
-        <span>Elegan</span>
+        <span>
+            Responsif
+        </span>
 
         <span class="trust-line"></span>
 
-        <span>Responsif</span>
+        <span>
+            Mudah dibagikan
+        </span>
 
         <span class="trust-line"></span>
 
-        <span>Mudah dibagikan</span>
+        <span>
+            Bisa dikustomisasi
+        </span>
 
     </div>
 
@@ -959,27 +1750,33 @@ footer a:hover{
 
 
 
-<!-- =========================
-     THREE TYPES
-========================= -->
+<!-- =====================================================
+     THREE CHOICES
+===================================================== -->
 
 <section class="choices">
 
     <div class="choice-grid">
 
 
-        <!-- TRADISIONAL -->
+        <!-- =================================================
+             TRADISIONAL
+        ================================================== -->
 
         <a
             href="demo-undangan-tradisional.html"
-            class="choice reveal"
+            class="choice traditional reveal"
         >
+
+            <div class="batik-pattern"></div>
+
 
             <div class="choice-top">
 
                 <span class="choice-number">
                     01 / 03
                 </span>
+
 
                 <span class="choice-icon">
                     ❋
@@ -988,12 +1785,35 @@ footer a:hover{
             </div>
 
 
-            <div class="choice-visual">
+            <div class="culture-badge">
 
-                <div class="visual-ring"></div>
+                <span>
+                    Jawa
+                </span>
 
-                <div class="visual-core">
-                    ✦
+                <span>
+                    Batak
+                </span>
+
+                <span>
+                    Nusantara
+                </span>
+
+            </div>
+
+
+            <div class="traditional-art">
+
+                <div class="traditional-center">
+
+                    <strong>
+                        A · R
+                    </strong>
+
+                    <small>
+                        Warisan dalam cerita
+                    </small>
+
                 </div>
 
             </div>
@@ -1005,21 +1825,39 @@ footer a:hover{
                     Warisan yang tetap hidup.
                 </div>
 
+
                 <h2>
                     Undangan Tradisional
                 </h2>
 
+
                 <p class="choice-description">
-                    Untuk pernikahan dan acara yang ingin membawa
-                    identitas daerah, adat, keluarga, dan budaya
-                    ke dalam pengalaman digital.
+
+                    Untuk kamu yang ingin membawa
+                    adat, keluarga, dan identitas budaya
+                    ke dalam undangan digital.
+
                 </p>
 
+
                 <div class="choice-tags">
-                    <span>Adat</span>
-                    <span>Batak</span>
-                    <span>Nusantara</span>
-                    <span>Budaya</span>
+
+                    <span>
+                        Jawa
+                    </span>
+
+                    <span>
+                        Batak
+                    </span>
+
+                    <span>
+                        Melayu
+                    </span>
+
+                    <span>
+                        Nusantara
+                    </span>
+
                 </div>
 
             </div>
@@ -1027,10 +1865,24 @@ footer a:hover{
 
             <div class="choice-bottom">
 
-                <div class="choice-price">
-                    Mulai dari
-                    <strong>Rp500 ribuan</strong>
+                <div>
+
+                    <div class="price-label">
+                        Mulai dari
+                    </div>
+
+                    <div class="price">
+
+                        Rp199 ribu
+
+                        <span class="price-old">
+                            Rp349 ribu
+                        </span>
+
+                    </div>
+
                 </div>
+
 
                 <div class="choice-arrow">
                     ↗
@@ -1042,11 +1894,13 @@ footer a:hover{
 
 
 
-        <!-- UMUM -->
+        <!-- =================================================
+             UMUM
+        ================================================== -->
 
         <a
             href="demo-undangan-umum.html"
-            class="choice reveal"
+            class="choice general reveal"
         >
 
             <div class="choice-top">
@@ -1055,6 +1909,7 @@ footer a:hover{
                     02 / 03
                 </span>
 
+
                 <span class="choice-icon">
                     ♡
                 </span>
@@ -1062,12 +1917,14 @@ footer a:hover{
             </div>
 
 
-            <div class="choice-visual">
+            <div class="general-art">
 
-                <div class="visual-ring"></div>
+                <div class="general-lines">
 
-                <div class="visual-core">
-                    ♡
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
                 </div>
 
             </div>
@@ -1079,21 +1936,39 @@ footer a:hover{
                     Sederhana, hangat, berkesan.
                 </div>
 
+
                 <h2>
                     Undangan Umum
                 </h2>
 
+
                 <p class="choice-description">
-                    Pilihan serbaguna untuk pernikahan, wisuda,
-                    ulang tahun, syukuran, acara keluarga,
-                    dan berbagai momen spesial lainnya.
+
+                    Pilihan serbaguna untuk pernikahan,
+                    wisuda, ulang tahun, syukuran,
+                    acara keluarga, dan momen spesial lainnya.
+
                 </p>
 
+
                 <div class="choice-tags">
-                    <span>Pernikahan</span>
-                    <span>Wisuda</span>
-                    <span>Ulang Tahun</span>
-                    <span>Acara</span>
+
+                    <span>
+                        Pernikahan
+                    </span>
+
+                    <span>
+                        Wisuda
+                    </span>
+
+                    <span>
+                        Ulang Tahun
+                    </span>
+
+                    <span>
+                        Acara
+                    </span>
+
                 </div>
 
             </div>
@@ -1101,10 +1976,24 @@ footer a:hover{
 
             <div class="choice-bottom">
 
-                <div class="choice-price">
-                    Mulai dari
-                    <strong>Rp350 ribuan</strong>
+                <div>
+
+                    <div class="price-label">
+                        Mulai dari
+                    </div>
+
+                    <div class="price">
+
+                        Rp149 ribu
+
+                        <span class="price-old">
+                            Rp249 ribu
+                        </span>
+
+                    </div>
+
                 </div>
+
 
                 <div class="choice-arrow">
                     ↗
@@ -1116,11 +2005,13 @@ footer a:hover{
 
 
 
-        <!-- INTERNATIONAL -->
+        <!-- =================================================
+             INTERNATIONAL
+        ================================================== -->
 
         <a
             href="demo-undangan-internasional.html"
-            class="choice reveal"
+            class="choice international reveal"
         >
 
             <div class="choice-top">
@@ -1129,6 +2020,7 @@ footer a:hover{
                     03 / 03
                 </span>
 
+
                 <span class="choice-icon">
                     ◇
                 </span>
@@ -1136,12 +2028,18 @@ footer a:hover{
             </div>
 
 
-            <div class="choice-visual">
+            <div class="international-art">
 
-                <div class="visual-ring"></div>
+                <div class="international-center">
 
-                <div class="visual-core">
-                    ◇
+                    <strong>
+                        M · J
+                    </strong>
+
+                    <small>
+                        Forever begins
+                    </small>
+
                 </div>
 
             </div>
@@ -1153,21 +2051,39 @@ footer a:hover{
                     Modern. Personal. Universal.
                 </div>
 
+
                 <h2>
                     Undangan Internasional
                 </h2>
 
+
                 <p class="choice-description">
-                    Untuk pasangan dan keluarga yang menginginkan
-                    estetika modern dengan nuansa elegan yang
-                    terasa cocok di mana pun acaranya berlangsung.
+
+                    Estetika modern dan elegan untuk pasangan
+                    yang menginginkan tampilan bersih,
+                    editorial, dan berkelas.
+
                 </p>
 
+
                 <div class="choice-tags">
-                    <span>Modern</span>
-                    <span>Minimalis</span>
-                    <span>Elegant</span>
-                    <span>International</span>
+
+                    <span>
+                        Modern
+                    </span>
+
+                    <span>
+                        Minimalis
+                    </span>
+
+                    <span>
+                        Editorial
+                    </span>
+
+                    <span>
+                        Elegant
+                    </span>
+
                 </div>
 
             </div>
@@ -1175,10 +2091,24 @@ footer a:hover{
 
             <div class="choice-bottom">
 
-                <div class="choice-price">
-                    Mulai dari
-                    <strong>Rp650 ribuan</strong>
+                <div>
+
+                    <div class="price-label">
+                        Mulai dari
+                    </div>
+
+                    <div class="price">
+
+                        Rp249 ribu
+
+                        <span class="price-old">
+                            Rp399 ribu
+                        </span>
+
+                    </div>
+
                 </div>
+
 
                 <div class="choice-arrow">
                     ↗
@@ -1188,6 +2118,30 @@ footer a:hover{
 
         </a>
 
+    </div>
+
+
+    <div class="under-choices">
+
+        <span>
+            Tampilan responsif
+        </span>
+
+        <span>
+            Peta lokasi
+        </span>
+
+        <span>
+            Galeri foto
+        </span>
+
+        <span>
+            Hitung mundur
+        </span>
+
+        <span>
+            RSVP
+        </span>
 
     </div>
 
@@ -1195,47 +2149,60 @@ footer a:hover{
 
 
 
-<!-- =========================
+<!-- =====================================================
      CUSTOM
-========================= -->
+===================================================== -->
 
 <section class="custom reveal">
 
     <div class="custom-box">
 
-        <div class="custom-eyebrow">
-            PUNYA GAGASAN SENDIRI?
+        <div class="custom-label">
+            TIDAK MENEMUKAN YANG PAS?
         </div>
 
+
         <h2>
-            Tidak harus memilih
-            <em>yang sudah ada.</em>
+
+            Punya konsep sendiri?
+
+            <em>
+                Justru itu yang kami suka.
+            </em>
+
         </h2>
 
+
         <p>
-            Punya konsep sendiri? Warna keluarga, adat tertentu,
-            foto khusus, susunan acara yang berbeda, atau ingin
-            membuat undangan yang benar-benar mencerminkan
-            diri kamu? Ceritakan kepada kami.
+
+            Mau gabungan adat Jawa dan Batak?
+            Ingin undangan minimalis tetapi tetap membawa
+            ornamen keluarga?
+            Atau sudah punya desain sendiri?
+
+            Ceritakan. Kami bantu menerjemahkannya
+            menjadi undangan digital yang benar-benar milikmu.
+
         </p>
 
 
         <div class="custom-actions">
 
             <a
-                href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20membuat%20undangan%20digital%20dengan%20konsep%20khusus."
+                href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20punya%20konsep%20undangan%20sendiri%20dan%20ingin%20berkonsultasi."
                 target="_blank"
                 rel="noopener"
-                class="button primary"
+                class="button button-primary"
             >
-                Konsultasikan Konsep ↗
+                Ceritakan Konsepmu ↗
             </a>
+
 
             <a
                 href="index.html"
-                class="button secondary"
+                class="button button-secondary"
             >
-                Kembali ke Beranda
+                Kembali ke XYNY Studio
             </a>
 
         </div>
@@ -1248,9 +2215,9 @@ footer a:hover{
 
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -1258,9 +2225,11 @@ footer a:hover{
         © 2026 XYNY Studio
     </span>
 
+
     <span>
-        Undangan digital yang dibuat untuk dikenang.
+        Undangan yang dibuat untuk dikenang.
     </span>
+
 
     <a href="index.html">
         XYNY Studio ↗
@@ -1272,111 +2241,190 @@ footer a:hover{
 
 <script>
 
-/* =========================
-   REVEAL ANIMATION
-========================= */
+/* =========================================================
+   REVEAL
+========================================================= */
 
-const observer = new IntersectionObserver(
-    entries => {
+const revealObserver =
+    new IntersectionObserver(
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if(entry.isIntersecting){
+                if(entry.isIntersecting){
 
-                entry.target.classList.add("show");
+                    entry.target.classList.add("show");
 
-                observer.unobserve(entry.target);
+                    revealObserver.unobserve(
+                        entry.target
+                    );
 
-            }
+                }
 
-        });
+            });
 
-    },
-    {
-        threshold:.12
-    }
-);
+        },
+        {
+            threshold:.1
+        }
+    );
+
 
 document
     .querySelectorAll(".reveal")
-    .forEach(element => observer.observe(element));
+    .forEach(element => {
+
+        revealObserver.observe(element);
+
+    });
 
 
-/* =========================
+/* =========================================================
    MOBILE MENU
-========================= */
+========================================================= */
 
-const menu = document.querySelector(".menu");
+const menuButton =
+    document.querySelector(".menu-button");
 
-menu.addEventListener("click", () => {
+const navLinks =
+    document.querySelector(".nav-links");
 
-    const links = document.querySelector(".nav-center");
 
-    if(
-        links.style.display === "flex"
-    ){
+menuButton.addEventListener(
+    "click",
+    () => {
 
-        links.style.display = "";
+        const opened =
+            navLinks.dataset.open === "true";
 
-    }else{
+        if(opened){
 
-        links.style.display = "flex";
+            navLinks.dataset.open = "false";
 
-        links.style.position = "absolute";
-        links.style.top = "78px";
-        links.style.left = "0";
-        links.style.right = "0";
+            navLinks.style.display = "";
 
-        links.style.padding = "20px";
+        }else{
 
-        links.style.flexDirection = "column";
-        links.style.alignItems = "stretch";
-        links.style.gap = "4px";
+            navLinks.dataset.open = "true";
 
-        links.style.background = "rgba(10,10,10,.96)";
-        links.style.backdropFilter = "blur(20px)";
+            navLinks.style.display = "flex";
 
-        links.style.border = "1px solid rgba(255,255,255,.1)";
-        links.style.borderRadius = "24px";
+            navLinks.style.position =
+                "absolute";
+
+            navLinks.style.top =
+                "68px";
+
+            navLinks.style.left =
+                "0";
+
+            navLinks.style.right =
+                "0";
+
+            navLinks.style.padding =
+                "18px";
+
+            navLinks.style.flexDirection =
+                "column";
+
+            navLinks.style.alignItems =
+                "stretch";
+
+            navLinks.style.gap =
+                "2px";
+
+            navLinks.style.background =
+                "rgba(8,9,9,.97)";
+
+            navLinks.style.border =
+                "1px solid rgba(255,255,255,.1)";
+
+            navLinks.style.borderRadius =
+                "22px";
+
+            navLinks.style.backdropFilter =
+                "blur(20px)";
+        }
+
     }
+);
 
-});
 
-
-/* =========================
-   MAGNETIC HOVER
-========================= */
+/* =========================================================
+   CARD MOUSE TILT — DESKTOP
+========================================================= */
 
 document
-.querySelectorAll(".choice")
-.forEach(card => {
+    .querySelectorAll(".choice")
+    .forEach(card => {
 
-    card.addEventListener("mousemove", e => {
+        card.addEventListener(
+            "mousemove",
+            event => {
 
-        if(window.innerWidth < 900) return;
+                if(window.innerWidth < 900)
+                    return;
 
-        const rect = card.getBoundingClientRect();
+                const rect =
+                    card.getBoundingClientRect();
 
-        const x =
-            (e.clientX - rect.left - rect.width / 2)
-            * .015;
+                const x =
+                    event.clientX -
+                    rect.left -
+                    rect.width / 2;
 
-        const y =
-            (e.clientY - rect.top - rect.height / 2)
-            * .015;
+                const y =
+                    event.clientY -
+                    rect.top -
+                    rect.height / 2;
 
-        card.style.transform =
-            `perspective(1000px) rotateX(${-y}deg) rotateY(${x}deg) translateY(-3px)`;
+                const rotateX =
+                    -(y / rect.height) * 2.5;
+
+                const rotateY =
+                    (x / rect.width) * 2.5;
+
+                card.style.transform =
+                    `perspective(1000px)
+                     rotateX(${rotateX}deg)
+                     rotateY(${rotateY}deg)
+                     translateY(-4px)`;
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                card.style.transform = "";
+
+            }
+        );
 
     });
 
-    card.addEventListener("mouseleave", () => {
 
-        card.style.transform = "";
+/* =========================================================
+   MOBILE MENU RESET
+========================================================= */
 
-    });
+window.addEventListener(
+    "resize",
+    () => {
 
-});
+        if(window.innerWidth > 900){
+
+            navLinks.style.display = "";
+
+            navLinks.dataset.open =
+                "false";
+
+        }
+
+    }
+);
 
 </script>
 
