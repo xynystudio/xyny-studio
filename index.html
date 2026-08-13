@@ -1,1169 +1,3459 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>XYNY Studio — Dari Ide Menjadi Nyata</title>
+    <meta charset="UTF-8">
 
-<meta name="description"
-content="XYNY Studio membantu mengubah ide, kebutuhan, dan cerita menjadi karya digital yang profesional, menarik, dan siap digunakan.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap');
+    <meta
+        name="description"
+        content="XYNY Studio membantu mengubah gagasan menjadi website, undangan digital, karya akademik, desain, video, dan identitas digital yang siap digunakan."
+    >
 
-:root{
-    --bg:#080909;
-    --bg2:#101110;
-    --text:#f4f2ed;
-    --muted:#92928e;
-    --gold:#d9b765;
-    --gold2:#f0d28a;
-    --line:rgba(255,255,255,.10);
-    --card:rgba(255,255,255,.035);
-}
+    <meta
+        name="theme-color"
+        content="#080909"
+    >
 
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
+    <meta
+        name="robots"
+        content="index, follow"
+    >
 
-html{
-    scroll-behavior:smooth;
-}
+    <title>XYNY Studio — Gagasan Menjadi Karya</title>
 
-body{
-    background:
-        radial-gradient(circle at 75% 20%,rgba(217,183,101,.09),transparent 30%),
-        radial-gradient(circle at 10% 70%,rgba(255,255,255,.035),transparent 25%),
-        var(--bg);
-    color:var(--text);
-    font-family:"DM Sans",sans-serif;
-    overflow-x:hidden;
-}
 
-body:before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
-    opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
-    z-index:100;
-}
+    <!-- =====================================================
+         FONT
+    ====================================================== -->
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-.container{
-    width:min(1180px,calc(100% - 40px));
-    margin:auto;
-}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-/* NAVBAR */
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-.navbar{
-    position:fixed;
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
-    width:min(1160px,calc(100% - 28px));
-    height:72px;
-    padding:10px 12px 10px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(10,10,10,.76);
-    backdrop-filter:blur(24px);
-    -webkit-backdrop-filter:blur(24px);
-    border-radius:100px;
-    z-index:50;
-}
 
-.brand{
-    display:flex;
-    align-items:center;
-    gap:12px;
-}
+    <style>
 
-.brand img{
-    width:48px;
-    height:48px;
-    object-fit:contain;
-    background:white;
-    border-radius:9px;
-    padding:6px;
-}
+    /* =====================================================
+       DASAR
+    ====================================================== */
 
-.brand-text strong{
-    display:block;
-    letter-spacing:2px;
-    font-size:15px;
-}
+    :root{
 
-.brand-text small{
-    color:var(--gold);
-    font-size:8px;
-    letter-spacing:3px;
-}
+        --hitam:#080909;
+        --hitam-2:#0d0e0e;
+        --kartu:#111313;
 
-.nav-links{
-    display:flex;
-    gap:30px;
-    color:#999;
-    font-size:14px;
-}
+        --putih:#f4f1ea;
+        --abu:#949590;
+        --abu-gelap:#5e605d;
 
-.nav-links a{
-    transition:.3s;
-}
+        --emas:#d9b86c;
+        --emas-terang:#f1d58f;
 
-.nav-links a:hover{
-    color:white;
-}
+        --garis:rgba(255,255,255,.09);
 
-.nav-cta{
-    padding:13px 21px;
-    border:1px solid rgba(217,183,101,.55);
-    border-radius:50px;
-    color:var(--gold2);
-    font-size:14px;
-    transition:.3s;
-}
+        --radius:24px;
 
-.nav-cta:hover{
-    background:var(--gold);
-    color:#111;
-}
-
-/* HERO */
-
-.hero{
-    min-height:100vh;
-    padding:190px 0 90px;
-    display:flex;
-    align-items:center;
-    position:relative;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1.08fr .92fr;
-    gap:70px;
-    align-items:center;
-}
-
-.status{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 16px;
-    border:1px solid rgba(217,183,101,.3);
-    border-radius:50px;
-    color:#cbb477;
-    font-size:11px;
-    letter-spacing:2px;
-    margin-bottom:30px;
-}
-
-.status i{
-    width:7px;
-    height:7px;
-    background:#a9d36b;
-    border-radius:50%;
-    box-shadow:0 0 14px #a9d36b;
-}
-
-h1{
-    font-size:clamp(52px,7vw,94px);
-    line-height:.96;
-    letter-spacing:-5px;
-    max-width:850px;
-}
-
-h1 em{
-    display:block;
-    color:var(--gold2);
-    font-family:"Playfair Display",serif;
-    font-weight:500;
-    letter-spacing:-4px;
-}
-
-.hero-text{
-    margin-top:32px;
-    color:#999;
-    font-size:18px;
-    line-height:1.8;
-    max-width:650px;
-}
-
-.hero-text strong{
-    color:#eee;
-}
-
-.buttons{
-    display:flex;
-    gap:13px;
-    margin-top:38px;
-    flex-wrap:wrap;
-}
-
-.button{
-    padding:17px 25px;
-    border-radius:50px;
-    border:1px solid var(--line);
-    transition:.35s;
-    font-weight:600;
-}
-
-.button.primary{
-    background:var(--gold2);
-    color:#141414;
-}
-
-.button.primary:hover{
-    transform:translateY(-3px);
-    box-shadow:0 15px 40px rgba(217,183,101,.18);
-}
-
-.button.secondary:hover{
-    border-color:var(--gold);
-}
-
-/* HERO ART */
-
-.visual{
-    min-height:530px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-}
-
-.orbit{
-    width:min(460px,80vw);
-    aspect-ratio:1;
-    border:1px solid rgba(217,183,101,.18);
-    border-radius:50%;
-    position:relative;
-    animation:spin 35s linear infinite;
-}
-
-.orbit:before,
-.orbit:after{
-    content:"";
-    position:absolute;
-    inset:12%;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:50%;
-}
-
-.orbit:after{
-    inset:25%;
-}
-
-.logo-core{
-    position:absolute;
-    width:180px;
-    height:180px;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    border:1px solid rgba(217,183,101,.35);
-    border-radius:50%;
-    background:rgba(255,255,255,.025);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 0 100px rgba(217,183,101,.08);
-    animation:counter 35s linear infinite;
-}
-
-.logo-core img{
-    width:115px;
-    height:115px;
-    object-fit:contain;
-}
-
-.orbit-dot{
-    position:absolute;
-    width:9px;
-    height:9px;
-    background:var(--gold2);
-    border-radius:50%;
-    box-shadow:0 0 20px var(--gold);
-}
-
-.dot1{top:12%;left:28%}
-.dot2{right:11%;top:45%}
-.dot3{bottom:17%;left:25%}
-
-.floating{
-    position:absolute;
-    padding:17px 20px;
-    border:1px solid rgba(255,255,255,.12);
-    background:rgba(15,15,15,.8);
-    backdrop-filter:blur(20px);
-    border-radius:15px;
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
-}
-
-.float1{
-    left:0;
-    top:18%;
-}
-
-.float2{
-    right:0;
-    bottom:18%;
-}
-
-.floating small{
-    display:block;
-    color:#777;
-    margin-top:4px;
-}
-
-/* SERVICES */
-
-.section{
-    padding:120px 0;
-}
-
-.section-label{
-    color:var(--gold);
-    letter-spacing:3px;
-    font-size:11px;
-    margin-bottom:20px;
-}
-
-.section-title{
-    font-size:clamp(38px,5vw,66px);
-    letter-spacing:-3px;
-    line-height:1;
-    max-width:700px;
-}
-
-.section-title em{
-    font-family:"Playfair Display",serif;
-    color:#aaa;
-}
-
-.section-intro{
-    color:#777;
-    line-height:1.8;
-    max-width:620px;
-    margin-top:22px;
-}
-
-.services{
-    border-top:1px solid var(--line);
-}
-
-.service-grid{
-    margin-top:60px;
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    border-top:1px solid var(--line);
-    border-left:1px solid var(--line);
-}
-
-.service{
-    min-height:310px;
-    padding:40px;
-    border-right:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    position:relative;
-    overflow:hidden;
-    transition:.4s;
-}
-
-.service:before{
-    content:"";
-    position:absolute;
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    background:rgba(217,183,101,.09);
-    filter:blur(60px);
-    right:-120px;
-    bottom:-120px;
-    opacity:0;
-    transition:.4s;
-}
-
-.service:hover{
-    background:rgba(255,255,255,.025);
-}
-
-.service:hover:before{
-    opacity:1;
-}
-
-.number{
-    color:#666;
-    font-size:12px;
-}
-
-.icon{
-    font-size:34px;
-    color:var(--gold2);
-    margin:55px 0 25px;
-}
-
-.service h3{
-    font-size:28px;
-    margin-bottom:12px;
-}
-
-.service p{
-    color:#777;
-    line-height:1.7;
-    max-width:430px;
-}
-
-.arrow{
-    position:absolute;
-    right:35px;
-    bottom:35px;
-    width:42px;
-    height:42px;
-    border:1px solid var(--line);
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    transition:.3s;
-}
-
-.service:hover .arrow{
-    background:var(--gold2);
-    color:#111;
-}
-
-/* STATEMENT */
-
-.statement{
-    text-align:center;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-}
-
-.statement h2{
-    font-size:clamp(42px,6vw,78px);
-    letter-spacing:-4px;
-    line-height:1;
-    max-width:1000px;
-    margin:0 auto;
-}
-
-.statement h2 em{
-    display:block;
-    font-family:"Playfair Display",serif;
-    color:var(--gold2);
-}
-
-.statement p{
-    max-width:650px;
-    color:#777;
-    line-height:1.8;
-    margin:30px auto 0;
-}
-
-/* PROCESS */
-
-.process-list{
-    margin-top:60px;
-    border-top:1px solid var(--line);
-}
-
-.process-item{
-    display:grid;
-    grid-template-columns:100px 1fr 80px;
-    gap:30px;
-    padding:35px 0;
-    border-bottom:1px solid var(--line);
-    align-items:center;
-}
-
-.process-item>span{
-    color:var(--gold);
-}
-
-.process-item h3{
-    font-size:25px;
-}
-
-.process-item p{
-    color:#777;
-    margin-top:7px;
-}
-
-.process-arrow{
-    text-align:right;
-    font-size:22px;
-    color:#777;
-}
-
-/* CTA */
-
-.cta{
-    padding-top:40px;
-}
-
-.cta-box{
-    border:1px solid rgba(217,183,101,.28);
-    background:
-        radial-gradient(circle at 80% 30%,rgba(217,183,101,.12),transparent 35%),
-        #10100f;
-    border-radius:25px;
-    padding:70px;
-    display:flex;
-    align-items:end;
-    justify-content:space-between;
-    gap:40px;
-}
-
-.cta-box h2{
-    font-size:clamp(42px,5vw,70px);
-    letter-spacing:-3px;
-    line-height:1;
-}
-
-.cta-box em{
-    color:var(--gold2);
-    font-family:"Playfair Display",serif;
-}
-
-/* FOOTER */
-
-footer{
-    padding:50px 0 35px;
-    border-top:1px solid var(--line);
-    color:#666;
-}
-
-.footer-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.footer-bottom{
-    margin-top:50px;
-    display:flex;
-    justify-content:space-between;
-    font-size:12px;
-}
-
-/* ANIMATION */
-
-.reveal{
-    opacity:0;
-    transform:translateY(25px);
-    transition:1s cubic-bezier(.2,.7,.2,1);
-}
-
-.reveal.show{
-    opacity:1;
-    transform:none;
-}
-
-@keyframes spin{
-    to{transform:rotate(360deg)}
-}
-
-@keyframes counter{
-    to{transform:translate(-50%,-50%) rotate(-360deg)}
-}
-
-/* MOBILE */
-
-@media(max-width:800px){
-
-    .navbar{
-        height:64px;
     }
 
-    .nav-links{
-        display:none;
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
     }
 
-    .nav-cta{
-        padding:10px 15px;
-        font-size:12px;
+
+    html{
+        scroll-behavior:smooth;
     }
 
-    .brand img{
-        width:40px;
-        height:40px;
+
+    body{
+
+        min-height:100vh;
+
+        overflow-x:hidden;
+
+        background:
+
+            radial-gradient(
+                circle at 85% 5%,
+                rgba(217,184,108,.11),
+                transparent 26%
+            ),
+
+            radial-gradient(
+                circle at 10% 35%,
+                rgba(255,255,255,.035),
+                transparent 24%
+            ),
+
+            var(--hitam);
+
+        color:var(--putih);
+
+        font-family:
+            "DM Sans",
+            sans-serif;
+
     }
 
-    .hero{
-        padding-top:140px;
+
+    a{
+        color:inherit;
+        text-decoration:none;
     }
 
-    .hero-grid{
-        grid-template-columns:1fr;
-        gap:30px;
+
+    button{
+        font:inherit;
     }
 
-    h1{
-        letter-spacing:-3px;
-    }
 
-    h1 em{
-        letter-spacing:-2px;
-    }
-
-    .visual{
-        min-height:390px;
-    }
-
-    .orbit{
-        width:330px;
-    }
-
-    .logo-core{
-        width:130px;
-        height:130px;
-    }
-
-    .logo-core img{
-        width:80px;
-        height:80px;
-    }
-
-    .floating{
-        transform:scale(.82);
-    }
-
-    .float1{
-        left:-15px;
-    }
-
-    .float2{
-        right:-15px;
-    }
-
-    .service-grid{
-        grid-template-columns:1fr;
-    }
-
-    .service{
-        min-height:270px;
-    }
-
-    .cta-box{
-        padding:40px 25px;
+    img{
+        max-width:100%;
         display:block;
     }
 
-    .cta-box .button{
-        display:inline-block;
-        margin-top:30px;
-    }
-
-    .process-item{
-        grid-template-columns:45px 1fr;
-    }
-
-    .process-arrow{
-        display:none;
-    }
-
-    .footer-top,
-    .footer-bottom{
-        display:block;
-    }
-
-    .footer-bottom span{
-        display:block;
-        margin-top:12px;
-    }
-}
-
-@media(max-width:430px){
 
     .container{
-        width:min(100% - 28px,1180px);
+
+        width:min(
+            1180px,
+            calc(100% - 40px)
+        );
+
+        margin:auto;
+
     }
+
+
+    /* =====================================================
+       TEKSTUR
+    ====================================================== */
+
+    body::before{
+
+        content:"";
+
+        position:fixed;
+
+        inset:0;
+
+        z-index:100;
+
+        pointer-events:none;
+
+        opacity:.025;
+
+        background-image:
+            url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+    }
+
+
+    /* =====================================================
+       NAVBAR
+    ====================================================== */
 
     .navbar{
-        width:calc(100% - 18px);
+
+        position:fixed;
+
+        z-index:50;
+
+        top:18px;
+
+        left:50%;
+
+        transform:translateX(-50%);
+
+        width:min(
+            1160px,
+            calc(100% - 26px)
+        );
+
+        min-height:68px;
+
+        padding:
+            8px 10px 8px 18px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        border:1px solid var(--garis);
+
+        border-radius:100px;
+
+        background:
+            rgba(8,9,9,.72);
+
+        backdrop-filter:blur(24px);
+
+        -webkit-backdrop-filter:blur(24px);
+
+        transition:.35s;
+
     }
+
+
+    .navbar.scrolled{
+
+        background:
+            rgba(8,9,9,.92);
+
+        border-color:
+            rgba(255,255,255,.14);
+
+        box-shadow:
+            0 20px 70px rgba(0,0,0,.35);
+
+    }
+
+
+    .brand{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:11px;
+
+    }
+
+
+    .brand-logo{
+
+        width:46px;
+
+        height:46px;
+
+        padding:6px;
+
+        object-fit:contain;
+
+        border-radius:10px;
+
+        background:#fff;
+
+    }
+
+
+    .brand-text strong{
+
+        display:block;
+
+        font-size:14px;
+
+        letter-spacing:3px;
+
+    }
+
+
+    .brand-text span{
+
+        display:block;
+
+        margin-top:2px;
+
+        color:var(--emas);
+
+        font-size:8px;
+
+        letter-spacing:3px;
+
+    }
+
+
+    .nav-links{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:28px;
+
+    }
+
+
+    .nav-links a{
+
+        color:#858681;
+
+        font-size:13px;
+
+        transition:.3s;
+
+    }
+
+
+    .nav-links a:hover{
+
+        color:#fff;
+
+    }
+
 
     .nav-cta{
-        display:none;
+
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:9px;
+
+        padding:
+            12px 18px;
+
+        border:1px solid var(--garis);
+
+        border-radius:100px;
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        font-size:12px;
+
+        font-weight:600;
+
+        transition:.3s;
+
     }
+
+
+    .nav-cta:hover{
+
+        transform:translateY(-2px);
+
+        box-shadow:
+            0 12px 35px
+            rgba(217,184,108,.18);
+
+    }
+
+
+    .menu-button{
+
+        display:none;
+
+        width:44px;
+
+        height:44px;
+
+        border:1px solid var(--garis);
+
+        border-radius:50%;
+
+        background:transparent;
+
+        color:#fff;
+
+        cursor:pointer;
+
+    }
+
+
+    .menu-button span{
+
+        display:block;
+
+        width:16px;
+
+        height:1px;
+
+        margin:4px auto;
+
+        background:#fff;
+
+    }
+
+
+    /* =====================================================
+       HERO
+    ====================================================== */
 
     .hero{
-        padding-top:125px;
+
+        position:relative;
+
+        min-height:100svh;
+
+        padding:
+            180px 0 90px;
+
+        display:grid;
+
+        grid-template-columns:
+            1.05fr .95fr;
+
+        align-items:center;
+
+        gap:70px;
+
     }
 
-    .hero-text{
-        font-size:16px;
+
+    .hero::before{
+
+        content:"";
+
+        position:absolute;
+
+        width:480px;
+
+        height:480px;
+
+        right:-220px;
+
+        top:110px;
+
+        border-radius:50%;
+
+        background:
+            rgba(217,184,108,.07);
+
+        filter:blur(100px);
+
+        pointer-events:none;
+
     }
 
-    .visual{
-        min-height:340px;
+
+    .eyebrow{
+
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:10px;
+
+        color:var(--emas);
+
+        font-size:10px;
+
+        font-weight:600;
+
+        letter-spacing:3px;
+
     }
 
-    .orbit{
-        width:280px;
+
+    .eyebrow::before{
+
+        content:"";
+
+        width:24px;
+
+        height:1px;
+
+        background:var(--emas);
+
     }
+
+
+    .hero h1{
+
+        max-width:760px;
+
+        margin-top:24px;
+
+        font-size:
+            clamp(
+                52px,
+                7vw,
+                94px
+            );
+
+        line-height:.94;
+
+        letter-spacing:-5px;
+
+        font-weight:600;
+
+    }
+
+
+    .hero h1 em{
+
+        display:block;
+
+        color:var(--emas-terang);
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-weight:500;
+
+        letter-spacing:-4px;
+
+    }
+
+
+    .hero-description{
+
+        max-width:620px;
+
+        margin-top:30px;
+
+        color:var(--abu);
+
+        font-size:17px;
+
+        line-height:1.85;
+
+    }
+
+
+    .hero-description strong{
+
+        color:#dedbd4;
+
+        font-weight:500;
+
+    }
+
+
+    .hero-actions{
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        gap:11px;
+
+        margin-top:34px;
+
+    }
+
+
+    .button{
+
+        min-height:53px;
+
+        display:inline-flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        gap:10px;
+
+        padding:
+            0 22px;
+
+        border-radius:100px;
+
+        border:1px solid var(--garis);
+
+        font-size:13px;
+
+        font-weight:600;
+
+        transition:.3s;
+
+    }
+
+
+    .button:hover{
+
+        transform:translateY(-3px);
+
+    }
+
+
+    .button.primary{
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        border-color:var(--emas-terang);
+
+    }
+
+
+    .button.secondary{
+
+        color:#aaa;
+
+    }
+
+
+    .button.secondary:hover{
+
+        color:#fff;
+
+        border-color:
+            rgba(255,255,255,.22);
+
+    }
+
+
+    .hero-note{
+
+        display:flex;
+
+        align-items:center;
+
+        gap:12px;
+
+        margin-top:38px;
+
+        color:#62645f;
+
+        font-size:11px;
+
+    }
+
+
+    .hero-note-dot{
+
+        width:7px;
+
+        height:7px;
+
+        border-radius:50%;
+
+        background:#7acb8a;
+
+        box-shadow:
+            0 0 15px
+            rgba(122,203,138,.55);
+
+    }
+
+
+    /* =====================================================
+       HERO VISUAL
+    ====================================================== */
+
+    .hero-visual{
+
+        position:relative;
+
+        min-height:570px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+
+    .visual-card{
+
+        position:relative;
+
+        width:min(
+            440px,
+            100%
+        );
+
+        aspect-ratio:4 / 5;
+
+        overflow:hidden;
+
+        border:
+            1px solid
+            rgba(255,255,255,.12);
+
+        border-radius:32px;
+
+        background:
+
+            radial-gradient(
+                circle at 50% 45%,
+                rgba(217,184,108,.12),
+                transparent 34%
+            ),
+
+            linear-gradient(
+                145deg,
+                #151716,
+                #090a0a
+            );
+
+        box-shadow:
+            0 45px 100px
+            rgba(0,0,0,.42);
+
+        transform:
+            rotate(2deg);
+
+        animation:
+            cardFloat 7s ease-in-out infinite;
+
+    }
+
+
+    @keyframes cardFloat{
+
+        0%,100%{
+            transform:
+                rotate(2deg)
+                translateY(0);
+        }
+
+        50%{
+            transform:
+                rotate(1deg)
+                translateY(-10px);
+        }
+
+    }
+
+
+    .visual-card::before{
+
+        content:"";
+
+        position:absolute;
+
+        inset:15px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.07);
+
+        border-radius:23px;
+
+    }
+
+
+    .visual-top{
+
+        position:absolute;
+
+        top:34px;
+
+        left:36px;
+
+        right:36px;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        color:#656762;
+
+        font-size:9px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .visual-core{
+
+        position:absolute;
+
+        inset:0;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+
+    .visual-ring{
+
+        position:absolute;
+
+        width:240px;
+
+        height:240px;
+
+        border:
+            1px solid
+            rgba(217,184,108,.22);
+
+        border-radius:50%;
+
+        animation:
+            spin 18s linear infinite;
+
+    }
+
+
+    .visual-ring:nth-child(2){
+
+        width:310px;
+
+        height:180px;
+
+        transform:rotate(45deg);
+
+        border-color:
+            rgba(255,255,255,.08);
+
+        animation-duration:25s;
+
+        animation-direction:reverse;
+
+    }
+
+
+    .visual-ring:nth-child(3){
+
+        width:180px;
+
+        height:310px;
+
+        transform:rotate(-35deg);
+
+        border-color:
+            rgba(217,184,108,.12);
+
+        animation-duration:30s;
+
+    }
+
+
+    @keyframes spin{
+
+        from{
+            rotate:0deg;
+        }
+
+        to{
+            rotate:360deg;
+        }
+
+    }
+
+
+    .visual-logo{
+
+        position:relative;
+
+        z-index:2;
+
+        width:112px;
+
+        height:112px;
+
+        padding:18px;
+
+        object-fit:contain;
+
+        border-radius:28px;
+
+        background:#fff;
+
+        box-shadow:
+            0 25px 70px
+            rgba(217,184,108,.12);
+
+    }
+
+
+    .visual-bottom{
+
+        position:absolute;
+
+        left:36px;
+
+        right:36px;
+
+        bottom:34px;
+
+        display:flex;
+
+        justify-content:space-between;
+
+        color:#5f615d;
+
+        font-size:8px;
+
+        letter-spacing:2px;
+
+    }
+
 
     .floating{
-        padding:12px;
-        font-size:12px;
+
+        position:absolute;
+
+        z-index:3;
+
+        padding:15px 17px;
+
+        display:flex;
+
+        align-items:center;
+
+        gap:12px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.1);
+
+        border-radius:15px;
+
+        background:
+            rgba(15,16,16,.85);
+
+        backdrop-filter:blur(18px);
+
+        box-shadow:
+            0 20px 50px
+            rgba(0,0,0,.28);
+
     }
 
-    .service{
-        padding:30px 25px;
+
+    .floating.one{
+
+        top:14%;
+
+        left:-20px;
+
+        animation:
+            floatingOne 6s ease-in-out infinite;
+
     }
+
+
+    .floating.two{
+
+        right:-20px;
+
+        bottom:16%;
+
+        animation:
+            floatingTwo 6s ease-in-out infinite;
+
+    }
+
+
+    @keyframes floatingOne{
+
+        0%,100%{
+            transform:translateY(0);
+        }
+
+        50%{
+            transform:translateY(-8px);
+        }
+
+    }
+
+
+    @keyframes floatingTwo{
+
+        0%,100%{
+            transform:translateY(0);
+        }
+
+        50%{
+            transform:translateY(8px);
+        }
+
+    }
+
+
+    .floating-icon{
+
+        width:32px;
+
+        height:32px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        border-radius:10px;
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        font-size:15px;
+
+    }
+
+
+    .floating strong{
+
+        display:block;
+
+        font-size:11px;
+
+    }
+
+
+    .floating small{
+
+        display:block;
+
+        margin-top:3px;
+
+        color:#666;
+
+        font-size:9px;
+
+    }
+
+
+    /* =====================================================
+       TRUST STRIP
+    ====================================================== */
+
+    .trust{
+
+        padding:
+            26px 0;
+
+        border-top:
+            1px solid var(--garis);
+
+        border-bottom:
+            1px solid var(--garis);
+
+        overflow:hidden;
+
+    }
+
+
+    .trust-track{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        gap:30px;
+
+        color:#595b57;
+
+        font-size:10px;
+
+        font-weight:600;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .trust-track b{
+
+        color:var(--emas);
+
+        font-size:10px;
+
+    }
+
+
+    /* =====================================================
+       LAYANAN
+    ====================================================== */
 
     .section{
-        padding:85px 0;
+
+        padding:
+            125px 0;
+
     }
-}
-</style>
+
+
+    .section-label{
+
+        margin-bottom:20px;
+
+        color:var(--emas);
+
+        font-size:10px;
+
+        font-weight:600;
+
+        letter-spacing:3px;
+
+    }
+
+
+    .section-heading{
+
+        display:flex;
+
+        align-items:end;
+
+        justify-content:space-between;
+
+        gap:50px;
+
+        margin-bottom:55px;
+
+    }
+
+
+    .section-heading h2{
+
+        max-width:700px;
+
+        font-size:
+            clamp(
+                40px,
+                5vw,
+                67px
+            );
+
+        line-height:.98;
+
+        letter-spacing:-3px;
+
+    }
+
+
+    .section-heading h2 em{
+
+        color:#aaa;
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-weight:500;
+
+    }
+
+
+    .section-heading p{
+
+        max-width:390px;
+
+        color:#747671;
+
+        font-size:13px;
+
+        line-height:1.8;
+
+    }
+
+
+    /* =====================================================
+       SERVICE GRID
+    ====================================================== */
+
+    .services{
+
+        display:grid;
+
+        grid-template-columns:
+            repeat(3,1fr);
+
+        border-top:
+            1px solid var(--garis);
+
+        border-left:
+            1px solid var(--garis);
+
+    }
+
+
+    .service{
+
+        position:relative;
+
+        min-height:330px;
+
+        padding:32px;
+
+        border-right:
+            1px solid var(--garis);
+
+        border-bottom:
+            1px solid var(--garis);
+
+        background:
+            rgba(255,255,255,.01);
+
+        overflow:hidden;
+
+        transition:
+            background .4s,
+            transform .4s;
+
+    }
+
+
+    .service::after{
+
+        content:"";
+
+        position:absolute;
+
+        width:180px;
+
+        height:180px;
+
+        right:-90px;
+
+        bottom:-90px;
+
+        border-radius:50%;
+
+        background:
+            rgba(217,184,108,.08);
+
+        filter:blur(50px);
+
+        transition:.5s;
+
+    }
+
+
+    .service:hover{
+
+        background:
+            rgba(255,255,255,.028);
+
+    }
+
+
+    .service:hover::after{
+
+        transform:scale(1.5);
+
+    }
+
+
+    .service-number{
+
+        color:#555752;
+
+        font-size:10px;
+
+        letter-spacing:2px;
+
+    }
+
+
+    .service-icon{
+
+        width:48px;
+
+        height:48px;
+
+        margin-top:42px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        border:
+            1px solid
+            rgba(217,184,108,.2);
+
+        border-radius:14px;
+
+        color:var(--emas-terang);
+
+        font-size:17px;
+
+    }
+
+
+    .service h3{
+
+        margin-top:25px;
+
+        font-size:21px;
+
+        letter-spacing:-.5px;
+
+    }
+
+
+    .service p{
+
+        margin-top:9px;
+
+        color:#696b67;
+
+        font-size:12px;
+
+        line-height:1.75;
+
+    }
+
+
+    .service-arrow{
+
+        position:absolute;
+
+        right:30px;
+
+        bottom:30px;
+
+        width:38px;
+
+        height:38px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        border:
+            1px solid var(--garis);
+
+        border-radius:50%;
+
+        color:#777;
+
+        transition:.35s;
+
+    }
+
+
+    .service:hover .service-arrow{
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        border-color:var(--emas-terang);
+
+        transform:rotate(5deg);
+
+    }
+
+
+    /* =====================================================
+       FEATURE
+    ====================================================== */
+
+    .feature{
+
+        position:relative;
+
+        padding:
+            90px 0;
+
+        overflow:hidden;
+
+    }
+
+
+    .feature-box{
+
+        position:relative;
+
+        min-height:470px;
+
+        display:grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        align-items:center;
+
+        gap:70px;
+
+        padding:70px;
+
+        border:
+            1px solid var(--garis);
+
+        border-radius:30px;
+
+        background:
+            linear-gradient(
+                130deg,
+                rgba(217,184,108,.07),
+                rgba(255,255,255,.015)
+            );
+
+        overflow:hidden;
+
+    }
+
+
+    .feature-box::after{
+
+        content:"";
+
+        position:absolute;
+
+        width:500px;
+
+        height:500px;
+
+        right:-260px;
+
+        top:-200px;
+
+        border-radius:50%;
+
+        background:
+            rgba(217,184,108,.08);
+
+        filter:blur(80px);
+
+    }
+
+
+    .feature h2{
+
+        position:relative;
+
+        z-index:2;
+
+        max-width:600px;
+
+        font-size:
+            clamp(
+                38px,
+                5vw,
+                65px
+            );
+
+        line-height:1;
+
+        letter-spacing:-3px;
+
+    }
+
+
+    .feature h2 em{
+
+        color:var(--emas-terang);
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-weight:500;
+
+    }
+
+
+    .feature p{
+
+        position:relative;
+
+        z-index:2;
+
+        max-width:540px;
+
+        margin-top:20px;
+
+        color:#777;
+
+        font-size:14px;
+
+        line-height:1.8;
+
+    }
+
+
+    .feature-button{
+
+        position:relative;
+
+        z-index:2;
+
+        display:inline-flex;
+
+        margin-top:30px;
+
+        min-height:50px;
+
+        align-items:center;
+
+        padding:
+            0 21px;
+
+        border-radius:100px;
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        font-size:13px;
+
+        font-weight:600;
+
+    }
+
+
+    .feature-visual{
+
+        position:relative;
+
+        z-index:2;
+
+        min-height:300px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+    }
+
+
+    .mini-window{
+
+        width:min(
+            390px,
+            100%
+        );
+
+        padding:14px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.1);
+
+        border-radius:20px;
+
+        background:#0b0c0c;
+
+        transform:rotate(3deg);
+
+        box-shadow:
+            0 35px 70px
+            rgba(0,0,0,.3);
+
+    }
+
+
+    .mini-bar{
+
+        display:flex;
+
+        gap:5px;
+
+        padding:5px 3px 12px;
+
+    }
+
+
+    .mini-dot{
+
+        width:5px;
+
+        height:5px;
+
+        border-radius:50%;
+
+        background:#444;
+
+    }
+
+
+    .mini-content{
+
+        min-height:220px;
+
+        padding:25px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.06);
+
+        border-radius:13px;
+
+        background:
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(217,184,108,.12),
+                transparent 35%
+            ),
+
+            #101111;
+
+    }
+
+
+    .mini-line{
+
+        width:45%;
+
+        height:7px;
+
+        margin-bottom:13px;
+
+        border-radius:10px;
+
+        background:#363936;
+
+    }
+
+
+    .mini-line.large{
+
+        width:78%;
+
+        height:16px;
+
+        background:#777;
+
+    }
+
+
+    .mini-line.short{
+
+        width:55%;
+
+    }
+
+
+    .mini-button{
+
+        width:100px;
+
+        height:30px;
+
+        margin-top:25px;
+
+        border-radius:100px;
+
+        background:var(--emas);
+
+    }
+
+
+    /* =====================================================
+       CARA KERJA
+    ====================================================== */
+
+    .process{
+
+        display:grid;
+
+        grid-template-columns:
+            .8fr 1.2fr;
+
+        gap:100px;
+
+    }
+
+
+    .process-intro h2{
+
+        margin-top:20px;
+
+        font-size:
+            clamp(
+                40px,
+                5vw,
+                62px
+            );
+
+        line-height:1;
+
+        letter-spacing:-3px;
+
+    }
+
+
+    .process-intro h2 em{
+
+        color:#999;
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-weight:500;
+
+    }
+
+
+    .process-intro p{
+
+        max-width:430px;
+
+        margin-top:22px;
+
+        color:#6e706b;
+
+        font-size:13px;
+
+        line-height:1.8;
+
+    }
+
+
+    .steps{
+
+        border-top:
+            1px solid var(--garis);
+
+    }
+
+
+    .step{
+
+        display:grid;
+
+        grid-template-columns:
+            55px 1fr;
+
+        gap:25px;
+
+        padding:
+            28px 0;
+
+        border-bottom:
+            1px solid var(--garis);
+
+    }
+
+
+    .step-number{
+
+        color:var(--emas);
+
+        font-size:11px;
+
+        letter-spacing:1px;
+
+    }
+
+
+    .step h3{
+
+        font-size:17px;
+
+    }
+
+
+    .step p{
+
+        margin-top:8px;
+
+        color:#676965;
+
+        font-size:12px;
+
+        line-height:1.7;
+
+    }
+
+
+    /* =====================================================
+       TIDAK TAHU
+    ====================================================== */
+
+    .help{
+
+        padding:
+            80px 0 130px;
+
+    }
+
+
+    .help-box{
+
+        position:relative;
+
+        overflow:hidden;
+
+        padding:
+            75px;
+
+        border:
+            1px solid
+            rgba(217,184,108,.22);
+
+        border-radius:30px;
+
+        background:
+            radial-gradient(
+                circle at 90% 30%,
+                rgba(217,184,108,.12),
+                transparent 32%
+            ),
+
+            #101111;
+
+    }
+
+
+    .help-box::after{
+
+        content:"?";
+
+        position:absolute;
+
+        right:40px;
+
+        top:-40px;
+
+        color:
+            rgba(217,184,108,.045);
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-size:260px;
+
+        line-height:1;
+
+    }
+
+
+    .help-box h2{
+
+        position:relative;
+
+        z-index:2;
+
+        max-width:750px;
+
+        margin-top:20px;
+
+        font-size:
+            clamp(
+                40px,
+                5vw,
+                67px
+            );
+
+        line-height:1;
+
+        letter-spacing:-3px;
+
+    }
+
+
+    .help-box h2 em{
+
+        color:var(--emas-terang);
+
+        font-family:
+            "Playfair Display",
+            serif;
+
+        font-weight:500;
+
+    }
+
+
+    .help-box p{
+
+        position:relative;
+
+        z-index:2;
+
+        max-width:570px;
+
+        margin-top:20px;
+
+        color:#777;
+
+        font-size:13px;
+
+        line-height:1.8;
+
+    }
+
+
+    .help-button{
+
+        position:relative;
+
+        z-index:2;
+
+        display:inline-flex;
+
+        align-items:center;
+
+        gap:10px;
+
+        margin-top:30px;
+
+        min-height:50px;
+
+        padding:
+            0 21px;
+
+        border-radius:100px;
+
+        color:#111;
+
+        background:var(--emas-terang);
+
+        font-size:13px;
+
+        font-weight:600;
+
+    }
+
+
+    /* =====================================================
+       FOOTER
+    ====================================================== */
+
+    footer{
+
+        padding:
+            35px 0;
+
+        border-top:
+            1px solid var(--garis);
+
+        color:#5c5e59;
+
+        font-size:11px;
+
+    }
+
+
+    .footer-row{
+
+        display:flex;
+
+        justify-content:space-between;
+
+        gap:30px;
+
+    }
+
+
+    /* =====================================================
+       ANIMASI REVEAL
+    ====================================================== */
+
+    .reveal{
+
+        opacity:0;
+
+        transform:
+            translateY(25px);
+
+        transition:
+            opacity .8s ease,
+            transform .8s
+            cubic-bezier(.2,.7,.2,1);
+
+    }
+
+
+    .reveal.visible{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+
+    /* =====================================================
+       TABLET
+    ====================================================== */
+
+    @media(max-width:950px){
+
+        .nav-links{
+
+            display:none;
+
+        }
+
+
+        .menu-button{
+
+            display:block;
+
+        }
+
+
+        .nav-cta{
+
+            display:none;
+
+        }
+
+
+        .hero{
+
+            grid-template-columns:1fr;
+
+            gap:60px;
+
+        }
+
+
+        .hero-visual{
+
+            min-height:500px;
+
+        }
+
+
+        .services{
+
+            grid-template-columns:
+                repeat(2,1fr);
+
+        }
+
+
+        .feature-box{
+
+            grid-template-columns:1fr;
+
+            padding:50px;
+
+        }
+
+
+        .process{
+
+            grid-template-columns:1fr;
+
+            gap:55px;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       PONSEL
+    ====================================================== */
+
+    @media(max-width:620px){
+
+        .container{
+
+            width:
+                calc(100% - 28px);
+
+        }
+
+
+        .navbar{
+
+            top:10px;
+
+            width:
+                calc(100% - 18px);
+
+        }
+
+
+        .hero{
+
+            padding:
+                135px 0 70px;
+
+        }
+
+
+        .hero h1{
+
+            font-size:
+                clamp(
+                    48px,
+                    14vw,
+                    70px
+                );
+
+            letter-spacing:-3px;
+
+        }
+
+
+        .hero h1 em{
+
+            letter-spacing:-2px;
+
+        }
+
+
+        .hero-description{
+
+            font-size:15px;
+
+        }
+
+
+        .hero-actions{
+
+            flex-direction:column;
+
+        }
+
+
+        .button{
+
+            width:100%;
+
+        }
+
+
+        .hero-visual{
+
+            min-height:430px;
+
+        }
+
+
+        .visual-card{
+
+            width:
+                min(
+                    340px,
+                    88vw
+                );
+
+        }
+
+
+        .floating.one{
+
+            left:-5px;
+
+        }
+
+
+        .floating.two{
+
+            right:-5px;
+
+        }
+
+
+        .trust-track{
+
+            justify-content:flex-start;
+
+            width:max-content;
+
+            animation:
+                marquee 22s linear infinite;
+
+        }
+
+
+        @keyframes marquee{
+
+            to{
+                transform:translateX(-50%);
+            }
+
+        }
+
+
+        .section{
+
+            padding:
+                85px 0;
+
+        }
+
+
+        .section-heading{
+
+            display:block;
+
+            margin-bottom:38px;
+
+        }
+
+
+        .section-heading p{
+
+            margin-top:20px;
+
+        }
+
+
+        .services{
+
+            grid-template-columns:1fr;
+
+        }
+
+
+        .service{
+
+            min-height:290px;
+
+        }
+
+
+        .feature{
+
+            padding:
+                50px 0;
+
+        }
+
+
+        .feature-box{
+
+            padding:35px 25px;
+
+        }
+
+
+        .feature-visual{
+
+            min-height:250px;
+
+        }
+
+
+        .process{
+
+            gap:40px;
+
+        }
+
+
+        .help{
+
+            padding:
+                50px 0 80px;
+
+        }
+
+
+        .help-box{
+
+            padding:
+                45px 25px;
+
+        }
+
+
+        .help-box::after{
+
+            right:-15px;
+
+            font-size:180px;
+
+        }
+
+
+        .footer-row{
+
+            display:block;
+
+        }
+
+
+        .footer-row span{
+
+            display:block;
+
+            margin-top:8px;
+
+        }
+
+    }
+
+
+    /* =====================================================
+       REDUCE MOTION
+    ====================================================== */
+
+    @media(prefers-reduced-motion:reduce){
+
+        html{
+            scroll-behavior:auto;
+        }
+
+
+        *,
+        *::before,
+        *::after{
+
+            animation-duration:.01ms !important;
+
+            animation-iteration-count:1 !important;
+
+            transition-duration:.01ms !important;
+
+        }
+
+    }
+
+    </style>
+
 </head>
+
 
 <body>
 
-<header class="navbar">
 
-    <a href="#" class="brand">
-        <img src="logo.png" alt="Logo XYNY Studio">
+<!-- =====================================================
+     NAVIGASI
+====================================================== -->
+
+<header
+    class="navbar"
+    id="navbar"
+>
+
+    <a
+        href="index.html"
+        class="brand"
+        aria-label="XYNY Studio"
+    >
+
+        <img
+            src="logo.png"
+            alt="Logo XYNY Studio"
+            class="brand-logo"
+        >
 
         <div class="brand-text">
+
             <strong>XYNY</strong>
-            <small>STUDIO</small>
+
+            <span>STUDIO</span>
+
         </div>
+
     </a>
+
 
     <nav class="nav-links">
-        <a href="#beranda">Beranda</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#mengapa">Mengapa Kami</a>
-        <a href="#proses">Proses</a>
-        <a href="#kontak">Kontak</a>
+
+        <a href="#layanan">
+            Layanan
+        </a>
+
+        <a href="#cara-kerja">
+            Cara Kerja
+        </a>
+
+        <a href="#tentang">
+            Tentang
+        </a>
+
     </nav>
 
-    <a href="#layanan" class="nav-cta">
-        Mulai Sekarang ↗
+
+    <a
+        href="#mulai"
+        class="nav-cta"
+    >
+        Mulai project
+        ↗
     </a>
+
+
+    <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
+        aria-expanded="false"
+    >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
 
 </header>
 
 
+
 <main>
 
-<section class="hero" id="beranda">
 
-<div class="container hero-grid">
+<!-- =====================================================
+     HERO
+====================================================== -->
 
-<div class="reveal">
+<section class="hero container">
 
-    <div class="status">
-        <i></i>
-        MENERIMA PROYEK BARU
-    </div>
+    <div class="hero-copy">
 
-    <h1>
-        Ide yang baik
-        <em>pantas terlihat luar biasa.</em>
-    </h1>
-
-    <p class="hero-text">
-        XYNY Studio membantu mengubah ide, kebutuhan, dan cerita
-        Anda menjadi karya digital yang
-        <strong>profesional, menarik, dan siap digunakan.</strong>
-    </p>
-
-    <div class="buttons">
-        <a href="#layanan" class="button primary">
-            Lihat Layanan ↗
-        </a>
-
-        <a href="#kontak" class="button secondary">
-            Konsultasi Gratis
-        </a>
-    </div>
-
-</div>
+        <div class="eyebrow reveal">
+            XYNY STUDIO
+        </div>
 
 
-<div class="visual reveal">
+        <h1 class="reveal">
 
-    <div class="orbit">
+            Gagasanmu
+            <em>layak dibuat nyata.</em>
 
-        <div class="orbit-dot dot1"></div>
-        <div class="orbit-dot dot2"></div>
-        <div class="orbit-dot dot3"></div>
+        </h1>
 
-        <div class="logo-core">
-            <img src="logo.png" alt="XYNY Studio">
+
+        <p class="hero-description reveal">
+
+            Kami membantu mengubah ide, kebutuhan,
+            dan cerita menjadi karya digital yang
+            <strong>jelas, menarik, dan siap digunakan.</strong>
+
+        </p>
+
+
+        <div class="hero-actions reveal">
+
+            <a
+                href="#layanan"
+                class="button primary"
+            >
+                Lihat layanan
+                ↓
+            </a>
+
+
+            <a
+                href="#mulai"
+                class="button secondary"
+            >
+                Saya punya kebutuhan
+                ↗
+            </a>
+
+        </div>
+
+
+        <div class="hero-note reveal">
+
+            <span class="hero-note-dot"></span>
+
+            Konsultasi dimulai dari kebutuhanmu,
+            bukan dari istilah teknis.
+
         </div>
 
     </div>
 
-    <div class="floating float1">
-        ✦ &nbsp; Profesional
-        <small>Tampilan yang meyakinkan</small>
+
+
+    <!-- =================================================
+         VISUAL
+    ================================================== -->
+
+    <div class="hero-visual reveal">
+
+        <div class="visual-card">
+
+            <div class="visual-top">
+
+                <span>
+                    XYNY / 01
+                </span>
+
+                <span>
+                    EST. 2026
+                </span>
+
+            </div>
+
+
+            <div class="visual-core">
+
+                <div class="visual-ring"></div>
+
+                <div class="visual-ring"></div>
+
+                <div class="visual-ring"></div>
+
+
+                <img
+                    src="logo.png"
+                    alt="XYNY Studio"
+                    class="visual-logo"
+                >
+
+            </div>
+
+
+            <div class="visual-bottom">
+
+                <span>
+                    CREATE
+                </span>
+
+                <span>
+                    BUILD
+                </span>
+
+                <span>
+                    DELIVER
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="floating one">
+
+            <span class="floating-icon">
+                ✦
+            </span>
+
+            <div>
+
+                <strong>
+                    Dibuat untukmu
+                </strong>
+
+                <small>
+                    bukan sekadar template
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="floating two">
+
+            <span class="floating-icon">
+                ↗
+            </span>
+
+            <div>
+
+                <strong>
+                    Siap digunakan
+                </strong>
+
+                <small>
+                    dari ide sampai hasil
+                </small>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="floating float2">
-        <strong>01</strong> &nbsp; Ide → Karya
-        <small>Dibuat dengan tujuan</small>
-    </div>
-
-</div>
-
-</div>
 
 </section>
 
 
-<section class="section services" id="layanan">
 
-<div class="container">
+<!-- =====================================================
+     TRUST
+====================================================== -->
 
-<div class="reveal">
+<section class="trust">
 
-    <div class="section-label">
-        APA YANG BISA KAMI BANTU
+    <div class="container">
+
+        <div class="trust-track">
+
+            <span>WEBSITE</span>
+            <b>✦</b>
+
+            <span>UNDANGAN DIGITAL</span>
+            <b>✦</b>
+
+            <span>AKADEMIK</span>
+            <b>✦</b>
+
+            <span>DESAIN</span>
+            <b>✦</b>
+
+            <span>VIDEO</span>
+            <b>✦</b>
+
+            <span>BRANDING</span>
+            <b>✦</b>
+
+        </div>
+
     </div>
-
-    <h2 class="section-title">
-        Satu tempat untuk
-        <em>berbagai kebutuhan.</em>
-    </h2>
-
-    <p class="section-intro">
-        Tidak perlu mencari banyak orang untuk kebutuhan yang berbeda.
-        Pilih kebutuhanmu, lihat pilihan yang tersedia, lalu tentukan
-        karya yang paling sesuai.
-    </p>
-
-</div>
-
-
-<div class="service-grid">
-
-    <!-- 01 -->
-    <a href="website/index.html" class="service reveal">
-
-        <span class="number">01</span>
-
-        <div class="icon">&lt;/&gt;</div>
-
-        <h3>Website & Pemrograman</h3>
-
-        <p>
-            Website UMKM, profesional, gereja, organisasi,
-            sekolah, portofolio, landing page, hingga sistem
-            informasi.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-
-    <!-- 02 -->
-    <a href="undangan/index.html" class="service reveal">
-
-        <span class="number">02</span>
-
-        <div class="icon">♡</div>
-
-        <h3>Undangan Digital</h3>
-
-        <p>
-            Undangan pernikahan, wisuda, ulang tahun,
-            acara keluarga, gereja, dan berbagai momen penting.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-
-    <!-- 03 -->
-    <a href="akademik/index.html" class="service reveal">
-
-        <span class="number">03</span>
-
-        <div class="icon">Aa</div>
-
-        <h3>Mahasiswa & Akademik</h3>
-
-        <p>
-            Penyuntingan, penataan dokumen, presentasi,
-            visualisasi materi, dan kebutuhan pendukung akademik.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-
-    <!-- 04 -->
-    <a href="desain/index.html" class="service reveal">
-
-        <span class="number">04</span>
-
-        <div class="icon">✦</div>
-
-        <h3>Desain & Identitas</h3>
-
-        <p>
-            Logo, identitas visual, poster, presentasi,
-            materi promosi, dan berbagai kebutuhan desain.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-
-    <!-- 05 -->
-    <a href="video/index.html" class="service reveal">
-
-        <span class="number">05</span>
-
-        <div class="icon">▶</div>
-
-        <h3>Video & Media</h3>
-
-        <p>
-            Penyuntingan video, video pendek, subtitle,
-            konten sosial media, dan kebutuhan visual.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-
-    <!-- 06 -->
-    <a href="sosial-media/index.html" class="service reveal">
-
-        <span class="number">06</span>
-
-        <div class="icon">◎</div>
-
-        <h3>Sosial Media & Branding</h3>
-
-        <p>
-            Konsep konten, materi publikasi, penulisan,
-            dan tampilan akun yang lebih konsisten.
-        </p>
-
-        <span class="arrow">↗</span>
-
-    </a>
-
-</div>
-
-</div>
 
 </section>
 
 
-<section class="section statement" id="mengapa">
 
-<div class="container reveal">
+<!-- =====================================================
+     LAYANAN
+====================================================== -->
 
-<div class="section-label">
-    CARA KAMI MELIHAT SEBUAH PROYEK
-</div>
+<section
+    class="section container"
+    id="layanan"
+>
 
-<h2>
-    Bukan sekadar membuat sesuatu
-    <em>terlihat bagus.</em>
-</h2>
+    <div class="section-heading reveal">
 
-<p>
-    Kami membantu merapikan ide, menyusun pesan,
-    menentukan bentuk yang tepat, lalu mengubahnya
-    menjadi sesuatu yang benar-benar bisa digunakan.
-</p>
+        <div>
 
-</div>
+            <div class="section-label">
+                APA YANG BISA KAMI BANTU
+            </div>
+
+            <h2>
+
+                Satu tempat untuk
+                <em>banyak kebutuhan.</em>
+
+            </h2>
+
+        </div>
+
+
+        <p>
+
+            Tidak perlu memilih berdasarkan
+            istilah rumit. Pilih kebutuhan yang
+            paling dekat dengan apa yang ingin
+            kamu wujudkan.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="services">
+
+
+        <!-- 01 -->
+
+        <a
+            href="website.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                01 / 06
+            </span>
+
+
+            <div class="service-icon">
+                &lt;/&gt;
+            </div>
+
+
+            <h3>
+                Website & Pemrograman
+            </h3>
+
+
+            <p>
+
+                Website UMKM, profesional,
+                gereja, organisasi, sekolah,
+                portofolio, landing page,
+                hingga sistem informasi.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- 02 -->
+
+        <a
+            href="undangan.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                02 / 06
+            </span>
+
+
+            <div class="service-icon">
+                ♡
+            </div>
+
+
+            <h3>
+                Undangan Digital
+            </h3>
+
+
+            <p>
+
+                Undangan pernikahan, wisuda,
+                ulang tahun, acara keluarga,
+                kegiatan, dan berbagai momen
+                istimewa.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- 03 -->
+
+        <a
+            href="akademik.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                03 / 06
+            </span>
+
+
+            <div class="service-icon">
+                Aa
+            </div>
+
+
+            <h3>
+                Mahasiswa & Akademik
+            </h3>
+
+
+            <p>
+
+                Penyuntingan, tata letak,
+                presentasi, referensi,
+                proofreading, dan pendampingan
+                teknis karya akademik.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- 04 -->
+
+        <a
+            href="desain.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                04 / 06
+            </span>
+
+
+            <div class="service-icon">
+                ✦
+            </div>
+
+
+            <h3>
+                Desain & Identitas
+            </h3>
+
+
+            <p>
+
+                Logo, identitas visual,
+                poster, presentasi,
+                media sosial, banner,
+                dan kebutuhan desain lainnya.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- 05 -->
+
+        <a
+            href="video.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                05 / 06
+            </span>
+
+
+            <div class="service-icon">
+                ▶
+            </div>
+
+
+            <h3>
+                Video & Media
+            </h3>
+
+
+            <p>
+
+                Penyuntingan video, video pendek,
+                dokumentasi, subtitle,
+                konten media sosial,
+                dan kebutuhan visual.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+
+        <!-- 06 -->
+
+        <a
+            href="sosial-media.html"
+            class="service reveal"
+        >
+
+            <span class="service-number">
+                06 / 06
+            </span>
+
+
+            <div class="service-icon">
+                ◎
+            </div>
+
+
+            <h3>
+                Sosial Media & Branding
+            </h3>
+
+
+            <p>
+
+                Strategi konten, kalender
+                publikasi, penulisan, template,
+                identitas akun, dan pengelolaan
+                tampilan digital.
+
+            </p>
+
+
+            <span class="service-arrow">
+                ↗
+            </span>
+
+        </a>
+
+
+    </div>
 
 </section>
 
 
-<section class="section" id="proses">
 
-<div class="container">
+<!-- =====================================================
+     WEBSITE FEATURE
+====================================================== -->
 
-<div class="reveal">
+<section class="feature">
 
-<div class="section-label">
-    CARA KERJA
-</div>
+    <div class="container">
 
-<h2 class="section-title">
-    Dari cerita sederhana
-    <em>menjadi karya.</em>
-</h2>
+        <div class="feature-box reveal">
 
-</div>
+            <div>
+
+                <div class="section-label">
+                    BUTUH WEBSITE?
+                </div>
 
 
-<div class="process-list">
+                <h2>
 
-<div class="process-item reveal">
-    <span>01</span>
-    <div>
-        <h3>Ceritakan kebutuhanmu</h3>
-        <p>
-            Tidak harus tahu istilah teknis. Ceritakan saja
-            apa yang ingin dibuat.
-        </p>
+                    Jangan hanya
+                    <em>hadir di internet.</em>
+
+                </h2>
+
+
+                <p>
+
+                    Buat orang memahami siapa kamu,
+                    apa yang kamu lakukan, dan
+                    mengapa mereka perlu menghubungimu.
+
+                    Pilih jenis website yang sesuai
+                    dengan kebutuhanmu.
+
+                </p>
+
+
+                <a
+                    href="website.html"
+                    class="feature-button"
+                >
+
+                    Lihat pilihan website
+                    ↗
+
+                </a>
+
+            </div>
+
+
+            <div class="feature-visual">
+
+                <div class="mini-window">
+
+                    <div class="mini-bar">
+
+                        <span class="mini-dot"></span>
+                        <span class="mini-dot"></span>
+                        <span class="mini-dot"></span>
+
+                    </div>
+
+
+                    <div class="mini-content">
+
+                        <div class="mini-line"></div>
+
+                        <div class="mini-line large"></div>
+
+                        <div class="mini-line short"></div>
+
+                        <div class="mini-line"></div>
+
+                        <div class="mini-button"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    <div class="process-arrow">↗</div>
-</div>
-
-<div class="process-item reveal">
-    <span>02</span>
-    <div>
-        <h3>Kami bantu menentukan arah</h3>
-        <p>
-            Kebutuhanmu diterjemahkan menjadi konsep,
-            struktur, dan pilihan layanan.
-        </p>
-    </div>
-    <div class="process-arrow">↗</div>
-</div>
-
-<div class="process-item reveal">
-    <span>03</span>
-    <div>
-        <h3>Pilih dan lihat contoh</h3>
-        <p>
-            Lihat paket, harga, fitur, serta contoh karya
-            sebelum memutuskan.
-        </p>
-    </div>
-    <div class="process-arrow">↗</div>
-</div>
-
-<div class="process-item reveal">
-    <span>04</span>
-    <div>
-        <h3>Mulai proyek</h3>
-        <p>
-            Setelah sesuai, kita lanjutkan pembicaraan
-            dan mulai mengerjakan proyek.
-        </p>
-    </div>
-    <div class="process-arrow">↗</div>
-</div>
-
-</div>
-
-</div>
 
 </section>
 
 
-<section class="section cta" id="kontak">
 
-<div class="container">
+<!-- =====================================================
+     CARA KERJA
+====================================================== -->
 
-<div class="cta-box reveal">
+<section
+    class="section container process"
+    id="cara-kerja"
+>
 
-<div>
+    <div class="process-intro reveal">
 
-<div class="section-label">
-    TIDAK YAKIN HARUS MEMILIH YANG MANA?
-</div>
+        <div class="section-label">
+            CARA KERJA
+        </div>
 
-<h2>
-    Ceritakan saja.
-    <br>
-    <em>Kami bantu pikirkan.</em>
-</h2>
 
-</div>
+        <h2>
 
-<a
-href="https://wa.me/6280000000000"
-target="_blank"
-class="button primary">
-Konsultasi melalui WhatsApp ↗
-</a>
+            Tidak perlu
+            <em>ribet.</em>
 
-</div>
+        </h2>
 
-</div>
+
+        <p>
+
+            Kamu tidak harus mengetahui
+            istilah desain, pemrograman,
+            atau hal teknis lainnya.
+
+            Ceritakan saja apa yang kamu butuhkan.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="steps">
+
+
+        <div class="step reveal">
+
+            <span class="step-number">
+                01
+            </span>
+
+            <div>
+
+                <h3>
+                    Ceritakan kebutuhan
+                </h3>
+
+                <p>
+
+                    Jelaskan secara sederhana
+                    apa yang ingin dibuat dan
+                    untuk siapa.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="step reveal">
+
+            <span class="step-number">
+                02
+            </span>
+
+            <div>
+
+                <h3>
+                    Kami susun arahnya
+                </h3>
+
+                <p>
+
+                    Kebutuhan diterjemahkan menjadi
+                    konsep, struktur, dan pilihan
+                    layanan yang masuk akal.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="step reveal">
+
+            <span class="step-number">
+                03
+            </span>
+
+            <div>
+
+                <h3>
+                    Lihat dan beri masukan
+                </h3>
+
+                <p>
+
+                    Hasil dikembangkan berdasarkan
+                    kebutuhan dan masukan yang
+                    diberikan.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="step reveal">
+
+            <span class="step-number">
+                04
+            </span>
+
+            <div>
+
+                <h3>
+                    Siap digunakan
+                </h3>
+
+                <p>
+
+                    Hasil akhir disiapkan sesuai
+                    kebutuhan penggunaan.
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
 
 </section>
+
+
+
+<!-- =====================================================
+     TIDAK TAHU
+====================================================== -->
+
+<section
+    class="help"
+    id="mulai"
+>
+
+    <div class="container">
+
+        <div class="help-box reveal">
+
+            <div class="section-label">
+                MASIH BINGUNG?
+            </div>
+
+
+            <h2>
+
+                Tidak tahu harus
+                <em>mulai dari mana?</em>
+
+            </h2>
+
+
+            <p>
+
+                Tidak masalah.
+
+                Ceritakan saja usaha, pekerjaan,
+                organisasi, acara, tugas, atau
+                gagasan yang sedang kamu pikirkan.
+
+                Kita mulai dari situ.
+
+            </p>
+
+
+            <!--
+                GANTI NOMOR WHATSAPP
+                6280000000000
+                DENGAN NOMOR SEBENARNYA
+            -->
+
+            <a
+                href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20ingin%20konsultasi%20mengenai%20kebutuhan%20saya."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="help-button"
+            >
+
+                Ceritakan kebutuhan saya
+                ↗
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
 
 </main>
 
 
+
+<!-- =====================================================
+     FOOTER
+====================================================== -->
+
 <footer>
 
-<div class="container">
+    <div class="container">
 
-<div class="footer-top">
+        <div class="footer-row">
 
-<a href="#" class="brand">
-    <img src="logo.png" alt="XYNY Studio">
+            <span>
+                © 2026 XYNY Studio
+            </span>
 
-    <div class="brand-text">
-        <strong>XYNY</strong>
-        <small>STUDIO</small>
+
+            <span>
+                Gagasan · Desain · Digital
+            </span>
+
+
+            <span>
+                Dibuat dengan tujuan.
+            </span>
+
+        </div>
+
     </div>
-</a>
-
-<span>Digital yang dibuat dengan tujuan.</span>
-
-</div>
-
-<div class="footer-bottom">
-
-<span>© 2026 XYNY Studio</span>
-
-<span>
-Ide · Rancang · Wujudkan
-</span>
-
-</div>
-
-</div>
 
 </footer>
 
 
+
 <script>
 
-const observer = new IntersectionObserver(
-(entries)=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+const navbar =
+    document.getElementById("navbar");
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if(window.scrollY > 25){
+
+            navbar.classList.add("scrolled");
+
+        }else{
+
+            navbar.classList.remove("scrolled");
+
         }
-    });
-},
-{
-    threshold:.12
-}
+
+    },
+    {
+        passive:true
+    }
 );
 
-document.querySelectorAll(".reveal")
-.forEach(el=>observer.observe(el));
+
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+const elements =
+    document.querySelectorAll(".reveal");
+
+
+const observer =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                (entry) => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.10
+        }
+
+    );
+
+
+elements.forEach(
+    (element) => {
+
+        observer.observe(element);
+
+    }
+);
+
+
+
+/* =====================================================
+   MENU PONSEL
+===================================================== */
+
+const menuButton =
+    document.getElementById(
+        "menuButton"
+    );
+
+
+const navLinks =
+    document.querySelector(
+        ".nav-links"
+    );
+
+
+menuButton.addEventListener(
+    "click",
+    () => {
+
+        const opened =
+            menuButton.getAttribute(
+                "aria-expanded"
+            ) === "true";
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            String(!opened)
+        );
+
+
+        if(!opened){
+
+            navLinks.style.display =
+                "flex";
+
+            navLinks.style.position =
+                "absolute";
+
+            navLinks.style.top =
+                "76px";
+
+            navLinks.style.left =
+                "0";
+
+            navLinks.style.right =
+                "0";
+
+            navLinks.style.padding =
+                "18px";
+
+            navLinks.style.flexDirection =
+                "column";
+
+            navLinks.style.alignItems =
+                "flex-start";
+
+            navLinks.style.border =
+                "1px solid var(--garis)";
+
+            navLinks.style.borderRadius =
+                "20px";
+
+            navLinks.style.background =
+                "rgba(10,11,11,.96)";
+
+            navLinks.style.backdropFilter =
+                "blur(20px)";
+
+        }else{
+
+            navLinks.removeAttribute(
+                "style"
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =====================================================
+   TUTUP MENU SETELAH KLIK
+===================================================== */
+
+navLinks
+    .querySelectorAll("a")
+    .forEach(
+        (link) => {
+
+            link.addEventListener(
+                "click",
+                () => {
+
+                    if(
+                        window.innerWidth <= 950
+                    ){
+
+                        navLinks.removeAttribute(
+                            "style"
+                        );
+
+                        menuButton.setAttribute(
+                            "aria-expanded",
+                            "false"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+
+/* =====================================================
+   PENYESUAIAN SAAT LAYAR MEMBESAR
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if(
+            window.innerWidth > 950
+        ){
+
+            navLinks.removeAttribute(
+                "style"
+            );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
 
 </script>
+
 
 </body>
 </html>
