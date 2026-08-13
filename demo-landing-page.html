@@ -4,33 +4,34 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="description" content="Contoh landing page profesional XYNY Studio. Dibuat untuk memperkenalkan produk, jasa, bisnis, dan mengubah pengunjung menjadi calon pelanggan.">
+<meta name="description" content="NARA — ruang untuk kopi, makanan, percakapan, dan waktu yang lebih pelan.">
 
-<title>Ruang — Landing Page Demo | XYNY Studio</title>
+<title>NARA — Coffee & Kitchen</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   XYNY STUDIO — LANDING PAGE DEMO
-   RESPONSIVE • MODERN • PREMIUM
+   NARA
+   PREMIUM LANDING PAGE DEMO
+   XYNY STUDIO
 ========================================================= */
 
 :root{
-    --bg:#080908;
-    --bg-soft:#10110f;
-    --card:#131411;
-    --text:#f5f2ea;
-    --muted:#9b9b95;
-    --gold:#e4bd67;
-    --gold-light:#f4d78f;
-    --line:rgba(255,255,255,.10);
-    --radius:28px;
-    --max:1240px;
+    --cream:#f3eee5;
+    --cream-2:#e8dfd1;
+    --ink:#171613;
+    --ink-2:#211f1a;
+    --brown:#6a4b35;
+    --gold:#c19a61;
+    --muted:#81786d;
+    --white:#fffdf8;
+    --line:rgba(23,22,19,.12);
+    --ease:cubic-bezier(.22,1,.36,1);
 }
 
 *{
@@ -44,16 +45,14 @@ html{
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
+    background:var(--cream);
+    color:var(--ink);
     font-family:"DM Sans",sans-serif;
     overflow-x:hidden;
-    line-height:1.6;
 }
 
-img{
-    max-width:100%;
-    display:block;
+body.loading{
+    overflow:hidden;
 }
 
 a{
@@ -65,89 +64,182 @@ button{
     font:inherit;
 }
 
-/* BACKGROUND */
+img{
+    width:100%;
+    display:block;
+}
 
-body::before{
-    content:"";
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader{
     position:fixed;
     inset:0;
-    pointer-events:none;
-    z-index:-2;
+    z-index:99999;
 
-    background:
-        radial-gradient(
-            circle at 15% 15%,
-            rgba(228,189,103,.11),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 50%,
-            rgba(255,255,255,.035),
-            transparent 30%
-        );
+    background:#12110f;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    transition:
+        opacity 1s var(--ease),
+        visibility 1s;
 }
 
-body::after{
-    content:"";
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    font-family:"Playfair Display",serif;
+    font-size:70px;
+    letter-spacing:-.05em;
+}
+
+.loader-line{
+    width:0;
+    height:1px;
+    margin:18px auto 0;
+    background:var(--gold);
+
+    animation:loaderLine 1.4s var(--ease) forwards;
+}
+
+.loader-small{
+    margin-top:16px;
+
+    font-size:9px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+
+    color:#77736d;
+}
+
+@keyframes loaderLine{
+    to{
+        width:140px;
+    }
+}
+
+/* =========================================================
+   CURSOR
+========================================================= */
+
+.cursor{
     position:fixed;
-    inset:0;
+
+    width:14px;
+    height:14px;
+
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:50%;
+
     pointer-events:none;
-    z-index:-1;
-    opacity:.13;
 
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    z-index:100000;
 
-    background-size:80px 80px;
+    transform:translate(-50%,-50%);
 
-    mask-image:linear-gradient(
-        to bottom,
-        black,
-        transparent 80%
-    );
+    transition:
+        width .3s,
+        height .3s,
+        background .3s,
+        border-color .3s;
+
+    mix-blend-mode:difference;
 }
 
-/* CONTAINER */
-
-.container{
-    width:min(
-        calc(100% - 40px),
-        var(--max)
-    );
-    margin:auto;
+.cursor.big{
+    width:52px;
+    height:52px;
+    background:white;
+    border-color:white;
 }
 
-/* NAVBAR */
+@media(max-width:900px){
+    .cursor{
+        display:none;
+    }
+}
 
-.navbar{
+/* =========================================================
+   DEMO BADGE
+========================================================= */
+
+.demo-badge{
     position:fixed;
-    top:18px;
-    left:50%;
-    transform:translateX(-50%);
+    z-index:500;
 
-    width:min(
-        calc(100% - 32px),
-        1200px
-    );
+    left:18px;
+    bottom:18px;
+
+    padding:10px 14px;
+
+    border-radius:100px;
+
+    color:white;
+
+    background:rgba(17,16,14,.8);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    font-size:9px;
+    letter-spacing:.17em;
+    text-transform:uppercase;
+}
+
+.demo-badge b{
+    color:#d4ae70;
+    font-weight:500;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.nav{
+    position:absolute;
+
+    top:0;
+    left:0;
+    width:100%;
 
     z-index:100;
+
+    padding:28px 5vw;
+
+    color:white;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
 
-    padding:10px 12px 10px 16px;
+    transition:
+        background .4s,
+        padding .4s;
+}
 
-    border:1px solid rgba(255,255,255,.10);
-    border-radius:999px;
+.nav.scrolled{
+    position:fixed;
 
-    background:rgba(10,10,9,.78);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
+    padding:16px 5vw;
 
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.35);
+    background:rgba(17,16,14,.84);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .brand{
@@ -156,733 +248,1330 @@ body::after{
     gap:12px;
 }
 
-.brand img{
-    width:48px;
-    height:48px;
-    object-fit:contain;
-    background:white;
-    border-radius:12px;
-    padding:7px;
+.brand-mark{
+    width:34px;
+    height:34px;
+
+    border:1px solid rgba(255,255,255,.7);
+
+    display:grid;
+    place-items:center;
+
+    font-family:"Playfair Display",serif;
+
+    border-radius:50%;
 }
 
-.brand-text strong{
-    display:block;
-    font-size:15px;
-    letter-spacing:.20em;
+.brand-text{
+    font-family:"Playfair Display",serif;
+    font-size:25px;
 }
 
-.brand-text small{
+.brand-sub{
     display:block;
-    color:var(--gold);
-    font-size:9px;
-    letter-spacing:.28em;
-    margin-top:1px;
+
+    font-family:"DM Sans",sans-serif;
+
+    font-size:7px;
+
+    letter-spacing:.3em;
+
+    opacity:.55;
+
+    margin-top:-2px;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:34px;
 }
 
 .nav-links a{
-    color:#aaa9a3;
-    font-size:14px;
-    transition:.3s ease;
+    position:relative;
+
+    font-size:11px;
+
+    color:rgba(255,255,255,.72);
+
+    transition:.3s;
+}
+
+.nav-links a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-7px;
+
+    width:0;
+    height:1px;
+
+    background:var(--gold);
+
+    transition:.4s var(--ease);
 }
 
 .nav-links a:hover{
     color:white;
 }
 
+.nav-links a:hover::after{
+    width:100%;
+}
+
 .nav-cta{
-    border:1px solid rgba(228,189,103,.45);
-    border-radius:999px;
     padding:12px 20px;
-    color:var(--gold-light);
-    transition:.3s ease;
+
+    border:1px solid rgba(255,255,255,.35);
+
+    border-radius:100px;
+
+    font-size:10px;
+
+    transition:.4s var(--ease);
 }
 
 .nav-cta:hover{
-    background:var(--gold);
-    color:#111;
+    background:white;
+    color:var(--ink);
+
+    transform:translateY(-2px);
 }
 
-.menu{
+.menu-button{
     display:none;
-    width:46px;
-    height:46px;
-    border-radius:50%;
-    border:1px solid var(--line);
-    background:transparent;
+
+    border:0;
+    background:none;
+
     color:white;
+
+    font-size:24px;
+
     cursor:pointer;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    align-items:center;
-    gap:70px;
+    position:relative;
+
+    min-height:100svh;
+
+    display:flex;
+    align-items:flex-end;
 
     padding:
         150px
-        max(20px,4vw)
-        90px;
+        7vw
+        85px;
+
+    color:white;
+
+    overflow:hidden;
+
+    background:#151411;
 }
 
-.eyebrow{
-    display:inline-flex;
-    align-items:center;
-    gap:9px;
+.hero-bg{
+    position:absolute;
+    inset:-8%;
 
-    color:var(--gold);
-    font-size:11px;
-    font-weight:700;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.76),
+            rgba(0,0,0,.35),
+            rgba(0,0,0,.25)
+        ),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=90")
+        center/cover;
+
+    transform:scale(1.05);
+
+    animation:heroZoom 12s var(--ease) forwards;
+}
+
+@keyframes heroZoom{
+    from{
+        transform:scale(1.12);
+    }
+
+    to{
+        transform:scale(1.05);
+    }
+}
+
+.hero-grain{
+    position:absolute;
+    inset:0;
+
+    opacity:.08;
+
+    pointer-events:none;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
+
+.hero-content{
+    position:relative;
+    z-index:3;
+
+    max-width:900px;
+}
+
+.hero-kicker{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:25px;
+
+    font-size:9px;
     letter-spacing:.28em;
     text-transform:uppercase;
 
-    margin-bottom:28px;
+    color:rgba(255,255,255,.7);
 }
 
-.eyebrow::before{
-    content:"";
+.hero-kicker i{
     width:7px;
     height:7px;
+
     border-radius:50%;
-    background:#9ed46a;
-    box-shadow:0 0 15px #9ed46a;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 0 5px rgba(193,154,97,.12),
+        0 0 25px rgba(193,154,97,.7);
 }
 
 .hero h1{
-    font-size:clamp(
-        48px,
-        6.3vw,
-        90px
-    );
+    font-family:"Playfair Display",serif;
 
-    line-height:.98;
+    font-size:
+        clamp(62px,9.7vw,145px);
+
+    line-height:.82;
+
     letter-spacing:-.065em;
-    max-width:850px;
+
+    font-weight:400;
 }
 
 .hero h1 em{
-    display:block;
-    color:var(--gold);
-    font-family:"Playfair Display",serif;
-    font-weight:500;
+    color:#d8b273;
+    font-style:italic;
 }
 
 .hero-description{
-    max-width:620px;
-    margin-top:30px;
+    max-width:520px;
 
-    color:#9e9e98;
-    font-size:clamp(16px,2vw,19px);
-}
+    margin-top:34px;
 
-.hero-description strong{
-    color:#eeeae1;
+    font-size:14px;
+
+    line-height:1.9;
+
+    color:rgba(255,255,255,.7);
 }
 
 .hero-buttons{
     display:flex;
-    flex-wrap:wrap;
     gap:12px;
-    margin-top:38px;
+    flex-wrap:wrap;
+
+    margin-top:35px;
 }
 
 .button{
     display:inline-flex;
-    align-items:center;
-    gap:13px;
 
-    padding:16px 23px;
-
-    border-radius:999px;
-    border:1px solid var(--line);
-
-    transition:.35s ease;
-}
-
-.button.primary{
-    background:var(--gold);
-    color:#16140e;
-    font-weight:700;
-}
-
-.button.primary:hover{
-    background:var(--gold-light);
-    transform:translateY(-3px);
-    box-shadow:0 15px 35px rgba(228,189,103,.18);
-}
-
-.button.secondary:hover{
-    border-color:var(--gold);
-    color:var(--gold);
-}
-
-/* HERO VISUAL */
-
-.hero-visual{
-    position:relative;
-    min-height:560px;
-
-    display:flex;
     align-items:center;
     justify-content:center;
+    gap:12px;
+
+    padding:16px 24px;
+
+    border-radius:100px;
+
+    font-size:10px;
+    font-weight:600;
+
+    transition:
+        transform .4s var(--ease),
+        background .4s,
+        color .4s;
 }
 
-.browser{
-    width:min(100%,570px);
-    aspect-ratio:1.15 / 1;
-
-    border:1px solid rgba(255,255,255,.14);
-    border-radius:30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.09),
-            rgba(255,255,255,.025)
-        );
-
-    overflow:hidden;
-
-    transform:
-        perspective(1200px)
-        rotateY(-7deg)
-        rotateX(3deg);
-
-    box-shadow:
-        -40px 40px 100px rgba(0,0,0,.55),
-        0 0 100px rgba(228,189,103,.06);
-
-    transition:.7s ease;
+.button:hover{
+    transform:translateY(-4px);
 }
 
-.hero-visual:hover .browser{
-    transform:
-        perspective(1200px)
-        rotateY(-2deg)
-        rotateX(1deg)
-        translateY(-8px);
+.button-light{
+    background:var(--white);
+    color:var(--ink);
 }
 
-.browser-top{
-    height:50px;
+.button-light:hover{
+    background:#e2c18b;
+}
+
+.button-outline{
+    color:white;
+
+    border:1px solid rgba(255,255,255,.38);
+}
+
+.button-outline:hover{
+    background:white;
+    color:var(--ink);
+}
+
+.hero-meta{
+    position:absolute;
+
+    right:7vw;
+    bottom:75px;
+
+    z-index:3;
 
     display:flex;
     align-items:center;
-    gap:7px;
+    gap:14px;
 
-    padding:0 18px;
+    font-size:9px;
 
-    border-bottom:1px solid var(--line);
+    letter-spacing:.16em;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.62);
 }
 
-.browser-top span{
-    width:8px;
-    height:8px;
-    border-radius:50%;
-    background:#555;
+.hero-meta-line{
+    width:55px;
+    height:1px;
+
+    background:rgba(255,255,255,.4);
 }
 
-.browser-content{
-    height:calc(100% - 50px);
-    padding:45px;
+.scroll-indicator{
+    position:absolute;
 
-    background:
-        radial-gradient(
-            circle at 70% 30%,
-            rgba(228,189,103,.16),
-            transparent 35%
-        );
-}
+    left:7vw;
+    bottom:30px;
 
-.mock-label{
-    color:var(--gold);
-    font-size:10px;
+    z-index:4;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:8px;
+
     letter-spacing:.25em;
     text-transform:uppercase;
 }
 
-.mock-title{
-    font-size:clamp(28px,4vw,50px);
-    line-height:1;
-    letter-spacing:-.05em;
-    margin-top:20px;
-}
-
-.mock-title em{
-    color:var(--gold);
-    font-family:"Playfair Display",serif;
-}
-
-.mock-lines{
-    margin-top:25px;
-}
-
-.mock-lines span{
-    display:block;
-    height:8px;
-    border-radius:10px;
-    background:#777;
-    margin-bottom:10px;
-    opacity:.45;
-}
-
-.mock-lines span:nth-child(1){
-    width:80%;
-}
-
-.mock-lines span:nth-child(2){
-    width:60%;
-}
-
-.mock-lines span:nth-child(3){
-    width:45%;
-}
-
-.mock-button{
-    margin-top:30px;
-    width:110px;
-    height:40px;
-    border-radius:999px;
-    background:var(--gold);
-}
-
-/* FLOATING CARD */
-
-.floating{
-    position:absolute;
-    padding:16px 20px;
-
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:17px;
-
-    background:rgba(18,19,17,.9);
-    backdrop-filter:blur(15px);
-
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
-
-    animation:float 5s ease-in-out infinite;
-}
-
-.floating strong{
-    display:block;
-    font-size:14px;
-}
-
-.floating small{
-    color:#85857f;
-    font-size:11px;
-}
-
-.float-one{
-    left:0;
-    top:22%;
-}
-
-.float-two{
-    right:0;
-    bottom:18%;
-    animation-delay:-2s;
-}
-
-@keyframes float{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-12px)}
-}
-
-/* TRUST */
-
-.trust{
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-
-    padding:25px 0;
-
-    color:#74746f;
-    text-transform:uppercase;
-    letter-spacing:.18em;
-    font-size:10px;
-}
-
-.trust-inner{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-/* SECTIONS */
-
-.section{
-    padding:130px 0;
-}
-
-.section-heading{
-    max-width:760px;
-    margin-bottom:65px;
-}
-
-.section-heading h2{
-    font-size:clamp(38px,5vw,68px);
-    line-height:1;
-    letter-spacing:-.055em;
-}
-
-.section-heading h2 em{
-    font-family:"Playfair Display",serif;
-    color:var(--gold);
-    font-weight:500;
-}
-
-.section-heading p{
-    color:#898983;
-    max-width:600px;
-    margin-top:24px;
-    font-size:17px;
-}
-
-/* PROBLEM */
-
-.problem{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-    align-items:end;
-}
-
-.problem-quote{
-    font-size:clamp(34px,4vw,58px);
-    line-height:1.03;
-    letter-spacing:-.05em;
-}
-
-.problem-quote em{
-    font-family:"Playfair Display",serif;
-    color:var(--gold);
-}
-
-.problem-text{
-    color:#888882;
-    font-size:17px;
-}
-
-/* PRODUCT */
-
-.product-section{
-    background:#0d0e0c;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-}
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:16px;
-}
-
-.product{
-    min-height:400px;
-    padding:30px;
-
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-
-    position:relative;
-    overflow:hidden;
-
-    background:#11120f;
-
-    transition:.45s ease;
-}
-
-.product:hover{
-    transform:translateY(-8px);
-    border-color:rgba(228,189,103,.4);
-}
-
-.product::before{
+.scroll-indicator::after{
     content:"";
-    position:absolute;
-    width:220px;
-    height:220px;
-    border-radius:50%;
 
-    right:-100px;
-    top:-100px;
+    width:45px;
+    height:1px;
 
-    background:rgba(228,189,103,.08);
-    filter:blur(30px);
+    background:rgba(255,255,255,.35);
 }
 
-.product-number{
-    color:#555650;
-    font-size:11px;
-    letter-spacing:.2em;
-}
+/* =========================================================
+   INTRO
+========================================================= */
 
-.product-icon{
-    width:55px;
-    height:55px;
+.intro{
+    padding:150px 7vw;
 
     display:grid;
-    place-items:center;
 
-    border:1px solid rgba(228,189,103,.35);
-    border-radius:15px;
+    grid-template-columns:
+        1fr
+        1fr;
 
-    color:var(--gold);
-    font-size:22px;
+    gap:100px;
 
-    margin:75px 0 35px;
-}
-
-.product h3{
-    font-size:24px;
-    letter-spacing:-.035em;
-}
-
-.product p{
-    color:#777872;
-    margin-top:12px;
-    font-size:14px;
-}
-
-.product-link{
-    position:absolute;
-    bottom:28px;
-    right:28px;
-
-    width:42px;
-    height:42px;
-
-    display:grid;
-    place-items:center;
-
-    border:1px solid var(--line);
-    border-radius:50%;
-
-    color:var(--gold);
-}
-
-/* IMAGE */
-
-.showcase{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:18px;
-}
-
-.showcase-image{
-    min-height:550px;
-    border-radius:var(--radius);
-    overflow:hidden;
     position:relative;
+}
+
+.intro::before{
+    content:"01";
+
+    position:absolute;
+
+    right:7vw;
+    top:60px;
+
+    font-size:10px;
+
+    letter-spacing:.2em;
+
+    color:#aaa095;
+}
+
+.eyebrow{
+    color:var(--gold);
+
+    font-size:9px;
+
+    letter-spacing:.25em;
+
+    text-transform:uppercase;
+}
+
+.intro h2{
+    margin-top:22px;
+
+    font-family:"Playfair Display",serif;
+
+    font-weight:400;
+
+    font-size:clamp(45px,5.5vw,78px);
+
+    line-height:.92;
+
+    letter-spacing:-.05em;
+}
+
+.intro h2 em{
+    color:var(--brown);
+}
+
+.intro-right{
+    align-self:end;
+
+    max-width:520px;
+}
+
+.intro-lead{
+    font-family:"Playfair Display",serif;
+
+    font-size:24px;
+
+    line-height:1.25;
+
+    margin-bottom:25px;
+}
+
+.intro-right p{
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+/* =========================================================
+   STATEMENT STRIP
+========================================================= */
+
+.statement{
+    padding:35px 7vw;
+
+    background:var(--ink);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:35px;
+
+    overflow:hidden;
+}
+
+.statement span{
+    font-size:10px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+
+    color:#a8a096;
+
+    white-space:nowrap;
+}
+
+.statement b{
+    color:#c9a269;
+}
+
+/* =========================================================
+   FEATURE
+========================================================= */
+
+.feature{
+    display:grid;
+
+    grid-template-columns:
+        1.08fr
+        .92fr;
+
+    min-height:720px;
+}
+
+.feature-photo{
+    min-height:650px;
+
+    position:relative;
+
+    overflow:hidden;
 
     background:
-        linear-gradient(
-            to top,
-            rgba(0,0,0,.8),
-            transparent 60%
-        ),
-        url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85")
+        url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1800&q=90")
         center/cover;
 }
 
-.showcase-image::after{
+.feature-photo::after{
     content:"";
+
     position:absolute;
     inset:0;
-    background:linear-gradient(
-        135deg,
-        rgba(228,189,103,.18),
-        transparent 50%
-    );
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent,
+            rgba(0,0,0,.18)
+        );
 }
 
-.showcase-caption{
+.feature-photo-label{
     position:absolute;
-    bottom:30px;
-    left:30px;
+
+    left:35px;
+    bottom:35px;
+
     z-index:2;
+
+    color:white;
+
+    font-size:9px;
+
+    letter-spacing:.22em;
+
+    text-transform:uppercase;
+
+    writing-mode:vertical-rl;
+
+    transform:rotate(180deg);
 }
 
-.showcase-caption span{
-    color:var(--gold);
-    font-size:11px;
-    letter-spacing:.2em;
+.feature-content{
+    background:#1a1916;
+
+    color:white;
+
+    padding:
+        100px
+        8vw;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
 }
 
-.showcase-caption h3{
-    margin-top:8px;
-    font-size:32px;
+.feature-content h2{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(45px,5.5vw,78px);
+
+    line-height:.91;
+
+    font-weight:400;
+
+    letter-spacing:-.05em;
+
+    margin:22px 0 30px;
 }
 
-.showcase-side{
+.feature-content h2 em{
+    color:#d4ae70;
+}
+
+.feature-content > p{
+    max-width:470px;
+
+    color:#99958d;
+
+    font-size:14px;
+
+    line-height:1.95;
+}
+
+.feature-facts{
     display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    margin-top:50px;
+
+    max-width:470px;
+
+    border-top:1px solid rgba(255,255,255,.12);
+}
+
+.fact{
+    padding-top:22px;
+}
+
+.fact + .fact{
+    border-left:1px solid rgba(255,255,255,.12);
+
+    padding-left:30px;
+}
+
+.fact strong{
+    display:block;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:29px;
+
+    font-weight:400;
+}
+
+.fact span{
+    display:block;
+
+    margin-top:5px;
+
+    color:#77736c;
+
+    font-size:9px;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-section{
+    padding:150px 7vw;
+
+    background:var(--cream-2);
+}
+
+.menu-heading{
+    display:flex;
+
+    align-items:end;
+
+    justify-content:space-between;
+
+    gap:60px;
+
+    margin-bottom:65px;
+}
+
+.menu-heading h2{
+    font-family:"Playfair Display",serif;
+
+    font-weight:400;
+
+    font-size:clamp(50px,6vw,85px);
+
+    line-height:.87;
+
+    letter-spacing:-.055em;
+}
+
+.menu-heading h2 em{
+    color:var(--brown);
+}
+
+.menu-heading p{
+    max-width:350px;
+
+    color:#756d63;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.menu-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
     gap:18px;
 }
 
-.side-card{
-    padding:32px;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    background:#11120f;
-}
+.menu-card{
+    background:#faf7f0;
 
-.side-card span{
-    color:var(--gold);
-    font-size:11px;
-    letter-spacing:.18em;
-}
-
-.side-card h3{
-    font-size:26px;
-    margin:18px 0 10px;
-}
-
-.side-card p{
-    color:#777872;
-    font-size:14px;
-}
-
-/* BENEFITS */
-
-.benefits{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-}
-
-.benefit{
-    background:var(--bg);
-    padding:45px 35px;
-}
-
-.benefit-number{
-    color:var(--gold);
-    font-size:12px;
-}
-
-.benefit h3{
-    margin-top:60px;
-    font-size:22px;
-}
-
-.benefit p{
-    color:#777872;
-    margin-top:10px;
-    font-size:14px;
-}
-
-/* CTA */
-
-.final-cta{
-    padding:150px 0;
-    text-align:center;
-}
-
-.final-cta-inner{
     position:relative;
+
     overflow:hidden;
 
-    padding:100px 30px;
+    transition:
+        transform .6s var(--ease),
+        box-shadow .6s var(--ease);
+}
 
-    border:1px solid rgba(228,189,103,.2);
-    border-radius:35px;
+.menu-card:hover{
+    transform:translateY(-12px);
+
+    box-shadow:
+        0 30px 70px rgba(48,35,23,.15);
+}
+
+.menu-image{
+    height:380px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.menu-image img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+        transform 1s var(--ease);
+}
+
+.menu-card:hover .menu-image img{
+    transform:scale(1.08);
+}
+
+.menu-number{
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    z-index:2;
+
+    width:34px;
+    height:34px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:50%;
+
+    background:rgba(20,19,16,.78);
+
+    color:white;
+
+    font-size:9px;
+
+    backdrop-filter:blur(10px);
+}
+
+.menu-body{
+    padding:27px 25px 30px;
+}
+
+.menu-top{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.menu-body h3{
+    font-family:"Playfair Display",serif;
+
+    font-size:25px;
+
+    font-weight:400;
+}
+
+.menu-price{
+    color:var(--brown);
+
+    font-size:13px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+}
+
+.menu-body p{
+    color:#898076;
+
+    font-size:12px;
+
+    line-height:1.75;
+
+    margin-top:10px;
+}
+
+.menu-tag{
+    display:inline-block;
+
+    margin-top:17px;
+
+    padding:7px 10px;
+
+    border:1px solid var(--line);
+
+    border-radius:100px;
+
+    color:#81776b;
+
+    font-size:8px;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+    background:#171613;
+
+    color:white;
+
+    padding:160px 7vw;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.story::before{
+    content:"N";
+
+    position:absolute;
+
+    right:-40px;
+    bottom:-130px;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:520px;
+
+    line-height:1;
+
+    color:rgba(255,255,255,.025);
+
+    pointer-events:none;
+}
+
+.story-grid{
+    position:relative;
+
+    z-index:2;
+
+    display:grid;
+
+    grid-template-columns:.8fr 1.2fr;
+
+    gap:100px;
+}
+
+.story-title{
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(50px,6vw,90px);
+
+    font-weight:400;
+
+    line-height:.88;
+
+    letter-spacing:-.055em;
+}
+
+.story-title em{
+    color:#d6b276;
+}
+
+.story-copy{
+    max-width:620px;
+
+    color:#aaa69d;
+
+    font-size:15px;
+
+    line-height:2;
+}
+
+.story-copy p + p{
+    margin-top:25px;
+}
+
+.signature{
+    margin-top:50px;
+
+    color:#d5b77f;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:26px;
+
+    font-style:italic;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1.35fr
+        1fr;
+
+    height:680px;
+
+    overflow:hidden;
+}
+
+.gallery-item{
+    position:relative;
+
+    overflow:hidden;
+}
+
+.gallery-item img{
+    height:100%;
+
+    object-fit:cover;
+
+    transition:
+        transform 1.2s var(--ease);
+}
+
+.gallery-item:hover img{
+    transform:scale(1.07);
+}
+
+.gallery-overlay{
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:flex-end;
+
+    padding:30px;
 
     background:
-        radial-gradient(
-            circle at center,
-            rgba(228,189,103,.13),
-            transparent 45%
+        linear-gradient(
+            transparent 50%,
+            rgba(0,0,0,.65)
+        );
+
+    color:white;
+
+    opacity:0;
+
+    transition:.5s;
+}
+
+.gallery-item:hover .gallery-overlay{
+    opacity:1;
+}
+
+.gallery-overlay span{
+    font-size:9px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote{
+    padding:155px 7vw;
+
+    text-align:center;
+
+    background:var(--cream);
+}
+
+.quote-mark{
+    font-family:"Playfair Display",serif;
+
+    color:var(--gold);
+
+    font-size:70px;
+
+    line-height:.4;
+}
+
+.quote blockquote{
+    max-width:950px;
+
+    margin:35px auto 0;
+
+    font-family:"Playfair Display",serif;
+
+    font-weight:400;
+
+    font-size:clamp(34px,5.2vw,70px);
+
+    line-height:1.02;
+
+    letter-spacing:-.04em;
+}
+
+.quote blockquote em{
+    color:var(--brown);
+}
+
+.quote cite{
+    display:block;
+
+    margin-top:32px;
+
+    color:#8a8177;
+
+    font-size:9px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+
+    font-style:normal;
+}
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    background:#ded3c2;
+}
+
+.location-photo{
+    min-height:650px;
+
+    background:
+        url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1800&q=90")
+        center/cover;
+}
+
+.location-content{
+    padding:90px 8vw;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-direction:column;
+}
+
+.location-content h2{
+    margin:20px 0;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:clamp(50px,5.5vw,80px);
+
+    line-height:.9;
+
+    font-weight:400;
+
+    letter-spacing:-.05em;
+}
+
+.location-content > p{
+    max-width:430px;
+
+    color:#6d655c;
+
+    font-size:14px;
+
+    line-height:1.9;
+}
+
+.info-list{
+    margin-top:42px;
+
+    max-width:500px;
+
+    border-top:1px solid rgba(20,18,15,.14);
+}
+
+.info{
+    padding:17px 0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:25px;
+
+    border-bottom:1px solid rgba(20,18,15,.14);
+
+    font-size:11px;
+}
+
+.info span{
+    color:#81776d;
+}
+
+.info strong{
+    font-weight:600;
+
+    text-align:right;
+}
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta{
+    min-height:760px;
+
+    padding:150px 7vw;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            rgba(16,15,13,.77),
+            rgba(16,15,13,.9)
         ),
-        #10110f;
+        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=2400&q=90")
+        center/cover fixed;
+}
+
+.final-cta::before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border-radius:50%;
+
+    background:rgba(193,154,97,.12);
+
+    filter:blur(100px);
+}
+
+.final-inner{
+    position:relative;
+
+    z-index:2;
+
+    max-width:1000px;
 }
 
 .final-cta h2{
-    max-width:800px;
-    margin:auto;
+    margin-top:25px;
 
-    font-size:clamp(
-        42px,
-        6vw,
-        78px
-    );
+    font-family:"Playfair Display",serif;
 
-    line-height:.98;
+    font-weight:400;
+
+    font-size:clamp(55px,8vw,115px);
+
+    line-height:.83;
+
     letter-spacing:-.06em;
 }
 
 .final-cta h2 em{
-    font-family:"Playfair Display",serif;
-    color:var(--gold);
+    color:#d9b579;
 }
 
 .final-cta p{
-    max-width:570px;
-    margin:25px auto 35px;
+    max-width:560px;
 
-    color:#8d8d87;
+    margin:35px auto;
+
+    color:#aaa69d;
+
+    font-size:14px;
+
+    line-height:1.9;
 }
 
-.cta-buttons{
+.final-actions{
     display:flex;
+
     justify-content:center;
-    flex-wrap:wrap;
+
     gap:12px;
+
+    flex-wrap:wrap;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
-footer{
-    border-top:1px solid var(--line);
-    padding:40px 0;
+.footer{
+    padding:60px 7vw 30px;
+
+    background:#100f0d;
+
+    color:#88837b;
 }
 
-.footer-inner{
+.footer-top{
     display:flex;
+
     justify-content:space-between;
-    align-items:center;
+
+    align-items:flex-start;
+
+    gap:50px;
+}
+
+.footer-logo{
+    color:white;
+
+    font-family:"Playfair Display",serif;
+
+    font-size:34px;
+}
+
+.footer-tagline{
+    margin-top:8px;
+
+    font-size:11px;
+}
+
+.footer-columns{
+    display:flex;
+
+    gap:80px;
+}
+
+.footer-column h4{
+    color:white;
+
+    margin-bottom:17px;
+
+    font-size:9px;
+
+    letter-spacing:.2em;
+
+    text-transform:uppercase;
+}
+
+.footer-column a{
+    display:block;
+
+    margin:9px 0;
+
+    font-size:11px;
+
+    color:#77726b;
+
+    transition:.3s;
+}
+
+.footer-column a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    margin-top:65px;
+
+    padding-top:20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+
+    justify-content:space-between;
+
     gap:20px;
+
+    font-size:9px;
 }
 
-footer p{
-    color:#666761;
-    font-size:12px;
-}
-
-.footer-brand{
-    color:var(--gold);
-    letter-spacing:.25em;
-    font-size:12px;
-}
-
-/* REVEAL */
+/* =========================================================
+   REVEAL
+========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(30px);
+
+    transform:translateY(45px);
+
     transition:
-        opacity .8s ease,
-        transform .8s ease;
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
 }
 
-.reveal.active{
+.reveal.visible{
     opacity:1;
+
+    transform:translateY(0);
+}
+
+.reveal-left{
+    opacity:0;
+
+    transform:translateX(-50px);
+
+    transition:
+        opacity 1s var(--ease),
+        transform 1s var(--ease);
+}
+
+.reveal-left.visible{
+    opacity:1;
+
     transform:none;
 }
 
-/* MOBILE */
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
 @media(max-width:900px){
 
@@ -891,213 +1580,386 @@ footer p{
         display:none;
     }
 
-    .menu{
-        display:grid;
-        place-items:center;
+    .menu-button{
+        display:block;
     }
 
-    .hero{
-        grid-template-columns:1fr;
-        padding-top:150px;
+    .nav.open{
+        background:rgba(17,16,14,.96);
     }
 
-    .hero-visual{
-        min-height:480px;
+    .nav.open .nav-links{
+        display:flex;
+
+        position:absolute;
+
+        top:75px;
+
+        left:20px;
+        right:20px;
+
+        padding:25px;
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:20px;
+
+        background:rgba(18,17,15,.97);
+
+        border-radius:20px;
+
+        border:1px solid rgba(255,255,255,.08);
+
+        box-shadow:0 30px 80px rgba(0,0,0,.3);
     }
 
-    .problem{
-        grid-template-columns:1fr;
-    }
-
-    .product-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .showcase{
-        grid-template-columns:1fr;
-    }
-
-    .benefits{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .container{
-        width:min(
-            calc(100% - 28px),
-            var(--max)
-        );
-    }
-
-    .navbar{
-        top:10px;
-        width:calc(100% - 20px);
-    }
-
-    .brand img{
-        width:43px;
-        height:43px;
+    .nav.open .nav-cta{
+        display:none;
     }
 
     .hero{
         padding:
-            130px
-            14px
-            70px;
+            145px
+            25px
+            80px;
+    }
+
+    .hero-meta{
+        display:none;
+    }
+
+    .scroll-indicator{
+        left:25px;
+    }
+
+    .intro{
+        grid-template-columns:1fr;
+
+        padding:
+            100px
+            25px;
+
+        gap:50px;
+    }
+
+    .statement{
+        padding:
+            25px;
+
+        overflow:hidden;
+    }
+
+    .statement span:nth-child(even){
+        display:none;
+    }
+
+    .feature{
+        grid-template-columns:1fr;
+    }
+
+    .feature-photo{
+        min-height:550px;
+    }
+
+    .feature-content{
+        padding:
+            90px
+            25px;
+    }
+
+    .menu-section{
+        padding:
+            110px
+            25px;
+    }
+
+    .menu-heading{
+        display:block;
+    }
+
+    .menu-heading p{
+        margin-top:25px;
+    }
+
+    .menu-grid{
+        grid-template-columns:1fr;
+    }
+
+    .menu-image{
+        height:360px;
+    }
+
+    .story{
+        padding:
+            110px
+            25px;
+    }
+
+    .story-grid{
+        grid-template-columns:1fr;
+
+        gap:55px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr 1fr;
+
+        height:480px;
+    }
+
+    .gallery-item:last-child{
+        display:none;
+    }
+
+    .quote{
+        padding:
+            110px
+            25px;
+    }
+
+    .location{
+        grid-template-columns:1fr;
+    }
+
+    .location-photo{
+        min-height:500px;
+    }
+
+    .location-content{
+        padding:
+            90px
+            25px;
+    }
+
+    .final-cta{
+        min-height:650px;
+
+        padding:
+            110px
+            25px;
+
+        background-attachment:scroll;
+    }
+
+    .footer{
+        padding:
+            50px
+            25px
+            25px;
+    }
+
+    .footer-top{
+        display:block;
+    }
+
+    .footer-columns{
+        margin-top:40px;
+
+        gap:50px;
+
+        flex-wrap:wrap;
+    }
+
+}
+
+@media(max-width:520px){
+
+    .brand-mark{
+        width:30px;
+        height:30px;
+    }
+
+    .brand-text{
+        font-size:22px;
     }
 
     .hero h1{
-        font-size:clamp(45px,14vw,70px);
+        font-size:59px;
     }
 
     .hero-description{
-        font-size:15px;
+        font-size:13px;
     }
 
     .hero-buttons{
         flex-direction:column;
-        align-items:stretch;
     }
 
     .button{
-        justify-content:center;
+        width:100%;
     }
 
-    .hero-visual{
-        min-height:390px;
+    .feature-photo{
+        min-height:420px;
     }
 
-    .browser{
-        border-radius:22px;
+    .menu-image{
+        height:300px;
     }
 
-    .browser-content{
-        padding:28px;
+    .gallery{
+        height:350px;
     }
 
-    .floating{
-        padding:12px;
-    }
-
-    .float-one{
-        left:-5px;
-    }
-
-    .float-two{
-        right:-5px;
-    }
-
-    .section{
-        padding:90px 0;
-    }
-
-    .section-heading{
-        margin-bottom:40px;
-    }
-
-    .product-grid{
-        grid-template-columns:1fr;
-    }
-
-    .product{
-        min-height:350px;
-    }
-
-    .showcase-image{
+    .location-photo{
         min-height:380px;
     }
 
-    .final-cta{
-        padding:90px 0;
-    }
-
-    .final-cta-inner{
-        padding:70px 20px;
-        border-radius:25px;
-    }
-
-    .footer-inner{
+    .info{
         flex-direction:column;
-        align-items:flex-start;
+
+        gap:7px;
+    }
+
+    .info strong{
+        text-align:left;
+    }
+
+    .footer-bottom{
+        display:block;
+    }
+
+    .footer-bottom div{
+        margin-top:8px;
+    }
+
+    .demo-badge{
+        left:10px;
+        bottom:10px;
+
+        font-size:7px;
     }
 }
 
-/* REDUCED MOTION */
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
 
 @media(prefers-reduced-motion:reduce){
+
+    html{
+        scroll-behavior:auto;
+    }
 
     *,
     *::before,
     *::after{
         animation:none!important;
+
         transition:none!important;
-        scroll-behavior:auto!important;
     }
 
-    .reveal{
-        opacity:1;
-        transform:none;
+    .reveal,
+    .reveal-left{
+        opacity:1!important;
+
+        transform:none!important;
     }
 }
 
 </style>
 </head>
 
-<body>
+<body class="loading">
 
-<!-- =====================================================
+<!-- ======================================================
+     LOADER
+====================================================== -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-logo">
+            NARA
+        </div>
+
+        <div class="loader-line"></div>
+
+        <div class="loader-small">
+            Coffee · Kitchen · Slow Living
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- CUSTOM CURSOR -->
+
+<div class="cursor" id="cursor"></div>
+
+
+<!-- PORTFOLIO LABEL -->
+
+<div class="demo-badge">
+    <b>Contoh Website</b>
+    · XYNY Studio
+</div>
+
+
+<!-- ======================================================
      NAVBAR
-===================================================== -->
+====================================================== -->
 
-<header class="navbar">
+<header class="nav" id="nav">
 
-    <a href="index.html" class="brand">
+    <a href="#" class="brand">
 
-        <img
-            src="logo.png"
-            alt="Logo XYNY Studio"
-        >
+        <div class="brand-mark">
+            N
+        </div>
 
-        <div class="brand-text">
-            <strong>XYNY</strong>
-            <small>STUDIO</small>
+        <div>
+
+            <div class="brand-text">
+                NARA
+            </div>
+
+            <span class="brand-sub">
+                COFFEE · KITCHEN
+            </span>
+
         </div>
 
     </a>
 
+
     <nav class="nav-links">
 
-        <a href="index.html">
-            Beranda
+        <a href="#cerita">
+            Cerita
         </a>
 
-        <a href="#contoh">
-            Contoh
+        <a href="#menu">
+            Menu
         </a>
 
-        <a href="#manfaat">
-            Mengapa
+        <a href="#suasana">
+            Suasana
         </a>
 
-        <a href="#kontak">
-            Kontak
+        <a href="#lokasi">
+            Lokasi
         </a>
 
     </nav>
 
+
     <a
+        href="#reservasi"
         class="nav-cta"
-        href="#kontak"
     >
-        Mulai Sekarang ↗
+        Reservasi
     </a>
 
+
     <button
-        class="menu"
-        aria-label="Menu"
+        class="menu-button"
+        id="menuButton"
+        aria-label="Buka menu"
     >
         ☰
     </button>
@@ -1105,54 +1967,66 @@ footer p{
 </header>
 
 
-<!-- =====================================================
+<!-- ======================================================
      HERO
-===================================================== -->
-
-<main>
+====================================================== -->
 
 <section class="hero">
 
-    <div class="reveal">
+    <div class="hero-bg" id="heroBg"></div>
 
-        <div class="eyebrow">
-            CONTOH LANDING PAGE
+    <div class="hero-grain"></div>
+
+
+    <div class="hero-content">
+
+        <div class="hero-kicker reveal">
+
+            <i></i>
+
+            Medan · Sumatera Utara
+
         </div>
 
-        <h1>
-            Jangan hanya
-            <em>hadir.</em>
 
-            Buat orang
-            <em>percaya.</em>
+        <h1 class="reveal">
+
+            Pelan-pelan.
+            <br>
+
+            Nikmati
+            <em>harimu.</em>
+
         </h1>
 
-        <p class="hero-description">
 
-            Sebuah landing page bukan sekadar halaman
-            di internet. Ia adalah tempat pertama seseorang
-            mengenal produk, bisnis, jasa, atau gagasan Anda.
+        <p class="hero-description reveal">
 
-            <strong>
-                Kesan pertama harus bekerja.
-            </strong>
+            Kopi yang diracik dengan tenang,
+            makanan yang dibuat dari bahan pilihan,
+            dan ruang kecil untuk menikmati
+            percakapan yang berarti.
 
         </p>
 
-        <div class="hero-buttons">
+
+        <div class="hero-buttons reveal">
 
             <a
-                href="#contoh"
-                class="button primary"
+                href="#menu"
+                class="button button-light"
             >
-                Lihat contoh ↘
+                Jelajahi Menu
+                <span>↓</span>
             </a>
+
 
             <a
-                href="#kontak"
-                class="button secondary"
+                href="#lokasi"
+                class="button button-outline"
             >
-                Punya konsep sendiri?
+                Temukan Kami
+                <span>↗</span>
             </a>
 
         </div>
@@ -1160,424 +2034,483 @@ footer p{
     </div>
 
 
-    <div class="hero-visual reveal">
+    <div class="hero-meta">
 
-        <div class="browser">
+        <span>
+            Setiap Hari
+        </span>
 
-            <div class="browser-top">
+        <div class="hero-meta-line"></div>
 
-                <span></span>
-                <span></span>
-                <span></span>
+        <span>
+            08.00 — 22.00
+        </span>
 
-            </div>
-
-            <div class="browser-content">
-
-                <div class="mock-label">
-                    YOUR BUSINESS
-                </div>
-
-                <div class="mock-title">
-
-                    Sesuatu yang
-                    <br>
-
-                    <em>layak dikenal.</em>
-
-                </div>
-
-                <div class="mock-lines">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </div>
-
-                <div class="mock-button"></div>
-
-            </div>
-
-        </div>
+    </div>
 
 
-        <div class="floating float-one">
+    <div class="scroll-indicator">
 
-            <strong>Lebih meyakinkan</strong>
-
-            <small>
-                daripada sekadar akun media sosial.
-            </small>
-
-        </div>
-
-
-        <div class="floating float-two">
-
-            <strong>Siap digunakan</strong>
-
-            <small>
-                di ponsel, tablet & komputer.
-            </small>
-
-        </div>
+        Gulir untuk masuk
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     TRUST
-===================================================== -->
-
-<section class="trust">
-
-    <div class="container trust-inner">
-
-        <span>Bisnis</span>
-        <span>Profesional</span>
-        <span>Produk</span>
-        <span>Jasa</span>
-        <span>Kampanye</span>
-        <span>Acara</span>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     PROBLEM
-===================================================== -->
-
-<section class="section">
-
-    <div class="container">
-
-        <div class="problem">
-
-            <div class="problem-quote reveal">
-
-                Orang tidak selalu
-                membeli yang
-                <em>terbaik.</em>
-
-                <br><br>
-
-                Mereka sering membeli
-                yang paling
-                <em>meyakinkan.</em>
-
-            </div>
-
-            <div class="problem-text reveal">
-
-                <p>
-                    Bayangkan seseorang menemukan bisnis Anda
-                    untuk pertama kalinya.
-                </p>
-
-                <br>
-
-                <p>
-                    Dalam beberapa detik mereka akan bertanya:
-                    siapa Anda, apa yang Anda tawarkan,
-                    apakah Anda dapat dipercaya, dan apa yang
-                    harus mereka lakukan selanjutnya.
-                </p>
-
-                <br>
-
-                <p>
-                    Landing page yang baik menjawab semuanya
-                    tanpa membuat pengunjung merasa sedang
-                    membaca brosur panjang.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     CONTOH
-===================================================== -->
+<!-- ======================================================
+     INTRO
+====================================================== -->
 
 <section
-    class="section product-section"
-    id="contoh"
+    class="intro"
+    id="cerita"
 >
 
-    <div class="container">
+    <div class="reveal-left">
 
-        <div class="section-heading reveal">
+        <div class="eyebrow">
+            Tentang NARA
+        </div>
+
+
+        <h2>
+
+            Bukan sekadar
+            <em>tempat minum kopi.</em>
+
+        </h2>
+
+    </div>
+
+
+    <div class="intro-right reveal">
+
+        <div class="intro-lead">
+
+            Ada tempat yang tidak meminta
+            Anda terburu-buru.
+
+        </div>
+
+
+        <p>
+
+            NARA lahir dari sebuah gagasan sederhana:
+            makanan yang baik dan kopi yang baik
+            terasa lebih nikmat ketika dinikmati
+            tanpa tergesa-gesa.
+
+        </p>
+
+        <br>
+
+        <p>
+
+            Datang untuk bekerja.
+            Bertemu seseorang.
+            Membaca buku.
+            Atau sekadar duduk sendirian.
+
+            Tidak ada aturan untuk menikmati waktu.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     STATEMENT
+====================================================== -->
+
+<section class="statement">
+
+    <span>
+        Kopi pilihan
+    </span>
+
+    <b>✦</b>
+
+    <span>
+        Bahan segar
+    </span>
+
+    <b>✦</b>
+
+    <span>
+        Dibuat setiap hari
+    </span>
+
+    <b>✦</b>
+
+    <span>
+        Ruang yang tenang
+    </span>
+
+    <b>✦</b>
+
+    <span>
+        Kopi pilihan
+    </span>
+
+</section>
+
+
+<!-- ======================================================
+     FEATURE
+====================================================== -->
+
+<section class="feature">
+
+    <div class="feature-photo reveal-left">
+
+        <div class="feature-photo-label">
+            NARA / 001
+        </div>
+
+    </div>
+
+
+    <div class="feature-content">
+
+        <div class="eyebrow reveal">
+            Filosofi Kami
+        </div>
+
+
+        <h2 class="reveal">
+
+            Dibuat
+            <em>perlahan.</em>
+
+            <br>
+
+            Dinikmati
+            <em>sepenuhnya.</em>
+
+        </h2>
+
+
+        <p class="reveal">
+
+            Dari biji kopi yang dipilih dengan teliti
+            hingga makanan yang dibuat setiap pagi,
+            setiap detail kami perlakukan dengan
+            perhatian.
+
+        </p>
+
+
+        <div class="feature-facts reveal">
+
+            <div class="fact">
+
+                <strong>
+                    08.00
+                </strong>
+
+                <span>
+                    Mulai menyeduh
+                </span>
+
+            </div>
+
+
+            <div class="fact">
+
+                <strong>
+                    22.00
+                </strong>
+
+                <span>
+                    Sampai jumpa
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     MENU
+====================================================== -->
+
+<section
+    class="menu-section"
+    id="menu"
+>
+
+    <div class="menu-heading reveal">
+
+        <div>
 
             <div class="eyebrow">
-                CONTOH NYATA
+                Pilihan NARA
             </div>
 
             <h2>
-                Satu halaman.
+
+                Sedikit,
                 <br>
-                <em>Satu tujuan.</em>
-            </h2>
 
-            <p>
-                Desain dapat disesuaikan dengan karakter bisnis,
-                produk, warna merek, target pelanggan, dan tujuan
-                yang ingin dicapai.
-            </p>
+                <em>tetapi berarti.</em>
 
-        </div>
-
-
-        <div class="showcase">
-
-            <div class="showcase-image reveal">
-
-                <div class="showcase-caption">
-
-                    <span>
-                        CONTOH / 01
-                    </span>
-
-                    <h3>
-                        Brand yang
-                        <br>
-                        terasa hidup.
-                    </h3>
-
-                </div>
-
-            </div>
-
-
-            <div class="showcase-side">
-
-                <article class="side-card reveal">
-
-                    <span>
-                        PERTAMA
-                    </span>
-
-                    <h3>
-                        Tarik perhatian.
-                    </h3>
-
-                    <p>
-                        Judul dibuat singkat, kuat,
-                        dan langsung berbicara kepada
-                        kebutuhan pengunjung.
-                    </p>
-
-                </article>
-
-
-                <article class="side-card reveal">
-
-                    <span>
-                        KEDUA
-                    </span>
-
-                    <h3>
-                        Bangun keyakinan.
-                    </h3>
-
-                    <p>
-                        Informasi penting disusun
-                        agar pengunjung memahami
-                        nilai yang Anda tawarkan.
-                    </p>
-
-                </article>
-
-
-                <article class="side-card reveal">
-
-                    <span>
-                        KETIGA
-                    </span>
-
-                    <h3>
-                        Arahkan tindakan.
-                    </h3>
-
-                    <p>
-                        Pengunjung tidak dibiarkan
-                        bingung. Mereka diarahkan
-                        menuju tindakan yang jelas.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     BENEFITS
-===================================================== -->
-
-<section
-    class="section"
-    id="manfaat"
->
-
-    <div class="container">
-
-        <div class="section-heading reveal">
-
-            <div class="eyebrow">
-                BUKAN SEKADAR DESAIN
-            </div>
-
-            <h2>
-                Dibuat agar
-                <em>berfungsi.</em>
             </h2>
 
         </div>
 
 
-        <div class="benefits">
+        <p>
 
-            <article class="benefit reveal">
+            Kami tidak percaya bahwa menu yang panjang
+            selalu berarti lebih baik.
 
-                <span class="benefit-number">
+            Kami memilih beberapa hal yang benar-benar
+            ingin kami sajikan.
+
+        </p>
+
+    </div>
+
+
+    <div class="menu-grid">
+
+
+        <!-- CARD 01 -->
+
+        <article class="menu-card reveal">
+
+            <div class="menu-image">
+
+                <span class="menu-number">
                     01
                 </span>
 
-                <h3>
-                    Mudah dipahami
-                </h3>
+                <img
+                    src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=90"
+                    alt="NARA Latte"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="menu-body">
+
+                <div class="menu-top">
+
+                    <h3>
+                        NARA Latte
+                    </h3>
+
+                    <span class="menu-price">
+                        Rp38K
+                    </span>
+
+                </div>
+
 
                 <p>
-                    Pengunjung langsung mengetahui
-                    siapa Anda, apa yang Anda tawarkan,
-                    dan mengapa mereka harus peduli.
+
+                    Espresso, susu segar,
+                    dan sentuhan gula aren.
+
                 </p>
 
-            </article>
+
+                <span class="menu-tag">
+                    Signature
+                </span>
+
+            </div>
+
+        </article>
 
 
-            <article class="benefit reveal">
+        <!-- CARD 02 -->
 
-                <span class="benefit-number">
+        <article class="menu-card reveal">
+
+            <div class="menu-image">
+
+                <span class="menu-number">
                     02
                 </span>
 
-                <h3>
-                    Terlihat profesional
-                </h3>
+                <img
+                    src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=90"
+                    alt="Butter Croissant"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="menu-body">
+
+                <div class="menu-top">
+
+                    <h3>
+                        Butter Croissant
+                    </h3>
+
+                    <span class="menu-price">
+                        Rp28K
+                    </span>
+
+                </div>
+
 
                 <p>
-                    Tata letak, tipografi, warna,
-                    jarak, dan visual dirancang
-                    agar merek terasa lebih bernilai.
+
+                    Renyah di luar,
+                    lembut dan hangat di dalam.
+
                 </p>
 
-            </article>
+
+                <span class="menu-tag">
+                    Fresh Today
+                </span>
+
+            </div>
+
+        </article>
 
 
-            <article class="benefit reveal">
+        <!-- CARD 03 -->
 
-                <span class="benefit-number">
+        <article class="menu-card reveal">
+
+            <div class="menu-image">
+
+                <span class="menu-number">
                     03
                 </span>
 
-                <h3>
-                    Mengarah pada tindakan
-                </h3>
+                <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90"
+                    alt="Garden Bowl"
+                    loading="lazy"
+                >
+
+            </div>
+
+
+            <div class="menu-body">
+
+                <div class="menu-top">
+
+                    <h3>
+                        Garden Bowl
+                    </h3>
+
+                    <span class="menu-price">
+                        Rp46K
+                    </span>
+
+                </div>
+
 
                 <p>
-                    Tombol dan informasi penting
-                    ditempatkan untuk memudahkan
-                    calon pelanggan mengambil keputusan.
+
+                    Sayuran segar, telur,
+                    biji-bijian, dan saus rumah.
+
                 </p>
 
-            </article>
 
-        </div>
+                <span class="menu-tag">
+                    Favorite
+                </span>
+
+            </div>
+
+        </article>
 
     </div>
 
 </section>
 
 
-<!-- =====================================================
-     FINAL CTA
-===================================================== -->
+<!-- ======================================================
+     STORY
+====================================================== -->
 
-<section
-    class="final-cta"
-    id="kontak"
->
+<section class="story">
 
-    <div class="container">
+    <div class="story-grid">
 
-        <div class="final-cta-inner reveal">
+        <div class="reveal-left">
 
             <div class="eyebrow">
-                SIAP MEMULAI?
+                Our Story
             </div>
 
-            <h2>
 
-                Tertarik dengan
-                <em>konsep ini?</em>
+            <h2 class="story-title">
+
+                Kami percaya
+                <em>waktu</em>
+                juga punya rasa.
 
             </h2>
 
+        </div>
+
+
+        <div class="story-copy reveal">
+
             <p>
 
-                Kami dapat membuat versi yang benar-benar
-                disesuaikan dengan bisnis, produk, jasa,
-                acara, atau gagasan Anda.
+                NARA dimulai dari sebuah pertanyaan sederhana:
 
-                <br><br>
-
-                <strong>
-                    Atau mungkin Anda sudah memiliki
-                    konsep sendiri?
-                </strong>
-
-                Ceritakan kepada kami.
+                bagaimana jika ada tempat yang tidak
+                memaksa siapa pun untuk terburu-buru?
 
             </p>
 
 
-            <div class="cta-buttons">
+            <p>
 
-                <a
-                    class="button primary"
-                    href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20tertarik%20dengan%20jasa%20Landing%20Page."
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Saya Tertarik ↗
-                </a>
+                Kami ingin membuat ruang yang terasa
+                hangat sejak pertama kali seseorang
+                membuka pintunya.
+
+            </p>
 
 
-                <a
-                    class="button secondary"
-                    href="https://wa.me/6280000000000?text=Halo%20XYNY%20Studio%2C%20saya%20punya%20konsep%20sendiri%20dan%20ingin%20berkonsultasi."
-                    target="_blank"
-                    rel="noopener"
-                >
-                    Saya Punya Konsep Sendiri
-                </a>
+            <p>
 
+                Anda boleh datang dengan laptop.
+                Dengan buku.
+                Dengan seseorang.
+                Atau tanpa membawa apa-apa.
+
+            </p>
+
+
+            <p>
+
+                Duduklah.
+
+                Pesan sesuatu.
+
+                Tarik napas.
+
+                Biarkan hari berjalan sedikit lebih pelan.
+
+            </p>
+
+
+            <div class="signature">
+                — NARA
             </div>
 
         </div>
@@ -1586,28 +2519,349 @@ footer p{
 
 </section>
 
-</main>
 
+<!-- ======================================================
+     GALLERY
+====================================================== -->
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
+<section
+    class="gallery"
+    id="suasana"
+>
 
-<footer>
+    <div class="gallery-item">
 
-    <div class="container footer-inner">
+        <img
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1400&q=90"
+            alt="Suasana NARA"
+            loading="lazy"
+        >
 
-        <div class="footer-brand">
-            XYNY STUDIO
+        <div class="gallery-overlay">
+            <span>
+                A quiet corner
+            </span>
         </div>
 
-        <p>
-            Ide yang baik pantas terlihat luar biasa.
+    </div>
+
+
+    <div class="gallery-item">
+
+        <img
+            src="https://images.unsplash.com/photo-1498804103079-a6351b050096?auto=format&fit=crop&w=1600&q=90"
+            alt="Kopi NARA"
+            loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+            <span>
+                Made with intention
+            </span>
+        </div>
+
+    </div>
+
+
+    <div class="gallery-item">
+
+        <img
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1400&q=90"
+            alt="Interior NARA"
+            loading="lazy"
+        >
+
+        <div class="gallery-overlay">
+            <span>
+                Stay a little longer
+            </span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     QUOTE
+====================================================== -->
+
+<section class="quote">
+
+    <div class="quote-mark reveal">
+        “
+    </div>
+
+
+    <blockquote class="reveal">
+
+        “Tempat yang membuat saya lupa
+        bahwa sebenarnya saya sedang
+        <em>terburu-buru.</em>”
+
+    </blockquote>
+
+
+    <cite class="reveal">
+
+        Contoh tampilan testimonial pelanggan
+
+    </cite>
+
+</section>
+
+
+<!-- ======================================================
+     LOCATION
+====================================================== -->
+
+<section
+    class="location"
+    id="lokasi"
+>
+
+    <div class="location-photo reveal-left"></div>
+
+
+    <div class="location-content">
+
+        <div class="eyebrow reveal">
+            Datang Berkunjung
+        </div>
+
+
+        <h2 class="reveal">
+
+            Sampai
+            <br>
+            bertemu.
+
+        </h2>
+
+
+        <p class="reveal">
+
+            Kami berada di sudut kota yang tenang,
+            tidak jauh dari tempat-tempat yang Anda kenal.
+
         </p>
 
-        <p>
-            © 2026 XYNY Studio
+
+        <div class="info-list reveal">
+
+            <div class="info">
+
+                <span>
+                    Alamat
+                </span>
+
+                <strong>
+                    Jl. Contoh No. 18
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Kota
+                </span>
+
+                <strong>
+                    Medan, Sumatera Utara
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Jam
+                </span>
+
+                <strong>
+                    08.00 — 22.00
+                </strong>
+
+            </div>
+
+
+            <div class="info">
+
+                <span>
+                    Telepon
+                </span>
+
+                <strong>
+                    0812 3456 7890
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-buttons reveal">
+
+            <a
+                href="https://maps.google.com/?q=Medan,Sumatera+Utara"
+                target="_blank"
+                rel="noopener"
+                class="button button-light"
+            >
+                Buka Peta ↗
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FINAL CTA
+====================================================== -->
+
+<section
+    class="final-cta"
+    id="reservasi"
+>
+
+    <div class="final-inner">
+
+        <div class="eyebrow reveal">
+            NARA · COFFEE · KITCHEN
+        </div>
+
+
+        <h2 class="reveal">
+
+            Ada meja.
+            <br>
+
+            Ada kopi.
+            <br>
+
+            <em>Ada waktu.</em>
+
+        </h2>
+
+
+        <p class="reveal">
+
+            Datang sendiri atau bersama orang yang Anda
+            sayangi. Kami akan menyiapkan tempatnya.
+
         </p>
+
+
+        <div class="final-actions reveal">
+
+            <a
+                href="https://wa.me/6280000000000?text=Halo%20NARA%2C%20saya%20ingin%20reservasi."
+                target="_blank"
+                rel="noopener"
+                class="button button-light"
+            >
+                Reservasi Meja ↗
+            </a>
+
+
+            <a
+                href="#menu"
+                class="button button-outline"
+            >
+                Lihat Menu
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-top">
+
+        <div>
+
+            <div class="footer-logo">
+                NARA
+            </div>
+
+            <div class="footer-tagline">
+                Coffee · Kitchen · Slow Living
+            </div>
+
+        </div>
+
+
+        <div class="footer-columns">
+
+            <div class="footer-column">
+
+                <h4>
+                    Jelajahi
+                </h4>
+
+                <a href="#cerita">
+                    Cerita
+                </a>
+
+                <a href="#menu">
+                    Menu
+                </a>
+
+                <a href="#suasana">
+                    Suasana
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Hubungi
+                </h4>
+
+                <a href="#lokasi">
+                    Lokasi
+                </a>
+
+                <a href="tel:+6281234567890">
+                    Telepon
+                </a>
+
+                <a href="#reservasi">
+                    Reservasi
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 NARA Coffee & Kitchen
+        </span>
+
+        <span>
+            Contoh desain · XYNY Studio
+        </span>
 
     </div>
 
@@ -1617,37 +2871,113 @@ footer p{
 <script>
 
 /* =========================================================
-   ANIMATION ON SCROLL
+   PAGE LOADER
 ========================================================= */
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+window.addEventListener("load",()=>{
 
-const observer =
-    new IntersectionObserver(
-        (entries) => {
+    setTimeout(()=>{
 
-            entries.forEach(entry => {
+        document
+            .getElementById("loader")
+            .classList.add("hide");
 
-                if(entry.isIntersecting){
+        document.body.classList.remove("loading");
 
-                    entry.target.classList.add("active");
+    },900);
 
-                    observer.unobserve(entry.target);
+});
 
-                }
 
-            });
+/* =========================================================
+   CUSTOM CURSOR
+========================================================= */
 
-        },
-        {
-            threshold:.12
+const cursor =
+    document.getElementById("cursor");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let cursorX = 0;
+let cursorY = 0;
+
+window.addEventListener(
+    "mousemove",
+    e => {
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+    }
+);
+
+function animateCursor(){
+
+    cursorX +=
+        (mouseX - cursorX) * .18;
+
+    cursorY +=
+        (mouseY - cursorY) * .18;
+
+    cursor.style.left =
+        cursorX + "px";
+
+    cursor.style.top =
+        cursorY + "px";
+
+    requestAnimationFrame(
+        animateCursor
+    );
+}
+
+animateCursor();
+
+
+document
+.querySelectorAll("a,button,.menu-card,.gallery-item")
+.forEach(el=>{
+
+    el.addEventListener(
+        "mouseenter",
+        ()=>{
+            cursor.classList.add("big");
         }
     );
 
+    el.addEventListener(
+        "mouseleave",
+        ()=>{
+            cursor.classList.remove("big");
+        }
+    );
 
-revealElements.forEach(
-    element => observer.observe(element)
+});
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const nav =
+    document.getElementById("nav");
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        if(window.scrollY > 80){
+
+            nav.classList.add("scrolled");
+
+        }else{
+
+            nav.classList.remove("scrolled");
+
+        }
+
+    },
+    {passive:true}
 );
 
 
@@ -1655,97 +2985,213 @@ revealElements.forEach(
    MOBILE MENU
 ========================================================= */
 
-const menu =
-    document.querySelector(".menu");
+const menuButton =
+    document.getElementById("menuButton");
 
-const nav =
-    document.querySelector(".nav-links");
+menuButton.addEventListener(
+    "click",
+    ()=>{
 
+        nav.classList.toggle("open");
 
-menu.addEventListener("click", () => {
-
-    const open =
-        nav.style.display === "flex";
-
-    nav.style.display =
-        open ? "" : "flex";
-
-    if(!open){
-
-        nav.style.position = "absolute";
-        nav.style.top = "70px";
-        nav.style.left = "0";
-        nav.style.right = "0";
-
-        nav.style.padding = "20px";
-
-        nav.style.flexDirection = "column";
-
-        nav.style.background =
-            "rgba(10,10,9,.96)";
-
-        nav.style.border =
-            "1px solid rgba(255,255,255,.1)";
-
-        nav.style.borderRadius =
-            "24px";
+        menuButton.textContent =
+            nav.classList.contains("open")
+            ? "×"
+            : "☰";
 
     }
+);
+
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(link=>{
+
+    link.addEventListener(
+        "click",
+        ()=>{
+            nav.classList.remove("open");
+            menuButton.textContent="☰";
+        }
+    );
 
 });
 
 
 /* =========================================================
-   CLOSE MOBILE MENU AFTER CLICK
+   SCROLL REVEAL
 ========================================================= */
 
-document
-    .querySelectorAll(".nav-links a")
-    .forEach(link => {
+const revealElements =
+    document.querySelectorAll(
+        ".reveal,.reveal-left"
+    );
 
-        link.addEventListener("click", () => {
+const revealObserver =
+    new IntersectionObserver(
+        entries=>{
 
-            if(window.innerWidth <= 900){
+            entries.forEach(entry=>{
 
-                nav.style.display = "";
+                if(entry.isIntersecting){
 
-            }
+                    entry.target
+                        .classList
+                        .add("visible");
 
-        });
+                    revealObserver
+                        .unobserve(
+                            entry.target
+                        );
 
-    });
+                }
+
+            });
+
+        },
+        {
+            threshold:.12,
+            rootMargin:"0px 0px -40px"
+        }
+    );
+
+
+revealElements.forEach(
+    el => revealObserver.observe(el)
+);
 
 
 /* =========================================================
-   PARALLAX SUBTLE
+   HERO PARALLAX
 ========================================================= */
 
-const browser =
-    document.querySelector(".browser");
+const heroBg =
+    document.getElementById("heroBg");
 
 window.addEventListener(
-    "mousemove",
-    (event) => {
+    "scroll",
+    ()=>{
 
-        if(window.innerWidth < 900)
+        if(window.innerWidth <= 900)
             return;
 
-        const x =
-            (event.clientX / window.innerWidth - .5);
-
         const y =
-            (event.clientY / window.innerHeight - .5);
+            window.scrollY;
 
-        browser.style.transform = `
-            perspective(1200px)
-            rotateY(${x * 8 - 5}deg)
-            rotateX(${y * -5}deg)
-            translateY(-3px)
-        `;
+        if(y < window.innerHeight){
+
+            heroBg.style.transform =
+                `scale(1.05) translateY(${y * .08}px)`;
+
+        }
 
     },
     {passive:true}
 );
+
+
+/* =========================================================
+   MAGNETIC BUTTON
+========================================================= */
+
+if(window.matchMedia("(pointer:fine)").matches){
+
+    document
+    .querySelectorAll(".button,.nav-cta")
+    .forEach(button=>{
+
+        button.addEventListener(
+            "mousemove",
+            e=>{
+
+                const rect =
+                    button.getBoundingClientRect();
+
+                const x =
+                    e.clientX -
+                    rect.left -
+                    rect.width/2;
+
+                const y =
+                    e.clientY -
+                    rect.top -
+                    rect.height/2;
+
+                button.style.transform =
+                    `translate(${x*.12}px,${y*.12}px)`;
+
+            }
+        );
+
+        button.addEventListener(
+            "mouseleave",
+            ()=>{
+
+                button.style.transform="";
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SMOOTH ANCHOR
+========================================================= */
+
+document
+.querySelectorAll('a[href^="#"]')
+.forEach(link=>{
+
+    link.addEventListener(
+        "click",
+        e=>{
+
+            const target =
+                document.querySelector(
+                    link.getAttribute("href")
+                );
+
+            if(!target)
+                return;
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+document
+.querySelectorAll("img")
+.forEach(img=>{
+
+    img.addEventListener(
+        "error",
+        ()=>{
+
+            img.style.background =
+                "#d8d0c3";
+
+            img.style.minHeight =
+                "200px";
+
+        }
+    );
+
+});
 
 </script>
 
