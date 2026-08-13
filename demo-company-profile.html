@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="NOVA — Company Profile. Membangun solusi, menciptakan pertumbuhan, dan menghadirkan standar baru.">
+
+<title>NOVA — Company Profile</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:#f5f4f0;
+    color:#111;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    font:inherit;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --black:#0c0c0b;
+    --dark:#151513;
+    --cream:#f5f4f0;
+    --white:#ffffff;
+    --muted:#777770;
+    --line:rgba(17,17,17,.12);
+    --accent:#c8ff4d;
+}
+
+
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:var(--black);
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity .8s ease, visibility .8s ease;
+}
+
+.loader.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader-inner{
+    text-align:center;
+}
+
+.loader-logo{
+    font-family:"Manrope",sans-serif;
+    font-size:12px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.loader-line{
+    width:120px;
+    height:1px;
+    background:rgba(255,255,255,.2);
+    overflow:hidden;
+}
+
+.loader-line span{
+    display:block;
+    width:45%;
+    height:100%;
+    background:var(--accent);
+    animation:loaderMove 1.2s infinite ease-in-out;
+}
+
+@keyframes loaderMove{
+    from{transform:translateX(-120%);}
+    to{transform:translateX(350%);}
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:1000;
+    padding:22px 5vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:white;
+    transition:.4s ease;
+}
+
+.navbar.scrolled{
+    padding:14px 5vw;
+    background:rgba(12,12,11,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:"Manrope",sans-serif;
+    font-weight:800;
+    letter-spacing:.08em;
+}
+
+.brand-mark{
+    width:34px;
+    height:34px;
+    border:1px solid rgba(255,255,255,.5);
+    display:grid;
+    place-items:center;
+    font-size:11px;
+}
+
+.nav-links{
+    display:flex;
+    gap:34px;
+    font-size:13px;
+    color:rgba(255,255,255,.72);
+}
+
+.nav-links a{
+    transition:.25s ease;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+.nav-cta{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 17px;
+    background:white;
+    color:#111;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.nav-cta:hover{
+    transform:translateY(-2px);
+    background:var(--accent);
+}
+
+.menu{
+    display:none;
+    width:42px;
+    height:42px;
+    border:1px solid rgba(255,255,255,.25);
+    background:transparent;
+    color:white;
+    border-radius:50%;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100svh;
+    background:var(--black);
+    color:white;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:150px 5vw 70px;
+    overflow:hidden;
+}
+
+.hero-noise{
+    position:absolute;
+    inset:0;
+    opacity:.06;
+    pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+.hero-glow{
+    position:absolute;
+    width:650px;
+    height:650px;
+    border-radius:50%;
+    background:var(--accent);
+    filter:blur(160px);
+    opacity:.08;
+    right:-200px;
+    top:100px;
+}
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:80px 80px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:1200px;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:rgba(255,255,255,.55);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    margin-bottom:28px;
+}
+
+.eyebrow-dot{
+    width:7px;
+    height:7px;
+    background:var(--accent);
+    border-radius:50%;
+    box-shadow:0 0 15px rgba(200,255,77,.7);
+}
+
+.hero h1{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(4rem,10vw,10.5rem);
+    line-height:.86;
+    letter-spacing:-.075em;
+    font-weight:800;
+    max-width:1200px;
+}
+
+.hero h1 span{
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.5);
+}
+
+.hero-bottom{
+    margin-top:70px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:40px;
+}
+
+.hero-description{
+    max-width:470px;
+    color:rgba(255,255,255,.6);
+    font-size:16px;
+    line-height:1.7;
+}
+
+.hero-description strong{
+    color:white;
+}
+
+.hero-scroll{
+    color:rgba(255,255,255,.45);
+    font-size:11px;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.scroll-line{
+    width:80px;
+    height:1px;
+    background:rgba(255,255,255,.25);
+}
+
+
+/* =========================================================
+   TRUST BAR
+========================================================= */
+
+.trust{
+    background:var(--accent);
+    padding:19px 5vw;
+    overflow:hidden;
+}
+
+.trust-track{
+    display:flex;
+    justify-content:space-between;
+    gap:35px;
+    font-family:"Manrope",sans-serif;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    white-space:nowrap;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+.section{
+    padding:130px 5vw;
+}
+
+.section-dark{
+    background:var(--black);
+    color:white;
+}
+
+.section-head{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    margin-bottom:75px;
+}
+
+.kicker{
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:#888;
+}
+
+.section-dark .kicker{
+    color:#666;
+}
+
+.section-title{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(2.5rem,5vw,5.4rem);
+    line-height:.98;
+    letter-spacing:-.055em;
+    max-width:800px;
+}
+
+.section-title em{
+    font-style:normal;
+    color:#888;
+}
+
+.section-copy{
+    color:#6e6e67;
+    font-size:16px;
+    line-height:1.8;
+    max-width:500px;
+}
+
+.section-dark .section-copy{
+    color:#888;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+}
+
+.stat{
+    padding:45px 25px;
+    border-right:1px solid var(--line);
+}
+
+.stat:last-child{
+    border-right:0;
+}
+
+.stat-number{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(2.8rem,5vw,5rem);
+    font-weight:800;
+    letter-spacing:-.06em;
+}
+
+.stat-label{
+    margin-top:12px;
+    color:#777;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.services{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.service{
+    padding:45px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    display:grid;
+    grid-template-columns:70px 1fr 30px;
+    gap:25px;
+    align-items:start;
+    transition:.35s ease;
+}
+
+.service:hover{
+    padding-left:20px;
+}
+
+.service-number{
+    color:#555;
+    font-size:12px;
+}
+
+.service h3{
+    font-family:"Manrope",sans-serif;
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.service p{
+    color:#777;
+    line-height:1.7;
+    font-size:14px;
+    max-width:450px;
+}
+
+.service-arrow{
+    color:#777;
+    font-size:22px;
+}
+
+
+/* =========================================================
+   FEATURE
+========================================================= */
+
+.feature{
+    min-height:700px;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    background:
+        linear-gradient(120deg,rgba(0,0,0,.95),rgba(0,0,0,.25)),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+}
+
+.feature-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.85),transparent 65%);
+}
+
+.feature-content{
+    position:relative;
+    z-index:2;
+    padding:70px 5vw;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:50px;
+}
+
+.feature h2{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(3rem,7vw,8rem);
+    letter-spacing:-.07em;
+    line-height:.9;
+}
+
+.feature-copy{
+    max-width:350px;
+    color:rgba(255,255,255,.65);
+    line-height:1.7;
+    font-size:14px;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.projects{
+    display:grid;
+    grid-template-columns:1.25fr .75fr;
+    gap:20px;
+}
+
+.project{
+    position:relative;
+    min-height:430px;
+    overflow:hidden;
+    background:#ddd;
+}
+
+.project:first-child{
+    min-height:650px;
+}
+
+.project img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.project:hover img{
+    transform:scale(1.06);
+}
+
+.project::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%);
+}
+
+.project-info{
+    position:absolute;
+    z-index:2;
+    bottom:30px;
+    left:30px;
+    color:white;
+}
+
+.project-info small{
+    display:block;
+    color:rgba(255,255,255,.6);
+    margin-bottom:8px;
+}
+
+.project-info h3{
+    font-family:"Manrope",sans-serif;
+    font-size:25px;
+}
+
+
+/* =========================================================
+   PHILOSOPHY
+========================================================= */
+
+.philosophy{
+    background:#e7e5df;
+}
+
+.philosophy-inner{
+    max-width:1300px;
+    margin:auto;
+}
+
+.big-statement{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(3rem,7vw,8rem);
+    line-height:.93;
+    letter-spacing:-.07em;
+    max-width:1100px;
+}
+
+.big-statement span{
+    color:#999;
+}
+
+.philosophy-meta{
+    margin-top:65px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    border-top:1px solid rgba(0,0,0,.15);
+    padding-top:35px;
+}
+
+.philosophy-meta p{
+    max-width:500px;
+    line-height:1.8;
+    color:#666;
+}
+
+
+/* =========================================================
+   PROCESS
+========================================================= */
+
+.process-list{
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+.process-item{
+    display:grid;
+    grid-template-columns:100px 1fr 100px;
+    gap:30px;
+    padding:42px 0;
+    border-bottom:1px solid rgba(255,255,255,.1);
+    align-items:start;
+}
+
+.process-number{
+    color:#555;
+    font-size:13px;
+}
+
+.process-item h3{
+    font-family:"Manrope",sans-serif;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.process-item p{
+    color:#777;
+    max-width:550px;
+    line-height:1.7;
+}
+
+.process-time{
+    color:#555;
+    font-size:12px;
+    text-align:right;
+}
+
+
+/* =========================================================
+   TESTIMONIAL
+========================================================= */
+
+.testimonial{
+    max-width:1050px;
+}
+
+.quote-mark{
+    font-family:Georgia,serif;
+    font-size:100px;
+    line-height:.5;
+    color:#bbb;
+}
+
+.quote{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(2rem,4vw,4rem);
+    line-height:1.1;
+    letter-spacing:-.04em;
+}
+
+.quote-author{
+    margin-top:35px;
+    color:#777;
+    font-size:13px;
+}
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.final-cta{
+    background:var(--accent);
+    min-height:600px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 5vw;
+}
+
+.final-cta .kicker{
+    color:#4e5b2c;
+    margin-bottom:25px;
+}
+
+.final-cta h2{
+    font-family:"Manrope",sans-serif;
+    font-size:clamp(3.5rem,8vw,9rem);
+    line-height:.85;
+    letter-spacing:-.075em;
+}
+
+.final-cta p{
+    max-width:500px;
+    margin:35px auto;
+    color:#46502d;
+    line-height:1.7;
+}
+
+.cta-button{
+    display:inline-flex;
+    align-items:center;
+    gap:15px;
+    background:#111;
+    color:white;
+    padding:18px 25px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:13px;
+    transition:.3s ease;
+}
+
+.cta-button:hover{
+    transform:translateY(-4px);
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.cta-button span{
+    font-size:18px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#0c0c0b;
+    color:white;
+    padding:65px 5vw 30px;
+}
+
+.footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:30px;
+    padding-bottom:70px;
+}
+
+.footer-brand{
+    font-family:"Manrope",sans-serif;
+    font-size:25px;
+    font-weight:800;
+}
+
+.footer-description{
+    color:#666;
+    max-width:300px;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);
+    padding-top:25px;
+    display:flex;
+    justify-content:space-between;
+    color:#555;
+    font-size:11px;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+    .nav-links,
+    .nav-cta{
+        display:none;
+    }
+
+    .menu{
+        display:grid;
+        place-items:center;
+    }
+
+    .hero{
+        padding-top:140px;
+        min-height:850px;
+    }
+
+    .hero h1{
+        font-size:clamp(4rem,15vw,7rem);
+    }
+
+    .hero-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+        margin-top:55px;
+    }
+
+    .section{
+        padding:90px 6vw;
+    }
+
+    .section-head{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat:nth-child(2){
+        border-right:0;
+    }
+
+    .stat:nth-child(-n+2){
+        border-bottom:1px solid var(--line);
+    }
+
+    .services{
+        grid-template-columns:1fr;
+    }
+
+    .feature{
+        min-height:600px;
+    }
+
+    .feature-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .project:first-child{
+        min-height:500px;
+    }
+
+    .philosophy-meta{
+        grid-template-columns:1fr;
+        gap:25px;
+    }
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+        padding:18px 5vw;
+    }
+
+    .brand-mark{
+        width:30px;
+        height:30px;
+    }
+
+    .hero{
+        padding:130px 6vw 55px;
+    }
+
+    .hero h1{
+        font-size:clamp(3.7rem,18vw,6rem);
+    }
+
+    .hero-description{
+        font-size:14px;
+    }
+
+    .trust-track{
+        justify-content:flex-start;
+        animation:marquee 18s linear infinite;
+    }
+
+    @keyframes marquee{
+        to{
+            transform:translateX(-45%);
+        }
+    }
+
+    .section{
+        padding:75px 6vw;
+    }
+
+    .section-title{
+        font-size:clamp(2.7rem,12vw,4rem);
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat{
+        padding:30px 15px;
+    }
+
+    .stat-number{
+        font-size:2.5rem;
+    }
+
+    .service{
+        grid-template-columns:40px 1fr 20px;
+        gap:12px;
+        padding:30px 0;
+    }
+
+    .service h3{
+        font-size:21px;
+    }
+
+    .feature{
+        min-height:560px;
+    }
+
+    .feature-content{
+        padding:45px 6vw;
+    }
+
+    .feature h2{
+        font-size:4rem;
+    }
+
+    .project,
+    .project:first-child{
+        min-height:420px;
+    }
+
+    .process-item{
+        grid-template-columns:45px 1fr;
+        gap:10px;
+    }
+
+    .process-time{
+        display:none;
+    }
+
+    .quote{
+        font-size:2rem;
+    }
+
+    .final-cta{
+        min-height:550px;
+    }
+
+    .final-cta h2{
+        font-size:clamp(3.7rem,18vw,6rem);
+    }
+
+    .footer-top,
+    .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .footer-bottom{
+        gap:10px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto!important;
+        animation:none!important;
+        transition:none!important;
+    }
+
+    .reveal{
+        opacity:1;
+        transform:none;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     LOADER
+======================================================= -->
+
+<div class="loader" id="loader">
+
+    <div class="loader-inner">
+
+        <div class="loader-logo">
+            NOVA / COMPANY
+        </div>
+
+        <div class="loader-line">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+
+<header class="navbar" id="navbar">
+
+    <a href="#" class="brand">
+
+        <span class="brand-mark">
+            N
+        </span>
+
+        <span>
+            NOVA
+        </span>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="#tentang">
+            Tentang
+        </a>
+
+        <a href="#layanan">
+            Layanan
+        </a>
+
+        <a href="#proyek">
+            Proyek
+        </a>
+
+        <a href="#proses">
+            Proses
+        </a>
+
+    </nav>
+
+
+    <a href="#kontak" class="nav-cta">
+        Hubungi Kami
+        <span>↗</span>
+    </a>
+
+
+    <button class="menu" aria-label="Menu">
+        ☰
+    </button>
+
+</header>
+
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-noise"></div>
+
+
+    <div class="hero-content reveal">
+
+        <div class="eyebrow">
+
+            <span class="eyebrow-dot"></span>
+
+            Company Profile / 2026
+
+        </div>
+
+
+        <h1>
+
+            We build
+            <br>
+
+            <span>what moves</span>
+            <br>
+
+            business.
+
+        </h1>
+
+
+        <div class="hero-bottom">
+
+            <p class="hero-description">
+
+                NOVA membantu perusahaan mengubah
+                tantangan menjadi <strong>solusi yang nyata,
+                terukur, dan bertumbuh.</strong>
+
+            </p>
+
+
+            <div class="hero-scroll">
+
+                Scroll to explore
+
+                <span class="scroll-line"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     TRUST
+======================================================= -->
+
+<div class="trust">
+
+    <div class="trust-track">
+
+        <span>Strategy</span>
+        <span>Technology</span>
+        <span>Design</span>
+        <span>Innovation</span>
+        <span>Growth</span>
+        <span>Partnership</span>
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     ABOUT
+======================================================= -->
+
+<section class="section" id="tentang">
+
+    <div class="section-head reveal">
+
+        <div>
+
+            <div class="kicker">
+                01 / Tentang Kami
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h2 class="section-title">
+
+                Bukan sekadar
+                <em>menyelesaikan pekerjaan.</em>
+
+            </h2>
+
+            <p class="section-copy" style="margin-top:30px;">
+
+                Kami percaya perusahaan yang baik bukan hanya
+                menghasilkan sesuatu. Perusahaan yang baik
+                menciptakan dampak yang dapat dirasakan.
+
+                <br><br>
+
+                Karena itu, setiap pekerjaan kami mulai dari
+                memahami masalah, bukan sekadar menerima pesanan.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="stats reveal">
+
+        <div class="stat">
+
+            <div class="stat-number">
+                12+
+            </div>
+
+            <div class="stat-label">
+                Tahun pengalaman tim
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                80+
+            </div>
+
+            <div class="stat-label">
+                Proyek terselesaikan
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                14
+            </div>
+
+            <div class="stat-label">
+                Industri yang ditangani
+            </div>
+
+        </div>
+
+
+        <div class="stat">
+
+            <div class="stat-number">
+                96%
+            </div>
+
+            <div class="stat-label">
+                Klien kembali bekerja sama
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     SERVICES
+======================================================= -->
+
+<section class="section section-dark" id="layanan">
+
+    <div class="section-head reveal">
+
+        <div>
+
+            <div class="kicker">
+                02 / Keahlian
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h2 class="section-title">
+
+                Dari gagasan
+                <em>menjadi gerakan.</em>
+
+            </h2>
+
+            <p class="section-copy" style="margin-top:30px;">
+
+                Kami menggabungkan strategi, kreativitas,
+                teknologi, dan pemahaman bisnis untuk
+                membangun solusi yang benar-benar digunakan.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="services reveal">
+
+
+        <article class="service">
+
+            <div class="service-number">
+                01
+            </div>
+
+            <div>
+
+                <h3>
+                    Strategi Bisnis
+                </h3>
+
+                <p>
+                    Membantu menemukan arah, memperjelas posisi,
+                    dan menyusun strategi pertumbuhan yang realistis.
+                </p>
+
+            </div>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
+        </article>
+
+
+        <article class="service">
+
+            <div class="service-number">
+                02
+            </div>
+
+            <div>
+
+                <h3>
+                    Transformasi Digital
+                </h3>
+
+                <p>
+                    Mengubah proses kerja yang rumit menjadi
+                    sistem digital yang lebih sederhana dan efisien.
+                </p>
+
+            </div>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
+        </article>
+
+
+        <article class="service">
+
+            <div class="service-number">
+                03
+            </div>
+
+            <div>
+
+                <h3>
+                    Identitas & Branding
+                </h3>
+
+                <p>
+                    Membangun identitas yang membuat perusahaan
+                    mudah dikenali dan dipercaya.
+                </p>
+
+            </div>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
+        </article>
+
+
+        <article class="service">
+
+            <div class="service-number">
+                04
+            </div>
+
+            <div>
+
+                <h3>
+                    Teknologi
+                </h3>
+
+                <p>
+                    Website, aplikasi, sistem informasi,
+                    dashboard, dan berbagai kebutuhan digital.
+                </p>
+
+            </div>
+
+            <div class="service-arrow">
+                ↗
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FEATURE
+======================================================= -->
+
+<section class="feature reveal">
+
+    <div class="feature-overlay"></div>
+
+
+    <div class="feature-content">
+
+        <div>
+
+            <div class="eyebrow">
+                Our approach
+            </div>
+
+            <h2>
+                Think<br>
+                deeper.
+            </h2>
+
+        </div>
+
+
+        <p class="feature-copy">
+
+            Kami tidak mengejar tren hanya karena terlihat
+            menarik. Kami mencari apa yang benar-benar
+            dibutuhkan bisnis Anda — lalu membangunnya
+            dengan cara yang lebih baik.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PROJECTS
+======================================================= -->
+
+<section class="section" id="proyek">
+
+    <div class="section-head reveal">
+
+        <div>
+
+            <div class="kicker">
+                03 / Pilihan Proyek
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h2 class="section-title">
+
+                Pekerjaan yang
+                <em>berbicara sendiri.</em>
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="projects">
+
+
+        <article class="project reveal">
+
+            <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=85"
+                alt="Ruang kerja perusahaan"
+                loading="lazy"
+            >
+
+            <div class="project-info">
+
+                <small>
+                    Corporate / Digital
+                </small>
+
+                <h3>
+                    Rebuilding the digital presence
+                </h3>
+
+            </div>
+
+        </article>
+
+
+        <div style="display:grid;gap:20px;">
+
+
+            <article class="project reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
+                    alt="Interior perusahaan"
+                    loading="lazy"
+                >
+
+                <div class="project-info">
+
+                    <small>
+                        Brand / Strategy
+                    </small>
+
+                    <h3>
+                        A clearer direction
+                    </h3>
+
+                </div>
+
+            </article>
+
+
+            <article class="project reveal">
+
+                <img
+                    src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1200&q=85"
+                    alt="Tim profesional sedang berdiskusi"
+                    loading="lazy"
+                >
+
+                <div class="project-info">
+
+                    <small>
+                        Business / Growth
+                    </small>
+
+                    <h3>
+                        Built for people
+                    </h3>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PHILOSOPHY
+======================================================= -->
+
+<section class="section philosophy">
+
+    <div class="philosophy-inner reveal">
+
+        <div class="kicker">
+            04 / Cara Kami Berpikir
+        </div>
+
+
+        <div class="big-statement" style="margin-top:35px;">
+
+            Masalah yang
+            <span>jelas</span>
+            menghasilkan keputusan
+            yang <span>lebih baik.</span>
+
+        </div>
+
+
+        <div class="philosophy-meta">
+
+            <p>
+
+                Sebelum membuat sesuatu terlihat bagus,
+                kami memastikan sesuatu tersebut memang
+                memiliki alasan untuk dibuat.
+
+            </p>
+
+
+            <p>
+
+                Karena desain yang indah dapat menarik
+                perhatian. Tetapi solusi yang tepat membuat
+                orang bertahan.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PROCESS
+======================================================= -->
+
+<section class="section section-dark" id="proses">
+
+    <div class="section-head reveal">
+
+        <div>
+
+            <div class="kicker">
+                05 / Proses
+            </div>
+
+        </div>
+
+
+        <div>
+
+            <h2 class="section-title">
+
+                Terstruktur.
+                <em>Tanpa dibuat rumit.</em>
+
+            </h2>
+
+        </div>
+
+    </div>
+
+
+    <div class="process-list reveal">
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                01
+            </div>
+
+            <div>
+
+                <h3>
+                    Understand
+                </h3>
+
+                <p>
+                    Kami memahami bisnis, masalah,
+                    tujuan, dan orang-orang yang Anda layani.
+                </p>
+
+            </div>
+
+            <div class="process-time">
+                Discover
+            </div>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                02
+            </div>
+
+            <div>
+
+                <h3>
+                    Define
+                </h3>
+
+                <p>
+                    Semua informasi disederhanakan menjadi
+                    arah dan prioritas yang jelas.
+                </p>
+
+            </div>
+
+            <div class="process-time">
+                Strategy
+            </div>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                03
+            </div>
+
+            <div>
+
+                <h3>
+                    Build
+                </h3>
+
+                <p>
+                    Konsep diterjemahkan menjadi desain,
+                    sistem, konten, atau produk nyata.
+                </p>
+
+            </div>
+
+            <div class="process-time">
+                Execute
+            </div>
+
+        </div>
+
+
+        <div class="process-item">
+
+            <div class="process-number">
+                04
+            </div>
+
+            <div>
+
+                <h3>
+                    Improve
+                </h3>
+
+                <p>
+                    Hasil dievaluasi dan disempurnakan
+                    agar terus memberikan nilai.
+                </p>
+
+            </div>
+
+            <div class="process-time">
+                Evolve
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     TESTIMONIAL
+======================================================= -->
+
+<section class="section">
+
+    <div class="testimonial reveal">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+        <div class="quote">
+
+            Mereka tidak hanya memberi kami
+            sebuah website. Mereka membantu kami
+            melihat bisnis kami dengan cara yang baru.
+
+        </div>
+
+        <div class="quote-author">
+
+            Direktur — Perusahaan Konsultan
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FINAL CTA
+======================================================= -->
+
+<section class="final-cta" id="kontak">
+
+    <div class="reveal">
+
+        <div class="kicker">
+            Let's build something meaningful
+        </div>
+
+
+        <h2>
+
+            Punya
+            <br>
+            rencana?
+
+        </h2>
+
+
+        <p>
+
+            Ceritakan kebutuhan perusahaan Anda.
+            Mungkin kita bisa membangun sesuatu
+            yang jauh lebih besar bersama.
+
+        </p>
+
+
+        <a
+            href="https://wa.me/6280000000000"
+            target="_blank"
+            rel="noopener"
+            class="cta-button"
+        >
+
+            Diskusikan dengan kami
+
+            <span>↗</span>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+            NOVA
+        </div>
+
+
+        <p class="footer-description">
+
+            Company profile ini merupakan contoh tampilan
+            website perusahaan yang dapat dikembangkan
+            sesuai identitas dan kebutuhan bisnis Anda.
+
+        </p>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 NOVA. All rights reserved.
+        </span>
+
+        <span>
+            Designed for ambitious businesses.
+        </span>
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+            .getElementById("loader")
+            .classList
+            .add("hide");
+
+    },700);
+
+});
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 40){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menu =
+    document.querySelector(".menu");
+
+menu.addEventListener("click",()=>{
+
+    alert(
+        "Menu navigasi dapat dikembangkan menjadi menu layar penuh sesuai kebutuhan website."
+    );
+
+});
+
+</script>
+
+</body>
+</html>
