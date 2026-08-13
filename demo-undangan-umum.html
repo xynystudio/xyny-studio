@@ -5,2495 +5,2670 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#051911">
 <meta name="description" content="Undangan Pernikahan Rocxy & Meilany — Medan">
-<title>Rocxy & Meilany — The Beginning</title>
 
-<!-- Fonts -->
+<title>Rocxy & Meilany — Wedding Invitation</title>
+
+<!-- =========================================================
+     GOOGLE FONTS
+========================================================= -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<!-- =========================================================
+     FONT AWESOME
+========================================================= -->
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+<!-- =========================================================
+     GSAP
+========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<!-- =========================================================
+     THREE JS
+========================================================= -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- =========================================================
+     CONFETTI
+========================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+
 <style>
+
+/* =========================================================
+   01. DESIGN TOKENS
+========================================================= */
+
 :root{
-  --emerald:#051911;
-  --emerald2:#09271d;
-  --emerald3:#103a2a;
-  --gold:#d4af37;
-  --gold2:#f2d77c;
-  --champagne:#faf7ef;
-  --cream:#eee7d6;
-  --muted:#a7ada7;
-  --line:rgba(212,175,55,.22);
-  --glass:rgba(255,255,255,.055);
-  --shadow:0 30px 100px rgba(0,0,0,.35);
+    --green:#051911;
+    --green-2:#081f17;
+    --green-3:#0d2a20;
+
+    --gold:#d4af37;
+    --gold-light:#f0d77b;
+    --gold-soft:#ead9a0;
+
+    --cream:#faf8f1;
+    --cream-2:#f2eee3;
+
+    --muted:#9ba8a1;
+    --muted-dark:#6d7b74;
+
+    --line:rgba(212,175,55,.20);
+    --glass:rgba(255,255,255,.045);
+
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --display:"Playfair Display", Georgia, serif;
+    --sans:"DM Sans", Arial, sans-serif;
+
+    --ease:cubic-bezier(.22,1,.36,1);
 }
 
+
+/* =========================================================
+   02. RESET
+========================================================= */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:auto;
-  background:var(--emerald);
+    scroll-behavior:smooth;
+    background:var(--green);
 }
 
 body{
-  background:
-    radial-gradient(circle at 50% 0%,#123e2c 0%,transparent 35%),
-    var(--emerald);
-  color:var(--champagne);
-  font-family:"Plus Jakarta Sans",sans-serif;
-  overflow-x:hidden;
-  line-height:1.7;
+    background:
+        radial-gradient(circle at 50% -10%,rgba(212,175,55,.13),transparent 35%),
+        linear-gradient(180deg,#051911 0%,#061811 50%,#03110c 100%);
+    color:var(--cream);
+    font-family:var(--sans);
+    overflow-x:hidden;
+    min-height:100vh;
 }
 
 body.locked{
-  height:100vh;
-  overflow:hidden;
+    overflow:hidden;
 }
 
-a{
-  color:inherit;
-  text-decoration:none;
+img{
+    display:block;
+    max-width:100%;
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
 }
 
 button{
-  font:inherit;
+    border:0;
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
 ::selection{
-  background:var(--gold);
-  color:#06130e;
+    background:var(--gold);
+    color:#07130e;
 }
 
+
 /* =========================================================
-   GLOBAL
+   03. THREE BACKGROUND
 ========================================================= */
 
 #particles{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  pointer-events:none;
-  opacity:.48;
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-5;
+    pointer-events:none;
+    opacity:.55;
 }
 
-.noise{
-  position:fixed;
-  inset:0;
-  z-index:2;
-  pointer-events:none;
-  opacity:.045;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
-}
-
-main{
-  position:relative;
-  z-index:5;
-}
-
-.container{
-  width:min(1180px,calc(100% - 40px));
-  margin:auto;
-}
-
-.section{
-  position:relative;
-  padding:140px 0;
-}
-
-.section-label{
-  color:var(--gold2);
-  text-transform:uppercase;
-  letter-spacing:.28em;
-  font-size:10px;
-  font-weight:700;
-  margin-bottom:20px;
-}
-
-.section-title{
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(42px,7vw,82px);
-  line-height:.98;
-  font-weight:400;
-}
-
-.section-title em{
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
-  font-weight:400;
-}
-
-.gold{
-  color:var(--gold2);
-}
 
 /* =========================================================
-   INTRO / CINEMATIC CURTAIN
+   04. AMBIENT LIGHT
 ========================================================= */
 
-.intro{
-  position:fixed;
-  inset:0;
-  z-index:1000;
-  background:#020a06;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
+.ambient{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:-2;
+    filter:blur(90px);
+    opacity:.08;
+    background:#d4af37;
+    transform:translate(-50%,-50%);
+    transition:transform 1s var(--ease);
 }
 
-.intro-light{
-  position:absolute;
-  width:70vw;
-  height:70vw;
-  max-width:800px;
-  max-height:800px;
-  border-radius:50%;
-  background:radial-gradient(circle,
-    rgba(242,215,124,.20),
-    rgba(242,215,124,.06) 30%,
-    transparent 68%);
-  filter:blur(10px);
-  opacity:.5;
+
+/* =========================================================
+   05. GRAIN
+========================================================= */
+
+.grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:100;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
 }
 
-.intro-content{
-  position:relative;
-  z-index:20;
-  width:min(90%,560px);
-  text-align:center;
+
+/* =========================================================
+   06. OPENING COVER
+========================================================= */
+
+#opening{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(212,175,55,.13),transparent 30%),
+        #04120d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
 }
 
-.intro-small{
-  text-transform:uppercase;
-  letter-spacing:.42em;
-  font-size:10px;
-  color:var(--gold2);
-  margin-bottom:30px;
+.opening-glow{
+    position:absolute;
+    width:70vmax;
+    height:70vmax;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(212,175,55,.08),transparent 68%);
+    animation:breath 5s ease-in-out infinite;
 }
 
-.intro-monogram{
-  width:100px;
-  height:100px;
-  margin:0 auto 30px;
-  border:1px solid rgba(212,175,55,.65);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  position:relative;
+@keyframes breath{
+    0%,100%{transform:scale(.92);opacity:.5}
+    50%{transform:scale(1.08);opacity:1}
 }
 
-.intro-monogram:before,
-.intro-monogram:after{
-  content:"";
-  position:absolute;
-  border-radius:50%;
-  inset:-9px;
-  border:1px solid rgba(212,175,55,.15);
+.opening-card{
+    width:min(420px,88vw);
+    min-height:560px;
+    border:1px solid rgba(212,175,55,.30);
+    border-radius:28px;
+    padding:44px 28px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015)),
+        rgba(4,20,14,.88);
+    backdrop-filter:blur(20px);
+    box-shadow:
+        0 50px 120px rgba(0,0,0,.45),
+        inset 0 0 80px rgba(212,175,55,.025);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
 }
 
-.intro-monogram:after{
-  inset:-20px;
-  border-color:rgba(212,175,55,.07);
+.opening-card::before{
+    content:"";
+    position:absolute;
+    inset:13px;
+    border:1px solid rgba(212,175,55,.12);
+    border-radius:20px;
+    pointer-events:none;
 }
 
-.intro-monogram span{
-  font-family:"DM Serif Display",serif;
-  font-size:30px;
-  color:var(--gold2);
+.corner{
+    position:absolute;
+    width:70px;
+    height:70px;
+    border-color:rgba(212,175,55,.45);
+    border-style:solid;
 }
 
-.intro h1{
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(42px,10vw,82px);
-  line-height:.95;
-  font-weight:400;
+.corner.tl{
+    top:24px;
+    left:24px;
+    border-width:1px 0 0 1px;
 }
 
-.intro h1 span{
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
-  font-style:italic;
+.corner.tr{
+    top:24px;
+    right:24px;
+    border-width:1px 1px 0 0;
 }
 
-.intro-date{
-  margin:25px 0 40px;
-  color:#aeb7b1;
-  font-size:12px;
-  letter-spacing:.14em;
+.corner.bl{
+    bottom:24px;
+    left:24px;
+    border-width:0 0 1px 1px;
+}
+
+.corner.br{
+    bottom:24px;
+    right:24px;
+    border-width:0 1px 1px 0;
+}
+
+.opening-small{
+    color:var(--gold-soft);
+    font-size:10px;
+    letter-spacing:.36em;
+    text-transform:uppercase;
+    margin-bottom:35px;
+}
+
+.seal{
+    width:88px;
+    height:88px;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.7);
+    display:grid;
+    place-items:center;
+    position:relative;
+    margin-bottom:35px;
+    box-shadow:
+        0 0 0 7px rgba(212,175,55,.035),
+        0 0 40px rgba(212,175,55,.08);
+    animation:sealFloat 4s ease-in-out infinite;
+}
+
+@keyframes sealFloat{
+    0%,100%{transform:translateY(0) rotate(-2deg)}
+    50%{transform:translateY(-7px) rotate(2deg)}
+}
+
+.seal::before{
+    content:"";
+    position:absolute;
+    inset:9px;
+    border:1px solid rgba(212,175,55,.25);
+    border-radius:50%;
+}
+
+.seal span{
+    font-family:var(--display);
+    font-size:25px;
+    color:var(--gold-light);
+}
+
+.opening-title{
+    font-family:var(--serif);
+    font-size:clamp(46px,12vw,70px);
+    font-weight:400;
+    line-height:.9;
+    letter-spacing:-.03em;
+}
+
+.opening-title em{
+    display:block;
+    color:var(--gold-light);
+    font-weight:400;
+}
+
+.opening-sub{
+    color:var(--muted);
+    margin-top:26px;
+    line-height:1.7;
+    font-size:13px;
+}
+
+.guest{
+    margin-top:25px;
+    font-family:var(--display);
+    font-style:italic;
+    font-size:18px;
+    color:var(--cream);
 }
 
 .open-btn{
-  position:relative;
-  border:1px solid rgba(212,175,55,.65);
-  background:linear-gradient(135deg,#e9cb6a,#b38c25);
-  color:#101a13;
-  padding:17px 30px;
-  border-radius:100px;
-  cursor:pointer;
-  font-weight:700;
-  box-shadow:0 0 0 0 rgba(212,175,55,.25);
-  animation:pulseGold 2.4s infinite;
+    margin-top:34px;
+    padding:15px 27px;
+    border-radius:999px;
+    border:1px solid rgba(212,175,55,.65);
+    background:linear-gradient(135deg,#e4c35d,#b99127);
+    color:#09160f;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    box-shadow:
+        0 10px 35px rgba(212,175,55,.12),
+        0 0 0 0 rgba(212,175,55,.25);
+    animation:buttonPulse 2.8s infinite;
+}
+
+@keyframes buttonPulse{
+    0%,100%{box-shadow:0 10px 35px rgba(212,175,55,.12),0 0 0 0 rgba(212,175,55,.22)}
+    50%{box-shadow:0 14px 45px rgba(212,175,55,.2),0 0 0 10px rgba(212,175,55,0)}
 }
 
 .open-btn i{
-  margin-left:10px;
+    font-size:12px;
 }
 
-@keyframes pulseGold{
-  0%,100%{
-    box-shadow:0 0 0 0 rgba(212,175,55,.25);
-  }
-  50%{
-    box-shadow:0 0 0 15px rgba(212,175,55,0);
-  }
-}
 
-/* CURTAINS */
+/* =========================================================
+   07. CURTAINS
+========================================================= */
 
 .curtain{
-  position:absolute;
-  top:-5%;
-  width:52%;
-  height:110%;
-  z-index:15;
-  background:
-    linear-gradient(90deg,
-      #020704 0%,
-      #0b261a 12%,
-      #071a12 27%,
-      #123b28 42%,
-      #04110b 58%,
-      #0c281b 75%,
-      #020704 100%);
-  box-shadow:inset 0 0 70px rgba(0,0,0,.75);
-}
-
-.curtain:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  opacity:.2;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 18px,
-      rgba(255,255,255,.10) 19px,
-      transparent 27px
-    );
-  filter:blur(2px);
+    position:fixed;
+    top:0;
+    width:50.5%;
+    height:100%;
+    z-index:10000;
+    pointer-events:none;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #06160f 0px,
+            #0b241a 20px,
+            #04110c 42px,
+            #0a2018 64px
+        );
+    box-shadow:inset 0 0 100px rgba(0,0,0,.5);
 }
 
 .curtain.left{
-  left:-2%;
-  transform-origin:left center;
-  border-right:1px solid rgba(212,175,55,.2);
-  clip-path:polygon(0 0,100% 0,92% 100%,0 100%);
+    left:0;
+    transform-origin:left center;
 }
 
 .curtain.right{
-  right:-2%;
-  transform-origin:right center;
-  border-left:1px solid rgba(212,175,55,.2);
-  clip-path:polygon(0 0,100% 0,100% 100%,8% 100%);
+    right:0;
+    transform-origin:right center;
 }
 
-.curtain-fold{
-  position:absolute;
-  top:0;
-  width:30px;
-  height:100%;
-  opacity:.18;
-  background:linear-gradient(90deg,transparent,#fff,transparent);
-  filter:blur(10px);
+.curtain::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg,rgba(0,0,0,.35),transparent 35%,rgba(212,175,55,.04));
 }
 
-.curtain.left .f1{left:18%}
-.curtain.left .f2{left:43%}
-.curtain.left .f3{left:68%}
-.curtain.right .f1{right:18%}
-.curtain.right .f2{right:43%}
-.curtain.right .f3{right:68%}
+#opening.closed .curtain{
+    display:block;
+}
+
 
 /* =========================================================
-   NAV
+   08. MAIN
 ========================================================= */
 
-.nav{
-  position:fixed;
-  top:20px;
-  left:50%;
-  transform:translateX(-50%);
-  width:min(1180px,calc(100% - 30px));
-  z-index:50;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:13px 16px 13px 22px;
-  border:1px solid rgba(212,175,55,.2);
-  border-radius:100px;
-  background:rgba(4,17,11,.58);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-  transition:.4s;
+main{
+    position:relative;
+    isolation:isolate;
 }
 
-.nav.scrolled{
-  background:rgba(4,17,11,.88);
-  border-color:rgba(212,175,55,.35);
+section{
+    position:relative;
+}
+
+.container{
+    width:min(1180px,calc(100% - 36px));
+    margin:auto;
+}
+
+.eyebrow{
+    font-size:10px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(44px,8vw,86px);
+    line-height:.9;
+    letter-spacing:-.04em;
+}
+
+.section-title em{
+    color:var(--gold-light);
+}
+
+
+/* =========================================================
+   09. TOP NAV
+========================================================= */
+
+.topbar{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1160px,calc(100% - 30px));
+    z-index:500;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 14px 12px 20px;
+    border:1px solid rgba(212,175,55,.18);
+    border-radius:999px;
+    background:rgba(3,17,12,.55);
+    backdrop-filter:blur(18px);
+    opacity:0;
+    pointer-events:none;
 }
 
 .brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
+    display:flex;
+    align-items:center;
+    gap:12px;
 }
 
 .brand-mark{
-  width:42px;
-  height:42px;
-  border:1px solid rgba(212,175,55,.6);
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  color:var(--gold2);
-  font-family:"DM Serif Display",serif;
+    width:38px;
+    height:38px;
+    border:1px solid rgba(212,175,55,.5);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-family:var(--display);
+    color:var(--gold-light);
 }
 
 .brand-text{
-  font-size:11px;
-  letter-spacing:.3em;
-  font-weight:700;
+    font-size:10px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
 }
 
 .nav-links{
-  display:flex;
-  gap:26px;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-  color:#a8b0ab;
+    display:flex;
+    gap:24px;
+    font-size:11px;
+    color:var(--muted);
 }
 
 .nav-links a{
-  transition:.3s;
+    transition:.3s;
 }
 
 .nav-links a:hover{
-  color:var(--gold2);
+    color:var(--gold-light);
 }
 
-.music-button{
-  width:42px;
-  height:42px;
-  border-radius:50%;
-  border:1px solid rgba(212,175,55,.35);
-  background:rgba(255,255,255,.04);
-  color:var(--gold2);
-  cursor:pointer;
+.nav-music{
+    width:40px;
+    height:40px;
+    border:1px solid rgba(212,175,55,.3);
+    border-radius:50%;
+    background:rgba(255,255,255,.025);
+    color:var(--gold-light);
 }
 
-@media(max-width:700px){
-  .nav-links{
-    display:none;
-  }
-}
 
 /* =========================================================
-   HERO
+   10. HERO
 ========================================================= */
 
 .hero{
-  min-height:100svh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-  padding:130px 20px 90px;
+    min-height:100svh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    padding:110px 0 70px;
 }
 
-.hero:before{
-  content:"";
-  position:absolute;
-  width:700px;
-  height:700px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(212,175,55,.13),transparent 65%);
-  filter:blur(20px);
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(180deg,rgba(3,17,12,.15),#051911 95%),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=85")
+        center/cover;
+    opacity:.20;
+    z-index:-3;
+    transform:scale(1.05);
 }
 
-.hero-ornament{
-  position:absolute;
-  width:min(90vw,900px);
-  height:min(90vw,900px);
-  border:1px solid rgba(212,175,55,.08);
-  border-radius:50%;
-}
-
-.hero-ornament:before,
-.hero-ornament:after{
-  content:"";
-  position:absolute;
-  inset:8%;
-  border:1px solid rgba(212,175,55,.06);
-  border-radius:50%;
-}
-
-.hero-ornament:after{
-  inset:22%;
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(212,175,55,.16),transparent 27%),
+        linear-gradient(90deg,#051911 0%,transparent 50%,#051911 100%);
 }
 
 .hero-content{
-  position:relative;
-  z-index:4;
+    text-align:center;
+    width:min(1000px,100%);
+    position:relative;
 }
 
-.pre-title{
-  color:var(--gold2);
-  text-transform:uppercase;
-  letter-spacing:.45em;
-  font-size:10px;
-  margin-bottom:28px;
+.monogram{
+    width:110px;
+    height:110px;
+    margin:0 auto 35px;
+    border:1px solid rgba(212,175,55,.5);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    position:relative;
 }
 
-.hero-monogram{
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(70px,15vw,150px);
-  line-height:.8;
-  background:linear-gradient(120deg,#9d761d,#f8df84,#fff4bc,#b88d29);
-  -webkit-background-clip:text;
-  color:transparent;
-  background-size:300% 100%;
-  animation:metal 5s linear infinite;
+.monogram::before,
+.monogram::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.13);
 }
 
-@keyframes metal{
-  0%{background-position:0}
-  100%{background-position:300%}
+.monogram::before{
+    inset:-13px;
 }
 
-.hero h1{
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(54px,11vw,125px);
-  line-height:.85;
-  font-weight:400;
-  margin-top:35px;
+.monogram::after{
+    inset:-26px;
 }
 
-.hero h1 em{
-  display:block;
-  font-family:"Playfair Display",serif;
-  font-size:.75em;
-  color:var(--gold2);
-  margin-top:14px;
+.monogram span{
+    font-family:var(--serif);
+    font-size:42px;
+    color:var(--gold-light);
 }
 
-.hero-location{
-  margin:40px auto 0;
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  align-items:center;
-  color:#b1b9b3;
-  font-size:11px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
+.hero-kicker{
+    font-size:10px;
+    letter-spacing:.4em;
+    color:var(--gold-soft);
+    text-transform:uppercase;
 }
 
-.hero-location span{
-  color:var(--gold2);
+.hero-title{
+    margin-top:25px;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(72px,15vw,170px);
+    line-height:.75;
+    letter-spacing:-.055em;
 }
 
-.scroll-hint{
-  position:absolute;
-  bottom:25px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:9px;
-  letter-spacing:.3em;
-  text-transform:uppercase;
-  color:#88928b;
+.hero-title .amp{
+    font-family:var(--display);
+    color:var(--gold-light);
+    font-style:italic;
+    font-size:.55em;
+    vertical-align:middle;
+    margin:0 .04em;
 }
 
-.scroll-hint:after{
-  content:"";
-  display:block;
-  width:1px;
-  height:35px;
-  margin:10px auto 0;
-  background:linear-gradient(var(--gold),transparent);
+.hero-place{
+    margin-top:38px;
+    color:var(--muted);
+    font-size:12px;
+    letter-spacing:.12em;
 }
 
-/* =========================================================
-   BIRDS
-========================================================= */
-
-.bird{
-  position:absolute;
-  z-index:6;
-  width:55px;
-  opacity:.7;
-  pointer-events:none;
-}
-
-.bird svg{
-  width:100%;
-}
-
-.bird path{
-  fill:none;
-  stroke:var(--gold2);
-  stroke-width:2;
-  stroke-linecap:round;
-}
-
-.bird.one{
-  top:22%;
-  left:-100px;
-  animation:flyOne 15s linear infinite;
-}
-
-.bird.two{
-  top:37%;
-  left:-120px;
-  transform:scale(.6);
-  animation:flyTwo 20s 4s linear infinite;
-}
-
-@keyframes flyOne{
-  0%{transform:translateX(-10vw) translateY(0) scale(.7)}
-  35%{transform:translateX(35vw) translateY(-35px) scale(.8)}
-  65%{transform:translateX(70vw) translateY(30px) scale(.7)}
-  100%{transform:translateX(120vw) translateY(-20px) scale(.5)}
-}
-
-@keyframes flyTwo{
-  0%{transform:translateX(-10vw) translateY(0) scale(.55)}
-  50%{transform:translateX(60vw) translateY(-70px) scale(.7)}
-  100%{transform:translateX(120vw) translateY(10px) scale(.4)}
-}
-
-/* =========================================================
-   INTRO QUOTE
-========================================================= */
-
-.quote{
-  min-height:65vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-}
-
-.quote-inner{
-  max-width:800px;
-}
-
-.quote p{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(30px,6vw,62px);
-  line-height:1.15;
-  font-style:italic;
-}
-
-.quote small{
-  display:block;
-  margin-top:30px;
-  color:#8d9890;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  font-size:9px;
-}
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.countdown-wrap{
-  padding:80px 0;
+.hero-date{
+    margin-top:10px;
+    color:var(--cream);
+    font-family:var(--display);
+    font-size:16px;
 }
 
 .countdown{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:45px;
 }
 
-.time{
-  padding:50px 20px;
-  text-align:center;
-  border-right:1px solid var(--line);
+.time-box{
+    min-width:70px;
+    padding:14px 9px;
+    border-top:1px solid rgba(212,175,55,.3);
+    border-bottom:1px solid rgba(212,175,55,.15);
 }
 
-.time:last-child{
-  border-right:0;
+.time-box strong{
+    display:block;
+    font-family:var(--display);
+    font-size:25px;
+    font-weight:400;
+    color:var(--cream);
 }
 
-.time strong{
-  display:block;
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(42px,7vw,80px);
-  font-weight:400;
-  color:var(--gold2);
-  line-height:1;
+.time-box span{
+    display:block;
+    margin-top:5px;
+    font-size:8px;
+    letter-spacing:.22em;
+    color:var(--muted);
+    text-transform:uppercase;
 }
 
-.time span{
-  color:#8d9890;
-  text-transform:uppercase;
-  letter-spacing:.2em;
-  font-size:9px;
+.scroll-hint{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    color:var(--muted);
+    font-size:9px;
+    letter-spacing:.3em;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:9px;
 }
 
-@media(max-width:600px){
-  .countdown{
-    grid-template-columns:repeat(2,1fr);
-  }
-  .time:nth-child(2){
-    border-right:0;
-  }
-  .time{
-    padding:35px 10px;
-  }
+.scroll-line{
+    width:1px;
+    height:45px;
+    background:linear-gradient(var(--gold),transparent);
+    animation:scrollLine 2s infinite;
 }
+
+@keyframes scrollLine{
+    0%{transform:scaleY(0);transform-origin:top}
+    50%{transform:scaleY(1);transform-origin:top}
+    51%{transform-origin:bottom}
+    100%{transform:scaleY(0);transform-origin:bottom}
+}
+
 
 /* =========================================================
-   STORY
+   11. INTRO
+========================================================= */
+
+.intro{
+    padding:150px 0 130px;
+}
+
+.intro-grid{
+    display:grid;
+    grid-template-columns:.8fr 1.5fr;
+    gap:90px;
+    align-items:start;
+}
+
+.intro-number{
+    font-family:var(--display);
+    color:var(--gold-light);
+    font-size:12px;
+    letter-spacing:.2em;
+}
+
+.intro-copy{
+    font-family:var(--serif);
+    font-size:clamp(34px,5vw,63px);
+    line-height:1.05;
+    color:var(--cream);
+}
+
+.intro-copy em{
+    color:var(--gold-light);
+}
+
+.intro-note{
+    max-width:550px;
+    margin-top:35px;
+    color:var(--muted);
+    line-height:1.9;
+    font-size:14px;
+}
+
+
+/* =========================================================
+   12. ORNAMENT
+========================================================= */
+
+.ornament{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    color:var(--gold);
+    opacity:.6;
+}
+
+.ornament::before,
+.ornament::after{
+    content:"";
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--gold));
+    flex:1;
+}
+
+.ornament::after{
+    background:linear-gradient(90deg,var(--gold),transparent);
+}
+
+.ornament span{
+    font-family:var(--serif);
+    font-size:25px;
+}
+
+
+/* =========================================================
+   13. STORY
 ========================================================= */
 
 .story{
-  position:relative;
+    padding:120px 0;
 }
 
-.story-line{
-  position:absolute;
-  top:260px;
-  bottom:180px;
-  left:50%;
-  width:1px;
-  background:linear-gradient(
-    transparent,
-    var(--gold),
-    rgba(212,175,55,.15),
-    var(--gold),
-    transparent
-  );
-  transform:translateX(-50%) scaleY(0);
-  transform-origin:top;
+.story-head{
+    max-width:720px;
+    margin-bottom:100px;
+}
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline-line{
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:1px;
+    background:linear-gradient(
+        transparent,
+        rgba(212,175,55,.65) 10%,
+        rgba(212,175,55,.65) 90%,
+        transparent
+    );
+    transform:scaleY(0);
+    transform-origin:top;
 }
 
 .story-item{
-  width:50%;
-  padding:60px 70px;
-  position:relative;
+    width:50%;
+    padding:0 55px 110px;
+    position:relative;
 }
 
 .story-item:nth-child(odd){
-  margin-left:50%;
+    margin-left:0;
+    text-align:right;
+}
+
+.story-item:nth-child(even){
+    margin-left:50%;
 }
 
 .story-dot{
-  position:absolute;
-  top:82px;
-  width:13px;
-  height:13px;
-  border:2px solid var(--gold2);
-  border-radius:50%;
-  background:var(--emerald);
-  box-shadow:0 0 0 7px rgba(212,175,55,.06);
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:50%;
+    background:var(--gold-light);
+    box-shadow:0 0 0 7px rgba(212,175,55,.08),0 0 25px rgba(212,175,55,.4);
+    top:5px;
 }
 
 .story-item:nth-child(odd) .story-dot{
-  left:-7px;
+    right:-6px;
 }
 
 .story-item:nth-child(even) .story-dot{
-  right:-7px;
-}
-
-.story-card{
-  padding:34px;
-  border:1px solid rgba(212,175,55,.15);
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,.055),
-    rgba(255,255,255,.015)
-  );
-  border-radius:3px;
-  position:relative;
-  overflow:hidden;
-}
-
-.story-card:after{
-  content:"";
-  position:absolute;
-  width:180px;
-  height:180px;
-  right:-100px;
-  top:-100px;
-  border-radius:50%;
-  background:rgba(212,175,55,.07);
-  filter:blur(25px);
+    left:-5px;
 }
 
 .story-year{
-  font-size:10px;
-  letter-spacing:.2em;
-  color:var(--gold2);
+    color:var(--gold-light);
+    font-size:10px;
+    letter-spacing:.25em;
 }
 
-.story-card h3{
-  font-family:"DM Serif Display",serif;
-  font-size:32px;
-  font-weight:400;
-  margin:14px 0;
+.story-title{
+    margin-top:12px;
+    font-family:var(--serif);
+    font-size:38px;
+    font-weight:400;
 }
 
-.story-card p{
-  color:#8e9992;
-  font-size:13px;
+.story-text{
+    margin-top:12px;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:13px;
 }
 
-@media(max-width:700px){
-  .story-line{
-    left:15px;
-  }
-
-  .story-item,
-  .story-item:nth-child(odd){
-    width:100%;
-    margin:0;
-    padding:35px 0 35px 45px;
-  }
-
-  .story-item:nth-child(even){
-    text-align:left;
-  }
-
-  .story-dot,
-  .story-item:nth-child(odd) .story-dot,
-  .story-item:nth-child(even) .story-dot{
-    left:9px;
-    right:auto;
-  }
-}
 
 /* =========================================================
-   EVENTS
-========================================================= */
-
-.events{
-  background:
-    radial-gradient(circle at 50% 50%,rgba(212,175,55,.07),transparent 45%);
-}
-
-.event-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:20px;
-  margin-top:70px;
-}
-
-.event-card{
-  position:relative;
-  padding:55px 45px;
-  min-height:420px;
-  border:1px solid rgba(212,175,55,.2);
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  overflow:hidden;
-  transform-style:preserve-3d;
-}
-
-.event-card:before{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(212,175,55,.12),transparent 65%);
-  right:-150px;
-  bottom:-150px;
-}
-
-.event-number{
-  font-size:10px;
-  letter-spacing:.3em;
-  color:#77837b;
-}
-
-.event-icon{
-  margin:50px 0 25px;
-  width:55px;
-  height:55px;
-  border:1px solid rgba(212,175,55,.4);
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  color:var(--gold2);
-}
-
-.event-card h3{
-  font-family:"DM Serif Display",serif;
-  font-size:40px;
-  font-weight:400;
-}
-
-.event-card .date{
-  color:var(--gold2);
-  margin:10px 0;
-}
-
-.event-card p{
-  color:#909a93;
-  font-size:13px;
-}
-
-.event-actions{
-  display:flex;
-  gap:10px;
-  margin-top:28px;
-  flex-wrap:wrap;
-}
-
-.action{
-  padding:11px 16px;
-  border:1px solid rgba(212,175,55,.25);
-  border-radius:100px;
-  font-size:10px;
-  transition:.3s;
-}
-
-.action:hover{
-  background:var(--gold);
-  color:#07130d;
-}
-
-@media(max-width:700px){
-  .event-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-/* =========================================================
-   GALLERY
+   14. PHOTO GALLERY
 ========================================================= */
 
 .gallery{
-  overflow:hidden;
+    padding:130px 0;
+    overflow:hidden;
+}
+
+.gallery-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:30px;
+    margin-bottom:55px;
+}
+
+.gallery-hint{
+    color:var(--muted);
+    font-size:11px;
+    display:flex;
+    gap:10px;
+    align-items:center;
 }
 
 .gallery-track{
-  display:flex;
-  gap:18px;
-  width:max-content;
-  margin-top:70px;
+    display:flex;
+    gap:18px;
+    overflow-x:auto;
+    padding:10px 4px 35px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    cursor:grab;
 }
 
-.photo{
-  width:min(72vw,390px);
-  height:500px;
-  flex-shrink:0;
-  overflow:hidden;
-  position:relative;
+.gallery-track::-webkit-scrollbar{
+    display:none;
 }
 
-.photo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:saturate(.82);
-  transition:1.2s;
+.gallery-track.dragging{
+    cursor:grabbing;
+    scroll-snap-type:none;
 }
 
-.photo:hover img{
-  transform:scale(1.08);
+.photo-card{
+    flex:0 0 min(68vw,410px);
+    height:540px;
+    border-radius:4px;
+    overflow:hidden;
+    position:relative;
+    scroll-snap-align:center;
+    border:1px solid rgba(212,175,55,.18);
+    background:#071b13;
+    transform:translateZ(0);
 }
 
-.photo:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(transparent 60%,rgba(0,0,0,.55));
+.photo-card:nth-child(2){
+    margin-top:50px;
 }
 
-.photo:nth-child(2),
-.photo:nth-child(4){
-  margin-top:70px;
+.photo-card:nth-child(3){
+    margin-top:5px;
 }
 
-@media(max-width:600px){
-  .photo{
-    height:420px;
-  }
+.photo-card:nth-child(4){
+    margin-top:65px;
 }
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 1.2s var(--ease);
+}
+
+.photo-card:hover img{
+    transform:scale(1.07);
+}
+
+.photo-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(180deg,transparent 50%,rgba(0,0,0,.7));
+}
+
+.photo-caption{
+    position:absolute;
+    left:25px;
+    right:25px;
+    bottom:25px;
+}
+
+.photo-caption small{
+    color:var(--gold-light);
+    font-size:9px;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+}
+
+.photo-caption h3{
+    margin-top:8px;
+    font-family:var(--serif);
+    font-size:28px;
+    font-weight:400;
+}
+
 
 /* =========================================================
-   GIFT
+   15. EVENTS
 ========================================================= */
 
-.gift-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  margin-top:60px;
+.events{
+    padding:130px 0;
 }
 
-.gift-card{
-  border:1px solid rgba(212,175,55,.2);
-  padding:45px;
-  background:rgba(255,255,255,.035);
+.event-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:65px;
 }
 
-.bank{
-  font-size:28px;
-  font-family:"DM Serif Display",serif;
-  color:var(--gold2);
-  margin:15px 0;
+.event-card{
+    position:relative;
+    min-height:410px;
+    padding:42px;
+    border:1px solid rgba(212,175,55,.18);
+    background:
+        linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    backdrop-filter:blur(14px);
+    overflow:hidden;
+    transition:.5s var(--ease);
+    transform-style:preserve-3d;
+}
+
+.event-card::before{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:rgba(212,175,55,.09);
+    filter:blur(60px);
+    right:-120px;
+    top:-120px;
+}
+
+.event-card:hover{
+    border-color:rgba(212,175,55,.5);
+    transform:translateY(-8px);
+}
+
+.event-number{
+    color:var(--gold-light);
+    font-size:10px;
+    letter-spacing:.25em;
+}
+
+.event-icon{
+    margin-top:55px;
+    font-size:30px;
+    color:var(--gold-light);
+}
+
+.event-card h3{
+    margin-top:22px;
+    font-family:var(--serif);
+    font-size:44px;
+    font-weight:400;
+}
+
+.event-info{
+    margin-top:18px;
+    color:var(--muted);
+    line-height:1.8;
+    font-size:13px;
+}
+
+.event-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:28px;
+}
+
+.small-btn{
+    border:1px solid rgba(212,175,55,.25);
+    background:rgba(255,255,255,.025);
+    color:var(--cream);
+    padding:10px 14px;
+    border-radius:999px;
+    font-size:10px;
+    transition:.3s;
+}
+
+.small-btn:hover{
+    background:var(--gold);
+    color:#06150f;
+}
+
+
+/* =========================================================
+   16. GIFT
+========================================================= */
+
+.gift{
+    padding:130px 0;
+}
+
+.gift-box{
+    max-width:900px;
+    margin:65px auto 0;
+    padding:55px;
+    border:1px solid rgba(212,175,55,.18);
+    background:
+        radial-gradient(circle at 80% 20%,rgba(212,175,55,.08),transparent 30%),
+        rgba(255,255,255,.025);
+}
+
+.account{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    align-items:center;
+    padding:25px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.account:last-child{
+    border-bottom:0;
+}
+
+.account-bank{
+    color:var(--gold-light);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+}
+
+.account-number{
+    margin-top:7px;
+    font-family:var(--display);
+    font-size:23px;
 }
 
 .copy{
-  cursor:pointer;
-  border:1px solid rgba(212,175,55,.25);
-  background:transparent;
-  color:var(--champagne);
-  border-radius:100px;
-  padding:10px 17px;
-  font-size:10px;
+    border:1px solid rgba(212,175,55,.3);
+    color:var(--gold-light);
+    background:transparent;
+    padding:10px 15px;
+    border-radius:999px;
+    font-size:10px;
 }
 
-@media(max-width:700px){
-  .gift-grid{
-    grid-template-columns:1fr;
-  }
-}
 
 /* =========================================================
-   RSVP
+   17. RSVP
 ========================================================= */
 
 .rsvp{
-  position:relative;
+    padding:140px 0;
+}
+
+.rsvp-wrap{
+    max-width:850px;
+    margin:auto;
 }
 
 .form{
-  max-width:760px;
-  margin:60px auto 0;
+    margin-top:55px;
+    display:grid;
+    gap:15px;
 }
 
 .field{
-  margin-bottom:18px;
-}
-
-.field label{
-  display:block;
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:.18em;
-  color:#89938d;
-  margin-bottom:8px;
+    position:relative;
 }
 
 .field input,
-.field select,
-.field textarea{
-  width:100%;
-  background:rgba(255,255,255,.035);
-  border:1px solid rgba(212,175,55,.17);
-  color:white;
-  padding:16px;
-  outline:none;
-  font:inherit;
-  border-radius:2px;
+.field textarea,
+.field select{
+    width:100%;
+    border:1px solid rgba(212,175,55,.16);
+    background:rgba(255,255,255,.025);
+    color:var(--cream);
+    padding:17px 18px;
+    outline:none;
+    border-radius:2px;
+    transition:.3s;
 }
 
 .field textarea{
-  min-height:130px;
-  resize:vertical;
+    min-height:140px;
+    resize:vertical;
 }
 
 .field input:focus,
-.field select:focus,
-.field textarea:focus{
-  border-color:var(--gold);
+.field textarea:focus,
+.field select:focus{
+    border-color:rgba(212,175,55,.65);
+    background:rgba(255,255,255,.045);
 }
 
 .submit{
-  border:0;
-  background:linear-gradient(135deg,#f1d777,#b78d27);
-  color:#07130d;
-  padding:17px 30px;
-  border-radius:100px;
-  font-weight:700;
-  cursor:pointer;
+    margin-top:10px;
+    padding:17px;
+    background:linear-gradient(135deg,#e6c75f,#b18b2b);
+    color:#06150e;
+    font-weight:600;
 }
 
 .wishes{
-  max-width:760px;
-  margin:60px auto 0;
+    margin-top:70px;
 }
 
 .wish{
-  padding:25px 0;
-  border-bottom:1px solid rgba(212,175,55,.12);
+    padding:20px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
 .wish strong{
-  font-family:"DM Serif Display",serif;
-  font-size:22px;
+    font-family:var(--display);
+    font-size:19px;
 }
 
 .wish p{
-  color:#909991;
-  font-size:12px;
+    margin-top:6px;
+    color:var(--muted);
+    line-height:1.7;
+    font-size:13px;
 }
 
+
 /* =========================================================
-   FINAL CTA
+   18. FINAL CTA
 ========================================================= */
 
 .final{
-  min-height:80vh;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+    min-height:90svh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    padding:120px 0;
 }
 
-.final-orbit{
-  position:absolute;
-  width:min(90vw,700px);
-  aspect-ratio:1;
-  border:1px solid rgba(212,175,55,.08);
-  border-radius:50%;
-  animation:orbit 25s linear infinite;
-}
-
-.final-orbit:before{
-  content:"";
-  position:absolute;
-  top:-4px;
-  left:50%;
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:var(--gold2);
-  box-shadow:0 0 25px var(--gold2);
-}
-
-@keyframes orbit{
-  to{transform:rotate(360deg)}
+.final::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 50% 45%,rgba(212,175,55,.14),transparent 25%),
+        linear-gradient(180deg,transparent,#051911);
 }
 
 .final-content{
-  position:relative;
-  z-index:4;
-  max-width:800px;
+    position:relative;
+    width:min(850px,100%);
+    margin:auto;
 }
 
-.final-content h2{
-  font-family:"DM Serif Display",serif;
-  font-size:clamp(48px,9vw,100px);
-  line-height:.95;
-  font-weight:400;
+.final-small{
+    color:var(--gold-light);
+    font-size:10px;
+    letter-spacing:.35em;
+    text-transform:uppercase;
 }
 
-.final-content h2 em{
-  color:var(--gold2);
-  font-family:"Playfair Display",serif;
+.final-title{
+    margin-top:25px;
+    font-family:var(--serif);
+    font-size:clamp(60px,11vw,125px);
+    line-height:.85;
+    font-weight:400;
 }
 
-.final-content p{
-  margin:25px auto 35px;
-  max-width:550px;
-  color:#9ca69f;
-  font-size:13px;
+.final-title em{
+    color:var(--gold-light);
+}
+
+.final-text{
+    margin:35px auto;
+    max-width:540px;
+    color:var(--muted);
+    line-height:1.9;
+    font-size:13px;
 }
 
 .xyny{
-  display:inline-flex;
-  gap:10px;
-  align-items:center;
-  border:1px solid rgba(212,175,55,.4);
-  padding:14px 24px;
-  border-radius:100px;
-  color:var(--gold2);
-  font-size:11px;
-  letter-spacing:.15em;
-  text-transform:uppercase;
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    margin-top:25px;
+    padding:14px 21px;
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:999px;
+    color:var(--gold-light);
+    font-size:11px;
+    letter-spacing:.16em;
 }
+
+.footer{
+    margin-top:100px;
+    color:var(--muted-dark);
+    font-size:9px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+}
+
 
 /* =========================================================
-   FOOTER
+   19. FLOATING AUDIO
 ========================================================= */
 
-footer{
-  position:relative;
-  z-index:5;
-  border-top:1px solid rgba(212,175,55,.12);
-  padding:45px 20px;
-  text-align:center;
-  color:#69746d;
-  font-size:9px;
-  letter-spacing:.18em;
-  text-transform:uppercase;
+.audio{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:53px;
+    height:53px;
+    border-radius:50%;
+    border:1px solid rgba(212,175,55,.4);
+    background:rgba(3,17,12,.75);
+    backdrop-filter:blur(14px);
+    color:var(--gold-light);
+    z-index:600;
+    display:grid;
+    place-items:center;
+    opacity:0;
+    pointer-events:none;
 }
 
-/* =========================================================
-   AUDIO
-========================================================= */
-
-.youtube-player{
-  position:fixed;
-  width:1px;
-  height:1px;
-  left:-100px;
-  bottom:-100px;
-  opacity:.01;
-  pointer-events:none;
+.audio.active{
+    opacity:1;
+    pointer-events:auto;
 }
 
-.audio-label{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  z-index:40;
-  width:50px;
-  height:50px;
-  border-radius:50%;
-  border:1px solid rgba(212,175,55,.45);
-  background:rgba(5,25,17,.85);
-  color:var(--gold2);
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-  backdrop-filter:blur(15px);
-}
-
-.audio-label.playing{
-  animation:spin 5s linear infinite;
+.audio.playing i{
+    animation:spin 4s linear infinite;
 }
 
 @keyframes spin{
-  to{transform:rotate(360deg)}
+    to{transform:rotate(360deg)}
 }
 
+
 /* =========================================================
-   TOAST
+   20. BIRDS
 ========================================================= */
 
-.toast{
-  position:fixed;
-  bottom:90px;
-  left:50%;
-  transform:translate(-50%,20px);
-  background:#f1d777;
-  color:#07130d;
-  padding:12px 20px;
-  border-radius:100px;
-  font-size:11px;
-  font-weight:700;
-  opacity:0;
-  pointer-events:none;
-  z-index:100;
-  transition:.4s;
+.bird{
+    position:fixed;
+    z-index:3;
+    pointer-events:none;
+    color:rgba(250,248,241,.35);
+    font-size:15px;
+    opacity:0;
 }
 
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
+.bird svg{
+    width:100%;
 }
+
+.bird-1{
+    width:55px;
+    top:24%;
+    left:-100px;
+}
+
+.bird-2{
+    width:34px;
+    top:30%;
+    left:-70px;
+}
+
 
 /* =========================================================
-   ACCESSIBILITY / PERFORMANCE
+   21. FLOWER PETALS
+========================================================= */
+
+.petals{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+    overflow:hidden;
+}
+
+.petal{
+    position:absolute;
+    top:-40px;
+    width:9px;
+    height:14px;
+    border-radius:70% 30% 70% 30%;
+    background:rgba(234,217,160,.65);
+    filter:blur(.2px);
+    animation:fall linear infinite;
+}
+
+@keyframes fall{
+    0%{
+        transform:translate3d(0,-30px,0) rotate(0deg);
+    }
+    100%{
+        transform:translate3d(var(--x),110vh,0) rotate(500deg);
+    }
+}
+
+
+/* =========================================================
+   22. MOBILE
+========================================================= */
+
+@media(max-width:760px){
+
+    .container{
+        width:min(100% - 28px,600px);
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .topbar{
+        top:10px;
+    }
+
+    .hero{
+        min-height:100svh;
+        padding-top:100px;
+    }
+
+    .hero-title{
+        font-size:clamp(70px,20vw,110px);
+    }
+
+    .monogram{
+        width:85px;
+        height:85px;
+    }
+
+    .monogram span{
+        font-size:32px;
+    }
+
+    .countdown{
+        gap:3px;
+    }
+
+    .time-box{
+        min-width:62px;
+        padding:12px 5px;
+    }
+
+    .time-box strong{
+        font-size:20px;
+    }
+
+    .intro,
+    .story,
+    .gallery,
+    .events,
+    .gift,
+    .rsvp{
+        padding:100px 0;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:30px;
+    }
+
+    .timeline-line{
+        left:8px;
+    }
+
+    .story-item,
+    .story-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding:0 0 75px 40px;
+        text-align:left;
+    }
+
+    .story-item:nth-child(odd) .story-dot,
+    .story-item:nth-child(even) .story-dot{
+        left:3px;
+        right:auto;
+    }
+
+    .story-title{
+        font-size:34px;
+    }
+
+    .gallery-head{
+        display:block;
+    }
+
+    .gallery-hint{
+        margin-top:18px;
+    }
+
+    .photo-card{
+        flex-basis:80vw;
+        height:500px;
+    }
+
+    .event-grid{
+        grid-template-columns:1fr;
+    }
+
+    .event-card{
+        min-height:390px;
+        padding:30px;
+    }
+
+    .gift-box{
+        padding:28px 20px;
+    }
+
+    .account{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .final{
+        min-height:80svh;
+    }
+}
+
+
+/* =========================================================
+   23. ACCESSIBILITY / REDUCED MOTION
 ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
-  *,
-  *:before,
-  *:after{
-    animation-duration:.01ms!important;
-    animation-iteration-count:1!important;
-    scroll-behavior:auto!important;
-    transition-duration:.01ms!important;
-  }
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.001ms!important;
+        animation-iteration-count:1!important;
+        scroll-behavior:auto!important;
+        transition-duration:.001ms!important;
+    }
+
+    #particles,
+    .petals,
+    .bird{
+        display:none;
+    }
 }
 
-@media(max-width:480px){
-  .container{
-    width:min(100% - 28px,1180px);
-  }
-
-  .section{
-    padding:100px 0;
-  }
-
-  .hero-location{
-    flex-direction:column;
-    gap:5px;
-  }
-
-  .event-card{
-    padding:35px 25px;
-  }
-
-  .story-card{
-    padding:25px;
-  }
-}
 </style>
 </head>
 
+
 <body class="locked">
 
-<!-- ======================================================
-     THREE.JS CANVAS
-====================================================== -->
-<canvas id="particles"></canvas>
-<div class="noise"></div>
+<div class="grain"></div>
+<div class="ambient" id="ambient"></div>
 
-<!-- ======================================================
-     INTRO
-====================================================== -->
-<div class="intro" id="intro">
+<!-- =========================================================
+     OPENING
+========================================================= -->
 
-  <div class="intro-light"></div>
+<div id="opening">
 
-  <div class="curtain left">
-    <span class="curtain-fold f1"></span>
-    <span class="curtain-fold f2"></span>
-    <span class="curtain-fold f3"></span>
-  </div>
+    <div class="opening-glow"></div>
 
-  <div class="curtain right">
-    <span class="curtain-fold f1"></span>
-    <span class="curtain-fold f2"></span>
-    <span class="curtain-fold f3"></span>
-  </div>
+    <div class="opening-card">
 
-  <div class="intro-content">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
 
-    <div class="intro-small">
-      Sebuah cerita akan dimulai
-    </div>
-
-    <div class="intro-monogram">
-      <span>R & M</span>
-    </div>
-
-    <h1>
-      Rocxy
-      <span>&</span>
-      Meilany
-    </h1>
-
-    <div class="intro-date">
-      MEDAN · SUMATERA UTARA · 2026
-    </div>
-
-    <button class="open-btn" id="openInvitation">
-      Buka Undangan
-      <i class="fa-solid fa-arrow-right"></i>
-    </button>
-
-  </div>
-
-</div>
-
-<!-- ======================================================
-     YOUTUBE AUDIO
-====================================================== -->
-<div class="youtube-player">
-  <div id="youtubeAudio"></div>
-</div>
-
-<!-- ======================================================
-     NAV
-====================================================== -->
-<nav class="nav" id="nav">
-
-  <a href="#home" class="brand">
-    <div class="brand-mark">R&M</div>
-    <div class="brand-text">THE BEGINNING</div>
-  </a>
-
-  <div class="nav-links">
-    <a href="#story">Cerita</a>
-    <a href="#event">Acara</a>
-    <a href="#gallery">Galeri</a>
-    <a href="#rsvp">RSVP</a>
-  </div>
-
-  <button class="music-button" id="musicButton">
-    <i class="fa-solid fa-volume-high"></i>
-  </button>
-
-</nav>
-
-<!-- Floating music -->
-<button class="audio-label" id="audioFloating">
-  <i class="fa-solid fa-music"></i>
-</button>
-
-<div class="toast" id="toast"></div>
-
-<main>
-
-<!-- ======================================================
-     HERO
-====================================================== -->
-<section class="hero" id="home">
-
-  <div class="hero-ornament"></div>
-
-  <!-- flying birds -->
-  <div class="bird one">
-    <svg viewBox="0 0 100 50">
-      <path d="M5 28 Q25 5 48 25 Q72 5 95 28"/>
-    </svg>
-  </div>
-
-  <div class="bird two">
-    <svg viewBox="0 0 100 50">
-      <path d="M5 28 Q25 5 48 25 Q72 5 95 28"/>
-    </svg>
-  </div>
-
-  <div class="hero-content">
-
-    <div class="pre-title">
-      Dengan penuh sukacita
-    </div>
-
-    <div class="hero-monogram">
-      R & M
-    </div>
-
-    <h1>
-      Rocxy
-      <em>& Meilany</em>
-    </h1>
-
-    <div class="hero-location">
-      <span>17 · 10 · 2026</span>
-      <b>•</b>
-      <span>Medan, Sumatera Utara</span>
-    </div>
-
-  </div>
-
-  <div class="scroll-hint">
-    Gulir perlahan
-  </div>
-
-</section>
-
-<!-- ======================================================
-     QUOTE
-====================================================== -->
-<section class="section quote">
-
-  <div class="container quote-inner">
-
-    <div class="section-label">
-      Sebuah awal
-    </div>
-
-    <p>
-      "Pada akhirnya,
-      bukan tentang menemukan seseorang
-      yang sempurna.
-      Tetapi tentang menemukan seseorang
-      yang membuat perjalanan terasa
-      layak dijalani."
-    </p>
-
-    <small>
-      Rocxy & Meilany
-    </small>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     COUNTDOWN
-====================================================== -->
-<section class="countdown-wrap">
-
-  <div class="container">
-
-    <div class="section-label">
-      Menuju hari bahagia
-    </div>
-
-    <div class="countdown">
-
-      <div class="time">
-        <strong id="days">000</strong>
-        <span>Hari</span>
-      </div>
-
-      <div class="time">
-        <strong id="hours">00</strong>
-        <span>Jam</span>
-      </div>
-
-      <div class="time">
-        <strong id="minutes">00</strong>
-        <span>Menit</span>
-      </div>
-
-      <div class="time">
-        <strong id="seconds">00</strong>
-        <span>Detik</span>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     STORY
-====================================================== -->
-<section class="section story" id="story">
-
-  <div class="container">
-
-    <div class="section-label">
-      Our story
-    </div>
-
-    <h2 class="section-title">
-      Dari sebuah <em>pertemuan.</em>
-    </h2>
-
-    <div class="story-line" id="storyLine"></div>
-
-    <div class="story-list">
-
-      <article class="story-item">
-
-        <div class="story-dot"></div>
-
-        <div class="story-card">
-
-          <div class="story-year">
-            2021
-          </div>
-
-          <h3>Pertama kali bertemu</h3>
-
-          <p>
-            Dua orang dengan cerita masing-masing
-            bertemu pada waktu yang tidak pernah
-            direncanakan.
-          </p>
-
+        <div class="opening-small">
+            Sebuah undangan untukmu
         </div>
 
-      </article>
-
-      <article class="story-item">
-
-        <div class="story-dot"></div>
-
-        <div class="story-card">
-
-          <div class="story-year">
-            2022
-          </div>
-
-          <h3>Mulai mengenal</h3>
-
-          <p>
-            Dari percakapan sederhana,
-            tumbuh rasa nyaman yang perlahan
-            menjadi sesuatu yang lebih berarti.
-          </p>
-
+        <div class="seal" id="seal">
+            <span>R & M</span>
         </div>
 
-      </article>
+        <h1 class="opening-title">
+            Rocxy
+            <em>&amp;</em>
+            Meilany
+        </h1>
 
-      <article class="story-item">
-
-        <div class="story-dot"></div>
-
-        <div class="story-card">
-
-          <div class="story-year">
-            2024
-          </div>
-
-          <h3>Memilih untuk berjalan bersama</h3>
-
-          <p>
-            Bukan berarti semuanya selalu mudah.
-            Tetapi kami belajar bahwa perjalanan
-            akan terasa lebih indah ketika dijalani bersama.
-          </p>
-
-        </div>
-
-      </article>
-
-      <article class="story-item">
-
-        <div class="story-dot"></div>
-
-        <div class="story-card">
-
-          <div class="story-year">
-            2026
-          </div>
-
-          <h3>Satu langkah lebih jauh</h3>
-
-          <p>
-            Hari ketika dua perjalanan menjadi
-            satu cerita yang ingin kami teruskan
-            sepanjang kehidupan.
-          </p>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     EVENT
-====================================================== -->
-<section class="section events" id="event">
-
-  <div class="container">
-
-    <div class="section-label">
-      Save the date
-    </div>
-
-    <h2 class="section-title">
-      Mari menjadi bagian<br>
-      dari <em>hari kami.</em>
-    </h2>
-
-    <div class="event-grid">
-
-      <article class="event-card tilt">
-
-        <div class="event-number">
-          01 / AKAD
-        </div>
-
-        <div class="event-icon">
-          <i class="fa-solid fa-ring"></i>
-        </div>
-
-        <h3>Akad Nikah</h3>
-
-        <div class="date">
-          Sabtu · 17 Oktober 2026
-        </div>
-
-        <p>
-          09.00 WIB — selesai<br>
-          Medan, Sumatera Utara
+        <p class="opening-sub">
+            Dengan penuh kasih, kami mengundang Anda
+            untuk menjadi bagian dari hari yang akan
+            kami kenang seumur hidup.
         </p>
 
-        <div class="event-actions">
-          <a class="action"
-             target="_blank"
-             href="https://www.google.com/maps/search/?api=1&query=Medan%2C%20Sumatera%20Utara">
-            <i class="fa-solid fa-location-dot"></i>
-            Buka Maps
-          </a>
-
-          <a class="action"
-             target="_blank"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Akad%20Nikah%20Rocxy%20%26%20Meilany&dates=20261017T090000/20261017T110000&location=Medan%2C%20Sumatera%20Utara">
-            <i class="fa-regular fa-calendar"></i>
-            Simpan
-          </a>
+        <div class="guest">
+            Kepada Yth.<br>
+            <strong>Special Guest</strong>
         </div>
 
-      </article>
-
-      <article class="event-card tilt">
-
-        <div class="event-number">
-          02 / RESEPSI
-        </div>
-
-        <div class="event-icon">
-          <i class="fa-solid fa-champagne-glasses"></i>
-        </div>
-
-        <h3>Resepsi</h3>
-
-        <div class="date">
-          Sabtu · 17 Oktober 2026
-        </div>
-
-        <p>
-          12.00 — 15.00 WIB<br>
-          Medan, Sumatera Utara
-        </p>
-
-        <div class="event-actions">
-
-          <a class="action"
-             target="_blank"
-             href="https://www.google.com/maps/search/?api=1&query=Medan%2C%20Sumatera%20Utara">
-            <i class="fa-solid fa-location-dot"></i>
-            Buka Maps
-          </a>
-
-          <a class="action"
-             target="_blank"
-             href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Resepsi%20Rocxy%20%26%20Meilany&dates=20261017T120000/20261017T150000&location=Medan%2C%20Sumatera%20Utara">
-            <i class="fa-regular fa-calendar"></i>
-            Simpan
-          </a>
-
-        </div>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     GALLERY
-====================================================== -->
-<section class="section gallery" id="gallery">
-
-  <div class="container">
-
-    <div class="section-label">
-      A few memories
-    </div>
-
-    <h2 class="section-title">
-      Potongan kecil<br>
-      dari <em>cerita kami.</em>
-    </h2>
-
-  </div>
-
-  <div class="gallery-track">
-
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85"
-           alt="Wedding">
-    </div>
-
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=900&q=85"
-           alt="Wedding flowers">
-    </div>
-
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=85"
-           alt="Wedding couple">
-    </div>
-
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=900&q=85"
-           alt="Wedding decoration">
-    </div>
-
-    <div class="photo">
-      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=85"
-           alt="Wedding rings">
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     GIFT
-====================================================== -->
-<section class="section">
-
-  <div class="container">
-
-    <div class="section-label">
-      Tanda kasih
-    </div>
-
-    <h2 class="section-title">
-      Doa Anda adalah<br>
-      <em>hadiah terbaik.</em>
-    </h2>
-
-    <div class="gift-grid">
-
-      <div class="gift-card">
-
-        <div class="section-label">
-          Wedding gift
-        </div>
-
-        <p>
-          Bagi keluarga dan sahabat yang ingin
-          memberikan tanda kasih secara digital.
-        </p>
-
-        <div class="bank">
-          BCA · 1234567890
-        </div>
-
-        <p>
-          a.n. Rocxy Sitanggang
-        </p>
-
-        <br>
-
-        <button class="copy"
-                data-copy="1234567890">
-          <i class="fa-regular fa-copy"></i>
-          Salin nomor rekening
+        <button class="open-btn" id="openInvitation">
+            Buka Undangan
+            <i class="fa-solid fa-arrow-right"></i>
         </button>
 
-      </div>
+    </div>
+</div>
 
-      <div class="gift-card">
 
-        <div class="section-label">
-          Kehadiran
+<!-- =========================================================
+     CURTAINS
+========================================================= -->
+
+<div class="curtain left"></div>
+<div class="curtain right"></div>
+
+
+<!-- =========================================================
+     THREE PARTICLES
+========================================================= -->
+
+<canvas id="particles"></canvas>
+
+
+<!-- =========================================================
+     BIRDS
+========================================================= -->
+
+<div class="bird bird-1">
+<svg viewBox="0 0 100 40">
+    <path d="M5 20 Q25 3 48 19 Q72 3 95 20 Q70 13 48 28 Q27 13 5 20Z"
+          fill="currentColor"/>
+</svg>
+</div>
+
+<div class="bird bird-2">
+<svg viewBox="0 0 100 40">
+    <path d="M5 20 Q25 3 48 19 Q72 3 95 20 Q70 13 48 28 Q27 13 5 20Z"
+          fill="currentColor"/>
+</svg>
+</div>
+
+
+<!-- =========================================================
+     PETALS
+========================================================= -->
+
+<div class="petals" id="petals"></div>
+
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<header class="topbar" id="topbar">
+
+    <a href="#home" class="brand">
+
+        <div class="brand-mark">
+            R<span style="font-size:8px">&amp;</span>M
         </div>
 
-        <p>
-          Tidak ada hadiah yang lebih berarti
-          daripada kehadiran Anda bersama kami
-          di hari istimewa ini.
-        </p>
-
-        <br>
-
-        <div class="bank">
-          Terima kasih.
+        <div class="brand-text">
+            Rocxy &amp; Meilany
         </div>
 
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     RSVP
-====================================================== -->
-<section class="section rsvp" id="rsvp">
-
-  <div class="container">
-
-    <div style="text-align:center">
-
-      <div class="section-label">
-        RSVP
-      </div>
-
-      <h2 class="section-title">
-        Sampai <em>berjumpa.</em>
-      </h2>
-
-      <p style="color:#909a93;max-width:560px;margin:25px auto 0;font-size:13px">
-        Mohon konfirmasi kehadiran Anda.
-        Satu pesan kecil dari Anda akan menjadi
-        bagian dari kenangan yang kami simpan.
-      </p>
-
-    </div>
-
-    <form class="form" id="rsvpForm">
-
-      <div class="field">
-        <label>Nama</label>
-        <input id="guestName"
-               required
-               placeholder="Nama Anda">
-      </div>
-
-      <div class="field">
-        <label>Kehadiran</label>
-
-        <select id="attendance" required>
-          <option value="">Pilih</option>
-          <option>Hadir</option>
-          <option>Tidak dapat hadir</option>
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Jumlah tamu</label>
-
-        <select id="guestCount">
-          <option>1 orang</option>
-          <option>2 orang</option>
-          <option>3 orang</option>
-          <option>4 orang</option>
-        </select>
-
-      </div>
-
-      <div class="field">
-        <label>Ucapan & doa</label>
-
-        <textarea id="message"
-                  required
-                  placeholder="Tuliskan doa terbaik Anda..."></textarea>
-      </div>
-
-      <button class="submit" type="submit">
-        Kirim ucapan
-        <i class="fa-solid fa-arrow-right"></i>
-      </button>
-
-    </form>
-
-    <div class="wishes" id="wishes">
-
-      <div class="wish">
-        <strong>Keluarga & Sahabat</strong>
-        <p>
-          Semoga menjadi keluarga yang selalu
-          dipenuhi kasih, sukacita dan kedamaian.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ======================================================
-     FINAL CTA
-====================================================== -->
-<section class="final">
-
-  <div class="final-orbit"></div>
-
-  <div class="final-content">
-
-    <div class="section-label">
-      Sampai jumpa di Medan
-    </div>
-
-    <h2>
-      Dua hati.<br>
-      Satu <em>cerita.</em>
-    </h2>
-
-    <p>
-      Terima kasih telah meluangkan waktu
-      untuk hadir dalam cerita kecil kami.
-      Sampai bertemu dan merayakan hari
-      yang tidak akan kami lupakan.
-    </p>
-
-    <a href="https://xynystudio.github.io/xyny-studio/"
-       class="xyny"
-       target="_blank">
-      Dibuat dengan cinta oleh XYNY Studio
-      <i class="fa-solid fa-arrow-up-right-from-square"></i>
     </a>
 
-  </div>
+    <nav class="nav-links">
+        <a href="#story">Kisah</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#event">Acara</a>
+        <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <button class="nav-music" id="navMusic">
+        <i class="fa-solid fa-music"></i>
+    </button>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main id="home">
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="monogram hero-reveal">
+            <span>R &amp; M</span>
+        </div>
+
+        <div class="hero-kicker hero-reveal">
+            The beginning of forever
+        </div>
+
+        <h1 class="hero-title hero-reveal">
+            Rocxy
+            <span class="amp">&amp;</span>
+            Meilany
+        </h1>
+
+        <div class="hero-place hero-reveal">
+            MEDAN · SUMATERA UTARA
+        </div>
+
+        <div class="hero-date hero-reveal">
+            14 Februari 2027
+        </div>
+
+        <div class="countdown hero-reveal">
+
+            <div class="time-box">
+                <strong id="days">00</strong>
+                <span>Hari</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="hours">00</strong>
+                <span>Jam</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="minutes">00</strong>
+                <span>Menit</span>
+            </div>
+
+            <div class="time-box">
+                <strong id="seconds">00</strong>
+                <span>Detik</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
 
 </section>
+
+
+<!-- =========================================================
+     INTRO
+========================================================= -->
+
+<section class="intro">
+
+    <div class="container">
+
+        <div class="intro-grid">
+
+            <div>
+                <div class="intro-number">01 / OUR STORY</div>
+            </div>
+
+            <div>
+
+                <div class="intro-copy reveal">
+                    Ada pertemuan yang terasa biasa,
+                    sampai akhirnya kita sadar:
+                    <em>ternyata Tuhan sedang menulis sesuatu.</em>
+                </div>
+
+                <p class="intro-note reveal">
+                    Dua perjalanan, dua cerita, dan dua manusia
+                    yang akhirnya memilih untuk berjalan menuju
+                    arah yang sama. Di kota Medan, kami akan
+                    merayakan awal dari perjalanan baru kami.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div style="margin-top:90px">
+            <div class="ornament">
+                <span>✦</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     STORY
+========================================================= -->
+
+<section class="story" id="story">
+
+    <div class="container">
+
+        <div class="story-head reveal">
+
+            <div class="eyebrow">
+                Perjalanan kami
+            </div>
+
+            <h2 class="section-title">
+                Dari sebuah
+                <em>pertemuan.</em>
+            </h2>
+
+        </div>
+
+
+        <div class="timeline">
+
+            <div class="timeline-line"></div>
+
+
+            <article class="story-item reveal-story">
+
+                <div class="story-dot"></div>
+
+                <div class="story-year">
+                    2021
+                </div>
+
+                <h3 class="story-title">
+                    Pertama Bertemu
+                </h3>
+
+                <p class="story-text">
+                    Sebuah pertemuan sederhana yang
+                    ternyata menjadi awal dari cerita panjang.
+                </p>
+
+            </article>
+
+
+            <article class="story-item reveal-story">
+
+                <div class="story-dot"></div>
+
+                <div class="story-year">
+                    2022
+                </div>
+
+                <h3 class="story-title">
+                    Menjadi Kita
+                </h3>
+
+                <p class="story-text">
+                    Dari percakapan yang semakin panjang,
+                    kami mulai menyadari bahwa rumah
+                    mungkin bukan tempat.
+                </p>
+
+            </article>
+
+
+            <article class="story-item reveal-story">
+
+                <div class="story-dot"></div>
+
+                <div class="story-year">
+                    2025
+                </div>
+
+                <h3 class="story-title">
+                    Sebuah Janji
+                </h3>
+
+                <p class="story-text">
+                    Kami memilih untuk tidak hanya
+                    berjalan bersama hari ini,
+                    tetapi juga untuk hari-hari setelahnya.
+                </p>
+
+            </article>
+
+
+            <article class="story-item reveal-story">
+
+                <div class="story-dot"></div>
+
+                <div class="story-year">
+                    2027
+                </div>
+
+                <h3 class="story-title">
+                    Selamanya Dimulai
+                </h3>
+
+                <p class="story-text">
+                    Dan sekarang, dengan sukacita,
+                    kami mengundang orang-orang terkasih
+                    untuk menyaksikan awal bab berikutnya.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section class="gallery" id="gallery">
+
+    <div class="container">
+
+        <div class="gallery-head">
+
+            <div>
+
+                <div class="eyebrow">
+                    Moments
+                </div>
+
+                <h2 class="section-title">
+                    Beberapa
+                    <em>cerita kecil.</em>
+                </h2>
+
+            </div>
+
+            <div class="gallery-hint">
+                <i class="fa-solid fa-arrow-left"></i>
+                Geser foto
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="gallery-track" id="galleryTrack">
+
+        <article class="photo-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85"
+                alt="Wedding couple">
+
+            <div class="photo-overlay"></div>
+
+            <div class="photo-caption">
+                <small>01 · Together</small>
+                <h3>Hari yang kami pilih.</h3>
+            </div>
+
+        </article>
+
+
+        <article class="photo-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85"
+                alt="Wedding rings">
+
+            <div class="photo-overlay"></div>
+
+            <div class="photo-caption">
+                <small>02 · Promise</small>
+                <h3>Satu janji.</h3>
+            </div>
+
+        </article>
+
+
+        <article class="photo-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?auto=format&fit=crop&w=1000&q=85"
+                alt="Wedding flowers">
+
+            <div class="photo-overlay"></div>
+
+            <div class="photo-caption">
+                <small>03 · Celebration</small>
+                <h3>Merayakan cinta.</h3>
+            </div>
+
+        </article>
+
+
+        <article class="photo-card">
+
+            <img
+                src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=85"
+                alt="Wedding celebration">
+
+            <div class="photo-overlay"></div>
+
+            <div class="photo-caption">
+                <small>04 · Forever</small>
+                <h3>Menuju selamanya.</h3>
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     EVENTS
+========================================================= -->
+
+<section class="events" id="event">
+
+    <div class="container">
+
+        <div class="eyebrow reveal">
+            Save the date
+        </div>
+
+        <h2 class="section-title reveal">
+            Hari yang
+            <em>kami tunggu.</em>
+        </h2>
+
+
+        <div class="event-grid">
+
+            <article class="event-card tilt">
+
+                <div class="event-number">
+                    01 · AKAD
+                </div>
+
+                <div class="event-icon">
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+
+                <h3>Akad Nikah</h3>
+
+                <p class="event-info">
+                    Minggu, 14 Februari 2027<br>
+                    09.00 WIB<br><br>
+                    Masjid Raya Al Mashun<br>
+                    Medan, Sumatera Utara
+                </p>
+
+                <div class="event-actions">
+
+                    <a
+                        class="small-btn"
+                        href="https://www.google.com/maps/search/?api=1&query=Masjid+Raya+Al+Mashun+Medan"
+                        target="_blank">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Buka Maps
+                    </a>
+
+                    <button
+                        class="small-btn calendar"
+                        data-title="Akad Nikah Rocxy & Meilany"
+                        data-date="20270214T090000">
+                        <i class="fa-regular fa-calendar"></i>
+                        Simpan
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <article class="event-card tilt">
+
+                <div class="event-number">
+                    02 · RESEPSI
+                </div>
+
+                <div class="event-icon">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                </div>
+
+                <h3>Resepsi</h3>
+
+                <p class="event-info">
+                    Minggu, 14 Februari 2027<br>
+                    12.00 – 15.00 WIB<br><br>
+                    Gedung Serbaguna<br>
+                    Medan, Sumatera Utara
+                </p>
+
+                <div class="event-actions">
+
+                    <a
+                        class="small-btn"
+                        href="https://www.google.com/maps/search/?api=1&query=Gedung+Serbaguna+Medan"
+                        target="_blank">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Buka Maps
+                    </a>
+
+                    <button
+                        class="small-btn calendar"
+                        data-title="Resepsi Rocxy & Meilany"
+                        data-date="20270214T120000">
+                        <i class="fa-regular fa-calendar"></i>
+                        Simpan
+                    </button>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     GIFT
+========================================================= -->
+
+<section class="gift">
+
+    <div class="container">
+
+        <div class="eyebrow reveal">
+            Wedding gift
+        </div>
+
+        <h2 class="section-title reveal">
+            Doa Anda
+            <em>sudah cukup.</em>
+        </h2>
+
+        <div class="gift-box reveal">
+
+            <div class="account">
+
+                <div>
+                    <div class="account-bank">
+                        BCA
+                    </div>
+
+                    <div class="account-number">
+                        1234567890
+                    </div>
+
+                    <small style="color:var(--muted)">
+                        a.n. Rocxy
+                    </small>
+                </div>
+
+                <button
+                    class="copy"
+                    data-copy="1234567890">
+                    Salin
+                </button>
+
+            </div>
+
+
+            <div class="account">
+
+                <div>
+                    <div class="account-bank">
+                        Mandiri
+                    </div>
+
+                    <div class="account-number">
+                        9876543210
+                    </div>
+
+                    <small style="color:var(--muted)">
+                        a.n. Meilany
+                    </small>
+                </div>
+
+                <button
+                    class="copy"
+                    data-copy="9876543210">
+                    Salin
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     RSVP
+========================================================= -->
+
+<section class="rsvp" id="rsvp">
+
+    <div class="container">
+
+        <div class="rsvp-wrap">
+
+            <div class="eyebrow reveal">
+                RSVP
+            </div>
+
+            <h2 class="section-title reveal">
+                Kehadiran Anda
+                <em>berarti.</em>
+            </h2>
+
+            <p class="intro-note reveal">
+                Beri tahu kami apakah Anda dapat hadir
+                dan tinggalkan sedikit doa untuk perjalanan
+                baru kami.
+            </p>
+
+
+            <form class="form" id="rsvpForm">
+
+                <div class="field">
+                    <input
+                        id="guestName"
+                        type="text"
+                        placeholder="Nama Anda"
+                        required>
+                </div>
+
+                <div class="field">
+
+                    <select id="attendance" required>
+
+                        <option value="">
+                            Konfirmasi Kehadiran
+                        </option>
+
+                        <option value="Hadir">
+                            Saya akan hadir
+                        </option>
+
+                        <option value="Tidak hadir">
+                            Maaf, saya tidak dapat hadir
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <select id="guestCount">
+
+                        <option value="1">
+                            1 orang
+                        </option>
+
+                        <option value="2">
+                            2 orang
+                        </option>
+
+                        <option value="3">
+                            3 orang
+                        </option>
+
+                        <option value="4">
+                            4 orang
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <textarea
+                        id="wish"
+                        placeholder="Ucapan dan doa..."></textarea>
+
+                </div>
+
+
+                <button class="submit" type="submit">
+                    Kirim Konfirmasi
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+
+            </form>
+
+
+            <div class="wishes">
+
+                <div class="eyebrow">
+                    Wishes wall
+                </div>
+
+                <div id="wishList">
+
+                    <div class="wish">
+                        <strong>Keluarga Sitanggang</strong>
+                        <p>
+                            Selamat menempuh hidup baru.
+                            Semoga selalu menjadi keluarga
+                            yang penuh kasih.
+                        </p>
+                    </div>
+
+                    <div class="wish">
+                        <strong>Sarah & Daniel</strong>
+                        <p>
+                            Wishing you both a lifetime
+                            filled with beautiful moments.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL CTA
+========================================================= -->
+
+<section class="final">
+
+    <div class="container">
+
+        <div class="final-content">
+
+            <div class="final-small">
+                Sampai jumpa di Medan
+            </div>
+
+            <h2 class="final-title">
+                Sampai kita
+                <em>bertemu.</em>
+            </h2>
+
+            <p class="final-text">
+                Terima kasih telah menjadi bagian dari
+                perjalanan kami. Kehadiran, doa, dan kasih
+                Anda akan membuat hari ini jauh lebih berarti.
+            </p>
+
+            <div class="xyny">
+                <span>✦</span>
+                Digital Invitation by XYNY Studio
+            </div>
+
+            <div class="footer">
+                Made with intention · XYNY Studio · 2027
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 </main>
 
-<footer>
-  ROCXY & MEILANY · MEDAN · 2026
-</footer>
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<button class="audio" id="audioControl" aria-label="Musik">
+    <i class="fa-solid fa-music"></i>
+</button>
+
+<!--
+    YouTube embed:
+    Demo music only.
+
+    Untuk produksi komersial:
+    ganti dengan MP3 yang memang memiliki lisensi penggunaan.
+-->
+<iframe
+    id="youtubeMusic"
+    style="
+        position:fixed;
+        width:1px;
+        height:1px;
+        opacity:0;
+        pointer-events:none;
+        left:-100px;
+        bottom:-100px;
+    "
+    src="https://www.youtube.com/embed/KKn-nYHbls8?enablejsapi=1&loop=1&playlist=KKn-nYHbls8"
+    allow="autoplay">
+</iframe>
 
 
-<!-- ======================================================
-     LIBRARIES
-====================================================== -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-
-<script src="https://www.youtube.com/iframe_api"></script>
-
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
 
 <script>
+
 /* =========================================================
-   REGISTER GSAP
+   01. GSAP
 ========================================================= */
 
 gsap.registerPlugin(ScrollTrigger);
 
 
 /* =========================================================
-   YOUTUBE MUSIC
+   02. OPENING EXPERIENCE
 ========================================================= */
 
-let player;
-let musicPlaying=false;
+const opening = document.getElementById("opening");
+const openButton = document.getElementById("openInvitation");
+const body = document.body;
 
-function onYouTubeIframeAPIReady(){
+let invitationOpened = false;
 
-  player = new YT.Player("youtubeAudio",{
-    height:"1",
-    width:"1",
-    videoId:"wuQaM4UqV7M",
+openButton.addEventListener("click", () => {
 
-    playerVars:{
-      autoplay:0,
-      controls:0,
-      loop:1,
-      playlist:"wuQaM4UqV7M",
-      playsinline:1,
-      rel:0
+    if(invitationOpened) return;
+
+    invitationOpened = true;
+
+    const tl = gsap.timeline();
+
+    tl.to("#seal",{
+        scale:1.35,
+        rotation:8,
+        duration:.35,
+        ease:"power2.out"
+    })
+
+    .to("#seal",{
+        scale:.2,
+        opacity:0,
+        duration:.35,
+        ease:"back.in(2)"
+    })
+
+    .to(".curtain.left",{
+        xPercent:-100,
+        duration:1.45,
+        ease:"power4.inOut"
+    },"-=.1")
+
+    .to(".curtain.right",{
+        xPercent:100,
+        duration:1.45,
+        ease:"power4.inOut"
+    },"<")
+
+    .to(opening,{
+        opacity:0,
+        scale:1.04,
+        duration:1,
+        ease:"power3.inOut"
+    },"-=.75")
+
+    .set(opening,{
+        display:"none"
+    })
+
+    .set(body,{
+        className:""
+    });
+
+    body.classList.remove("locked");
+
+    gsap.to("#topbar",{
+        opacity:1,
+        pointerEvents:"auto",
+        duration:1.2,
+        delay:.5
+    });
+
+    heroAnimation();
+
+    animateBirds();
+
+    startMusic();
+
+});
+
+
+/* =========================================================
+   03. HERO ANIMATION
+========================================================= */
+
+function heroAnimation(){
+
+    gsap.from(".hero-reveal",{
+        y:55,
+        opacity:0,
+        duration:1.4,
+        stagger:.12,
+        ease:"power4.out"
+    });
+
+}
+
+
+/* =========================================================
+   04. SCROLL ANIMATIONS
+========================================================= */
+
+gsap.utils.toArray(".reveal").forEach(el => {
+
+    gsap.from(el,{
+        scrollTrigger:{
+            trigger:el,
+            start:"top 88%",
+            once:true
+        },
+        y:60,
+        opacity:0,
+        duration:1.1,
+        ease:"power4.out"
+    });
+
+});
+
+
+gsap.from(".story-item",{
+    scrollTrigger:{
+        trigger:".timeline",
+        start:"top 80%",
+        end:"bottom 75%",
+        scrub:1
     },
-
-    events:{
-      onReady:function(){}
-    }
-  });
-
-}
-
-function playMusic(){
-
-  if(!player) return;
-
-  try{
-    player.unMute();
-    player.setVolume(35);
-    player.playVideo();
-
-    musicPlaying=true;
-
-    document.getElementById("audioFloating")
-      .classList.add("playing");
-
-  }catch(e){}
-
-}
-
-function pauseMusic(){
-
-  if(!player) return;
-
-  try{
-    player.pauseVideo();
-  }catch(e){}
-
-  musicPlaying=false;
-
-  document.getElementById("audioFloating")
-    .classList.remove("playing");
-
-}
-
-
-/* =========================================================
-   INTRO OPEN
-========================================================= */
-
-const intro=document.getElementById("intro");
-
-document.getElementById("openInvitation")
-.addEventListener("click",()=>{
-
-  const tl=gsap.timeline({
-
-    onComplete:()=>{
-
-      intro.style.display="none";
-
-      document.body.classList.remove("locked");
-
-      window.scrollTo(0,0);
-
-      ScrollTrigger.refresh();
-
-    }
-
-  });
-
-  playMusic();
-
-  tl.to(".intro-monogram",{
-    scale:1.5,
     opacity:0,
-    duration:.45,
-    ease:"power3.in"
-  })
-
-  .to(".intro-content",{
-    opacity:0,
-    y:-30,
-    duration:.4
-  },"<")
-
-  .to(".intro-light",{
-    scale:2,
-    opacity:1,
-    duration:.6,
-    ease:"power2.out"
-  },"<")
-
-  .to(".curtain.left",{
-    xPercent:-105,
-    duration:1.6,
-    ease:"power4.inOut"
-  })
-
-  .to(".curtain.right",{
-    xPercent:105,
-    duration:1.6,
-    ease:"power4.inOut"
-  },"<")
-
-  .to(".intro",{
-    opacity:0,
-    duration:.7,
-    ease:"power2.out"
-  },"-=.5");
-
+    y:40,
+    stagger:.2
 });
 
 
-/* =========================================================
-   MUSIC BUTTONS
-========================================================= */
-
-function toggleMusic(){
-
-  if(musicPlaying){
-    pauseMusic();
-  }else{
-    playMusic();
-  }
-
-}
-
-document.getElementById("musicButton")
-.addEventListener("click",toggleMusic);
-
-document.getElementById("audioFloating")
-.addEventListener("click",toggleMusic);
-
-
-/* =========================================================
-   HERO ENTRANCE
-========================================================= */
-
-gsap.from(".hero-content > *",{
-  opacity:0,
-  y:45,
-  stagger:.15,
-  duration:1.3,
-  delay:.4,
-  ease:"power3.out"
-});
-
-gsap.to(".hero-ornament",{
-  rotation:360,
-  duration:80,
-  repeat:-1,
-  ease:"none"
-});
-
-
-/* =========================================================
-   NAV
-========================================================= */
-
-ScrollTrigger.create({
-
-  start:"top -80",
-
-  onEnter:()=>{
-    document.getElementById("nav")
-      .classList.add("scrolled");
-  },
-
-  onLeaveBack:()=>{
-    document.getElementById("nav")
-      .classList.remove("scrolled");
-  }
-
-});
-
-
-/* =========================================================
-   QUOTE REVEAL
-========================================================= */
-
-gsap.from(".quote p",{
-
-  scrollTrigger:{
-    trigger:".quote",
-    start:"top 75%"
-  },
-
-  opacity:0,
-  y:80,
-  duration:1.4,
-  ease:"power3.out"
-
-});
-
-
-/* =========================================================
-   STORY LINE
-========================================================= */
-
-gsap.to("#storyLine",{
-
-  scaleY:1,
-
-  scrollTrigger:{
-    trigger:".story",
-    start:"top 60%",
-    end:"bottom 70%",
-    scrub:1
-  }
-
-});
-
-
-/* =========================================================
-   STORY CARDS
-========================================================= */
-
-gsap.utils.toArray(".story-item").forEach((item,index)=>{
-
-  const direction =
-    index%2===0 ? -70 : 70;
-
-  gsap.from(item,{
+gsap.to(".timeline-line",{
 
     scrollTrigger:{
-      trigger:item,
-      start:"top 82%"
+        trigger:".timeline",
+        start:"top 80%",
+        end:"bottom 65%",
+        scrub:1
     },
 
-    opacity:0,
-    x:direction,
-    duration:1.1,
-    ease:"power3.out"
-
-  });
+    scaleY:1,
+    ease:"none"
 
 });
 
 
 /* =========================================================
-   EVENT CARDS
+   05. HERO PARALLAX
 ========================================================= */
 
-gsap.from(".event-card",{
-
-  scrollTrigger:{
-    trigger:".event-grid",
-    start:"top 80%"
-  },
-
-  opacity:0,
-  y:80,
-  stagger:.18,
-  duration:1.1,
-  ease:"power3.out"
-
-});
-
-
-/* =========================================================
-   TILT
-========================================================= */
-
-document.querySelectorAll(".tilt")
-.forEach(card=>{
-
-  card.addEventListener("mousemove",(e)=>{
-
-    if(window.innerWidth<800) return;
-
-    const rect=card.getBoundingClientRect();
-
-    const x=e.clientX-rect.left;
-    const y=e.clientY-rect.top;
-
-    const rotateY=
-      ((x/rect.width)-.5)*8;
-
-    const rotateX=
-      ((y/rect.height)-.5)*-8;
-
-    card.style.transform=
-      `perspective(900px)
-       rotateX(${rotateX}deg)
-       rotateY(${rotateY}deg)
-       translateY(-4px)`;
-
-  });
-
-  card.addEventListener("mouseleave",()=>{
-
-    card.style.transform=
-      "perspective(900px) rotateX(0) rotateY(0)";
-
-  });
-
-});
-
-
-/* =========================================================
-   GALLERY PARALLAX
-========================================================= */
-
-gsap.to(".gallery-track",{
-
-  xPercent:-12,
-
-  scrollTrigger:{
-    trigger:".gallery",
-    start:"top bottom",
-    end:"bottom top",
-    scrub:1
-  }
-
-});
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-const targetDate=
-  new Date("October 17, 2026 09:00:00").getTime();
-
-function updateCountdown(){
-
-  const now=new Date().getTime();
-
-  let distance=targetDate-now;
-
-  if(distance<0){
-    distance=0;
-  }
-
-  const days=Math.floor(
-    distance/(1000*60*60*24)
-  );
-
-  const hours=Math.floor(
-    (distance%(1000*60*60*24))
-    /(1000*60*60)
-  );
-
-  const minutes=Math.floor(
-    (distance%(1000*60*60))
-    /(1000*60)
-  );
-
-  const seconds=Math.floor(
-    (distance%(1000*60))
-    /1000
-  );
-
-  document.getElementById("days")
-    .textContent=String(days).padStart(3,"0");
-
-  document.getElementById("hours")
-    .textContent=String(hours).padStart(2,"0");
-
-  document.getElementById("minutes")
-    .textContent=String(minutes).padStart(2,"0");
-
-  document.getElementById("seconds")
-    .textContent=String(seconds).padStart(2,"0");
-
-}
-
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-
-/* =========================================================
-   COPY
-========================================================= */
-
-document.querySelectorAll(".copy")
-.forEach(button=>{
-
-  button.addEventListener("click",async()=>{
-
-    const text=button.dataset.copy;
-
-    try{
-
-      await navigator.clipboard.writeText(text);
-
-      showToast("Nomor rekening berhasil disalin.");
-
-      gsap.fromTo(button,
-        {scale:1},
-        {scale:1.08,yoyo:true,repeat:1,duration:.12}
-      );
-
-    }catch(e){
-
-      showToast("Silakan salin nomor secara manual.");
-
+gsap.to(".hero::before",{
+    scrollTrigger:{
+        trigger:".hero",
+        start:"top top",
+        end:"bottom top",
+        scrub:true
     }
+});
 
-  });
+
+gsap.to(".hero-content",{
+    scrollTrigger:{
+        trigger:".hero",
+        start:"top top",
+        end:"bottom top",
+        scrub:true
+    },
+    y:-100,
+    opacity:.2
+});
+
+
+/* =========================================================
+   06. MOUSE AMBIENT LIGHT
+========================================================= */
+
+const ambient = document.getElementById("ambient");
+
+window.addEventListener("pointermove",(e)=>{
+
+    ambient.style.transform =
+        `translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`;
 
 });
 
 
 /* =========================================================
-   TOAST
+   07. PETALS
 ========================================================= */
 
-function showToast(message){
+const petals = document.getElementById("petals");
 
-  const toast=document.getElementById("toast");
+for(let i=0;i<18;i++){
 
-  toast.textContent=message;
+    const p=document.createElement("div");
 
-  toast.classList.add("show");
+    p.className="petal";
 
-  setTimeout(()=>{
-    toast.classList.remove("show");
-  },2500);
+    p.style.left=Math.random()*100+"%";
+    p.style.animationDuration=(8+Math.random()*9)+"s";
+    p.style.animationDelay=(-Math.random()*15)+"s";
+    p.style.setProperty(
+        "--x",
+        `${-120+Math.random()*240}px`
+    );
+
+    p.style.transform=
+        `scale(${.4+Math.random()*.8})`;
+
+    petals.appendChild(p);
+}
+
+
+/* =========================================================
+   08. BIRD ANIMATION
+========================================================= */
+
+function animateBirds(){
+
+    const tl=gsap.timeline({
+        repeat:-1,
+        repeatDelay:8
+    });
+
+    tl.set(".bird-1",{
+        x:-100,
+        opacity:0,
+        y:0
+    })
+
+    .to(".bird-1",{
+        opacity:.65,
+        duration:.5
+    })
+
+    .to(".bird-1",{
+        x:window.innerWidth+180,
+        y:-80,
+        duration:14,
+        ease:"none"
+    })
+
+    .to(".bird-1",{
+        opacity:0,
+        duration:.5
+    },"-=.7");
+
+
+    gsap.delayedCall(4,()=>{
+
+        gsap.timeline({
+            repeat:-1,
+            repeatDelay:13
+        })
+
+        .set(".bird-2",{
+            x:-80,
+            opacity:0
+        })
+
+        .to(".bird-2",{
+            opacity:.45,
+            duration:.5
+        })
+
+        .to(".bird-2",{
+            x:window.innerWidth+120,
+            y:50,
+            duration:16,
+            ease:"none"
+        })
+
+        .to(".bird-2",{
+            opacity:0,
+            duration:.5
+        });
+
+    });
 
 }
 
 
 /* =========================================================
-   RSVP
-========================================================= */
-
-document.getElementById("rsvpForm")
-.addEventListener("submit",(e)=>{
-
-  e.preventDefault();
-
-  const name=
-    document.getElementById("guestName").value;
-
-  const attendance=
-    document.getElementById("attendance").value;
-
-  const message=
-    document.getElementById("message").value;
-
-  const wishes=
-    document.getElementById("wishes");
-
-  const wish=document.createElement("div");
-
-  wish.className="wish";
-
-  wish.innerHTML=`
-    <strong>${escapeHTML(name)}</strong>
-    <p>
-      ${escapeHTML(message)}
-      <br>
-      <span style="color:#d4af37;font-size:9px">
-        ${escapeHTML(attendance)}
-      </span>
-    </p>
-  `;
-
-  wishes.prepend(wish);
-
-  e.target.reset();
-
-  confetti({
-
-    particleCount:120,
-    spread:80,
-    origin:{y:.65},
-    colors:[
-      "#d4af37",
-      "#f2d77c",
-      "#faf7ef",
-      "#103a2a"
-    ]
-
-  });
-
-  setTimeout(()=>{
-
-    confetti({
-      particleCount:70,
-      angle:60,
-      spread:55,
-      origin:{x:0}
-    });
-
-    confetti({
-      particleCount:70,
-      angle:120,
-      spread:55,
-      origin:{x:1}
-    });
-
-  },250);
-
-  showToast("Terima kasih atas doa dan ucapannya.");
-
-});
-
-
-function escapeHTML(value){
-
-  return value
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   THREE.JS GOLD PARTICLES
+   09. THREE.JS GOLD PARTICLES
 ========================================================= */
 
 const canvas=document.getElementById("particles");
@@ -2501,181 +2676,589 @@ const canvas=document.getElementById("particles");
 const scene=new THREE.Scene();
 
 const camera=new THREE.PerspectiveCamera(
-  70,
-  window.innerWidth/window.innerHeight,
-  .1,
-  100
+    70,
+    window.innerWidth/window.innerHeight,
+    .1,
+    1000
 );
 
-camera.position.z=5;
+camera.position.z=4;
 
 const renderer=new THREE.WebGLRenderer({
-  canvas,
-  alpha:true,
-  antialias:true
+    canvas,
+    alpha:true,
+    antialias:true
 });
 
 renderer.setPixelRatio(
-  Math.min(window.devicePixelRatio,1.6)
+    Math.min(window.devicePixelRatio,1.5)
 );
 
 renderer.setSize(
-  window.innerWidth,
-  window.innerHeight
+    window.innerWidth,
+    window.innerHeight
 );
 
-const particleCount=
-  window.innerWidth<600 ? 500 : 950;
 
-const geometry=
-  new THREE.BufferGeometry();
+const geometry=new THREE.BufferGeometry();
 
-const positions=
-  new Float32Array(particleCount*3);
+const count=850;
 
-for(let i=0;i<particleCount*3;i+=3){
+const positions=new Float32Array(count*3);
 
-  positions[i]=
-    (Math.random()-.5)*12;
+for(let i=0;i<count;i++){
 
-  positions[i+1]=
-    (Math.random()-.5)*10;
+    positions[i*3]=
+        (Math.random()-.5)*10;
 
-  positions[i+2]=
-    (Math.random()-.5)*7;
+    positions[i*3+1]=
+        (Math.random()-.5)*10;
+
+    positions[i*3+2]=
+        (Math.random()-.5)*7;
 
 }
 
 geometry.setAttribute(
-  "position",
-  new THREE.BufferAttribute(
-    positions,3
-  )
+    "position",
+    new THREE.BufferAttribute(positions,3)
 );
 
-const material=
-  new THREE.PointsMaterial({
 
+const material=new THREE.PointsMaterial({
     color:0xd4af37,
-
-    size:
-      window.innerWidth<600
-      ? .018
-      : .024,
-
+    size:.025,
     transparent:true,
+    opacity:.55
+});
 
-    opacity:.72,
 
-    blending:
-      THREE.AdditiveBlending
-
-  });
-
-const particles=
-  new THREE.Points(
+const points=new THREE.Points(
     geometry,
     material
-  );
+);
 
-scene.add(particles);
+scene.add(points);
+
 
 let mouseX=0;
 let mouseY=0;
 
 window.addEventListener("pointermove",(e)=>{
 
-  mouseX=
-    (e.clientX/window.innerWidth-.5)*.15;
-
-  mouseY=
-    (e.clientY/window.innerHeight-.5)*.15;
+    mouseX=(e.clientX/window.innerWidth-.5)*2;
+    mouseY=(e.clientY/window.innerHeight-.5)*2;
 
 });
 
-function animateParticles(){
 
-  requestAnimationFrame(
-    animateParticles
-  );
+function renderParticles(){
 
-  particles.rotation.y+=.00035;
-  particles.rotation.x+=.00012;
+    requestAnimationFrame(renderParticles);
 
-  particles.position.x+=
-    (mouseX-particles.position.x)*.01;
+    points.rotation.y += .00025;
+    points.rotation.x += .00008;
 
-  particles.position.y+=
-    (-mouseY-particles.position.y)*.01;
+    points.rotation.y +=
+        (mouseX*.002-points.rotation.y)*.01;
 
-  renderer.render(
-    scene,
-    camera
-  );
+    points.rotation.x +=
+        (-mouseY*.002-points.rotation.x)*.01;
+
+    renderer.render(scene,camera);
 
 }
 
-animateParticles();
+renderParticles();
 
-
-/* =========================================================
-   RESIZE
-========================================================= */
 
 window.addEventListener("resize",()=>{
 
-  camera.aspect=
-    window.innerWidth/window.innerHeight;
+    camera.aspect=
+        window.innerWidth/window.innerHeight;
 
-  camera.updateProjectionMatrix();
+    camera.updateProjectionMatrix();
 
-  renderer.setSize(
-    window.innerWidth,
-    window.innerHeight
-  );
-
-  renderer.setPixelRatio(
-    Math.min(window.devicePixelRatio,1.6)
-  );
-
-  ScrollTrigger.refresh();
+    renderer.setSize(
+        window.innerWidth,
+        window.innerHeight
+    );
 
 });
 
 
 /* =========================================================
-   SMOOTH ANCHOR
+   10. COUNTDOWN
 ========================================================= */
 
-document.querySelectorAll('a[href^="#"]')
-.forEach(link=>{
+const weddingDate =
+    new Date("2027-02-14T09:00:00+07:00").getTime();
 
-  link.addEventListener("click",(e)=>{
+function updateCountdown(){
 
-    const id=
-      link.getAttribute("href");
+    const now=Date.now();
 
-    const target=
-      document.querySelector(id);
+    const distance=weddingDate-now;
 
-    if(!target) return;
+    if(distance<=0){
 
-    e.preventDefault();
+        document.getElementById("days").textContent="00";
+        document.getElementById("hours").textContent="00";
+        document.getElementById("minutes").textContent="00";
+        document.getElementById("seconds").textContent="00";
 
-    window.scrollTo({
+        return;
+    }
 
-      top:
-        target.getBoundingClientRect().top
-        +window.scrollY
-        -100,
+    const days=Math.floor(
+        distance/(1000*60*60*24)
+    );
 
-      behavior:"smooth"
+    const hours=Math.floor(
+        (distance/(1000*60*60))%24
+    );
+
+    const minutes=Math.floor(
+        (distance/(1000*60))%60
+    );
+
+    const seconds=Math.floor(
+        (distance/1000)%60
+    );
+
+    document.getElementById("days").textContent=
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").textContent=
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent=
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent=
+        String(seconds).padStart(2,"0");
+
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* =========================================================
+   11. GALLERY DRAG / SWIPE
+========================================================= */
+
+const gallery=document.getElementById("galleryTrack");
+
+let isDown=false;
+let startX;
+let scrollLeft;
+
+gallery.addEventListener("pointerdown",(e)=>{
+
+    isDown=true;
+
+    gallery.classList.add("dragging");
+
+    startX=e.pageX-gallery.offsetLeft;
+
+    scrollLeft=gallery.scrollLeft;
+
+    gallery.setPointerCapture(e.pointerId);
+
+});
+
+gallery.addEventListener("pointermove",(e)=>{
+
+    if(!isDown)return;
+
+    const x=e.pageX-gallery.offsetLeft;
+
+    const walk=(x-startX)*1.25;
+
+    gallery.scrollLeft=
+        scrollLeft-walk;
+
+});
+
+gallery.addEventListener("pointerup",()=>{
+
+    isDown=false;
+
+    gallery.classList.remove("dragging");
+
+});
+
+gallery.addEventListener("pointercancel",()=>{
+
+    isDown=false;
+
+    gallery.classList.remove("dragging");
+
+});
+
+
+/* =========================================================
+   12. PHOTO CARD 3D
+========================================================= */
+
+document.querySelectorAll(".photo-card").forEach(card=>{
+
+    card.addEventListener("pointermove",(e)=>{
+
+        if(window.innerWidth<800)return;
+
+        const rect=card.getBoundingClientRect();
+
+        const x=(e.clientX-rect.left)/rect.width-.5;
+        const y=(e.clientY-rect.top)/rect.height-.5;
+
+        card.style.transform=
+            `perspective(900px)
+             rotateY(${x*4}deg)
+             rotateX(${-y*4}deg)`;
 
     });
 
-  });
+    card.addEventListener("pointerleave",()=>{
+
+        card.style.transform="";
+
+    });
 
 });
+
+
+/* =========================================================
+   13. EVENT CARD TILT
+========================================================= */
+
+document.querySelectorAll(".tilt").forEach(card=>{
+
+    card.addEventListener("pointermove",(e)=>{
+
+        if(window.innerWidth<800)return;
+
+        const rect=card.getBoundingClientRect();
+
+        const x=(e.clientX-rect.left)/rect.width-.5;
+        const y=(e.clientY-rect.top)/rect.height-.5;
+
+        card.style.transform=
+            `perspective(1000px)
+             rotateY(${x*3}deg)
+             rotateX(${-y*3}deg)
+             translateY(-6px)`;
+
+    });
+
+    card.addEventListener("pointerleave",()=>{
+
+        card.style.transform="";
+
+    });
+
+});
+
+
+/* =========================================================
+   14. COPY ACCOUNT
+========================================================= */
+
+document.querySelectorAll(".copy").forEach(button=>{
+
+    button.addEventListener("click",async()=>{
+
+        const value=button.dataset.copy;
+
+        try{
+
+            await navigator.clipboard.writeText(value);
+
+            const original=button.textContent;
+
+            button.textContent="Tersalin ✓";
+
+            button.style.background="var(--gold)";
+            button.style.color="#06150e";
+
+            gsap.fromTo(button,
+                {scale:.9},
+                {
+                    scale:1,
+                    duration:.35,
+                    ease:"back.out(2)"
+                }
+            );
+
+            setTimeout(()=>{
+
+                button.textContent=original;
+                button.style.background="";
+                button.style.color="";
+
+            },1800);
+
+        }catch(e){
+
+            alert("Nomor rekening: "+value);
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   15. RSVP
+========================================================= */
+
+const form=document.getElementById("rsvpForm");
+
+form.addEventListener("submit",(e)=>{
+
+    e.preventDefault();
+
+    const name=
+        document.getElementById("guestName").value.trim();
+
+    const attendance=
+        document.getElementById("attendance").value;
+
+    const count=
+        document.getElementById("guestCount").value;
+
+    const wish=
+        document.getElementById("wish").value.trim()
+        ||"Semoga selalu bahagia.";
+
+    if(!name || !attendance)return;
+
+    const item=document.createElement("div");
+
+    item.className="wish";
+
+    item.innerHTML=`
+        <strong>${escapeHTML(name)}</strong>
+        <p>
+            ${escapeHTML(wish)}
+            <br>
+            <small style="color:var(--gold-light)">
+                ${escapeHTML(attendance)} · ${count} orang
+            </small>
+        </p>
+    `;
+
+    document
+        .getElementById("wishList")
+        .prepend(item);
+
+    gsap.from(item,{
+        opacity:0,
+        y:30,
+        duration:.7,
+        ease:"power3.out"
+    });
+
+
+    if(typeof confetti==="function"){
+
+        confetti({
+            particleCount:120,
+            spread:90,
+            startVelocity:35,
+            origin:{
+                y:.65
+            },
+            colors:[
+                "#d4af37",
+                "#f0d77b",
+                "#fafafa"
+            ]
+        });
+
+    }
+
+    form.reset();
+
+});
+
+
+function escapeHTML(value){
+
+    return value
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   16. GOOGLE CALENDAR
+========================================================= */
+
+document.querySelectorAll(".calendar").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        const title=encodeURIComponent(
+            button.dataset.title
+        );
+
+        const date=button.dataset.date;
+
+        const url=
+            `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${date}/${date}`;
+
+        window.open(url,"_blank");
+
+    });
+
+});
+
+
+/* =========================================================
+   17. MUSIC
+========================================================= */
+
+const audioControl=
+    document.getElementById("audioControl");
+
+const navMusic=
+    document.getElementById("navMusic");
+
+const youtubeMusic=
+    document.getElementById("youtubeMusic");
+
+let musicPlaying=false;
+
+function startMusic(){
+
+    /*
+       Browser policy may prevent autoplay.
+       User has already interacted with the invitation,
+       so we attempt playback through the YouTube player.
+    */
+
+    try{
+
+        youtubeMusic.contentWindow.postMessage(
+            JSON.stringify({
+                event:"command",
+                func:"playVideo",
+                args:[]
+            }),
+            "*"
+        );
+
+        musicPlaying=true;
+
+        audioControl.classList.add("active");
+        audioControl.classList.add("playing");
+
+    }catch(e){}
+
+}
+
+
+function toggleMusic(){
+
+    try{
+
+        if(musicPlaying){
+
+            youtubeMusic.contentWindow.postMessage(
+                JSON.stringify({
+                    event:"command",
+                    func:"pauseVideo",
+                    args:[]
+                }),
+                "*"
+            );
+
+            musicPlaying=false;
+
+            audioControl.classList.remove("playing");
+
+        }else{
+
+            youtubeMusic.contentWindow.postMessage(
+                JSON.stringify({
+                    event:"command",
+                    func:"playVideo",
+                    args:[]
+                }),
+                "*"
+            );
+
+            musicPlaying=true;
+
+            audioControl.classList.add("playing");
+
+        }
+
+    }catch(e){}
+
+}
+
+audioControl.addEventListener(
+    "click",
+    toggleMusic
+);
+
+navMusic.addEventListener(
+    "click",
+    toggleMusic
+);
+
+
+/* =========================================================
+   18. SMOOTH ANCHOR
+========================================================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
+
+    link.addEventListener("click",(e)=>{
+
+        const target=
+            document.querySelector(
+                link.getAttribute("href")
+            );
+
+        if(target){
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+                behavior:"smooth",
+                block:"start"
+            });
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   19. INITIAL AUDIO BUTTON
+========================================================= */
+
+setTimeout(()=>{
+
+    if(invitationOpened){
+
+        audioControl.classList.add("active");
+
+    }
+
+},3000);
 
 </script>
 
