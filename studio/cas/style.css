@@ -1,1 +1,777 @@
+/* =========================================
+   XYNY STUDIO — MAIN STYLE
+   ========================================= */
 
+:root {
+    --black: #111111;
+    --white: #f5f5f2;
+    --grey: #8a8a84;
+    --line: rgba(17, 17, 17, 0.16);
+
+    --page-padding: 5vw;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================
+   RESET
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--white);
+    color: var(--black);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================
+   SELECTION
+   ========================================= */
+
+::selection {
+    background: var(--black);
+    color: var(--white);
+}
+
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+header {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 82px;
+
+    padding: 0 var(--page-padding);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 1000;
+
+    background: rgba(245, 245, 242, 0.78);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border-bottom: 1px solid var(--line);
+}
+
+
+.logo {
+    font-size: 22px;
+
+    font-weight: 800;
+
+    letter-spacing: -0.1em;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.logo:hover {
+    opacity: 0.5;
+}
+
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    gap: 32px;
+}
+
+
+nav a {
+    position: relative;
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    letter-spacing: 0.12em;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--black);
+
+    transition:
+        width 0.4s var(--ease);
+}
+
+
+nav a:hover {
+    opacity: 0.55;
+}
+
+
+nav a:hover::after {
+    width: 100%;
+}
+
+
+/* =========================================
+   GENERAL SECTION
+   ========================================= */
+
+section {
+    position: relative;
+
+    padding:
+        150px
+        var(--page-padding);
+}
+
+
+section > p:first-child {
+    font-size: 9px;
+
+    letter-spacing: 0.16em;
+
+    opacity: 0.45;
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.hero {
+    min-height: 100vh;
+
+    padding-top: 150px;
+
+    padding-bottom: 70px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border-bottom: 1px solid var(--line);
+
+    overflow: hidden;
+}
+
+
+.hero::before {
+    content: "XYNY";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    font-size:
+        clamp(180px, 32vw, 520px);
+
+    font-weight: 900;
+
+    letter-spacing: -0.12em;
+
+    color: rgba(17, 17, 17, 0.025);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+}
+
+
+.hero img {
+    position: relative;
+
+    width:
+        clamp(150px, 22vw, 290px);
+
+    margin-bottom: 42px;
+
+    mix-blend-mode: multiply;
+
+    animation:
+        logoReveal 1.3s var(--ease) both;
+}
+
+
+.hero p {
+    position: relative;
+
+    margin-bottom: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.22em;
+
+    opacity: 0.5;
+
+    animation:
+        fadeUp 1s 0.25s var(--ease) both;
+}
+
+
+.hero h1 {
+    position: relative;
+
+    max-width: 1000px;
+
+    font-size:
+        clamp(48px, 9vw, 145px);
+
+    line-height: 0.84;
+
+    font-weight: 700;
+
+    letter-spacing: -0.09em;
+
+    animation:
+        fadeUp 1s 0.4s var(--ease) both;
+}
+
+
+.hero > a {
+    position: relative;
+
+    margin-top: 55px;
+
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid var(--black);
+
+    font-size: 10px;
+
+    letter-spacing: 0.14em;
+
+    transition:
+        padding 0.4s var(--ease);
+}
+
+
+.hero > a:hover {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+/* =========================================
+   WORK
+   ========================================= */
+
+#work {
+    min-height: 100vh;
+}
+
+
+#work h2 {
+    margin-top: 50px;
+
+    margin-bottom: 80px;
+
+    font-size:
+        clamp(60px, 12vw, 190px);
+
+    line-height: 0.78;
+
+    letter-spacing: -0.1em;
+}
+
+
+#work::after {
+    content: "01";
+
+    position: absolute;
+
+    right: var(--page-padding);
+    bottom: 70px;
+
+    font-size: 10px;
+
+    opacity: 0.35;
+}
+
+
+/* =========================================
+   STUDIO
+   ========================================= */
+
+#studio {
+    min-height: 100vh;
+
+    background: var(--black);
+
+    color: var(--white);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+#studio h2 {
+    margin-top: 60px;
+
+    font-size:
+        clamp(65px, 13vw, 200px);
+
+    line-height: 0.78;
+
+    letter-spacing: -0.1em;
+}
+
+
+#studio h2::first-line {
+    color: var(--white);
+}
+
+
+/* =========================================
+   LAB
+   ========================================= */
+
+#lab {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+
+#lab::before {
+    content: "";
+
+    position: absolute;
+
+    width: 60vw;
+    height: 60vw;
+
+    max-width: 800px;
+    max-height: 800px;
+
+    border: 1px solid var(--line);
+
+    border-radius: 50%;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    animation:
+        slowRotate 25s linear infinite;
+}
+
+
+#lab::after {
+    content: "EXPERIMENT";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-20deg);
+
+    font-size:
+        clamp(50px, 10vw, 150px);
+
+    font-weight: 800;
+
+    letter-spacing: -0.1em;
+
+    opacity: 0.035;
+
+    white-space: nowrap;
+
+    pointer-events: none;
+}
+
+
+#lab h2 {
+    position: relative;
+
+    margin-top: 60px;
+
+    font-size:
+        clamp(100px, 20vw, 300px);
+
+    line-height: 0.7;
+
+    letter-spacing: -0.12em;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   JOURNAL
+   ========================================= */
+
+#journal {
+    min-height: 80vh;
+}
+
+
+#journal h2 {
+    margin-top: 55px;
+
+    margin-bottom: 80px;
+
+    font-size:
+        clamp(55px, 10vw, 150px);
+
+    line-height: 0.8;
+
+    letter-spacing: -0.09em;
+}
+
+
+#journal a {
+    display: block;
+
+    padding: 28px 0;
+
+    border-top: 1px solid var(--line);
+
+    font-size:
+        clamp(20px, 3vw, 42px);
+
+    letter-spacing: -0.04em;
+
+    transition:
+        padding 0.4s var(--ease);
+}
+
+
+#journal a:hover {
+    padding-left: 25px;
+}
+
+
+#journal a:last-child {
+    border-bottom: 1px solid var(--line);
+}
+
+
+/* =========================================
+   CONTACT
+   ========================================= */
+
+#contact {
+    min-height: 100vh;
+
+    background: #deded9;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+#contact h2 {
+    margin-top: 60px;
+
+    font-size:
+        clamp(70px, 15vw, 230px);
+
+    line-height: 0.75;
+
+    letter-spacing: -0.11em;
+}
+
+
+#contact a {
+    width: fit-content;
+
+    margin-top: 70px;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--black);
+
+    font-size:
+        clamp(18px, 2vw, 30px);
+
+    letter-spacing: -0.04em;
+
+    transition:
+        padding 0.4s var(--ease);
+}
+
+
+#contact a:hover {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+footer {
+    min-height: 80px;
+
+    padding:
+        25px var(--page-padding);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    background: var(--black);
+
+    color: var(--white);
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+}
+
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes logoReveal {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes slowRotate {
+
+    from {
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg);
+    }
+
+    to {
+        transform:
+            translate(-50%, -50%)
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    :root {
+        --page-padding: 6vw;
+    }
+
+
+    header {
+        height: 68px;
+    }
+
+
+    nav {
+        gap: 13px;
+    }
+
+
+    nav a {
+        font-size: 7px;
+
+        letter-spacing: 0.08em;
+    }
+
+
+    .hero {
+        padding-top: 110px;
+    }
+
+
+    .hero img {
+        width: 55vw;
+
+        margin-bottom: 30px;
+    }
+
+
+    .hero h1 {
+        font-size:
+            clamp(45px, 15vw, 90px);
+    }
+
+
+    section {
+        padding-top: 110px;
+
+        padding-bottom: 110px;
+    }
+
+
+    #work h2,
+    #journal h2 {
+        margin-top: 35px;
+
+        margin-bottom: 55px;
+    }
+
+
+    #studio h2 {
+        margin-top: 40px;
+
+        font-size:
+            clamp(55px, 16vw, 110px);
+    }
+
+
+    #lab h2 {
+        font-size:
+            clamp(80px, 24vw, 180px);
+    }
+
+
+    #lab::before {
+        width: 110vw;
+        height: 110vw;
+    }
+
+
+    #contact h2 {
+        font-size:
+            clamp(65px, 20vw, 130px);
+    }
+
+
+    footer {
+        min-height: 100px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
